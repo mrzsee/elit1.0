@@ -1,0 +1,503 @@
+title = "Kezdőlap"
+url = "/"
+layout = "default"
+body_class = "wt-home"
+id = "home"
+==
+<!-- Side Navigation Dots -->
+<div class="side-nav">
+    <a href="#home" class="side-nav-dot active" title="Kezdőlap"></a>
+    <a href="#services" class="side-nav-dot" title="Szolgáltatások"></a>
+    <a href="#about" class="side-nav-dot" title="Rólunk"></a>
+    <a href="#contact" class="side-nav-dot" title="Kapcsolat"></a>
+</div>
+
+<section id="home" class="s s-hm s-hm-editzone wnd-p-cc cf sc-m wnd-background-image wnd-w-wider wnd-s-normal wnd-h-auto wnd-nh-m hn-centered" style="margin-top: -160px; padding-top: 160px;">
+	<div class="s-w cf">
+		<div class="s-o cf">
+			<div class="s-bg" style="">
+                <div class="s-bg-l wnd-background-image fx-none bgpos-center-center bgatt-scroll">
+                    <picture><img src="{{ 'assets/hero_sofa_city.png'|theme }}" width="1920" height="794" alt="" fetchpriority="high"></picture>
+                    
+                </div>
+			</div>
+			<div class="h-c s-c">
+				<div class="h-c-b">
+					<div class="h-c-b-i">
+						<div class="ez cf wnd-no-cols">
+	<div class="ez-c"><div class="b b-text cf">
+	<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf"><h1 class="hero-glass-title"><font class="wnd-font-size-80">Több, mint Ingatlanközvetítés<br>Értéket adunk az Otthonához!</font></h1></div>
+</div></div>
+</div>
+					</div>
+				</div>
+			</div>
+            <div class="scroll-down-helper">
+                <a href="#services" class="scroll-link">
+                    <span></span>
+                </a>
+            </div>
+		</div>
+	</div>
+</section><section id="services" class="s s-basic cf sc-w   wnd-w-wider wnd-s-higher wnd-h-auto fade-in-section">
+	<div class="s-w cf">
+		<div class="s-o s-fs cf">
+			<div class="s-bg cf">
+				<div class="s-bg-l">
+                    
+					
+				</div>
+			</div>
+			<div class="s-c s-fs cf">
+				<div class="ez cf wnd-no-cols">
+	<div class="ez-c"><div class="b b-text cf">
+	<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf"><h1 class="wnd-align-center"><strong>Szolgáltatások</strong></h1>
+</div>
+</div>
+    <!-- Inject CSS locally for home page -->
+    {% put styles %}
+    <link rel="stylesheet" href="{{ 'assets/services-grid.css'|theme }}">
+    <style>
+        /* Override specific layout issues if necessary */
+        .services-grid { padding: 40px 0; }
+        .service-card { text-align: center; }
+
+        /* Hero Title Glassmorphism - Light & Pastel Version */
+        .hero-glass-title {
+            background: rgba(255, 253, 245, 0.10); /* 10% Opacity */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 12px;
+            padding: 20px 40px;
+            display: table !important; /* Block-like centering behavior */
+            text-align: center !important;
+            width: auto !important;
+            margin: 0 auto !important;
+            max-width: 85%;
+            box-shadow: 0 10px 40px rgba(189, 146, 109, 0.15);
+            margin: 0 auto;
+            
+            /* Typography Match with Logo */
+            font-family: 'Roboto Slab', 'Times New Roman', serif !important;
+            font-size: 24px !important;
+            font-weight: 700 !important;
+            color: #8d6d51 !important;
+            letter-spacing: 2px !important;
+        }
+        
+        .hero-glass-title font, .hero-glass-title {
+            color: #6a523d !important; /* Még 25%-kal sötétebb (#8d6d51 -> #6a523d) */
+            text-shadow: none;
+            font-weight: 700 !important;
+            font-family: 'Roboto Slab', 'Times New Roman', serif !important;
+            text-transform: none !important; /* Megszüntetjük a nagybetűs kényszert */
+            letter-spacing: 2px !important;
+            font-size: 24px !important;
+            line-height: 1.4 !important; /* Kicsit nagyobb sorköz a br miatt */
+            text-align: center !important; /* Biztosítjuk a középre zárást */
+        }
+        
+        /* Mobile adjustment */
+        @media (max-width: 768px) {
+             .hero-glass-title font, .hero-glass-title {
+                font-size: 1.2rem !important;
+                padding: 15px 20px;
+                margin-top: 280px !important; /* Több hely a logó+szöveg alatt */
+             }
+        }
+
+        /* Service Cards Animation */
+        .service-card {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            /* Ensure overflow hidden is applied somewhere if not already */
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px); /* Lift Up */
+            z-index: 2; /* Bring to front */
+        }
+
+        .service-image-wrapper {
+            overflow: hidden;
+        }
+
+        .service-image {
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            width: 100%;
+        }
+
+        .service-card:hover .service-image {
+            transform: scale(1.05); /* Gentle Zoom In */
+        }
+    </style>
+    {% endput %}
+
+    <div class="services-grid">
+        
+        <!-- 1. Ingatlanközvetítés -->
+        <div class="service-card">
+            <div class="service-image-wrapper">
+                <img src="{{ 'assets/real_estate_service.png'|theme }}" alt="Ingatlanközvetítés" class="service-image">
+            </div>
+            <div class="service-content">
+                <h3 class="service-name">Ingatlanközvetítés</h3>
+                <div class="service-divider"></div>
+                <p class="service-description">
+                    Ingatlan eladási szolgáltatásom célja, hogy segítséget nyújtsak Önnek a legjobb ár elérésében, miközben biztosítom a tranzakciók gyors és zökkenőmentes lebonyolítását.
+                </p>
+            </div>
+        </div>
+
+        <!-- 2. Ingatlan-Bérbeadás -->
+        <div class="service-card">
+            <div class="service-image-wrapper">
+                <img src="{{ 'assets/rental_service.png'|theme }}" alt="Ingatlan-Bérbeadás" class="service-image">
+            </div>
+            <div class="service-content">
+                <h3 class="service-name">Ingatlan-Bérbeadás</h3>
+                <div class="service-divider"></div>
+                <p class="service-description">
+                    Ingatlan bérbeadási szolgáltatásom célja, hogy Önnek a legjobb bérlőt találjam meg, valamint biztosítsam a bérbeadás zökkenőmentes lebonyolítását.
+                </p>
+            </div>
+        </div>
+
+        <!-- 3. Ingatlan-Felújítás -->
+        <div class="service-card">
+            <div class="service-image-wrapper">
+                <img src="{{ 'assets/renovation_service.png'|theme }}" alt="Ingatlan-Felújítás" class="service-image">
+            </div>
+            <div class="service-content">
+                <h3 class="service-name">Ingatlan-Felújítás</h3>
+                <div class="service-divider"></div>
+                <p class="service-description">
+                    Teljes körű ingatlanfelújítást kínálunk. Kiemelt figyelmet fordítunk az energetikai felújításokra, mint a hőszigetelés és a fűtési rendszerek korszerűsítése.
+                </p>
+            </div>
+        </div>
+
+        <!-- 4. Költöztetés -->
+        <div class="service-card">
+            <div class="service-image-wrapper">
+                <img src="{{ 'assets/moving_service.png'|theme }}" alt="Költöztetés" class="service-image">
+            </div>
+            <div class="service-content">
+                <h3 class="service-name">Költöztetés</h3>
+                <div class="service-divider"></div>
+                <p class="service-description">
+                    Szolgáltatásunk gyors, megbízható és biztonságos költöztetést kínál magánszemélyeknek és cégeknek egyaránt.
+                </p>
+            </div>
+        </div>
+        
+        <!-- 5. Ügyvéd -->
+        <div class="service-card">
+            <div class="service-image-wrapper">
+                <img src="{{ 'assets/lawyer_service.png'|theme }}" alt="Ügyvéd" class="service-image">
+            </div>
+            <div class="service-content">
+                <h3 class="service-name">Ügyvéd</h3>
+                <div class="service-divider"></div>
+                <p class="service-description">
+                    Szakértő ügyvédként teljes körű jogi tanácsadást és képviseletet biztosítunk ingatlanügyekben, beleértve az adásvételi és bérleti szerződések készítését.
+                </p>
+            </div>
+        </div>
+
+        <!-- 6. Energetikai Szakértő -->
+        <div class="service-card">
+            <div class="service-image-wrapper">
+                <img src="{{ 'assets/energy_service.png'|theme }}" alt="Energetikai Szakértő" class="service-image">
+            </div>
+            <div class="service-content">
+                <h3 class="service-name">Energetikai Szakértő</h3>
+                <div class="service-divider"></div>
+                <p class="service-description">
+                    Energetikai szakértőként átfogó tanácsadást nyújtunk. Készítünk energetikai tanúsítványokat, valamint segítünk a megfelelő korszerűsítések kiválasztásában.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+			</div>
+		</div>
+	</div>
+</section><section id="services" class="s s-basic cf sc-ml wnd-background-solid  wnd-w-wider wnd-s-higher wnd-h-auto fade-in-section">
+	<div class="s-w cf">
+		<div class="s-o s-fs cf">
+			<div class="s-bg cf">
+				<div class="s-bg-l" style="background-color:#F1F8E9">
+                    
+					
+				</div>
+			</div>
+			<div class="s-c s-fs cf">
+				<div class="ez cf wnd-no-cols">
+	<div class="ez-c"><div class="b-img b-img-default b b-s cf wnd-orientation-landscape wnd-type-image img-s-n" style="margin-left:0;margin-right:0;" id="wnd_ImageBlock_91185163">
+	<div class="b-img-w">
+		<div class="b-img-c" style="padding-bottom:39.18%;text-align:center;">
+            <picture><img id="wnd_ImageBlock_91185163_img" src="{{ 'assets/images-pexels-com-photos-7937688-pexels-photo-7937688-auto-compress-cs-tinysrgb-dpr-2-h-650-w-940.jpeg'|theme }}" alt="" width="1880" height="1255" loading="lazy" style="top:-35.22%;left:0%;width:100%;height:170.44%;position:absolute;"></picture>
+			</div>
+		
+	</div>
+</div></div>
+</div>
+			</div>
+		</div>
+	</div>
+</section><section id="about" class="s s-basic cf sc-acs  sc-al wnd-w-wider wnd-s-higher wnd-h-auto fade-in-section">
+	<div class="s-w cf">
+		<div class="s-o s-fs cf">
+			<div class="s-bg cf">
+				<div class="s-bg-l">
+                    
+					
+				</div>
+			</div>
+			<div class="s-c s-fs cf">
+				<div class="ez cf">
+	<div class="ez-c"><div class="cw cf">
+	<div class="cw-c cf"><div class="c cf" style="width:23.613%;">
+	<div class="c-c cf"><div class="b-img b-img-default b b-s cf wnd-orientation-landscape wnd-type-image img-s-n" style="margin-left:0;margin-right:0;" id="wnd_ImageBlock_805733322">
+	<div class="b-img-w">
+		<div class="b-img-c" style="padding-bottom:152.35%;text-align:center;">
+            <picture><img id="wnd_ImageBlock_805733322_img" src="{{ 'assets/images-pexels-com-photos-7937688-pexels-photo-7937688-auto-compress-cs-tinysrgb-dpr-2-h-650-w-940.jpeg'|theme }}" alt="" width="1880" height="1255" loading="lazy" style="top:0%;left:-62.98%;width:225.96%;height:100%;position:absolute;"></picture>
+			</div>
+		
+	</div>
+</div></div>
+</div><div class="c cf" style="width:33.09%;">
+	<div class="c-c cf"><div class="b-img b-img-default b b-s cf wnd-orientation-landscape wnd-type-image img-s-n" style="margin-left:0;margin-right:0;" id="wnd_ImageBlock_525252928">
+	<div class="b-img-w">
+		<div class="b-img-c" style="padding-bottom:132.07%;text-align:center;">
+            <picture><img id="wnd_ImageBlock_525252928_img" src="{{ 'assets/0bbzs1.jpg'|theme }}" alt="" width="1920" height="1272" loading="lazy" style="top:0%;left:-50.63%;width:201.25786163522%;height:100%;position:absolute;"></picture>
+			</div>
+		
+	</div>
+</div></div>
+</div><div class="c cf" style="width:43.297%;">
+	<div class="c-c cf"><div class="b b-text cf">
+	<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf"><p>Professzionális ingatlanközvetítés Szegeden</p>
+</div>
+</div><div class="b b-text cf">
+	<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf"><p>Elit- Ingatlaniroda – Otthonra talál nálunk!&nbsp;</p><p>Üdvözöljük az Elit- Ingatlaniroda világában, ahol az otthonteremtés nem csupán üzlet, hanem szenvedély! Célunk, hogy minden ügyfelünk számára megtaláljuk a tökéletes ingatlant, legyen szó családi házról, lakásról vagy üzleti célra szánt helyiségről.
+Ingatlanpiaci tapasztalatunkkal és helyismeretünkkel segítünk eligazodni a vásárlás, eladás és bérbeadás útvesztőjében. Barátságos, személyre szabott tanácsadással és megbízható ügyintézéssel biztosítjuk, hogy az otthonkeresés zökkenőmentes és örömteli legyen.
+Lépjen kapcsolatba velünk, és találjuk meg együtt azt az Otthont, ahol igazán otthon érezheti magát!&nbsp;</p></div>
+</div></div>
+</div></div>
+</div></div>
+</div>
+			</div>
+		</div>
+	</div>
+</section><section class="s s-basic cf sc-w   wnd-w-wider wnd-s-higher wnd-h-auto">
+	<div class="s-w cf">
+		<div class="s-o s-fs cf">
+			<div class="s-bg cf">
+				<div class="s-bg-l">
+                    
+					
+				</div>
+			</div>
+			<div class="s-c s-fs cf">
+				<div class="ez cf wnd-no-cols">
+	<div class="ez-c"><div class="b b-text cf">
+	<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf"><h2>Cégünk Szegeden és környékén ingatlanközvetítéssel foglalkozik. Vállaljuk lakások, házak, telkek és egyéb ingatlanok eladását, bérbeadását, valamint ingatlanok keresését ügyfeleink számára.</h2>
+</div>
+</div><div class="b b-text cf">
+	<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf"><ul>
+	<li>Az Elit- Ingatlaniroda nemcsak az ingatlanok eladásában és bérbeadásában segít, hanem átfogó szolgáltatásokkal támogatja ügyfeleit az otthonteremtés minden lépésében. Az alábbi területeken is számíthat ránk:
+Költöztetés
+Megbízható költöztető partnereinkkel gördülékenyen és stresszmentesen költözhet új otthonába.
+Lakásfelújítás
+Szakértő csapataink segítenek álmai otthonának kialakításában, legyen szó kisebb javításokról vagy teljes körű felújításról.
+Energetikai tanúsítvány készítése
+Gyorsan és precízen intézzük az ingatlanokhoz szükséges energetikai tanúsítvány elkészítését, amely elengedhetetlen az adásvétel során.
+Lakberendezés
+Professzionális lakberendezőink stílusos, személyre szabott belső tereket terveznek, hogy otthona tökéletesen tükrözze az ízlését és igényeit.
+Jogi tanácsadás és ügyvédi szolgáltatások
+Ingatlanügyleteihez tapasztalt ügyvédet biztosítunk, aki garantálja, hogy az adásvételi szerződések jogilag is kifogástalanok legyenek.
+Szolgáltatásainkkal azért dolgozunk, hogy Önnek ne kelljen külön partnereket keresnie, és minden igényét egy helyen megoldhassa. Bízza ránk az otthonteremtés minden részletét!&nbsp;&nbsp;</li>
+</ul>
+</div>
+</div></div>
+</div>
+			</div>
+		</div>
+	</div>
+</section><section class="s s-basic cf sc-acs  sc-al wnd-w-wider wnd-s-higher wnd-h-auto">
+	<div class="s-w cf">
+		<div class="s-o s-fs cf">
+			<div class="s-bg cf">
+				<div class="s-bg-l">
+                    
+					
+				</div>
+			</div>
+			<div class="s-c s-fs cf">
+				<div class="ez cf">
+	<div class="ez-c"><div class="cw cf">
+	<div class="cw-c cf"><div class="c cf" style="width:50%;">
+	<div class="c-c cf"><div class="b b-text cf">
+	<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf"><p>Otthonok Szegeden</p>
+</div>
+</div></div>
+</div><div class="c cf" style="width:50%;">
+	<div class="c-c cf"><div class="b b-text cf">
+	<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf"><p><span>Célunk, hogy a Szeged és környékén lévő ingatlanok értékesítését és bérbeadását hatékonyan és megbízhatóan segítsük.</span></p>
+</div>
+</div></div>
+</div></div>
+</div><div class="gal-app b-gal b b-s" id="wnd_PhotoGalleryBlock_188132519"><div class="b-gal-classic b-gal-grid grid-4 "><div class="b-gal-item original"><a class="b-gal-a litebox bor-rad" data-litebox-group="gallery" data-litebox-text="" href="{{ 'assets/images-pexels-com-photos-7937688-pexels-photo-7937688-auto-compress-cs-tinysrgb-dpr-2-h-650-w-940.jpeg'|theme }}" width="1880" height="1255"><div class="b-gal-img-outer"><div class="b-gal-img bor-rad"><div class="b-gal-img-pos"><div class="b-gal-img-wrap"><picture class=""><img src="{{ 'assets/images-pexels-com-photos-7937688-pexels-photo-7937688-auto-compress-cs-tinysrgb-dpr-2-h-650-w-940.jpeg'|theme }}" alt="" width="1880" height="1255" loading="lazy" class="img bor-rad" style="aspect-ratio: 376 / 251;"></picture></div></div></div><div class="b-gal-t bor-rad"></div></div></a></div><div class="b-gal-item original"><a class="b-gal-a litebox bor-rad" data-litebox-group="gallery" data-litebox-text="" href="{{ 'assets/0pqhhb.png'|theme }}" width="1232" height="928"><div class="b-gal-img-outer"><div class="b-gal-img bor-rad"><div class="b-gal-img-pos"><div class="b-gal-img-wrap"><picture class="ldng"><img src="{{ 'assets/0pqhhb.png'|theme }}" alt="" width="1232" height="928" loading="lazy" class="img bor-rad" style="aspect-ratio: 77 / 58;"></picture></div></div></div><div class="b-gal-t bor-rad"></div></div></a></div><div class="b-gal-item original"><a class="b-gal-a litebox bor-rad" data-litebox-group="gallery" data-litebox-text="" href="{{ 'assets/0yf2wr.png'|theme }}" width="1232" height="928"><div class="b-gal-img-outer"><div class="b-gal-img bor-rad"><div class="b-gal-img-pos"><div class="b-gal-img-wrap"><picture class="ldng"><img src="{{ 'assets/0yf2wr.png'|theme }}" alt="" width="1232" height="928" loading="lazy" class="img bor-rad" style="aspect-ratio: 77 / 58;"></picture></div></div></div><div class="b-gal-t bor-rad"></div></div></a></div><div class="b-gal-item original"><a class="b-gal-a litebox bor-rad" data-litebox-group="gallery" data-litebox-text="" href="{{ 'assets/329wcb.png'|theme }}" width="1232" height="928"><div class="b-gal-img-outer"><div class="b-gal-img bor-rad"><div class="b-gal-img-pos"><div class="b-gal-img-wrap"><picture class="ldng"><img src="{{ 'assets/329wcb.png'|theme }}" alt="" width="1232" height="928" loading="lazy" class="img bor-rad" style="aspect-ratio: 77 / 58;"></picture></div></div></div><div class="b-gal-t bor-rad"></div></div></a></div></div></div></div>
+</div>
+			</div>
+		</div>
+	</div>
+</section><section id="contact" class="s s-basic cf sc-m wnd-background-image  wnd-w-wider wnd-s-higher wnd-h-auto fade-in-section">
+	<div class="s-w cf">
+		<div class="s-o s-fs cf">
+			<div class="s-bg cf">
+				<div class="s-bg-l wnd-background-image  bgpos-center-center bgatt-scroll overlay-black-strong">
+                    <picture><img src="{{ 'assets/images-pexels-com-photos-7937688-pexels-photo-7937688-auto-compress-cs-tinysrgb-dpr-2-h-650-w-940.jpeg'|theme }}" width="1880" height="1255" alt="" loading="lazy"></picture>
+					
+				</div>
+			</div>
+			<div class="s-c s-fs cf">
+				<div class="ez cf">
+	<div class="ez-c"><div class="b-sp b b-s cf wnd-hide-placeholder" style="margin-left:0%;margin-right:0%;">
+    <div class="b-sp-c" id="wnd_SpacingBlock_269328282_container" style="position:relative;padding-bottom:0.25%;">
+        <div class="b-sp-placeholder">
+            
+        </div>
+    </div>
+</div><div class="b b-text cf">
+	<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf"><h1><strong><em>Kapcsolat</em></strong></h1>
+</div>
+</div><div class="cw cf">
+	<div class="cw-c cf"><div class="c cf" style="width:36.799%;">
+	<div class="c-c cf"><div class="b b-text cf">
+	<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf"><p>Kedves Érdeklődő! Köszönjük, hogy felkerestél minket az Elit- Ingatlanban!</p>
+</div>
+</div><div class="b-sp b b-s cf wnd-hide-placeholder" style="margin-left:0%;margin-right:0%;">
+    <div class="b-sp-c" id="wnd_SpacingBlock_738401769_container" style="position:relative;padding-bottom:0%;">
+        <div class="b-sp-placeholder">
+            
+        </div>
+    </div>
+</div><div class="mt mt-contact img-s-s b-s b-s-50 cf default">
+    <div class="mt-container">
+        <div class="mt-item cf">
+	        <div class="b-img b-img-default b b-s cf wnd-orientation-portrait wnd-type-icon" style="" id="wnd_ImageBlock_390563520">
+	<div class="b-img-w">
+		<div class="b-img-c">
+            
+			<embed id="wnd_ImageBlock_390563520_img" alt="" style="" data-src="https://duyn491kcolsw.cloudfront.net/files/0p/0p7/0p7qql.svg?ph=fafb40d1ca" type="image/svg+xml" src="https://duyn491kcolsw.cloudfront.net/files/0p/0p7/0p7qql.svg?ph=fafb40d1ca&amp;border=a07148&amp;outline=d3b79f&amp;color=bd926d">
+		<script>checkAndChangeSvgColor('wnd_ImageBlock_390563520_img');</script></div>
+		
+	</div>
+</div>
+	        <div class="b b-text cf">
+	<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf"><h3><strong>Elit-Ingatlaniroda</strong></h3><div><strong>Kovács Alexandra</strong></div>
+
+<p>6721. Szeged, Arany János utca 9.</p>
+</div>
+</div>
+        </div><div class="mt-item cf">
+	        <div class="b-img b-img-default b b-s cf wnd-orientation-square wnd-type-icon" style="" id="wnd_ImageBlock_914457230">
+	<div class="b-img-w">
+		<div class="b-img-c">
+            
+			<embed id="wnd_ImageBlock_914457230_img" alt="" style="" data-src="https://duyn491kcolsw.cloudfront.net/files/36/36l/36lve3.svg?ph=fafb40d1ca" type="image/svg+xml" src="https://duyn491kcolsw.cloudfront.net/files/36/36l/36lve3.svg?ph=fafb40d1ca&amp;border=a07148&amp;outline=d3b79f&amp;color=bd926d">
+		<script>checkAndChangeSvgColor('wnd_ImageBlock_914457230_img');</script></div>
+		
+	</div>
+</div>
+	        <div class="b b-text cf">
+	<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf"><h3><strong>+36-70-304-6010</strong></h3>
+</div>
+</div>
+        </div><div class="mt-item cf">
+	        <div class="b-img b-img-default b b-s cf wnd-orientation-landscape wnd-type-icon" style="" id="wnd_ImageBlock_789771739">
+	<div class="b-img-w">
+		<div class="b-img-c">
+            
+			<embed id="wnd_ImageBlock_789771739_img" alt="" style="" data-src="https://duyn491kcolsw.cloudfront.net/files/3z/3z2/3z2m9w.svg?ph=fafb40d1ca" type="image/svg+xml" src="https://duyn491kcolsw.cloudfront.net/files/3z/3z2/3z2m9w.svg?ph=fafb40d1ca&amp;border=a07148&amp;outline=d3b79f&amp;color=bd926d">
+		<script>checkAndChangeSvgColor('wnd_ImageBlock_789771739_img');</script></div>
+		
+	</div>
+</div>
+	        <div class="b b-text cf">
+	<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf"><p>elit-ingatlaniroda.hu</p></div>
+</div>
+        </div><div class="mt-item cf">
+	        <div class="b-img b-img-default b b-s cf wnd-orientation-portrait wnd-type-icon" style="" id="wnd_ImageBlock_980182587">
+	<div class="b-img-w">
+		<div class="b-img-c">
+            
+			<embed id="wnd_ImageBlock_980182587_img" alt="" style="" data-src="https://duyn491kcolsw.cloudfront.net/files/0c/0c2/0c2b5m.svg?ph=fafb40d1ca" type="image/svg+xml" src="https://duyn491kcolsw.cloudfront.net/files/0c/0c2/0c2b5m.svg?ph=fafb40d1ca&amp;border=a07148&amp;outline=d3b79f&amp;color=bd926d">
+		<script>checkAndChangeSvgColor('wnd_ImageBlock_980182587_img');</script></div>
+		
+	</div>
+</div>
+	        <div class="b b-text cf">
+	<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf"><h3><strong>@facebookoldal&nbsp;</strong>https://www.facebook.com/elitingatlaniroda/about/</h3>
+</div>
+</div>
+        </div>
+    </div>
+</div></div>
+</div><div class="c cf" style="width:5%;">
+	<div class="c-c cf"><div class="b-sp b b-s cf wnd-hide-placeholder" style="margin-left:0%;margin-right:0%;">
+    <div class="b-sp-c" id="wnd_SpacingBlock_652778530_container" style="position:relative;padding-bottom:150%;">
+        <div class="b-sp-placeholder">
+            
+        </div>
+    </div>
+</div></div>
+</div><div class="c cf" style="width:58.201%;">
+	<div class="c-c cf"><div class="form b b-s b-form-default f-rh-normal f-rg-normal f-br-all rounded cf labels-top">
+	<form action="https://www.elit-ingatlaniroda.hu/" method="post">
+
+		<fieldset class="form-fieldset">
+			<div><div class="form-input form-text cf wnd-form-field wnd-required">
+	<label for="field-wnd_ShortTextField_290469092"><span class="it b link">
+	<span class="it-c">Teljes név</span>
+</span></label>
+	<input id="field-wnd_ShortTextField_290469092" name="wnd_ShortTextField_290469092" required="" value="" type="text" maxlength="150">
+</div><div class="form-input form-email cf wnd-form-field wnd-required">
+	<label for="field-wnd_EmailField_796365883"><span class="it b link">
+	<span class="it-c">E-mail</span>
+</span></label>
+	<input id="field-wnd_EmailField_796365883" name="wnd_EmailField_796365883" required="" value="@" type="email" maxlength="255">
+</div><div class="form-input form-textarea cf wnd-form-field wnd-required">
+	<label for="field-wnd_LongTextField_287123088"><span class="it b link">
+	<span class="it-c">Üzenet</span>
+</span></label>
+	<textarea rows="5" id="field-wnd_LongTextField_287123088" name="wnd_LongTextField_287123088" required=""></textarea>
+</div></div>
+		</fieldset>
+
+		
+
+		<div class="form-submit b-btn cf b-btn-fs b-btn-1">
+			<button class="b-btn-l" type="submit" name="send" value="wnd_FormBlock_474914794">
+				<span class="form-submit-text b-btn-t">Küldés</span>
+			</button>
+		</div>
+
+	</form>
+
+    
+
+    
+</div></div>
+</div></div>
+</div></div>
+</div>
+			</div>
+		</div>
+	</div>
+</section>

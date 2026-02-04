@@ -1,0 +1,388 @@
+title = "Munkatársak"
+url = "/munkatarsak"
+layout = "default"
+body_class = "wt-page"
+id = "munkatarsak"
+==
+<?php
+function onStart() {
+}
+?>
+==
+<style>
+    .team-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+    
+    .team-item {
+        margin-bottom: 30px;
+        background: #fff;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+        border: 1px solid #e5e5e5;
+    }
+
+    .team-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .item-wrapper {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 0 !important;
+    }
+    
+    .item-media {
+        order: 1 !important;
+        width: 300px; /* Fixed width for consistency */
+        flex-shrink: 0;
+        position: relative;
+        overflow: hidden;
+        background-color: #f0f0f0;
+    }
+    
+    .item-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        display: block;
+        min-height: 350px; /* Ensure substantial height */
+    }
+
+    .team-item:hover .item-media img {
+        transform: scale(1.1);
+    }
+
+    .item-content {
+        order: 2 !important;
+        padding: 30px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .team-name {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 5px;
+        color: #222;
+        margin-top: 0;
+    }
+
+    .team-role {
+        font-size: 1rem;
+        color: #c69c6d; /* Theme Gold */
+        margin-bottom: 20px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .team-bio {
+        margin-bottom: 20px;
+        color: #666;
+        line-height: 1.6;
+        flex-grow: 1;
+        font-size: 0.95rem;
+    }
+
+    .card-divider {
+        height: 1px;
+        background-color: #eee;
+        margin: 15px 0;
+    }
+
+    .card-phone {
+        display: inline-flex;
+        align-items: center;
+        color: #444;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s;
+        font-size: 1rem;
+    }
+    
+    .card-phone:hover {
+        color: #c69c6d;
+    }
+    
+    .card-phone svg {
+        width: 18px;
+        height: 18px;
+        margin-right: 10px;
+    }
+
+    /* Social Icons Styles */
+    .kopasz-social-icons {
+        display: flex;
+        gap: 12px;
+        margin-top: auto; /* Push to bottom if flex column */
+        padding-top: 15px;
+    }
+    
+    .social-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: #f5f5f5;
+        color: #555;
+        text-decoration: none !important;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .social-icon svg {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+    }
+    
+    .social-icon:hover {
+        background-color: #c69c6d;
+        color: white;
+        transform: translateY(-3px) scale(1.1);
+    }
+
+    @media (max-width: 767px) {
+        .item-wrapper {
+            flex-direction: column !important;
+        }
+        .item-media {
+            width: 100%;
+            height: 300px; /* Fixed height on mobile */
+        }
+        .team-item {
+            margin-bottom: 40px;
+        }
+    }
+</style>
+
+<section class="team-section">
+    <div class="team-container">
+            
+        <!-- 1. Kopasz Leonóra -->
+        <article class="team-item">
+            <div class="item-wrapper">
+                <div class="item-media">
+                   <img src="{{ 'assets/87519e56-7941-4b45-8a90-50dcd7d8cce8.jpeg'|theme }}" alt="Kopasz Leonóra">
+                </div>
+                <div class="item-content">
+                    <h3 class="team-name">Kopasz Leonóra</h3>
+                    <div class="team-role">Értékesítő</div>
+                    
+                    <div class="team-bio">
+                        <p>Bemutatkozás...</p>
+                    </div>
+
+                    <div class="card-divider"></div>
+                    <a href="tel:+36709419937" class="card-phone">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        +36 70 941 9937
+                    </a>
+
+                    <!-- Social Icons for Kopasz Leonóra -->
+                     <div class="kopasz-social-icons">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v2.225l-.338.006c-2.969 0-3.434 1.875-3.434 4.617v.412h3.706l-.497 3.667h-3.209v7.98h-4.697z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="TikTok">
+                            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5S0 4.881 0 3.5 1.12 1 2.5 1 4.98 2.119 4.98 3.5zM2.48 8h5v16h-5V8zm7.19 0h4.81v2.17h.07c.67-1.27 2.31-2.61 4.75-2.61 5.08 0 6.01 3.34 6.01 7.69v8.75h-5v-7.73c0-1.84-.03-4.21-2.56-4.21-2.57 0-2.96 2.01-2.96 4.08v7.86h-5V8z"/></svg>
+                        </a>
+                     </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 2. Horváth Ramóna -->
+        <article class="team-item">
+            <div class="item-wrapper">
+                <div class="item-media">
+                   <img src="{{ 'assets/horvath_ramona.webp'|theme }}" alt="Horváth Ramóna">
+                </div>
+                <div class="item-content">
+                    <h3 class="team-name">Horváth Ramóna</h3>
+                    <div class="team-role">Értékesítő</div>
+                    
+                    <div class="team-bio">
+                         <p>Bemutatkozás...</p>
+                    </div>
+
+                    <div class="card-divider"></div>
+                    <a href="tel:+36703223104" class="card-phone">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        +36 70 322 3104
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 3. Németh Anna -->
+        <article class="team-item">
+            <div class="item-wrapper">
+                <div class="item-media">
+                   <img src="{{ 'assets/e7ab5ddb-209f-44a8-886d-a8c37292b656.jpeg'|theme }}" alt="Németh Anna">
+                </div>
+                <div class="item-content">
+                    <h3 class="team-name">Németh Anna</h3>
+                    <div class="team-role">Értékesítő</div>
+                    
+                    <div class="team-bio">
+                         <p>Bemutatkozás...</p>
+                    </div>
+
+                    <div class="card-divider"></div>
+                    <a href="tel:+36303837352" class="card-phone">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        +36 30 383 7352
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 4. Kató Judit -->
+        <article class="team-item">
+            <div class="item-wrapper">
+                <div class="item-media">
+                   <img src="{{ 'assets/dc680936-8428-4e6e-8f3f-8efea8c5308b.jpeg'|theme }}" alt="Kató Judit">
+                </div>
+                <div class="item-content">
+                    <h3 class="team-name">Kató Judit</h3>
+                    <div class="team-role">Értékesítő</div>
+                    
+                    <div class="team-bio">
+                         <p>Bemutatkozás...</p>
+                    </div>
+
+                    <div class="card-divider"></div>
+                    <a href="tel:+36703984884" class="card-phone">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        +36 70 398 4884
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 5. Oláhné-Zsidi Annamária -->
+        <article class="team-item">
+            <div class="item-wrapper">
+                <div class="item-media">
+                   <img src="{{ 'assets/olahne_zsidi_annamaria.webp'|theme }}" alt="Oláhné-Zsidi Annamária">
+                </div>
+                <div class="item-content">
+                    <h3 class="team-name">Oláhné-Zsidi Annamária</h3>
+                    <div class="team-role">Értékesítő</div>
+                    
+                    <div class="team-bio">
+                         <p>Bemutatkozás...</p>
+                    </div>
+
+                    <div class="card-divider"></div>
+                    <a href="tel:+36209516640" class="card-phone">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        +36 20 951 6640
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 6. Kovács Alexandra -->
+        <article class="team-item">
+            <div class="item-wrapper">
+                <div class="item-media">
+                   <img src="{{ 'assets/513333048_122468797058000338_1781597923783191961_n-7.jpeg'|theme }}" alt="Kovács Alexandra">
+                </div>
+                <div class="item-content">
+                    <h3 class="team-name">Kovács Alexandra</h3>
+                    <div class="team-role">Ügyvezető</div>
+                    
+                    <div class="team-bio">
+                         <p>Bemutatkozás...</p>
+                    </div>
+
+                    <div class="card-divider"></div>
+                    <a href="tel:+36703046010" class="card-phone">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        +36 70 304 6010
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 7. Dr. Ferenczy Csaba -->
+        <article class="team-item">
+            <div class="item-wrapper">
+                <div class="item-media">
+                   <img src="{{ 'assets/108581ae-5997-4fb7-a76b-38ae37c79dba-1.jpeg'|theme }}" alt="Dr. Ferenczy Csaba">
+                </div>
+                <div class="item-content">
+                    <h3 class="team-name">Dr. Ferenczy Csaba</h3>
+                    <div class="team-role">Ügyvéd</div>
+                    
+                    <div class="team-bio">
+                         <p>Bemutatkozás...</p>
+                    </div>
+
+                    <div class="card-divider"></div>
+                    <a href="tel:+36703922911" class="card-phone">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        +36 70 392 2911
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 8. Hajdú Zoltán -->
+        <article class="team-item">
+            <div class="item-wrapper">
+                <div class="item-media">
+                   <img src="{{ 'assets/hz (1)-7.jpeg'|theme }}" alt="Hajdú Zoltán">
+                </div>
+                <div class="item-content">
+                    <h3 class="team-name">Hajdú Zoltán</h3>
+                    <div class="team-role">Energetikai Szakértő</div>
+                    
+                    <div class="team-bio">
+                         <p>Bemutatkozás...</p>
+                    </div>
+
+                    <div class="card-divider"></div>
+                    <a href="tel:+36205725197" class="card-phone">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        +36 20 572 5197
+                    </a>
+                </div>
+            </div>
+        </article>
+
+    </div>
+</section>

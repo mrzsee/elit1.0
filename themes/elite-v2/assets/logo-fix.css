@@ -1,0 +1,132 @@
+/* 
+   Logo Fix CSS - Elite Ingatlaniroda
+   Forces consistent sizes and colors for the logo brand/text.
+*/
+
+/* 1. Logo Image (The House Icon) */
+.logo-content,
+.logo-link,
+.logo-image-cell {
+    width: auto !important;
+    max-width: none !important;
+}
+
+.logo-image,
+.b-l-image {
+    width: 500px !important;
+    /* Huge increase for readability */
+    height: auto !important;
+    max-width: none !important;
+    /* Remove constraints */
+    margin-top: 60px !important;
+    /* Prevent clipping on zoom */
+    transition: transform 0.4s ease;
+    /* For hover effect */
+    display: block !important;
+    margin: 0 auto !important;
+}
+
+.logo-image:hover,
+.b-l-image:hover {
+    transform: scale(1.1);
+    /* Gentle Zoom In on hover */
+}
+
+/* ANIMATION RESTORATION */
+.logo-image img,
+.b-l-image img {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s !important;
+    /* Rugalmas átmenet */
+}
+
+/* Hover Effect: Zoom & Lift */
+.logo-content:hover .logo-image img,
+.logo-link:hover .logo-image img,
+.logo-image:hover img,
+.b-l-image:hover img {
+    transform: scale(1.15) translateY(-5px) !important;
+    filter: brightness(1.1) drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1)) !important;
+    cursor: pointer;
+}
+
+.logo-image img,
+.b-l-image img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    /* Ensure image fits */
+}
+
+/* 2. Logo Wrapper (Container) */
+.wnd-logo-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+/* 3. Text Styling (Brand Name) */
+.logo-text-cell,
+.logo-text strong,
+.logo-text {
+    font-family: 'Roboto Slab', 'Times New Roman', serif !important;
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    color: #6a523d !important;
+    /* Még 25%-kal sötétebb (#8d6d51 -> #6a523d) */
+    letter-spacing: 2px !important;
+    text-transform: none !important;
+    line-height: 1.2;
+}
+
+/* Wings / Lines restoration - FLEXBOX REFACTOR (Robust) */
+.logo-text {
+    position: relative !important;
+    display: flex !important;
+    /* Use Flexbox */
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 25px !important;
+    /* Fix spacing */
+    padding: 0 !important;
+    width: auto !important;
+    margin: 0 auto !important;
+}
+
+/* Wings Styles */
+.logo-text::before,
+.logo-text::after {
+    content: '' !important;
+    position: static !important;
+    /* Not absolute */
+    display: block !important;
+    width: 55px !important;
+    height: 1px !important;
+    background-color: #6a523d !important;
+    /* Line color */
+    border: none !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+    /* Gap handles spacing */
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+
+    .logo-text-cell,
+    .logo-text strong,
+    .logo-text {
+        font-size: 22px !important;
+        letter-spacing: 1px !important;
+    }
+
+    .logo-text {
+        gap: 15px !important;
+    }
+
+    .logo-text::before,
+    .logo-text::after {
+        width: 30px !important;
+    }
+}

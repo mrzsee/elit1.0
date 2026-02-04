@@ -1,0 +1,122 @@
+/* Elektro-Style Scroll Helper & Side Navigation (Restored) */
+
+/* 1. Scroll Down Arrow (Bottom Center) */
+.scroll-down-helper {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+}
+
+.scroll-link {
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.scroll-link span {
+    display: block;
+    width: 24px;
+    height: 24px;
+    border-bottom: 3px solid #fff;
+    border-right: 3px solid #fff;
+    transform: rotate(45deg);
+    animation: scroll-down-simple 2s infinite;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes scroll-down-simple {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(-10px, -10px);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(10px, 10px);
+    }
+}
+
+/* 2. Side Navigation Dots (Right Side) - "Lapozó" */
+.side-nav {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* Távolság a pöttyök között */
+}
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+    .side-nav {
+        display: none;
+    }
+}
+
+.side-nav-dot {
+    display: block;
+    width: 14px;
+    height: 14px;
+    background: rgba(100, 100, 100, 0.4);
+    /* Alap szürke */
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    /* Fehér keret */
+    border-radius: 50%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.side-nav-dot:hover {
+    background: #C5A065;
+    /* Arany hover */
+    transform: scale(1.3);
+    border-color: #fff;
+}
+
+/* Active State */
+.side-nav-dot.active {
+    background: #C5A065;
+    /* Arany aktív */
+    transform: scale(1.5);
+    box-shadow: 0 0 15px rgba(197, 160, 101, 0.8);
+    border-color: #fff;
+}
+
+/* 3. Base Scroll Behavior (Snap) */
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    /* Perforációs hatás */
+    height: 100vh;
+    overflow-y: auto;
+    scroll-padding-top: 0;
+}
+
+section,
+header,
+footer {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+}
+
+/* 4. Fade In Animation */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: none;
+}

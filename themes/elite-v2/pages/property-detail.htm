@@ -1,0 +1,765 @@
+title = "Ingatlan részletek"
+url = "/elado-ingatlanok/reszletek/:id"
+layout = "default"
+body_class = "wt-blog-detail"
+==
+<?php
+function onStart() {
+    $id = $this->param('id');
+    
+    // Data for the properties - Manually populated from live site
+    $properties = [
+        1 => [
+            'id' => 1,
+            'title' => 'Luxus, exkluzív életkörnyezet Deszken a Marosmenti lakóparkban! Ide csak költözni kell!',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p1_img1_gallery/img1.jpeg',
+            'gallery' => [
+                'assets/downloaded/p1_img1_gallery/img1.jpeg',
+                'assets/downloaded/p1_img1_gallery/img2.jpeg',
+                'assets/downloaded/p1_img1_gallery/img3.jpeg',
+                'assets/downloaded/p1_img1_gallery/img4.jpeg',
+                'assets/downloaded/p1_img1_gallery/img5.jpeg',
+                'assets/downloaded/p1_img1_gallery/img6.jpeg',
+                'assets/downloaded/p1_img1_gallery/img7.jpeg',
+                'assets/downloaded/p1_img1_gallery/img8.jpeg',
+                'assets/downloaded/p1_img1_gallery/img9.jpeg',
+                'assets/downloaded/p1_img1_gallery/img10.jpeg',
+                'assets/downloaded/p1_img1_gallery/img11.jpeg',
+                'assets/downloaded/p1_img1_gallery/img12.jpeg',
+                'assets/downloaded/p1_img1_gallery/img13.jpeg',
+                'assets/downloaded/p1_img1_gallery/img14.jpeg',
+                'assets/downloaded/p1_img1_gallery/img15.jpeg',
+                'assets/downloaded/p1_img1_gallery/img16.jpeg',
+                'assets/downloaded/p1_img1_gallery/img17.jpeg',
+                'assets/downloaded/p1_img1_gallery/img18.jpeg',
+                'assets/downloaded/p1_img1_gallery/img19.jpeg',
+                'assets/downloaded/p1_img1_gallery/img20.jpeg',
+                'assets/downloaded/p1_img1_gallery/img21.jpeg',
+                'assets/downloaded/p1_img1_gallery/img22.jpeg',
+                'assets/downloaded/p1_img1_gallery/img23.jpeg',
+                'assets/downloaded/p1_img1_gallery/img24.jpeg',
+                'assets/downloaded/p1_img1_gallery/img25.jpeg',
+                'assets/downloaded/p1_img1_gallery/img26.jpeg',
+                'assets/downloaded/p1_img1_gallery/img27.jpeg',
+                'assets/downloaded/p1_img1_gallery/img28.jpeg',
+                'assets/downloaded/p1_img1_gallery/img29.jpeg',
+                'assets/downloaded/p1_img1_gallery/img30.jpeg',
+                'assets/downloaded/p1_img1_gallery/img31.jpeg',
+                'assets/downloaded/p1_img1_gallery/img32.jpeg',
+                'assets/downloaded/p1_img1_gallery/img33.jpeg',
+                'assets/downloaded/p1_img1_gallery/img34.jpeg',
+                'assets/downloaded/p1_img1_gallery/img35.jpeg',
+                'assets/downloaded/p1_img1_gallery/img36.jpeg',
+                'assets/downloaded/p1_img1_gallery/img37.jpeg',
+                'assets/downloaded/p1_img1_gallery/img38.jpeg',
+                'assets/downloaded/p1_img1_gallery/img39.jpeg',
+                'assets/downloaded/p1_img1_gallery/img40.jpeg',
+                'assets/downloaded/p1_img1_gallery/img41.jpeg',
+                'assets/downloaded/p1_img1_gallery/img42.jpeg',
+                'assets/downloaded/p1_img1_gallery/img43.jpeg',
+                'assets/downloaded/p1_img1_gallery/img44.jpeg',
+                'assets/downloaded/p1_img1_gallery/img45.jpeg',
+                'assets/downloaded/p1_img1_gallery/img46.jpeg',
+                'assets/downloaded/p1_img1_gallery/img47.jpeg',
+                'assets/downloaded/p1_img1_gallery/img48.jpeg',
+                'assets/downloaded/p1_img1_gallery/img49.jpeg',
+                'assets/downloaded/p1_img1_gallery/img50.jpeg',
+                'assets/downloaded/p1_img1_gallery/img51.jpeg',
+                'assets/downloaded/p1_img1_gallery/img52.jpeg',
+                'assets/downloaded/p1_img1_gallery/img53.jpeg'
+            ],
+            'description' => '<p>Szegedtől 10 km-re, Deszk agglomeráció egyik új építésű ingatlanokkal körülölelt környékén a Marosmenti lakóparkban kínálom eladásra, ezt a "Két generációs" egyszintes,  prémium minőségű alapanyagokból épült 228 m2 alapterületű, medencés,  Okos  családi házat.</p>
+            <p>Az ingatlan egy 1129 m2-es telken épült 2017-ben, tégla falazattal. A telek két lakóegységet foglal magába, mely egymástól teljesen független, saját garázzsal és terasszal rendelkezik. Egyik 161 m2 alapterületű a másik 67 m2 alapterületű. Energiahatékonyság szerint, minőségi anyagfelhasználással került megépítésre 12 KW napelemmel felszerelten, központi hővisszanyerős szellőztetés (A++) energia besorolással. Tökéletes belső elrendezés, elegancia és harmónia, kellemes életérzés jellemző a házban!A házról és műszaki tartalmáról:Napfényes amerikai-konyhás nappali, (a konyha Liebherr és Miele prémium minőségű beépített gépekkel felszerelt) plusz négy hálószoba,  konditerem szaunával, háztartási helyiség, gardrób szoba, fürdőszoba (kádas és tusolós kivitelű), dupla toalett, kamra, dupla garázs és hatalmas fedett terasz. A kisebb otthon helyiségei: Tágas amerikai-konyhás nappali, egy hálószoba, tusolós fürdőszoba, előtér mely beépített bútorral felszerelt, teljesen szeparált bejárat, fedett terasz, és egy 16 m2-es  saját garázs.Az egész házat a nagyvonalúan tágas, magas, világos terek jellemzik, nagy méretű nyílászárókkal. Az otthon melegét falfűtés és padló fűtés/hűtés kombinálva látja el hőszivattyús technológiával, helyiségenkénti termosztát, és  okosvezérlés  is kiépítésre került, mindezen felül okosvezérelt szellőztető rendszer fűszerezi. Árnyékolás/Automatizáció: Elektromos redőnyök, távolról vezérelhető kapu és garázsnyitó automatika. Biztonság: Legmodernebb riasztó rendszer, távolról vezérelhető.Kényelmi extrák:- Parkosított kert- Klarstein elektromos kandalló- Sógenerátoros medence - Sótéglás infraszauna- Fűthető parajdi sós, kétszemélyes dézsa-  A kertben ping-pong asztal- 2 db szerszámos ház a belső udvarán- Tenisz pálya/kézilabda kapuval.</p>
+            <p>És ez még nem minden, az "Ingatlan teljes berendezése" a vételár részét képezi!Ideális otthona lehet bármely korosztálynak, nagy családnak, de elhelyezkedése és mérete miatt befektetési célra is, hiszen a kisebb ház alkalmas üzletnek, irodának, ill. egyéb szolgáltató vagy kereskedelmi tevékenységet végző vállalkozás üzemeltetésére.</p>
+            <p>Irányár: 309 MFt</p>
+            <p>Részletesebb információkért és helyszíni megtekintésért keressen bizalommal elérhetőségeimen.</p>
+            <p>Elit-Ingatlan Kovács Alexandra +36703046010</p>',
+            'price' => 'Irányár: 309 MFt'
+        ],
+        2 => [
+            'id' => 2,
+            'title' => 'Brutál luxus, exkluzív életkörnyezet, Szeged-Belvárosában! Ide csak költözni kell!',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p1_img2_gallery/img1.jpeg',
+            'gallery' => [
+                'assets/downloaded/p1_img2_gallery/img1.jpeg',
+                'assets/downloaded/p1_img2_gallery/img2.jpeg',
+                'assets/downloaded/p1_img2_gallery/img3.jpeg',
+                'assets/downloaded/p1_img2_gallery/img4.jpeg',
+                'assets/downloaded/p1_img2_gallery/img5.jpeg',
+                'assets/downloaded/p1_img2_gallery/img6.jpeg',
+                'assets/downloaded/p1_img2_gallery/img7.jpeg',
+                'assets/downloaded/p1_img2_gallery/img8.jpeg',
+                'assets/downloaded/p1_img2_gallery/img9.jpeg',
+                'assets/downloaded/p1_img2_gallery/img10.jpeg',
+                'assets/downloaded/p1_img2_gallery/img11.jpeg',
+                'assets/downloaded/p1_img2_gallery/img12.jpeg',
+                'assets/downloaded/p1_img2_gallery/img13.jpeg',
+                'assets/downloaded/p1_img2_gallery/img14.jpeg',
+                'assets/downloaded/p1_img2_gallery/img15.jpeg',
+                'assets/downloaded/p1_img2_gallery/img16.jpeg',
+                'assets/downloaded/p1_img2_gallery/img17.jpeg',
+                'assets/downloaded/p1_img2_gallery/img18.jpeg',
+                'assets/downloaded/p1_img2_gallery/img19.jpeg',
+                'assets/downloaded/p1_img2_gallery/img20.jpeg',
+                'assets/downloaded/p1_img2_gallery/img21.jpeg',
+                'assets/downloaded/p1_img2_gallery/img22.jpeg',
+                'assets/downloaded/p1_img2_gallery/img23.jpeg',
+                'assets/downloaded/p1_img2_gallery/img24.jpeg'
+            ],
+            'description' => '<p>Szeged-Belvárosában a Jósika utcában  kínálom eladásra ezt a belső kétszintes, 302 m2 alapterületű, medencés,  prémium minőségű alapanyagokból készült, Okos téglalakást!</p><p>Az ingatlan 2022-ben épült, a legmagasabb technikai színvonalon minden elképzelhető luxussal fűszerezve. A lakás teljes egésze egyedileg készült okos vezérléssel ellátott, beleértve a hűtés-fűtést, hővisszanyerős szellőztetést, függönyök, árnyékolók mozgatását, teljes gépészetét, a medence  fűtését, gépészetét, kapuk, bejáratok nyitását.Motoros mozgatású az ágy, a kanapé, a konyha elemei érintésre nyílnak, és csukódnak, motorosan a csaptelepek automaták. Az ingatlanról elmondható, hogy mindenből a létező legjobb minőség lett beépítve.Hőszivattyúk biztosítják a megfelelő hőmérsékletet és páratartalmat padló fűtéssel és mennyezet hűtéssel.A lakás önfenntartó, nulla Ft rezsire tervezett!!Továbbá található benne egy wellness részleg, mely konditeremből, fűtött medencéből, külön fürdő szobából áll.Az udvarban elektromos autók töltésére alkalmas parkolókkal rendelkezik.Tökéletes belső elrendezés, elegancia és harmónia, kellemes életérzés, élőben még szebb! Ez több mint egy lakás; ez egy életstílusbeli megújulás, amely csak önre vár! És ez még nem minden, az "Ingatlan teljes berendezése" a vételár részét képezi!Ideális otthona lehet bármely korosztálynak, nagy családnak, de elhelyezkedése és mérete miatt befektetési célra is!</p><p>Irányár: 590 MFt</p><p>Részletesebb információkért és helyszíni megtekintésért keressen bizalommal elérhetőségeimen.</p><p>Elit-Ingatlan Kovács Alexandra&nbsp; +36703046010</p>',
+            'price' => 'Irányár: 590 MFt'
+        ],
+        3 => [
+            'id' => 3,
+            'title' => 'Eladó Szegeden, a Magyar utcában két szintes, két generáció együttélésére alkalmas 200 m²-es családi ház!',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p1_img3_gallery/img1.jpeg',
+            'gallery' => [
+                'assets/downloaded/p1_img3_gallery/img1.jpeg',
+                'assets/downloaded/p1_img3_gallery/img2.jpeg',
+                'assets/downloaded/p1_img3_gallery/img3.jpeg',
+                'assets/downloaded/p1_img3_gallery/img4.jpeg',
+                'assets/downloaded/p1_img3_gallery/img5.jpeg',
+                'assets/downloaded/p1_img3_gallery/img6.jpeg',
+                'assets/downloaded/p1_img3_gallery/img7.jpeg',
+                'assets/downloaded/p1_img3_gallery/img8.jpeg',
+                'assets/downloaded/p1_img3_gallery/img9.jpeg',
+                'assets/downloaded/p1_img3_gallery/img10.jpeg',
+                'assets/downloaded/p1_img3_gallery/img11.jpeg',
+                'assets/downloaded/p1_img3_gallery/img12.jpeg',
+                'assets/downloaded/p1_img3_gallery/img13.jpeg',
+                'assets/downloaded/p1_img3_gallery/img14.jpeg',
+                'assets/downloaded/p1_img3_gallery/img15.jpeg',
+                'assets/downloaded/p1_img3_gallery/img16.jpeg',
+                'assets/downloaded/p1_img3_gallery/img17.jpeg',
+                'assets/downloaded/p1_img3_gallery/img18.jpeg',
+                'assets/downloaded/p1_img3_gallery/img19.jpeg',
+                'assets/downloaded/p1_img3_gallery/img20.jpeg',
+                'assets/downloaded/p1_img3_gallery/img21.jpeg',
+                'assets/downloaded/p1_img3_gallery/img22.jpeg',
+                'assets/downloaded/p1_img3_gallery/img23.jpeg',
+                'assets/downloaded/p1_img3_gallery/img24.jpeg',
+                'assets/downloaded/p1_img3_gallery/img25.jpeg'
+            ],
+            'description' => '<p>Ez a tágas, 1656 m²-es telken elhelyezkedő ingatlan tökéletes választás nagy családok számára, akik együtt szeretnének élni, mégis különálló élettereket keresnek.</p><p>&nbsp;A ház két különálló szinttel rendelkezik, mindkét szinten kényelmes, jól megtervezett lakóterekkel.</p><p>Jellemzők: 1656 m²-es, rendezett telek2 szintes elrendezés, két generáció számára is ideális Külön bejárat mindkét szinthez. Új elektromos és vízvezetékek, felújított belső terek Riasztórendszer a biztonság érdekében. Nagy, zárt udvar, amely lehetőséget biztosít kertészkedésre, pihenésre Garázs a kényelmes parkolás érdekében.</p><p>Tehermentes, azonnal birtokba vehető!</p><p>További előnyök: A ház mindössze pár percre található a város központjától, mégis csendes, családbarát környezetben.Kiváló közlekedési lehetőségek, iskolák, boltok, és egyéb szükséges szolgáltatások könnyen elérhetők.Hitelekre és CSOK-ra is alkalmas, így ideális lehetőség fiatal családok számára is.Ha egy tágas, kényelmes, és jól felszerelt családi házat keres Szegeden, amely mindent biztosít, amire egy nagyobb családnak szüksége lehet, akkor ez az ingatlan Önre vár!</p><p>Irányár: 82.9 MFt</p><p>Ne habozzon, hívjon még ma, és nézze meg személyesen!</p><p>Elit-Ingatlaniroda  Kovács Alexandra 36703046010</p>',
+            'price' => 'Irányár: 82.9 MFt'
+        ],
+        4 => [
+            'id' => 4,
+            'title' => 'Eladó szállodaként működő, többfunkciós ingatlan Szeged belvárosához közel',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p1_img4_gallery/img1.jpeg',
+            'gallery' => [
+                'assets/downloaded/p1_img4_gallery/img1.jpeg',
+                'assets/downloaded/p1_img4_gallery/img2.jpeg',
+                'assets/downloaded/p1_img4_gallery/img3.jpeg',
+                'assets/downloaded/p1_img4_gallery/img4.jpeg',
+                'assets/downloaded/p1_img4_gallery/img5.jpeg',
+                'assets/downloaded/p1_img4_gallery/img6.jpeg',
+                'assets/downloaded/p1_img4_gallery/img7.jpeg',
+                'assets/downloaded/p1_img4_gallery/img8.jpeg',
+                'assets/downloaded/p1_img4_gallery/img9.jpeg',
+                'assets/downloaded/p1_img4_gallery/img10.jpeg',
+                'assets/downloaded/p1_img4_gallery/img11.jpeg',
+                'assets/downloaded/p1_img4_gallery/img12.jpeg',
+                'assets/downloaded/p1_img4_gallery/img13.jpeg',
+                'assets/downloaded/p1_img4_gallery/img14.jpeg',
+                'assets/downloaded/p1_img4_gallery/img15.jpeg'
+            ],
+            'description' => '<p>Eladásra kínálunk egy háromszintes, jelenleg is üzemelő szállodát Szeged belvárosának közelében. Az épület földszintjén étterem, bár, recepció, jól felszerelt konyha és személyzeti helyiségek találhatók.</p><p>&nbsp;Az első emeleten 6, a másodikon 4 klimatizált szoba van. Az udvar térkövezett, teraszos, parkolási lehetőséggel. A 2016-ban felújított épület modern villamoshálózattal, szigeteléssel és energiahatékony megoldásokkal rendelkezik.</p><p>&nbsp;Bővíthető, jelenleg bérleti szerződéssel 2030-ig kiadva. Főbb adatok:•Telek: 450 m²•Hasznos alapterület: 396 m²•Helyiségek: 10 szoba, étterem, bár, recepció, konyha, szociális helyiségek•Fűtés: házközponti + klíma•Elhelyezkedés: belváros közelében, jól megközelíthető.</p><p>Ár: 429,99 M Ft&nbsp;</p><p>Budapesti ingatlan beszámítása lehetséges.</p><p>Elit-Ingatlaniroda Kopasz Leonóra&nbsp; +36 70 941 9937
+</p>',
+            'price' => 'Ár: 429,99 M Ft'
+        ],
+        5 => [
+            'id' => 5,
+            'title' => 'Eladó egy különleges családi ház Újszegeden!',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p1_img5_gallery/img1.jpeg',
+            'gallery' => [
+                'assets/downloaded/p1_img5_gallery/img1.jpeg',
+                'assets/downloaded/p1_img5_gallery/img2.jpeg',
+                'assets/downloaded/p1_img5_gallery/img3.jpeg',
+                'assets/downloaded/p1_img5_gallery/img4.jpeg',
+                'assets/downloaded/p1_img5_gallery/img5.jpeg',
+                'assets/downloaded/p1_img5_gallery/img6.jpeg',
+                'assets/downloaded/p1_img5_gallery/img7.jpeg',
+                'assets/downloaded/p1_img5_gallery/img8.jpeg',
+                'assets/downloaded/p1_img5_gallery/img9.jpeg',
+                'assets/downloaded/p1_img5_gallery/img10.jpeg'
+            ],
+            'description' => '<p>Szeged egyik legkedveltebb részén, Újszegeden, a Szővő utcában eladó egy különleges családi ház! Az ingatlant minden részlete átgondolt, minőségi kivitelezésű.&nbsp;</p><p>A ház főbb jellemzői:• Elhelyezkedés: 836 m²-es telek, csendes, kertvárosi környezetben.• Felépítés: Kétszintes, igényes belsőépítészeti megoldásokkal.• Földszint: Tágas nappali-étkező-konyha, hálószoba, fürdőszoba, dolgozószoba, háztartási helyiség, külön WC, kétállásos garázs és műhely.• Emelet: 4 szoba, fürdőszoba, WC, szauna, sókamra, kondigépekkel felszerelt edzőrész, szárítótér és tárolók.•&nbsp;</p><p>Alapterület: Lakótér nettó 240 m², garázs-műhely-tárolók összesen 130 m².• Kert: Fúrt kútról öntözhető, gyümölcsfákkal, bokros-füves területtel, valamint egy vízforgatós úszómedencével.Modern gépészet és kényelem:• Fűtés: Földszinten padlófűtés + gázkazán, emeleten radiátoros fűtés + gázkazán, valamint szobánként gázkonvektorok.• Hűtés: Fűtő-hűtő mono split klímák a földszinti 3 szobában és az emeleten 2 szobában.• Fenntarthatóság: 2024-ben telepített napelemes rendszer biztosítja az energiatakarékos működést.</p><p>Ez az ingatlan tökéletes választás családoknak, akik szeretnének egy jól átgondolt, kiváló minőségű otthonban élni egy nyugodt, zöldövezeti környezetben.</p><p>Ár: 295 millió Ft&nbsp;</p><p>További információért és megtekintésért keressen bizalommal!</p><p>Elit-Ingatlaniroda Kopasz Leonóra +36709419937<br class=""></p>',
+            'price' => 'Ár: 295 millió Ft'
+        ],
+        6 => [
+            'id' => 6,
+            'title' => 'Eladó garázs Újszegeden, a Derkovits fasoron – Akár bérlővel együtt átvehető, zárt udvarban!',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p1_img6_gallery/img1.jpeg',
+            'gallery' => [
+                'assets/downloaded/p1_img6_gallery/img1.jpeg',
+                'assets/downloaded/p1_img6_gallery/img2.jpeg',
+                'assets/downloaded/p1_img6_gallery/img3.jpeg'
+            ],
+            'description' => '<p>Eladásra kínálok egy 17 m²-es, társasház alatti garázst Újszegeden, a Derkovits fasor ligethez közeli részén.&nbsp;</p><p>A garázs egy kerítéssel körbevett, kamerákkal megfigyelt zárt udvarban helyezkedik el, az épülethez távirányítással működtethető szekcionált kapun keresztül lehet bejutni.</p><p>A garázs jellemzői: Saját villanyóra, Nyitható ablak fix biztonsági ráccsal, Beépített praktikus polcrendszer a hosszanti falon és a végfalon Száraz, jól szellőző belső tér.</p><p>Jelenleg bérlő lakja, aki igény szerint maradna, így akár azonnali hozamot biztosít a leendő tulajdonos számára Kiváló választás saját használatra, de befektetésként is ideális!</p><p>Irányár: 13.8 MFt.</p><p>Elit-Ingatlaniroda Kató Judit +36 70 398 4884</p>',
+            'price' => 'Irányár: 13.8 MFt'
+        ],
+        7 => [
+            'id' => 7,
+            'title' => 'Eladó egyedülálló fejlesztési lehetőség Újszeged egyik legjobb részén!',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p1_img7_gallery/img1.jpeg',
+            'gallery' => [
+                'assets/downloaded/p1_img7_gallery/img1.jpeg',
+                'assets/downloaded/p1_img7_gallery/img2.jpeg',
+                'assets/downloaded/p1_img7_gallery/img3.jpeg',
+                'assets/downloaded/p1_img7_gallery/img4.jpeg'
+            ],
+            'description' => '<p>Eladásra kínálunk egy 2330 m²-es telket Újszeged egyik legfrekventáltabb helyén, a Füvészkert közvetlen közelében. Az ingatlan egy 100 m²-es tégla házzal rendelkezik, de ennél sokkal többet rejt magában:&nbsp;</p><p>Akár 3 különálló ház építhető rá 699 m² beépíthetőség, 6,5 méteres párkánymagassággal 2 külön bejárattal rendelkezik 3 külön telekre osztható, így kiváló befektetési lehetőség,&nbsp; Legyen szó családi otthonról, társasház építésről vagy befektetésről, ez a telek rengeteg lehetőséget kínál!</p><p>Irányár: 115 millió&nbsp;</p><p>További információért és megtekintésért hívjon bizalommal:</p><p>Elit-Ingatlaniroda Kopasz Leonóra&nbsp; +3670941937</p>',
+            'price' => 'Irányár: 115 millió'
+        ],
+        8 => [
+            'id' => 8,
+            'title' => 'Eladó új építésű lakások Szeged-Móravárosban!',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p1_img8_gallery/img1.jpeg',
+            'gallery' => [
+                'assets/downloaded/p1_img8_gallery/img1.jpeg',
+                'assets/downloaded/p1_img8_gallery/img2.jpeg'
+            ],
+            'description' => '<p>Szeged közkedvelt Móraváros városrészében, kiváló minőségben megépített, kulcsrakész társasházi lakások várják új tulajdonosaikat!</p><p>Főbb jellemzők: Modern építés: 30 cm Porotherm X-Therm okostégla + 15 cm hőszigetelés Prémium nyílászárók: 3 rétegű üvegezéssel Energiatakarékos hűtés-fűtés: padlófűtés és mennyezethűtés hőszivattyús rendszerrel.</p><p>Lakásválaszték: Eltérő méretű és elhelyezkedésű lakások a földszinten, 1. és 2. emeleten.Méret: 51 m²-től 72 m²-ig.</p><p>Átadás: 2027&nbsp;</p><p>Ár: 63–89 millió Ft&nbsp;</p><p>Ha szeretne egy modern, alacsony fenntartási költségű és kiváló elhelyezkedésű lakásba költözni, ne habozzon!</p><p>Amennyiben felkeltettem érdeklődését, keressen bizalommal:&nbsp;</p><p>Elit-Ingatlaniroda Kopasz Leonóra +36 70 941 9937</p>',
+            'price' => 'Ár: 63–89 millió Ft'
+        ],
+        9 => [
+            'id' => 9,
+            'title' => 'Eladó ingatlan Szeged-Kiskundorozsmán Befektetők és családok figyelmébe!',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p1_img9_gallery/img1.jpeg',
+            'gallery' => [
+                'assets/downloaded/p1_img9_gallery/img1.jpeg',
+                'assets/downloaded/p1_img9_gallery/img2.jpeg',
+                'assets/downloaded/p1_img9_gallery/img3.jpeg',
+                'assets/downloaded/p1_img9_gallery/img4.jpeg',
+                'assets/downloaded/p1_img9_gallery/img5.jpeg',
+                'assets/downloaded/p1_img9_gallery/img6.jpeg',
+                'assets/downloaded/p1_img9_gallery/img7.jpeg',
+                'assets/downloaded/p1_img9_gallery/img8.jpeg',
+                'assets/downloaded/p1_img9_gallery/img9.jpeg'
+            ],
+            'description' => '<p>Szeged-Kiskundorozsma csendes, családi házas övezetében, a Bölcs utcában kínálom eladásra ezt a 150 m² alapterületű, tégla falazatú ingatlant, amely 264 m²-es saroktelken helyezkedik el.</p>
+            <p>Az épület több külön bejáratú lakrészt foglal magában, így kiváló lehetőséget kínál akár több generáció számára, illetve befektetési célra is. Az ingatlan egyik része részleges felújításon esett át, amely során a tető cseréje megtörtént, cserép fedéssel.</p>
+            <p>Főbb jellemzők: 150 m² lakótér – jól alakítható belső elrendezés.264 m² saroktelek – optimális méret, jól kihasználható udvar.Tégla falazat – stabil szerkezet, hosszú távú értékállóság.Külön bejáratú lakrészek – több generációs otthonná alakítható. Részleges felújítás a tetőszerkezet cseréje már megtörtént egy részén.</p>
+            <p>Teljes körű korszerűsítés után akár három önálló lakóegység kialakítható.Ajánlom befektetők figyelmébe, mivel felújítást és korszerűsítést követően könnyen értékesíthető vagy bérbe adható, akár több lakásos ingatlanként is. A lokáció kiváló, a környék infrastruktúrája folyamatosan fejlődik.</p>
+            <p>Irányár: 56 MFt</p>
+            <p>Részletesebb tájékoztatásért helyszíni megtekintését keressen bizalommal elérhetőségemen!</p>
+            <p>Elit-Ingatlaniroda Kovács Alexandra +36703046010</p>',
+            'price' => 'Irányár: 56 MFt'
+        ],
+        10 => [
+            'id' => 10,
+            'title' => 'Eladó lakás Szegeden, Felsővárosban, a Rózsa utcában',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p1_img10_gallery/img1.jpeg',
+            'gallery' => [
+                'assets/downloaded/p1_img10_gallery/img1.jpeg',
+                'assets/downloaded/p1_img10_gallery/img2.jpeg',
+                'assets/downloaded/p1_img10_gallery/img3.jpeg',
+                'assets/downloaded/p1_img10_gallery/img4.jpeg',
+                'assets/downloaded/p1_img10_gallery/img5.jpeg',
+                'assets/downloaded/p1_img10_gallery/img6.jpeg',
+                'assets/downloaded/p1_img10_gallery/img7.jpeg',
+                'assets/downloaded/p1_img10_gallery/img8.jpeg',
+                'assets/downloaded/p1_img10_gallery/img9.jpeg'
+            ],
+            'description' => '<p>Eladásra kínálunk egy tágas, világos, 90 m²-es lakást Szeged, Felsőváros városrészében, a Rózsa utcában. Az ingatlan egy háromlakásos épület második szintjén található, nem társasház, így nincs közös költség.</p><p>Főbb jellemzők:• Méret: 90 m²• Helyiségek: 3 nagy méretű szoba, étkező, kis konyha kamrával, fürdőszoba külön WC-vel• Fűtés és meleg víz: Kombi kazán, lapradiátorokkal• Egyedi mérők• Klíma• Burkolatok: Szobákban parketta, egyéb helyiségekben hidegburkolat• Világos, jól szellőző: Minden helyiségben (beleértve a fürdőt, WC-t és kamrát is) van ablak redőnnyel• Jól alakítható: Könnyen kialakítható terasz, plusz hálószoba vagy amerikai konyhás nappali (látványterv rendelkezésre áll)Garázs és pince (opcionális):A lakáshoz tartozik egy 30 m²-es udvari garázs, amelyből 6 m² különálló pinceként használható.</p><p>Ár:• Lakás: 58.500.000 Ft (650.000 Ft/m²)•&nbsp;</p><p>Garázs pincével: 15.000.000 Ft (500.000 Ft/m²)&nbsp;</p><p>A lakás a garázs és pince nélkül is megvásárolható.</p><p>Érdeklődés esetén keressen bizalommal!&nbsp;</p><p>Kopasz Leonóra - Elit-Ingatlaniroda&nbsp;+3670/941-99-37 
+<br class=""></p>',
+            'price' => 'Lakás: 58.5 M Ft'
+        ],
+    ];
+    
+    // Add page 2 properties
+    $properties += [
+        11 => [
+            'id' => 11,
+            'title' => 'Szeged egyik legkeresettebb részén, a Rókus körúton kínálom eladásra ezt a 10-ik emeleti, 53 m²-es, teljes körűen felújított panellakást, amely kiváló választás saját otthonnak vagy befektetésnek egyaránt.',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p2_img11_gallery/img1.jpeg',
+            'gallery' => [
+                'assets/downloaded/p2_img11_gallery/img1.jpeg',
+                'assets/downloaded/p2_img11_gallery/img2.jpeg',
+                'assets/downloaded/p2_img11_gallery/img3.jpeg',
+                'assets/downloaded/p2_img11_gallery/img4.jpeg',
+                'assets/downloaded/p2_img11_gallery/img5.jpeg',
+                'assets/downloaded/p2_img11_gallery/img6.jpeg',
+                'assets/downloaded/p2_img11_gallery/img7.jpeg',
+                'assets/downloaded/p2_img11_gallery/img8.jpeg',
+                'assets/downloaded/p2_img11_gallery/img9.jpeg',
+                'assets/downloaded/p2_img11_gallery/img10.jpeg',
+                'assets/downloaded/p2_img11_gallery/img11.jpeg',
+                'assets/downloaded/p2_img11_gallery/img12.jpeg',
+                'assets/downloaded/p2_img11_gallery/img13.jpeg',
+                'assets/downloaded/p2_img11_gallery/img14.jpeg',
+                'assets/downloaded/p2_img11_gallery/img15.jpeg',
+                'assets/downloaded/p2_img11_gallery/img16.jpeg'
+            ],
+            'description' => '<p>Ingatlan jellemzői:</p><p>Elrendezés: Előtér, 2 külön nyíló szoba, étkezős konyha, sarokkádas fürdőszoba, külön WC, erkély.Az ingatlan teljeskörű műszaki és esztétikai felújításon esett át, mely ki terjedt az elektromos hálózat cseréjére is.&nbsp; Ide csak költözni kell!!</p><p>Az épület akadálymentesített  új lifttel. A lakóközössége kulturált, csendes környezet.Az ingatlan kiváló közlekedési adottságokkal rendelkezik, a közelben számos bevásárlási lehetőség (Tesco, Pláza), szolgáltatások és tömegközlekedési csomópontok találhatók. Ingyenes parkolás a környéken biztosított.</p><p>A lakás adottságai és lokációja révén ideális választás fiatal pároknak, idősebbeknek, valamint befektetési célra is kiemelten ajánlott.</p><p>Irányár: 43 MFt</p><p>További információkért és megtekintésért várom hívását!</p><p>Elit-Ingatlaniroda +36703046010</p>',
+            'price' => 'Irányár: 43 MFt'
+        ],
+        12 => [
+            'id' => 12,
+            'title' => 'Eladó családi ház rész Sándorfalván – Tisza utcában',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p2_img12_gallery/img1.jpeg',
+            'gallery' => [
+                'assets/downloaded/p2_img12_gallery/img1.jpeg',
+                'assets/downloaded/p2_img12_gallery/img2.jpeg',
+                'assets/downloaded/p2_img12_gallery/img3.jpeg',
+                'assets/downloaded/p2_img12_gallery/img4.jpeg',
+                'assets/downloaded/p2_img12_gallery/img5.jpeg',
+                'assets/downloaded/p2_img12_gallery/img6.jpeg',
+                'assets/downloaded/p2_img12_gallery/img7.jpeg'
+            ],
+            'description' => '<p>Eladásra kínálok Sándorfalván, a Tisza utcában egy 100 m²-es, teljesen külön bejáratú családi házrészt, amelyhez egy 55 m²-es kert is tartozik. 1/1 tulajdon, tehermentes ingatlan ,2 éve teljeskörűen felújítva (új villanyvezetékek).</p><p>Kis terasz is tartozik a házhoz.</p><p>Irányár: 50 millió Ft</p><p>További információért és megtekintésért hívjon bizalommal!</p><p>Kopasz Leonóra - Elit-ingatlaniroda +3670/941-99-37</p>',
+            'price' => 'Irányár: 50 millió Ft'
+        ],
+        13 => [
+            'id' => 13,
+            'title' => 'Eladó ipari ingatlan Szeged-Szőregen – Rugalmas lehetőségekkel!',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p2_img13_gallery/img1.jpeg',
+            'gallery' => [
+                'assets/downloaded/p2_img13_gallery/img1.jpeg',
+                'assets/downloaded/p2_img13_gallery/img2.jpeg',
+                'assets/downloaded/p2_img13_gallery/img3.jpeg',
+                'assets/downloaded/p2_img13_gallery/img4.jpeg',
+                'assets/downloaded/p2_img13_gallery/img5.jpeg',
+                'assets/downloaded/p2_img13_gallery/img6.jpeg',
+                'assets/downloaded/p2_img13_gallery/img7.jpeg',
+                'assets/downloaded/p2_img13_gallery/img8.jpeg',
+                'assets/downloaded/p2_img13_gallery/img9.jpeg'
+            ],
+            'description' => '<p>Szeged-Szőregen, a volt Virág-Dísznövény ÁFÉSZ telephelyén kínálunk eladásra egy 2300 m²-es, hőszigetelt raktárépületet, amely jó állapotú, modern gépészettel felszerelt és kiváló megközelíthetőséggel rendelkezik.&nbsp;</p><p>Az ingatlan 345 millió Ft-os áron elérhető, 5-6000 m²-es telekterülettel.</p><p>Rugalmas kialakítás! Igény esetén a tulajdonos kisebb területet is leválaszt, így az ingatlan kisebb egységekben is megvásárolható.&nbsp;</p><p>A raktár bérbe adható, így stabil hozamot biztosíthat. Emellett bérleti konstrukcióban is igénybe vehető, 1000 Ft/m² + ÁFA díjjért.</p><p>A telephelyén további raktárkapacitás is rendelkezésre áll.</p><p>Irányár: 345 MFt</p><p>További információért és megtekintésért keressen bizalommal!</p><p>Elit Ingatlaniroda Kovács Alexandra +36703046010</p>',
+            'price' => 'Irányár: 345 MFt'
+        ],
+        14 => [
+            'id' => 14,
+            'title' => 'Szegeden, a közkedvelt Makkos-erdő városrész csendes, mégis kiválóan megközelíthető részén, kínálom eladásra ezt az első emeleti, 64,41 m²-es, kiváló állapotú, jó elosztású, 1996-ban épült tégla építésű társasházi lakást.',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p2_img4.jpeg',
+            'description' => '<p>Az ingatlan két különnyíló szobával, étkezőkonyhával, kamrával, fürdőszobával, külön WC-vel, előszobával és közlekedővel rendelkezik, valamint két erkéllyel – egy 4,2 m²-es udvarra néző, illetve egy 1,6 m²-es utca fronti balkonnal.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        15 => [
+            'id' => 15,
+            'title' => 'Szeged közkedvelt Tarján városrészében, a csendes, zöldövezeti Zöldfa utcában kínálom megvételre ezt az 52 m²-es, 2 szobás, erkélyes, 9. emeleti panellakást.',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p2_img5.jpeg',
+            'description' => '<p>A lakás a közelmúltban részleges felújításon esett át, jó állapotban van, az egyik, erkélyes szoba teljes bútorzata a vételár részét képezheti, megegyezés szerint.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        16 => [
+            'id' => 16,
+            'title' => 'Szeged egyik legkedveltebb városrészében, Újszegeden, kertvárosi környezetben, a Thököly utcán, 448 m2-es telken fekvő, élhető elrendezésű, 1. szintes, 110 m2-es, előkertes, családi házat kínálok megvételre.',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p2_img6.jpeg',
+            'description' => '<p>Az ingatlan 1980-as, években épült téglafalazattal, kiváló szerkezeti állapotban van, kisebb esztétikai felújítást igényel. Az ingatlan számos lehetőséget rejt magában, esztétikai felújítást követően csodás otthon varázsolható belőle.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        17 => [
+            'id' => 17,
+            'title' => 'Kivételes lehetőség Szeged történelmi belvárosában!',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p2_img7.jpeg',
+            'description' => '<p>Az Arany János utcában, egy rendezett, újabb építésű társasház első emeletén eladó egy 45 m²-es, nappali + 1 hálószobás, teljes körűen felújított lakás bérleti joga.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        18 => [
+            'id' => 18,
+            'title' => 'Szeged közkedvelt Tarján városrészében, a Szilléri sugárúton kínálom megvételre ezt a 47 m²-es, 2 szobás, magas földszinti panellakást.',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p2_img8.jpeg',
+            'description' => '<p>Az ingatlan felújítandó állapotú, így új tulajdonosa teljes mértékben saját ízlésére szabhatja. Az öt szintes épület rendezett, a panelprogramban már részt vett, ennek keretében a külső szigetelés megtörtént...</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        19 => [
+            'id' => 19,
+            'title' => 'Tágas, napfényes otthon a Liget szomszédságában – kivételes lokáció, garázzsal!',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p2_img9.jpeg',
+            'description' => '<p>Eladó egy 119 m²-es, első emeleti téglaépítésű lakás a város egyik legkedveltebb részén, közvetlenül a Liget mellett, pár perc sétára a belvárostól. A lakás egy csendes, belső házsorban helyezkedik el, így ideális...</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        20 => [
+            'id' => 20,
+            'title' => 'Befektetők figyelem! Kivételes fejlesztési lehetőség Szeged egyik frekventált részén – a Brüsszeli körúton!',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p2_img10.jpeg',
+            'description' => '<p>Eladásra kínáljuk ezt a 781 m²-es telket, amely ideális választás társasház-építési projekt megvalósítására. Az ingatlan jelenleg bontandó épületet tartalmaz, így az új beruházás azonnal elkezdhető.</p>',
+            'price' => 'ÁR: 160 MILLIÓ FT'
+        ]
+    ];
+    
+    // Add page 3 properties
+    $properties += [
+        21 => [
+            'id' => 21,
+            'title' => 'Eladó családi ház Szeged-Kiskundorozsma városrész csendes, mégis jól megközelíthető részén!',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p3_img1.jpeg',
+            'description' => '<p>Szeged közelsége, barátságos környezet és korszerűsített otthon – mindez egy helyen! Ismerje meg ezt a kiváló lehetőséget!</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        22 => [
+            'id' => 22,
+            'title' => 'Ritka lehetőség Szeged egyik legkedveltebb városrészében! Tágas, belső kétszintes téglalakás eladó Újszegeden, a Pillich Kálmán utcában – 125 m², 5 szoba, kiváló elhelyezkedés!',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p3_img2.jpeg',
+            'description' => '<p>Kivételes adottságokkal rendelkező, belvároshoz közeli, mégis csendes kertvárosi környezetben fekvő lakást kínálunk eladásra az Erzsébet-liget és a Napfényfürdő közvetlen közelében.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        23 => [
+            'id' => 23,
+            'title' => 'Szeged egyik legkeresettebb utcájában, a Dózsa utcában, eladásra/cserére kínálom ezt az első emeleti, 72 m²-es, erkélyes polgári lakás bérleti jogát.',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p3_img3.jpeg',
+            'description' => '<p>A lakás klasszikus polgári hangulatot idéz, nagy belmagasságú, világos terei eleganciát és otthonosságot sugároznak. Az erkély kellemes pihenési lehetőséget nyújt, a nagy ablakok pedig napfényes életteret biztosítanak.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        24 => [
+            'id' => 24,
+            'title' => 'Két lakás – egy áráért, Szeged szívében!',
+            'date' => '2025.08.14',
+            'image' => 'assets/downloaded/p3_img4.jpeg',
+            'description' => '<p>Eladásra/Cserére kínálom ezt a két külön bejáratú lakás örökös bérleti jogát! Páratlan lehetőség kínálkozik a Kárász utca egyik legikonikusabb, műemléki védettségű épületében – abban az épületben, ahonnan Kossuth Lajos szólt a szegediekhez a nagy árvíz idején.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        25 => [
+            'id' => 25,
+            'title' => 'Szeged belvárosának egyik legpatinásabb részén, a Kelemen utcában kínálom eladásra/cserére ezt a különleges hangulatú, polgári stílusú lakás bérleti jogát.',
+            'date' => '2025.08.13',
+            'image' => 'assets/downloaded/p3_img5.jpeg',
+            'description' => '<p>Alapterület: 53 m²Építés éve: 1800-as évek vége – klasszikus polgári jegyekkel. Fűtés: központi fűtés gáz-cirkó kazánnal Burkolatok: eredeti mettlachi járólapok és laminált padló Bútorzat: a lakás teljes bútorzattal kerül átadásra.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        26 => [
+            'id' => 26,
+            'title' => 'Újszeged szívében, az egyetemek szomszédságában kínálunk megvételre egy kiváló állapotú, 3 szobás + nappalis, összesen 100 m²-es lakást, egy rendezett, mindössze 7 lakásos társasház 3. emeletén.',
+            'date' => '2025.08.13',
+            'image' => 'assets/downloaded/p3_img6.jpeg',
+            'description' => '<p>Eladó tágas, kiváló állapotú lakás Újszeged frekventált részén, a Fő fasor elején.Újszeged szívében, az egyetemek szomszédságában kínálunk megvételre egy kiváló állapotú, 3 szobás + nappalis, összesen 100 m²-es lakást, egy rendezett, mindössze 7 lakásos társasház 3. emeletén.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        27 => [
+            'id' => 27,
+            'title' => 'Szegeden, az Oltványi utcában kínálom eladásra/cserére ezt a 30 m²-es, társasházi lakás bérleti jogát, amely ideális választás lehet fiataloknak vagy időseknek egyaránt.',
+            'date' => '2025.08.13',
+            'image' => 'assets/downloaded/p3_img7.jpeg',
+            'description' => '<p>Elosztás:• szoba• étkező-konyha, ahol minden elfér, amire szükség van• fürdőszoba-WC egyben• közös előtér és kert a többi lakással együtt • saját, zárható 5 m²-es kerti tároló.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        28 => [
+            'id' => 28,
+            'title' => 'Eladó erkélyes panel lakás Szegeden, a Zöldfa utcában!',
+            'date' => '2025.08.13',
+            'image' => 'assets/downloaded/p3_img8.jpeg',
+            'description' => '<p>A tízemeletes társasház legfelső szintjén, a 10. emeleten kínálunk megvételre egy 52 m²-es, erkélyes, jó állapotú panel lakást.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        29 => [
+            'id' => 29,
+            'title' => 'Szegeden a  József Attila sugárút mentén, panelprogramban részt vett, ötszintes társas ház magasföldszintjén kínálunk  megvételre egy 55 m²-es, kétszobás, erkélykapcsolatos, felújított állapotú lakást.',
+            'date' => '2025.08.13',
+            'image' => 'assets/downloaded/p3_img9.jpeg',
+            'description' => '<p>Az ingatlan alaprajzi elrendezése kiváló: két külön nyíló szoba, hall, ablakos konyha kamrával, valamint külön helyiségben elhelyezkedő fürdőszoba és WC alkotják a funkcionális egységet.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        30 => [
+            'id' => 30,
+            'title' => 'Eladó exkluzív, felújított családi ház Hódmezővásárhely kertvárosi részében – Többgenerációs lehetőséggel!',
+            'date' => '2025.08.13',
+            'image' => 'assets/downloaded/p3_img10.jpeg',
+            'description' => '<p>Hódmezővásárhely kedvelt részén, a Török Károly utcában kínálunk megvételre egy 552 m²-es, két utcára nyíló telken fekvő, kivételes adottságokkal rendelkező ingatlant.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ]
+    ];
+    
+    // Add page 4 properties
+    $properties += [
+        31 => [
+            'id' => 31,
+            'title' => 'Szeged-Újszeged egyik legfrekventáltabb, kiváló adottságú részén kínálok megvételre egy 100 m²-es, téglaépítésű családi házat.',
+            'date' => '2025.08.13',
+            'image' => 'assets/downloaded/p4_img1.jpeg',
+            'description' => '<p>Szeged-Újszeged egyik legfrekventáltabb, kiváló adottságú részén kínálok megvételre egy 100 m²-es, téglaépítésű családi házat, 501 m²-es telken. Az ingatlan teljes körű műszaki és esztétikai felújításon esett át, így azonnal költözhető állapotban várja új tulajdonosát.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        32 => [
+            'id' => 32,
+            'title' => 'Eladó vagy bérelhető vendéglátóegység bérleti joga Szeged belvárosában, az Oskola utcában!',
+            'date' => '2025.08.13',
+            'image' => 'assets/downloaded/p4_img2.jpeg',
+            'description' => '<p>Szeged egyik legforgalmasabb utcáján vált elérhetővé egy kiváló adottságokkal rendelkező vendéglátóhely bérleti joga – teljes berendezéssel és engedélyekkel együtt! Tágas, utcafronti vendégtér (60 m²) nagy üvegportálokkal.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        33 => [
+            'id' => 33,
+            'title' => 'Eladó lakás Szeged szívében, a Szent István téren – befektetésnek is kiváló!',
+            'date' => '2025.08.13',
+            'image' => 'assets/downloaded/p4_img3.jpeg',
+            'description' => '<p>Eladásra kínálok egy 61 m²-es, jó állapotú, 5. emeleti tégla lakást a közkedvelt Szent István téren. A lakásban 2 szoba +1 félszoba, a szobákban laminált padló, a fürdő és a WC külön helyiségben kapott helyet.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        34 => [
+            'id' => 34,
+            'title' => 'Szeged-Gyálarét egyik csendes, zsákutcás részén a Szőlő utcában, kínálok eladásra egy 770 m²-es, művelési ág alól kivett zártkerti telket.',
+            'date' => '2025.08.13',
+            'image' => 'assets/downloaded/p4_img4.jpeg',
+            'description' => '<p>Az ingatlan 10%-os beépíthetőséggel rendelkezik, így kiváló lehetőséget kínál akár nyaraló vagy hétvégi ház építésére is. A telken egy kb. 12 m²-es, felújítandó faház található.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        35 => [
+            'id' => 35,
+            'title' => 'Kis csodakert Újszegeden – a nyugalom szigete a Nova közelében!',
+            'date' => '2025.08.13',
+            'image' => 'assets/downloaded/p4_img5.jpeg',
+            'description' => '<p>Eladóvá vált Újszeged csendes részén, a Kendergyári utcában, elrejtve a város zajától, mégis közel mindenhez.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        36 => [
+            'id' => 36,
+            'title' => 'Exkluzív penthouse Szeged egyik ikonikus, modern épületében, a Cédrus Ligetben!',
+            'date' => '2025.08.13',
+            'image' => 'assets/downloaded/p4_img6.jpeg',
+            'description' => '<p>Páratlan luxus és kényelem vár ebben a 137 m²-es, hatodik emeleti penthouse lakásban, melyhez 35 m²-es terasz tartozik, lenyűgöző kilátással Szegedre.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        37 => [
+            'id' => 37,
+            'title' => 'Különleges lehetőség Szeged szívében – felújított polgári lakás a Müller-palotában',
+            'date' => '2025.08.13',
+            'image' => 'assets/downloaded/p4_img7.jpeg',
+            'description' => '<p>Eladásra kínálunk egy teljes körűen felújított, 66 m²-es első emeleti lakást Szeged egyik legismertebb épületében, a történelmi Müller-palotában, a Stefánia sétányon. Az ingatlan 2021-ben esett át átfogó felújításon.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        38 => [
+            'id' => 38,
+            'title' => 'Belvárosi polgári lakás eladó – kiváló lehetőség Szegeden!',
+            'date' => '2025.08.13',
+            'image' => 'assets/downloaded/p4_img8.jpeg',
+            'description' => '<p>Szeged központjában, a Kálvária sugárúton eladó egy 83 m²-es, első emeleti, világos, két szobás, polgári jellegű lakás, amely kiváló elrendezésének és állapotának köszönhetően számos lehetőséget kínál.</p>',
+            'price' => 'Kérjen árajánlatot'
+        ],
+        39 => [
+            'id' => 39,
+            'title' => 'Eladásra/cserére kínálom ezt az 55 m²-es, 2 szoba + halos, 4. emeleti panelprogramos, liftes társasházban lévő lakás Bérleti jogát, Szeged egyik legjobban ellátott városrészében, Tarjánban a Budapesti körúton.',
+            'date' => '2025.08.13',
+            'image' => 'assets/downloaded/p4_img39_gallery/img1.jpeg',
+            'gallery' => [
+                'assets/downloaded/p4_img39_gallery/img1.jpeg',
+                'assets/downloaded/p4_img39_gallery/img2.jpeg',
+                'assets/downloaded/p4_img39_gallery/img3.jpeg',
+                'assets/downloaded/p4_img39_gallery/img4.jpeg',
+                'assets/downloaded/p4_img39_gallery/img5.jpeg',
+                'assets/downloaded/p4_img39_gallery/img6.jpeg',
+                'assets/downloaded/p4_img39_gallery/img7.jpeg',
+                'assets/downloaded/p4_img39_gallery/img8.jpeg'
+            ],
+            'description' => '<p>Az ingatlan közepes állapotú, jó elosztású, napfényes szobákkal, amely kiváló alapot nyújt saját elképzelések szerinti felújításhoz.</p><p>Főbb paraméterek:</p><p>Havi bérleti díj: 40 000 Ft (költségelvű)</p><p>Irányár: 18,9 millió Ft</p><p>Panelprogram keretében hőszigetelt homlokzat, korszerű nyílászárók</p><p>Rendezett társasház, kulturált lakóközösség.</p><p>Lokáció:</p><p>A Budapesti körút közlekedési csomópontjai révén a belváros és az egyetemi központok gyorsan elérhetők. A közelben megtalálhatóak bevásárlóközpontok, piac, orvosi rendelő, iskola, óvoda, valamint több busz- és villamosmegálló. Ideális választás befektetőknek vagy saját otthont keresőknek, akik értékelik a jó ár-érték arányt és a kiváló infrastruktúrát.</p><p>Elit-Ingatlaniroda Kovács Alexandra +36703046010</p>',
+            'price' => '18,9 millió Ft'
+        ]
+    ];
+
+    if (isset($properties[$id])) {
+        $this['property'] = $properties[$id];
+        $this['title'] = $properties[$id]['title'];
+    } else {
+        $this['property'] = [
+            'title' => 'Ingatlan részletek',
+            'date' => '',
+            'image' => 'assets/downloaded/p1_img1.jpeg',
+            'description' => 'A kért ingatlan adatai jelenleg nem elérhetők vagy feltöltés alatt állnak.',
+            'price' => ''
+        ];
+    }
+}
+?>
+==
+<section class="s s-basic cf sc-w wnd-w-wider wnd-s-higher wnd-h-auto wn-space-top">
+    <div class="s-w cf">
+        <div class="s-o s-fs cf">
+            <div class="s-c s-fs cf">
+                <div class="ez cf">
+                    <div class="blog-detail">
+                        <div class="item-head" style="text-align: center; max-width: 900px; margin: 0 auto 40px;">
+                            <h1 style="font-family: 'Playfair Display', serif; color: #C5A065; margin: 10px 0 20px; font-size: 2.2rem; line-height: 1.3;">{{ property.title }}</h1>
+                            <div class="item-date" style="font-family: 'Roboto', sans-serif; color: #E6B8B8; font-style: italic; font-weight: 300;">{{ property.date }}</div>
+                        </div>
+                        
+                        <div class="cw cf">
+                            <div class="cw-c cf" style="{% if property.gallery %}display: block;{% else %}display: flex;{% endif %}">
+                                
+                                {% if property.gallery %}
+                                    <!-- Full Width Layout with Gallery -->
+                                    <div class="c cf" style="width: 100%; max-width: 1400px; margin: 0 auto; float: none;">
+                                        <!-- Import Montserrat as accessible fallback for Metropolis -->
+                                        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+                                        
+                                        <style>
+                                            .b-text-c {
+                                                font-family: 'Metropolis', 'Montserrat', sans-serif; 
+                                                color: #8D6E63; /* Theme Brown/Grey */
+                                                font-size: 0.98125rem;
+                                                line-height: 1.7;
+                                                margin-bottom: 40px; 
+                                                text-align: left;
+                                            }
+                                            .b-text-c p {
+                                                margin-bottom: 1.5rem;
+                                                padding: 0;
+                                            }
+                                            .b-text-c ul {
+                                                list-style: none;
+                                                padding: 0;
+                                                margin: 1.5rem 0;
+                                            }
+                                            .b-text-c ul li {
+                                                position: relative;
+                                                padding-left: 0;
+                                                margin-bottom: 0.5rem;
+                                            }
+                                            .b-text-c strong {
+                                                font-weight: 700;
+                                                color: inherit;
+                                            }
+                                        </style>
+                                        <div class="b-text-c">
+                                            {{ property.description|raw }}
+                                        </div>
+                                        
+                                        <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px; max-width: 1300px; margin-left: auto; margin-right: auto;">
+                                            {% for img in property.gallery %}
+                                            <div class="gallery-item" style="aspect-ratio: 4/3; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                                                <a href="{{ img|theme }}" class="lightbox-link">
+                                                    <img src="{{ img|theme }}" alt="{{ property.title }}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+                                                </a>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+
+                                        <!-- Social Share Section -->
+                                        <div class="social-share" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e8e8e8; display: flex; gap: 6px; align-items: center; margin-bottom: 40px; justify-content: center;">
+                                            <!-- Facebook Share -->
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ this.page.url|app }}" target="_blank" style="background-color: #1877F2; color: white; padding: 0 10px; border-radius: 3px; font-family: Helvetica, Arial, sans-serif; font-size: 12px; font-weight: bold; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; height: 28px; line-height: 28px;">
+                                                <svg style="width: 14px; height: 14px;" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                                Megosztás
+                                            </a>
+                                            
+                                            <!-- X Share (Bejegyzés) -->
+                                            <a href="https://twitter.com/intent/tweet?url={{ this.page.url|app }}" target="_blank" style="background-color: #000; color: white; padding: 0 10px; border-radius: 14px; font-family: Helvetica, Arial, sans-serif; font-size: 12px; font-weight: bold; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; height: 28px; line-height: 28px;">
+                                                <svg style="width: 12px; height: 12px;" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                                Bejegyzés
+                                            </a>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <!-- Legacy Layout for Older Items (Sidebar) -->
+                                    <div class="c cf" style="width: 66.6%;">
+                                        <div class="c-c cf">
+                                            <div class="b-img b-img-default b b-s cf">
+                                                <div class="b-img-w">
+                                                    <div class="b-img-c">
+                                                        <picture>
+                                                            <img src="{{ property.image|theme }}" alt="{{ property.title }}" width="1920" height="1440" loading="lazy" style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
+                                                        </picture>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            {% if property.price %}
+                                            <div class="price-tag" style="background: #C5A065; color: #fff; padding: 10px 20px; border-radius: 30px; display: inline-block; margin: 20px 0; font-weight: bold; font-size: 1.4rem; font-family: 'Playfair Display', serif;">
+                                                {{ property.price }}
+                                            </div>
+                                            {% endif %}
+
+                                            <div class="b b-text cf">
+                                                <div class="b-c b-text-c b-s cf" style="color: #8D6E63; font-size: 16px; line-height: 1.6; font-family: 'Roboto', sans-serif;">
+                                                    {{ property.description|raw }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="c cf" style="width: 33.3%;">
+                                        <div class="c-c cf">
+                                            <div class="agent-box" style="border: 1px solid #e8e8e8; padding: 20px; border-radius: 8px; text-align: center; background: #fafafa; position: sticky; top: 100px;">
+                                                <h3 style="color: #C5A065; margin-bottom: 15px; font-family: 'Playfair Display', serif;">Értékesítő</h3>
+                                                <div style="margin-bottom: 15px;">
+                                                    <img src="{{ 'assets/logoo.jpeg'|theme }}" alt="Kovács Alexandra" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #C5A065;">
+                                                </div>
+                                                <div style="font-weight: bold; font-size: 1.2rem; color: #C5A065; font-family: 'Playfair Display', serif;">Kovács Alexandra</div>
+                                                <div style="margin-top: 10px; color: #8D6E63;">Telefonszám:</div>
+                                                <div style="font-weight: bold; font-size: 1.1rem; color: #555;">+36-70-304-6010</div>
+                                                <div style="margin-top: 15px;">
+                                                    <a href="/kapcsolat" class="b-btn-l" style="display: block; background: #C5A065; color: #fff; text-decoration: none; padding: 10px; border-radius: 4px; font-family: 'Roboto', sans-serif;">Kapcsolatfelvétel</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="pager cf" style="margin-top: 50px; text-align: center; border-top: 1px solid #eee; padding-top: 30px;">
+                            <a class="pager-back wt-bold wnd-link" href="{{ '/elado-ingatlanok'|app }}" style="color: #C5A065; text-decoration: none; font-size: 1.1em; display: inline-flex; align-items: center; gap: 10px;">
+                                <span style="font-size: 1.4em;">&larr;</span> Vissza a listához
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Responsive adjustments */
+    @media (max-width: 767px) {
+        .cw-c {
+            flex-direction: column;
+        }
+        .c {
+            width: 100% !important;
+            margin-bottom: 30px;
+        }
+        .gallery-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+        }
+        .item-head h1 {
+            font-size: 1.8rem !important;
+        }
+    }
+    
+    /* Content styling */
+    .b-text-c ul {
+        margin-bottom: 15px;
+        padding-left: 20px;
+    }
+    .b-text-c li {
+        margin-bottom: 5px;
+    }
+    .b-text-c p {
+        margin-bottom: 20px !important;
+    }
+    .b-text-c strong {
+        color: #C5A065;
+        font-weight: 600;
+    }
+    
+    /* Gallery Hover */
+    .gallery-item img:hover {
+        transform: scale(1.05);
+    }
+</style>

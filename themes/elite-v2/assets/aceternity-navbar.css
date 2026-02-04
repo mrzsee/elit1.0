@@ -1,0 +1,146 @@
+/* Aceternity UI Style Floating Navbar (Desktop) - FIXED ALIGNMENT V3 RESTORED */
+
+@media (min-width: 901px) {
+    /* Only for desktop */
+
+    /* 1. Main Navigation Container */
+    #menu-block {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    nav#menu {
+        display: inline-block;
+    }
+
+    /* 2. The Pill Container (The "Navbar") */
+    nav#menu .menu-wrapper ul.level-1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 9999px;
+
+        /* Navbar padding */
+        padding: 6px 40px;
+
+        box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.1);
+        list-style: none;
+        margin: 0;
+    }
+
+    nav#menu ul.level-1>li {
+        display: inline-block;
+        border: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* --- MENU ITEM BASE STYLES --- */
+    nav#menu a.menu-item {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        height: 42px;
+        padding: 0 24px;
+        margin: 0 2px;
+
+        font-family: 'Inter', 'Roboto', sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        color: #555;
+        text-decoration: none;
+        border-radius: 9999px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        line-height: normal;
+        text-align: center;
+        width: auto;
+    }
+
+    /* KILL ALL GHOST ELEMENTS */
+    nav#menu a.menu-item::before,
+    nav#menu a.menu-item::after,
+    nav#menu li::before,
+    nav#menu li::after,
+    nav#menu span::before,
+    nav#menu span::after {
+        content: none !important;
+        display: none !important;
+        width: 0 !important;
+    }
+
+    /* Ensure inner text is perfectly centered */
+    nav#menu a.menu-item span,
+    nav#menu a.menu-item span.menu-item-text {
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        display: block !important;
+        width: auto !important;
+        text-align: center !important;
+        line-height: normal;
+        text-indent: 0 !important;
+    }
+
+    /* --- SPECIFIC FIX FOR HOMEPAGE (Kezdőlap) --- */
+    /* FORCE FIXED WIDTH to guarantee centering */
+    nav#menu li.wnd-homepage a.menu-item {
+        padding: 0 !important;
+        /* Zero padding */
+        width: 120px !important;
+        /* Fixed width */
+        min-width: 120px !important;
+
+        background-image: none !important;
+        justify-content: center !important;
+        text-indent: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    /* Active Homepage Fix */
+    nav#menu li.wnd-homepage.wnd-active a.menu-item {
+        padding: 0 !important;
+        width: 120px !important;
+    }
+
+    /* 4. Hover State */
+    nav#menu a.menu-item:hover {
+        color: #000;
+        background-color: rgba(0, 0, 0, 0.05);
+        justify-content: center !important;
+    }
+
+    /* 5. Active State */
+    nav#menu li.wnd-active a.menu-item {
+        color: #5d4037 !important;
+        font-weight: 700;
+        background-color: rgba(220, 210, 200, 0.5) !important;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(189, 146, 109, 0.15);
+
+        margin: 0 2px;
+        padding: 0 24px;
+        height: 42px;
+        transform: none;
+        z-index: auto;
+        justify-content: center !important;
+    }
+
+    /* Ensure Fixed Width persists on Active for Home */
+    nav#menu li.wnd-homepage.wnd-active a.menu-item {
+        padding: 0 !important;
+        width: 120px !important;
+    }
+
+    nav#menu .menu-item span {
+        border: none !important;
+    }
+}

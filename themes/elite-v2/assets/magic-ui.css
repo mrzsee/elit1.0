@@ -1,0 +1,192 @@
+/* Magic UI / Shadcn Style Implementation for Winter CMS */
+
+:root {
+    --magic-bg: #ffffff;
+    --magic-fg: #09090b;
+    --magic-border: #e4e4e7;
+    --magic-primary: #C5A065;
+    /* A te arany színed */
+    --magic-primary-fg: #ffffff;
+    --magic-muted: #f4f4f5;
+    --magic-muted-fg: #71717a;
+    --radius: 0.75rem;
+    /* 12px rounded corners */
+}
+
+/* Base Utilities */
+.magic-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.magic-section {
+    padding: 5rem 0;
+    background-color: var(--magic-bg);
+}
+
+/* Typography */
+.magic-h1 {
+    font-family: 'Metropolis', 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    /* Tight tracking like Magic UI */
+    line-height: 1.1;
+    color: var(--magic-fg);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to bottom right, #333, #666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* Gradient text effect */
+}
+
+.magic-subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.25rem;
+    color: var(--magic-muted-fg);
+    text-align: center;
+    max-width: 42rem;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+}
+
+/* Buttons (Shadcn style) */
+.magic-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: calc(var(--radius) - 2px);
+    font-size: 0.875rem;
+    font-weight: 500;
+    height: 2.5rem;
+    padding: 0 1rem;
+    transition: all 0.2s;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.magic-btn-primary {
+    background-color: #09090b;
+    /* Black button like Shadcn default */
+    color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.magic-btn-primary:hover {
+    background-color: #27272a;
+    transform: translateY(-1px);
+}
+
+.magic-btn-outline {
+    border: 1px solid var(--magic-border);
+    background-color: transparent;
+    color: var(--magic-fg);
+}
+
+.magic-btn-outline:hover {
+    background-color: var(--magic-muted);
+}
+
+/* Bento Grid */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(200px, auto);
+    gap: 1.5rem;
+    padding: 2rem 0;
+}
+
+.bento-card {
+    background-color: #fff;
+    border: 1px solid var(--magic-border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    /* Subtle shadow */
+}
+
+.bento-card:hover {
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    border-color: var(--magic-primary);
+    /* Highlight border on hover */
+}
+
+.bento-card.col-span-2 {
+    grid-column: span 2;
+}
+
+.bento-card.row-span-2 {
+    grid-row: span 2;
+}
+
+.bento-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--magic-muted);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 24px;
+    color: var(--magic-primary);
+}
+
+.bento-title {
+    font-family: 'Metropolis', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.bento-desc {
+    font-size: 0.875rem;
+    color: var(--magic-muted-fg);
+    line-height: 1.5;
+}
+
+/* Hero Image mock */
+.magic-hero-image-container {
+    margin-top: 3rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--magic-border);
+    padding: 0.5rem;
+    /* Inner spacing for the border effect */
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.1);
+}
+
+.magic-hero-image {
+    width: 100%;
+    border-radius: calc(var(--radius) - 4px);
+    display: block;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+        /* Stack on mobile */
+    }
+
+    .bento-card.col-span-2 {
+        grid-column: span 1;
+    }
+
+    .magic-h1 {
+        font-size: 2.5rem;
+    }
+}

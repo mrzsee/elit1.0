@@ -1,0 +1,64 @@
+title = "Szolgáltatások"
+url = "/szolgaltatasok"
+layout = "default"
+body_class = "wt-page"
+id = "szolgaltatasok"
+==
+<?php
+function onStart() {
+    $this->addCss('assets/services-grid.css?v=2');
+}
+?>
+==
+<!-- Services Section -->
+<section class="services-section">
+    <div class="services-container">
+        <h1 class="services-title">Szolgáltatások</h1>
+        
+        <div class="services-grid">
+            
+            <!-- 1. Ingatlanértékbecslés (Eredeti kép) -->
+            <div class="service-card">
+                <div class="service-image-wrapper">
+                    <img src="{{ 'assets/images-pexels-com-photos-7937688-pexels-photo-7937688-auto-compress-cs-tinysrgb-dpr-2-h-650-w-940.jpeg'|theme }}" alt="Ingatlanértékbecslés" class="service-image">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-name">Ingatlanértékbecslés</h3>
+                    <div class="service-divider"></div>
+                    <p class="service-description">
+                        Az ingatlanértékbecslés segít meghatározni egy adott ingatlan reális piaci értékét, ami alapvető fontosságú a sikeres és gyors értékesítéshez vagy a megfontolt vásárláshoz.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2. Ingatlanok Közvetítése (Eredeti kép) -->
+            <div class="service-card">
+                <div class="service-image-wrapper">
+                    <img src="{{ 'assets/4e0ldw.jpg'|theme }}" alt="Ingatlanok közvetítése" class="service-image">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-name">Ingatlanok közvetítése</h3>
+                    <div class="service-divider"></div>
+                    <p class="service-description">
+                        Az ingatlanok közvetítése során összekötjük a keresletet a kínálattal. Professzionális hátterünkkel és kiterjedt ügyfélkörünkkel segítünk megtalálni az ideális vevőt vagy bérlőt ingatlana számára.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 3. Ingatlan Tanácsadás (Eredeti kép) -->
+            <div class="service-card">
+                <div class="service-image-wrapper">
+                    <img src="{{ 'assets/0gsg20.jpeg'|theme }}" alt="Ingatlan tanácsadás" class="service-image">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-name">Ingatlan tanácsadás</h3>
+                    <div class="service-divider"></div>
+                    <p class="service-description">
+                        Cégünk teljes körű tanácsadással áll ügyfelei rendelkezésére. Legyen szó jogi kérdésekről, piaci trendekről vagy befektetési lehetőségekről, szakértőink segítenek a legjobb döntés meghozatalában.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

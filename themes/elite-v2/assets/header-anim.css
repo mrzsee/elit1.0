@@ -1,0 +1,42 @@
+/* Header Background - Hotel Glass Door Style */
+
+.s-hn .s-bg-l {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 0;
+
+    background-image: url('../assets/header_abstract.png') !important;
+    /* Teljes összenyomás */
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    opacity: 0.55 !important;
+    /* Még 25%-kal halványabb */
+}
+
+.s-hn .s-bg {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 0;
+}
+
+/* Overlay kikapcsolva */
+.s-hn .s-bg-l::after {
+    display: none !important;
+}
+
+/* Gravírozott Logó Hatás */
+.logo-image img,
+.wnd-logo-img {
+    position: relative;
+    z-index: 10;
+    mix-blend-mode: multiply !important;
+    opacity: 0.85 !important;
+    filter: contrast(1.1) sepia(0.1) !important;
+}

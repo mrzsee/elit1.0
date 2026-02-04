@@ -1,0 +1,323 @@
+title = "Eladó Ingatlanok"
+url = "/elado-ingatlanok"
+layout = "default"
+body_class = "wt-blog"
+==
+<style>
+    /* Global Article Reset */
+    article.item {
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
+        border: none !important;
+    }
+
+    /* Layout */
+    .item-wrapper {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 30px !important;
+        margin-bottom: 30px !important;
+        align-items: flex-start !important;
+    }
+    
+    /* Media/Image */
+    .item-media {
+        order: 1 !important;
+        flex: 0 0 320px !important;
+        max-width: 320px !important;
+    }
+    .item-media img {
+        border-radius: 10px !important;
+        width: 100% !important;
+        height: auto !important;
+        object-fit: cover !important;
+        display: block !important;
+        aspect-ratio: 4/3 !important;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
+    }
+
+    /* Content */
+    .item-content {
+        order: 2 !important;
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding-top: 0 !important;
+    }
+
+    /* Typography */
+    .item-head h2 {
+        margin-top: 0 !important;
+        margin-bottom: 10px !important;
+        line-height: 1.3 !important;
+    }
+    .item-head h2 a {
+        color: #C5A065 !important; /* Gold */
+        font-family: 'Playfair Display', serif !important;
+        font-size: 24px !important;
+        text-decoration: none !important;
+        font-weight: 400 !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+    
+    .item-date {
+        margin-bottom: 15px !important;
+    }
+    .item-date .ld-c {
+        font-size: 14px !important;
+        font-style: italic !important;
+        color: #E6B8B8 !important; /* Rose Gold/Pinkish */
+        font-family: 'Roboto', sans-serif !important;
+        font-weight: 300 !important;
+    }
+
+    .item-perex p {
+        color: #8D6E63 !important; /* Warm Brownish Gray */
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+        font-family: 'Roboto', sans-serif !important;
+        margin: 0 !important;
+        font-weight: 300 !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    /* Mobile */
+    @media (max-width: 767px) {
+        .item-wrapper {
+            flex-direction: column !important;
+            gap: 20px !important;
+            margin-bottom: 40px !important;
+        }
+        .item-media {
+            flex: 0 0 auto !important;
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+        .item-media img {
+             width: 100% !important;
+        }
+    }
+</style>
+<section class="s s-hm s-hm-hidden wnd-h-hidden cf sc-w   hn-centered" style=""></section>
+<section class="s s-basic cf sc-w wnd-w-wider wnd-s-higher wnd-h-auto wn-space-top">
+	<div class="s-w cf">
+		<div class="s-o s-fs cf">
+			<div class="s-bg cf">
+				<div class="s-bg-l">
+				</div>
+			</div>
+			<div class="s-c s-fs cf">
+				<div class="ez cf wnd-no-cols">
+					<div class="ez-c">
+						<div class="b b-text cf">
+							<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf">
+								<h1 class="wnd-align-center"><strong>Eladó Ingatlanok</strong></h1>
+							</div>
+						</div>
+						<div class="blog blog-basic thumb-float no-grid b b-s">
+							<div class="custom-blog-inner b-cs">
+								<div class="blog-container custom-blog-list">
+
+									<!-- Item 1: Luxus Deszk -->
+                                    <article class="item">
+										<div class="item-wrapper">
+											<div class="item-media"><a href="{{ '/elado-ingatlanok/reszletek/1'|app }}">
+                                                <div class="b-tb wnd-orientation-landscape">
+                                                    <picture><img src="{{ 'assets/downloaded/p1_img1.jpeg'|theme }}" alt="Deszk Marosmenti lakópark" width="1920" height="1440" loading="lazy"></picture>
+                                                </div>
+                                            </a></div>
+											<div class="item-content">
+												<div class="item-head">
+													<h2><a href="{{ '/elado-ingatlanok/reszletek/1'|app }}"><div class="ld"><span class="ld-c">Luxus, exkluzív életkörnyezet Deszken a Marosmenti lakóparkban! Ide csak költözni kell!</span></div></a></h2>
+													<div class="item-date"><div class="ld"><span class="ld-c">2025.08.14</span></div></div>
+												</div>
+												<div class="item-perex"><div class="perex"><div class="perex-content"><p>Szegedtől 10 km-re, Deszk agglomeráció egyik új építésű ingatlanokkal körülölelt környékén a Marosmenti lakóparkban kínálom eladásra, ezt a "Két generációs" egyszintes, prémium minőségű alapanyagokból épült 228 m² alapterületű, medencés, Okos családi házat.</p></div></div></div>
+											</div>
+										</div>
+									</article>
+
+                                    <!-- Item 2: Brutál luxus Szeged -->
+                                    <article class="item">
+										<div class="item-wrapper">
+											<div class="item-media"><a href="{{ '/elado-ingatlanok/reszletek/2'|app }}">
+                                                <div class="b-tb wnd-orientation-landscape">
+                                                    <picture><img src="{{ 'assets/downloaded/p1_img2.jpeg'|theme }}" alt="Brutál luxus Szeged" width="1920" height="1440" loading="lazy"></picture>
+                                                </div>
+                                            </a></div>
+											<div class="item-content">
+												<div class="item-head">
+													<h2><a href="{{ '/elado-ingatlanok/reszletek/2'|app }}"><div class="ld"><span class="ld-c">Brutál luxus, exkluzív életkörnyezet, Szeged-Belvárosában! Ide csak költözni kell!</span></div></a></h2>
+													<div class="item-date"><div class="ld"><span class="ld-c">2025.08.14</span></div></div>
+												</div>
+												<div class="item-perex"><div class="perex"><div class="perex-content"><p>Szeged-Belvárosában a Jósika utcában kínálom eladásra ezt a belső kétszintes, 302 m² alapterületű, medencés, prémium minőségű alapanyagokból készült, Okos téglalakást!</p></div></div></div>
+											</div>
+										</div>
+									</article>
+
+                                    <!-- Item 3: Magyar utca -->
+                                    <article class="item">
+										<div class="item-wrapper">
+											<div class="item-media"><a href="{{ '/elado-ingatlanok/reszletek/3'|app }}">
+                                                <div class="b-tb wnd-orientation-landscape">
+                                                    <picture><img src="{{ 'assets/downloaded/p1_img3.jpeg'|theme }}" alt="Magyar utca" width="1920" height="1440" loading="lazy"></picture>
+                                                </div>
+                                            </a></div>
+											<div class="item-content">
+												<div class="item-head">
+													<h2><a href="{{ '/elado-ingatlanok/reszletek/3'|app }}"><div class="ld"><span class="ld-c">Eladó Szegeden, a Magyar utcában két szintes, két generáció együttélésére alkalmas 200 m²-es családi ház!</span></div></a></h2>
+													<div class="item-date"><div class="ld"><span class="ld-c">2025.08.14</span></div></div>
+												</div>
+												<div class="item-perex"><div class="perex"><div class="perex-content"><p>Ez a tágas, 1656 m²-es telken elhelyezkedő ingatlan tökéletes választás nagy családok számára, akik együtt szeretnének élni, mégis különálló élettereket keresnek.</p></div></div></div>
+											</div>
+										</div>
+									</article>
+
+                                    <!-- Item 4: Szálloda -->
+                                    <article class="item">
+										<div class="item-wrapper">
+											<div class="item-media"><a href="{{ '/elado-ingatlanok/reszletek/4'|app }}">
+                                                <div class="b-tb wnd-orientation-landscape">
+                                                    <picture><img src="{{ 'assets/downloaded/p1_img4.jpeg'|theme }}" alt="Szálloda Szeged" width="1920" height="1440" loading="lazy"></picture>
+                                                </div>
+                                            </a></div>
+											<div class="item-content">
+												<div class="item-head">
+													<h2><a href="{{ '/elado-ingatlanok/reszletek/4'|app }}"><div class="ld"><span class="ld-c">Eladó szállodaként működő, többfunkciós ingatlan Szeged belvárosához közel</span></div></a></h2>
+													<div class="item-date"><div class="ld"><span class="ld-c">2025.08.14</span></div></div>
+												</div>
+												<div class="item-perex"><div class="perex"><div class="perex-content"><p>Eladásra kínálunk egy háromszintes, jelenleg is üzemelő szállodát Szeged belvárosának közelében. Az épület földszintjén étterem, bár, recepció, jól felszerelt konyha és személyzeti helyiségek találhatók.</p></div></div></div>
+											</div>
+										</div>
+									</article>
+
+                                    <!-- Item 5: Különleges ház Újszeged -->
+                                    <article class="item">
+										<div class="item-wrapper">
+											<div class="item-media"><a href="{{ '/elado-ingatlanok/reszletek/5'|app }}">
+                                                <div class="b-tb wnd-orientation-landscape">
+                                                    <picture><img src="{{ 'assets/downloaded/p1_img5.jpeg'|theme }}" alt="Különleges ház Újszeged" width="1920" height="1440" loading="lazy"></picture>
+                                                </div>
+                                            </a></div>
+											<div class="item-content">
+												<div class="item-head">
+													<h2><a href="{{ '/elado-ingatlanok/reszletek/5'|app }}"><div class="ld"><span class="ld-c">Eladó egy különleges családi ház Újszegeden!</span></div></a></h2>
+													<div class="item-date"><div class="ld"><span class="ld-c">2025.08.14</span></div></div>
+												</div>
+												<div class="item-perex"><div class="perex"><div class="perex-content"><p>Szeged egyik legkedveltebb részén, Újszegeden, a Szövő utcában eladó egy különleges családi ház! Az ingatlant minden részlete átgondolt, minőségi kivitelezésű.</p></div></div></div>
+											</div>
+										</div>
+									</article>
+
+                                    <!-- Item 6: Garázs -->
+                                    <article class="item">
+										<div class="item-wrapper">
+											<div class="item-media"><a href="{{ '/elado-ingatlanok/reszletek/6'|app }}">
+                                                <div class="b-tb wnd-orientation-landscape">
+                                                    <picture><img src="{{ 'assets/downloaded/p1_img6.jpeg'|theme }}" alt="Garázs Derkovits fasor" width="1920" height="1440" loading="lazy"></picture>
+                                                </div>
+                                            </a></div>
+											<div class="item-content">
+												<div class="item-head">
+													<h2><a href="{{ '/elado-ingatlanok/reszletek/6'|app }}"><div class="ld"><span class="ld-c">Eladó garázs Újszegeden, a Derkovits fasoron – Akár bérlővel együtt átvehető, zárt udvarban!</span></div></a></h2>
+													<div class="item-date"><div class="ld"><span class="ld-c">2025.08.14</span></div></div>
+												</div>
+												<div class="item-perex"><div class="perex"><div class="perex-content"><p>Eladásra kínálok egy 17 m²-es, társasház alatti garázst Újszegeden, a Derkovits fasor ligethez közeli részén.</p></div></div></div>
+											</div>
+										</div>
+									</article>
+
+                                    <!-- Item 7: Fejlesztési lehetőség -->
+                                    <article class="item">
+										<div class="item-wrapper">
+											<div class="item-media"><a href="{{ '/elado-ingatlanok/reszletek/7'|app }}">
+                                                <div class="b-tb wnd-orientation-landscape">
+                                                    <picture><img src="{{ 'assets/downloaded/p1_img7.jpeg'|theme }}" alt="Fejlesztési terület" width="1920" height="1440" loading="lazy"></picture>
+                                                </div>
+                                            </a></div>
+											<div class="item-content">
+												<div class="item-head">
+													<h2><a href="{{ '/elado-ingatlanok/reszletek/7'|app }}"><div class="ld"><span class="ld-c">Eladó egyedülálló fejlesztési lehetőség Újszeged egyik legjobb részén!</span></div></a></h2>
+													<div class="item-date"><div class="ld"><span class="ld-c">2025.08.14</span></div></div>
+												</div>
+												<div class="item-perex"><div class="perex"><div class="perex-content"><p>Eladásra kínálunk egy 2330 m²-es telket Újszeged egyik legfrekventáltabb helyén, a Füvészkert közvetlen közelében. Az ingatlan egy 100 m²-es tégla házzal rendelkezik, de ennél sokkal többet rejt magában.</p></div></div></div>
+											</div>
+										</div>
+									</article>
+
+                                    <!-- Item 8: Móraváros -->
+                                    <article class="item">
+										<div class="item-wrapper">
+											<div class="item-media"><a href="{{ '/elado-ingatlanok/reszletek/8'|app }}">
+                                                <div class="b-tb wnd-orientation-landscape">
+                                                    <picture><img src="{{ 'assets/downloaded/p1_img8.jpeg'|theme }}" alt="Móraváros új építés" width="1920" height="1440" loading="lazy"></picture>
+                                                </div>
+                                            </a></div>
+											<div class="item-content">
+												<div class="item-head">
+													<h2><a href="{{ '/elado-ingatlanok/reszletek/8'|app }}"><div class="ld"><span class="ld-c">Eladó új építésű lakások Szeged-Móravárosban!</span></div></a></h2>
+													<div class="item-date"><div class="ld"><span class="ld-c">2025.08.14</span></div></div>
+												</div>
+												<div class="item-perex"><div class="perex"><div class="perex-content"><p>Szeged közkedvelt Móraváros városrészében, kiváló minőségben megépített, kulcsrakész társasházi lakások várják új tulajdonosaikat!</p></div></div></div>
+											</div>
+										</div>
+									</article>
+
+                                    <!-- Item 9: Kiskundorozsma, Bölcs u -->
+                                    <article class="item">
+										<div class="item-wrapper">
+											<div class="item-media"><a href="{{ '/elado-ingatlanok/reszletek/9'|app }}">
+                                                <div class="b-tb wnd-orientation-landscape">
+                                                    <picture><img src="{{ 'assets/downloaded/p1_img9.jpeg'|theme }}" alt="Kiskundorozsma ingatlan" width="1920" height="1440" loading="lazy"></picture>
+                                                </div>
+                                            </a></div>
+											<div class="item-content">
+												<div class="item-head">
+													<h2><a href="{{ '/elado-ingatlanok/reszletek/9'|app }}"><div class="ld"><span class="ld-c">Eladó ingatlan Szeged-Kiskundorozsmán Befektetők és családok figyelmébe!</span></div></a></h2>
+													<div class="item-date"><div class="ld"><span class="ld-c">2025.08.14</span></div></div>
+												</div>
+												<div class="item-perex"><div class="perex"><div class="perex-content"><p>Szeged-Kiskundorozsma csendes, családi házas övezetében, a Bölcs utcában kínálom eladásra ezt a 160 m² alapterületű, tégla falazatú ingatlant, amely 264 m²-es saroktelken helyezkedik el.</p></div></div></div>
+											</div>
+										</div>
+									</article>
+
+                                    <!-- Item 10: Rózsa utca -->
+                                    <article class="item">
+										<div class="item-wrapper">
+											<div class="item-media"><a href="{{ '/elado-ingatlanok/reszletek/10'|app }}">
+                                                <div class="b-tb wnd-orientation-landscape">
+                                                    <picture><img src="{{ 'assets/downloaded/p1_img10.jpeg'|theme }}" alt="Rózsa utca lakás" width="1920" height="1440" loading="lazy"></picture>
+                                                </div>
+                                            </a></div>
+											<div class="item-content">
+												<div class="item-head">
+													<h2><a href="{{ '/elado-ingatlanok/reszletek/10'|app }}"><div class="ld"><span class="ld-c">Eladó lakás Szegeden, Felsővárosban, a Rózsa utcában.</span></div></a></h2>
+													<div class="item-date"><div class="ld"><span class="ld-c">2025.08.14</span></div></div>
+												</div>
+												<div class="item-perex"><div class="perex"><div class="perex-content"><p>Eladásra kínálunk egy tágas, világos, 90 m²-es lakást Szeged, Felsőváros városrészében, a Rózsa utcában. Az ingatlan egy háromlakásos épület második szintjén található, nem társasház, így nincs közös költség.</p></div></div></div>
+											</div>
+										</div>
+									</article>
+
+								</div>
+								<div class="b b-s-0 b-s-t150 pager">
+									<div class="pager-container">
+										<a class="pager-next wt-bold wnd-link" href="{{ '/elado-ingatlanok-2'|app }}">Korábbi bejegyzés</a>
+									</div>
+								</div>
+							</div>
+							<div class="blog-empty-listing"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

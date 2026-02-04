@@ -1,0 +1,301 @@
+/* MODERN MOBILE MENU - ELITE STYLE */
+/* Tailwind-inspired, Glassmorphism, Premium Animations */
+
+/* 1. Hide the old ugly menu for mobile (< 992px) */
+@media (max-width: 991px) {
+
+    .wnd-mobile-nav,
+    #menu-mobile,
+    .nav-mobile,
+    .mobile-menu-container-old,
+    .menu-default .n-l {
+        display: none !important;
+    }
+}
+
+/* 2. The Trigger Button (Hamburger) - Right Top */
+.modern-menu-trigger {
+    display: none;
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 10000;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 50%;
+    border: 1px solid rgba(106, 82, 61, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 2.1 The Mobile Logo (Left Top) - Fixed */
+.mobile-logo-trigger {
+    display: none;
+    position: absolute;
+    /* Scrolls with page, stays in banner */
+    top: 10px;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Bouncy transition */
+    left: 20px;
+    z-index: 10000;
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.05);
+    /* 5% Glass Effect */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 50%;
+    /* Circular backdrop for logo visibility */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.mobile-logo-trigger:hover,
+.mobile-logo-trigger:active {
+    transform: scale(1.5);
+    z-index: 10020;
+}
+
+.mobile-logo-trigger img {
+    width: 80%;
+    height: auto;
+    object-fit: contain;
+}
+
+@media (max-width: 991px) {
+    .modern-menu-trigger {
+        display: flex;
+    }
+
+    .mobile-logo-trigger {
+        display: flex;
+    }
+
+    .mobile-header-text {
+        display: block !important;
+    }
+}
+
+.mobile-header-text {
+    display: none;
+    position: absolute;
+    top: 140px;
+    /* Below the logo */
+    /* Vertically positioned in banner */
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #4a3b2a;
+    /* Dark Brown */
+    letter-spacing: 1px;
+    z-index: 10005;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 10px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+}
+
+.modern-menu-trigger:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(106, 82, 61, 0.15);
+}
+
+/* Icon Lines */
+.hamburger-box {
+    width: 24px;
+    height: 18px;
+    position: relative;
+}
+
+.hamburger-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #6a523d;
+    border-radius: 4px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.hamburger-line:nth-child(1) {
+    top: 0;
+}
+
+.hamburger-line:nth-child(2) {
+    top: 8px;
+    width: 70%;
+    right: 0;
+    left: auto;
+    transform-origin: right center;
+}
+
+.hamburger-line:nth-child(3) {
+    top: 16px;
+}
+
+/* Active State (X icon) */
+.modern-menu-trigger.is-active .hamburger-line:nth-child(1) {
+    top: 8px;
+    transform: rotate(45deg);
+}
+
+.modern-menu-trigger.is-active .hamburger-line:nth-child(2) {
+    width: 0%;
+    opacity: 0;
+}
+
+.modern-menu-trigger.is-active .hamburger-line:nth-child(3) {
+    top: 8px;
+    transform: rotate(-45deg);
+}
+
+/* 3. The Full Screen Overlay */
+.modern-mobile-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(251, 248, 246, 0.30);
+    /* 30% Opacity Base */
+    /* Translucent Opal Effect */
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 180px;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.05);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.modern-mobile-overlay.is-open {
+    opacity: 1;
+    pointer-events: all;
+    transform: scale(1);
+}
+
+/* 4. Menu Items */
+.mobile-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.mobile-nav-item {
+    margin: 3px 0;
+    /* Thin stripe gap */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    /* Striped Opal Effect */
+    background: rgba(251, 248, 246, 0.45);
+    /* More translucent (was 0.70) */
+    backdrop-filter: blur(10px);
+    padding: 20px 0;
+    width: 100%;
+    /* Full width strip */
+    border-radius: 0;
+}
+
+.modern-mobile-overlay.is-open .mobile-nav-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered Delay for Entrance */
+.modern-mobile-overlay.is-open .mobile-nav-item:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.modern-mobile-overlay.is-open .mobile-nav-item:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.modern-mobile-overlay.is-open .mobile-nav-item:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.modern-mobile-overlay.is-open .mobile-nav-item:nth-child(4) {
+    transition-delay: 0.25s;
+}
+
+.modern-mobile-overlay.is-open .mobile-nav-item:nth-child(5) {
+    transition-delay: 0.3s;
+}
+
+.modern-mobile-overlay.is-open .mobile-nav-item:nth-child(6) {
+    transition-delay: 0.35s;
+}
+
+/* Link Styles */
+.mobile-nav-link {
+    font-family: 'Roboto Slab', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: #6a523d;
+    text-decoration: none;
+    position: relative;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+    display: inline-block;
+}
+
+.mobile-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #6a523d;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+    color: #8d6d51;
+}
+
+.mobile-nav-link:hover::after,
+.mobile-nav-link.active::after {
+    width: 80%;
+}
+
+/* Optional: Decorative circle behind */
+.modern-mobile-overlay::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(189, 146, 109, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: -1;
+}

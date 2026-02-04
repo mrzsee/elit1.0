@@ -1,0 +1,75 @@
+/* Page Layout Colors - Based on User Request */
+
+/* 1. Zóna: Fejléc (Header) - Világos szürke / Off-white */
+section.s-hn,
+.header-section {
+    background-color: #FBF8F6 !important;
+    /* Unified Base Color */
+}
+
+/* 2. Zóna: Tartalom (Main Content) */
+section:not(.s-hn),
+.content-section,
+.wnd-page,
+body {
+    background-color: #FBF8F6 !important;
+    /* Unified Base Color */
+}
+
+/* Külön stílus a tartalom konténereknek a biztonság kedvéért */
+.s-w,
+.content-inner {
+    background-color: transparent;
+    /* Hogy átvegye a szülő (fehér) színét */
+}
+
+/* --- Global Card Animations (Desktop & Mobile) --- */
+
+/* 1. Service Cards (Homepage), Article Items (Subpages) & Gallery Items */
+.service-card,
+article.item .item-wrapper,
+.b-gal-item {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-radius: 12px;
+    /* Uniform look */
+}
+
+/* Hover Effect: Lift Up */
+.service-card:hover,
+article.item .item-wrapper:hover,
+.b-gal-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(106, 82, 61, 0.15);
+    /* Soft premium shadow */
+    z-index: 2;
+    position: relative;
+    background: rgba(255, 255, 255, 0.5);
+    /* Slight highlight */
+}
+
+/* 2. Image Zoom Effect */
+.service-image-wrapper,
+.item-media,
+.b-gal-img {
+    overflow: hidden !important;
+    /* Contain the zoom */
+    border-radius: 10px;
+    /* Ensure rounded images */
+    display: block;
+}
+
+.service-image,
+.item-media img,
+.b-gal-img-wrap img {
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    width: 100%;
+    transform-origin: center center;
+    display: block;
+}
+
+/* Zoom In on Hover */
+.service-card:hover .service-image,
+article.item .item-wrapper:hover .item-media img,
+.b-gal-item:hover .b-gal-img-wrap img {
+    transform: scale(1.05) !important;
+}

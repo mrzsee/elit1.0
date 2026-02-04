@@ -1,0 +1,484 @@
+/* Elit-Ingatlaniroda - Pixel Perfect Clone Style */
+
+:root {
+    --bg-cream: #FDFBF9;
+    --text-gold: #C5A065;
+    --text-gray: #777777;
+    --text-dark: #444444;
+    --border-color: #E0E0E0;
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    background-color: #FFFFFF;
+    color: var(--text-gray);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Header */
+.header {
+    background: #ffffff;
+    padding: 40px 0 25px;
+    text-align: center;
+    position: relative;
+    z-index: 100;
+}
+
+.logo-container {
+    margin-bottom: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-img {
+    width: 50px;
+    height: auto;
+    margin-bottom: 20px;
+    opacity: 0.7;
+    /* Picit halványabb az eredeti hatásért */
+}
+
+.logo-text {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text-gold);
+    letter-spacing: 1.5px;
+    position: relative;
+    padding: 0 60px;
+}
+
+.logo-text::before,
+.logo-text::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 1px;
+    background: #D8D8D8;
+}
+
+.logo-text::before {
+    left: 0;
+}
+
+.logo-text::after {
+    right: 0;
+}
+
+/* Navigation */
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    font-family: 'Roboto', sans-serif;
+    /* A menü sans-serif */
+    font-size: 13px;
+    font-weight: 400;
+    padding-top: 10px;
+}
+
+.nav-link {
+    color: #888888;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--text-gold);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    top: 30px;
+    right: 20px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 2px;
+    background: var(--text-gray);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 250px;
+    /* Pontosabb magasság */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a3a5c;
+    /* Fallback szín */
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center 30%;
+    /* Kicsit lejjebb igazítva */
+    z-index: 1;
+    opacity: 0.8;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(20, 40, 80, 0.4);
+    /* Kékes sötétítés */
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-style: italic;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Base Section */
+.section {
+    padding: 80px 20px;
+    max-width: 1140px;
+    /* Bootstrap standard szélesség */
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 34px;
+    color: var(--text-gold);
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.section-subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    color: #888;
+    max-width: 900px;
+    margin: 0 auto 60px;
+    line-height: 1.8;
+}
+
+/* Services (Icons) */
+.services-grid-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.service-icon-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Ikonok középre */
+}
+
+.gold-icon {
+    width: 60px;
+    /* Nagyobb ikon */
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 25px;
+    /* Szépia effekt az ikon aranyosításához */
+    filter: sepia(100%) saturate(200%) hue-rotate(10deg) brightness(0.9);
+    opacity: 0.8;
+}
+
+.service-icon-card h3 {
+    font-size: 18px;
+    color: var(--text-gold);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.service-icon-card p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #777;
+    line-height: 1.8;
+    text-align: justify;
+    /* Sorkizárt szöveg, ahogy a képen */
+    text-align-last: center;
+    /* De az utolsó sor középen */
+}
+
+/* About Text Section - Halvány háttér */
+.about-bg {
+    background-color: #F9F9F9;
+    /* Nagyon halvány szürke */
+    width: 100%;
+    max-width: 100%;
+    /* Teljes szélesség */
+}
+
+.about-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about-content p {
+    font-size: 18px;
+    font-weight: 300;
+    color: #C5A065;
+    /* Arany szöveg a "Rólunk" részben */
+    line-height: 1.9;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Services (Photos) */
+.services-grid-photos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.service-photo-card {
+    text-align: left;
+}
+
+.service-photo-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    /* Lekerekített sarkok */
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.service-photo-card h3 {
+    font-size: 20px;
+    color: var(--text-gold);
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.service-photo-card p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #888;
+    line-height: 1.7;
+}
+
+/* Properties Grid */
+.properties-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.property-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.property-card:hover {
+    transform: translateY(-5px);
+}
+
+.property-image {
+    height: 240px;
+    /* Magasabb képek */
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.property-title {
+    font-size: 17px;
+    color: var(--text-gold);
+    margin-bottom: 10px;
+    line-height: 1.4;
+    font-weight: 700;
+    padding: 0 5px;
+}
+
+.property-date {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #CCC;
+    font-style: italic;
+    margin-bottom: 10px;
+    padding: 0 5px;
+}
+
+.property-desc {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    color: #666;
+    padding: 0 5px;
+    line-height: 1.6;
+}
+
+/* Team Grid */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.team-card {
+    text-align: center;
+}
+
+.team-avatar {
+    width: 100px;
+    height: 100px;
+    background-color: #EEE;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #CCC;
+    border: 2px solid var(--text-gold);
+}
+
+.team-name {
+    font-size: 18px;
+    color: var(--text-gold);
+    margin-bottom: 5px;
+}
+
+.team-phone a {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Contact */
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.contact-item h3 {
+    color: var(--text-gold);
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.contact-item p,
+.contact-item a {
+    color: #666;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+
+/* Footer */
+.footer {
+    border-top: 1px solid #EEE;
+    text-align: center;
+    padding: 40px 0;
+    color: #AAA;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    background: #FDFBF9;
+}
+
+.footer a {
+    color: #AAA;
+    text-decoration: underline;
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+
+    .services-grid-icons,
+    .services-grid-photos,
+    .properties-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        padding-top: 20px;
+    }
+
+    .nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #fff;
+        padding-bottom: 20px;
+    }
+
+    .nav.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .services-grid-icons,
+    .services-grid-photos,
+    .properties-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .logo-text {
+        padding: 0 20px;
+        font-size: 24px;
+    }
+
+    .logo-text::before,
+    .logo-text::after {
+        width: 20px;
+    }
+}
