@@ -1,157 +1,347 @@
 title = "Kapcsolat"
 url = "/kapcsolat"
 layout = "default"
-body_class = "wt-page"
-id = "kapcsolat"
+body_class = "wt-contact-page"
 ==
-<section class="s s-hm s-hm-hidden wnd-h-hidden cf sc-w   hn-centered" style=""></section><section class="s s-basic cf sc-w wnd-w-wider wnd-s-higher wnd-h-auto wn-space-top">
-	<div class="s-w cf">
-		<div class="s-o s-fs cf">
-			<div class="s-bg cf">
-				<div class="s-bg-l">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&display=swap');
+
+    /* Global Styles for Contact Page */
+    .contact-page {
+        background-color: #FFFFFF;
+        font-family: 'Roboto', sans-serif;
+        color: #5D4037;
+        padding-bottom: 60px;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-up {
+        opacity: 0;
+        animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.5s; }
+    .delay-4 { animation-delay: 0.7s; }
+
+    /* Content Container */
+    .contact-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 60px 20px;
+    }
+
+    /* Header */
+    .contact-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .contact-header h1 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 39px;
+        color: #C5A065;
+        margin-bottom: 30px;
+        font-weight: 600;
+        font-style: italic;
+        line-height: 1.2;
+    }
+
+    .intro-text p {
+        font-size: 16px;
+        color: #8D6E63;
+        margin-bottom: 0;
+        text-align: left; 
+    }
+
+    /* Grid Layout */
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+    }
+
+    /* Left Column: Contact Info */
+    .info-list {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .info-item {
+        display: flex;
+        align-items: flex-start;
+        font-size: 16px;
+        transition: transform 0.4s ease, opacity 0.3s ease;
+        padding: 10px;
+        border-radius: 8px;
+    }
+    
+    .info-item:hover {
+        transform: translateX(10px);
+        background-color: rgba(197, 160, 101, 0.05); /* Subtle Gold Tint */
+    }
+
+    .info-icon {
+        width: 24px;
+        margin-right: 15px;
+        color: #C5A065;
+        flex-shrink: 0;
+        text-align: center;
+        margin-top: 3px;
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .info-item:hover .info-icon {
+        transform: scale(1.2);
+    }
+    
+    .info-icon svg {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+    }
+
+    .info-content h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: #C5A065;
+        margin: 0 0 5px;
+    }
+    
+    .info-content strong {
+        font-weight: 700;
+        color: #8D6E63;
+    }
+
+    .info-content p, .info-content div {
+        margin: 0;
+        color: #8D6E63;
+        line-height: 1.5;
+    }
+
+    .info-content a {
+        color: #8D6E63;
+        text-decoration: none;
+        position: relative;
+    }
+    
+    .info-content a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: -2px;
+        left: 0;
+        background-color: #C5A065;
+        transition: width 0.3s ease;
+    }
+    
+    .info-content a:hover {
+        color: #C5A065;
+    }
+
+    .info-content a:hover::after {
+        width: 100%;
+    }
+
+    /* Right Column: Form */
+    .contact-form {
+        margin-top: 50px;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+        position: relative;
+    }
+    
+    .form-label {
+        display: block;
+        font-weight: 700;
+        color: #8D6E63;
+        margin-bottom: 8px;
+        font-size: 14px;
+        transition: color 0.3s;
+    }
+    
+    .form-group:focus-within .form-label {
+        color: #C5A065;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #E0E0E0;
+        border-radius: 4px;
+        font-size: 16px;
+        font-family: 'Roboto', sans-serif;
+        background: #FFFFFF;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+        outline: none;
+        border-color: #C5A065;
+        box-shadow: 0 4px 15px rgba(197, 160, 101, 0.15);
+        transform: translateY(-2px);
+    }
+    
+    textarea.form-control {
+        resize: vertical;
+        min-height: 150px;
+    }
+
+    .btn-submit {
+        background: #6D4C41;
+        color: #FFFFFF;
+        border: none;
+        padding: 12px 35px;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 25px;
+        cursor: pointer;
+        font-family: 'Roboto', sans-serif;
+        margin-top: 10px;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 4px 10px rgba(109, 76, 65, 0.2);
+    }
+
+    .btn-submit:hover {
+        background: #5D4037;
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 8px 20px rgba(109, 76, 65, 0.3);
+    }
+    
+    .btn-submit:active {
+        transform: translateY(-1px);
+    }
+
+    /* Map Section */
+    .map-section {
+        margin-top: 80px;
+        height: 400px;
+        width: 100%;
+        border-top: 1px solid #EEE;
+        padding-top: 40px;
+    }
+
+    .map-section iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+        .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+    }
+</style>
+
+<div class="contact-page">
+    <div class="contact-container">
+        
+        <!-- Header -->
+        <header class="contact-header animate-fade-up">
+            <h1>Kedves Érdeklődő! Köszönjük, hogy felkerestél minket az Elit- Ingatlanban!</h1>
+        </header>
+
+        <!-- Grid -->
+        <div class="contact-grid">
+            
+            <!-- Left: Info -->
+            <div class="info-list animate-fade-up delay-2">
+                <!-- Address -->
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </div>
+                    <div class="info-content">
+                        <h3>Elit-Ingatlaniroda</h3>
+                        <strong>Kovács Alexandra</strong>
+                        <p>6721. Szeged, Arany János utca 9.</p>
+                    </div>
+                </div>
+
+                <!-- Phone -->
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2a15.05 15.05 0 0 1-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1.01A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 13.81 13.81 0 0 0 16 16c.55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
+                    </div>
+                    <div class="info-content">
+                        <h3>+36-70-304-6010</h3>
+                    </div>
+                </div>
+
+                <!-- Web/Email -->
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <div class="info-content">
+                        <p>elit-ingatlaniroda.hu</p>
+                    </div>
+                </div>
+
+                <!-- Facebook -->
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M18,5H15.5A3.5,3.5 0 0,0 12,8.5V11H10V14H12V21H15V14H18V11H15V9A1,1 0 0,1 16,8H18V5Z"/></svg>
+                    </div>
+                    <div class="info-content">
+                        <h3>@facebookoldal</h3>
+                        <p><a href="https://www.facebook.com/elitingatlaniroda/about/" target="_blank">https://www.facebook.com/elitingatlaniroda/about/</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Form -->
+            <div class="contact-form animate-fade-up delay-3">
+                <form action="https://www.elit-ingatlaniroda.hu/kapcsolat/" method="post">
                     
-					
-				</div>
-			</div>
-			<div class="s-c s-fs cf">
-				<div class="ez cf">
-	<div class="ez-c"><div class="b-sp b b-s cf wnd-hide-placeholder" style="margin-left:0%;margin-right:0%;">
-    <div class="b-sp-c" id="wnd_SpacingBlock_38426984_container" style="position:relative;padding-bottom:0.25%;">
-        <div class="b-sp-placeholder">
-            
+                    <!-- Empty Label Field (Name) -->
+                    <div class="form-group">
+                        <input type="text" name="wnd_ShortTextField_588996599" id="field-wnd_ShortTextField_588996599" class="form-control" required maxlength="150" placeholder="">
+                    </div>
+                    
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label class="form-label" for="field-wnd_EmailField_454624632">E-mail</label>
+                        <input type="email" name="wnd_EmailField_454624632" id="field-wnd_EmailField_454624632" class="form-control" required value="@" maxlength="255">
+                    </div>
+
+                    <!-- Message -->
+                    <div class="form-group">
+                        <label class="form-label" for="field-wnd_LongTextField_760365836">Üzenet</label>
+                        <textarea name="wnd_LongTextField_760365836" id="field-wnd_LongTextField_760365836" class="form-control" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit" name="send" value="wnd_FormBlock_497377531">Küldés</button>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- Map -->
+        <div class="map-section animate-fade-up delay-4">
+             <iframe src="{{ 'assets/embed.html'|theme }}" loading="lazy"></iframe>
         </div>
     </div>
-</div><div class="b b-text cf">
-	<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf"><h1><strong>Kapcsolat</strong></h1>
 </div>
-</div><div class="cw cf">
-	<div class="cw-c cf"><div class="c cf" style="width:36.799%;">
-	<div class="c-c cf"><div class="b b-text cf">
-	<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf"><p>Kedves Érdeklődő! Köszönjük, hogy felkerestél minket az Elit- Ingatlanban!</p>
-</div>
-</div><div class="b-sp b b-s cf wnd-hide-placeholder" style="margin-left:0%;margin-right:0%;">
-    <div class="b-sp-c" id="wnd_SpacingBlock_342822009_container" style="position:relative;padding-bottom:0%;">
-        <div class="b-sp-placeholder">
-            
-        </div>
-    </div>
-</div><div class="mt mt-contact img-s-s b-s b-s-50 cf default">
-    <div class="mt-container">
-        <div class="mt-item cf">
-	        <div class="b-img b-img-default b b-s cf wnd-orientation-portrait wnd-type-icon" style="" id="wnd_ImageBlock_911409787">
-	<div class="b-img-w">
-		<div class="b-img-c">
-            
-			<embed id="wnd_ImageBlock_911409787_img" alt="" style="" data-src="https://duyn491kcolsw.cloudfront.net/files/0p/0p7/0p7qql.svg?ph=fafb40d1ca" type="image/svg+xml" src="https://duyn491kcolsw.cloudfront.net/files/0p/0p7/0p7qql.svg?ph=fafb40d1ca&amp;border=caa88a&amp;outline=b07d50&amp;color=bd926d">
-		<script>checkAndChangeSvgColor('wnd_ImageBlock_911409787_img');</script></div>
-		
-	</div>
-</div>
-	        <div class="b b-text cf">
-	<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf"><h3><strong>Elit-Ingatlaniroda</strong></h3><div><strong>Kovács Alexandra</strong></div>
-
-<p>6721. Szeged, Arany János utca 9.</p>
-</div>
-</div>
-        </div><div class="mt-item cf">
-	        <div class="b-img b-img-default b b-s cf wnd-orientation-square wnd-type-icon" style="" id="wnd_ImageBlock_904174628">
-	<div class="b-img-w">
-		<div class="b-img-c">
-            
-			<embed id="wnd_ImageBlock_904174628_img" alt="" style="" data-src="https://duyn491kcolsw.cloudfront.net/files/36/36l/36lve3.svg?ph=fafb40d1ca" type="image/svg+xml" src="https://duyn491kcolsw.cloudfront.net/files/36/36l/36lve3.svg?ph=fafb40d1ca&amp;border=caa88a&amp;outline=b07d50&amp;color=bd926d">
-		<script>checkAndChangeSvgColor('wnd_ImageBlock_904174628_img');</script></div>
-		
-	</div>
-</div>
-	        <div class="b b-text cf">
-	<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf"><h3><strong>+36-70-304-6010</strong></h3>
-</div>
-</div>
-        </div><div class="mt-item cf">
-	        <div class="b-img b-img-default b b-s cf wnd-orientation-landscape wnd-type-icon" style="" id="wnd_ImageBlock_446773057">
-	<div class="b-img-w">
-		<div class="b-img-c">
-            
-			<embed id="wnd_ImageBlock_446773057_img" alt="" style="" data-src="https://duyn491kcolsw.cloudfront.net/files/3z/3z2/3z2m9w.svg?ph=fafb40d1ca" type="image/svg+xml" src="https://duyn491kcolsw.cloudfront.net/files/3z/3z2/3z2m9w.svg?ph=fafb40d1ca&amp;border=caa88a&amp;outline=b07d50&amp;color=bd926d">
-		<script>checkAndChangeSvgColor('wnd_ImageBlock_446773057_img');</script></div>
-		
-	</div>
-</div>
-	        <div class="b b-text cf">
-	<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf"><p>elit-ingatlaniroda.hu</p></div>
-</div>
-        </div><div class="mt-item cf">
-	        <div class="b-img b-img-default b b-s cf wnd-orientation-portrait wnd-type-icon" style="" id="wnd_ImageBlock_198892250">
-	<div class="b-img-w">
-		<div class="b-img-c">
-            
-			<embed id="wnd_ImageBlock_198892250_img" alt="" style="" data-src="https://duyn491kcolsw.cloudfront.net/files/0c/0c2/0c2b5m.svg?ph=fafb40d1ca" type="image/svg+xml" src="https://duyn491kcolsw.cloudfront.net/files/0c/0c2/0c2b5m.svg?ph=fafb40d1ca&amp;border=caa88a&amp;outline=b07d50&amp;color=bd926d">
-		<script>checkAndChangeSvgColor('wnd_ImageBlock_198892250_img');</script></div>
-		
-	</div>
-</div>
-	        <div class="b b-text cf">
-	<div class="b-c b-text-c b-s b-s-t60 b-s-b60 b-cs cf"><h3><strong>@facebookoldal</strong></h3><div><strong>https://www.facebook.com/elitingatlaniroda/about/</strong></div>
-</div>
-</div>
-        </div>
-    </div>
-</div></div>
-</div><div class="c cf" style="width:5%;">
-	<div class="c-c cf"><div class="b-sp b b-s cf wnd-hide-placeholder" style="margin-left:0%;margin-right:0%;">
-    <div class="b-sp-c" id="wnd_SpacingBlock_245078941_container" style="position:relative;padding-bottom:150%;">
-        <div class="b-sp-placeholder">
-            
-        </div>
-    </div>
-</div></div>
-</div><div class="c cf" style="width:58.201%;">
-	<div class="c-c cf"><div class="form b b-s b-form-default f-rh-normal f-rg-normal f-br-all rounded cf labels-top">
-	<form action="https://www.elit-ingatlaniroda.hu/kapcsolat/" method="post">
-
-		<fieldset class="form-fieldset">
-			<div><div class="form-input form-text cf wnd-form-field wnd-required">
-	<label for="field-wnd_ShortTextField_588996599"><span class="it b link">
-	<span class="it-c"></span>
-</span></label>
-	<input id="field-wnd_ShortTextField_588996599" name="wnd_ShortTextField_588996599" required="" value="" type="text" maxlength="150">
-</div><div class="form-input form-email cf wnd-form-field wnd-required">
-	<label for="field-wnd_EmailField_454624632"><span class="it b link">
-	<span class="it-c">E-mail</span>
-</span></label>
-	<input id="field-wnd_EmailField_454624632" name="wnd_EmailField_454624632" required="" value="@" type="email" maxlength="255">
-</div><div class="form-input form-textarea cf wnd-form-field wnd-required">
-	<label for="field-wnd_LongTextField_760365836"><span class="it b link">
-	<span class="it-c">Üzenet</span>
-</span></label>
-	<textarea rows="5" id="field-wnd_LongTextField_760365836" name="wnd_LongTextField_760365836" required=""></textarea>
-</div></div>
-		</fieldset>
-
-		
-
-		<div class="form-submit b-btn cf b-btn-fs b-btn-1">
-			<button class="b-btn-l" type="submit" name="send" value="wnd_FormBlock_497377531">
-				<span class="form-submit-text b-btn-t">Küldés</span>
-			</button>
-		</div>
-
-	</form>
-
-    
-
-    
-</div></div>
-</div></div>
-</div><div class="b b-s b-hr-line line-auto">
-    <hr class="line-style line-color">
-</div><div class="b b-map b-s" style="margin-left:0%;margin-right:0%;">
-	<div class="b-c" id="wnd_MapBlock_167633661_container" style="position:relative;padding-bottom:31.67%;">
-		<iframe src="{{ 'assets/embed.html'|theme }}" style="position:absolute;top:0%;left:0%;width:100%;height:100%;" loading="lazy"></iframe>
-	</div>
-</div></div>
-</div>
-			</div>
-		</div>
-	</div>
-</section>

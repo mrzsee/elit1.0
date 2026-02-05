@@ -1,0 +1,363 @@
+title = "Kiadó Ingatlan Részletek"
+url = "/kiado-ingatlanok/reszletek/:id"
+layout = "default"
+body_class = "wt-property-detail"
+==
+<?php
+function onStart() {
+    $id = $this->param('id');
+    
+    // Data for rental properties
+    $properties = [
+        1 => [
+            'id' => 1,
+            'title' => 'Kiadó irodák Szegeden, a Fonógyári úton!',
+            'date' => '2025.08.14',
+            'type' => 'Iroda',
+            'location' => 'Szeged, Fonógyári út',
+            'price' => '4,5 €/m²/hó + rezsi',
+            'description' => '
+                <p>Kiváló elhelyezkedésű, világos irodák bérelhetők modern környezetben, rugalmas kialakítási lehetőségekkel. Ideális választás cégeknek, vállalkozásoknak, akik költséghatékony, mégis professzionális irodát keresnek.</p>
+                <br>
+                <p>I. emeleten: • 1 db 41 m² alapterületű, önálló irodahelyiség • Bérleti díj: 4,5 €/m²/hó + 2,5 €/m²/hó rezsi + ÁFA</p>
+                <p>II. emeleten: • 10–55 m² közötti, több irodahelyiség • Összenyitható irodák, ideális nagyobb területigény esetén is • Bérleti díj: 4,5 €/m²/hó + 2,5 €/m²/hó rezsi + ÁFA</p>
+                <p>Jó megközelíthetőség – könnyű parkolási lehetőséggel, Rugalmas elrendezés – testreszabható irodakialakítás, Világos, tágas terek – kényelmes munkakörnyezet Költséghatékony üzemeltetés – alacsony rezsiköltségek.</p>
+                <br>
+                <p>Elit-Ingatlaniroda Kopasz Leonóra +36709419937</p>
+            ',
+            'gallery' => [
+                'assets/kiado_irodak/img1.jpeg',
+                'assets/kiado_irodak/img2.jpeg',
+                'assets/kiado_irodak/img3.jpeg',
+                'assets/kiado_irodak/img4.jpeg',
+                'assets/kiado_irodak/img5.jpeg',
+                'assets/kiado_irodak/img6.jpeg',
+                'assets/kiado_irodak/img7.jpeg',
+                'assets/kiado_irodak/img8.jpeg',
+                'assets/kiado_irodak/img9.jpeg',
+                'assets/kiado_irodak/img10.jpeg',
+                'assets/kiado_irodak/img11.jpeg',
+                'assets/kiado_irodak/img12.jpeg',
+                'assets/kiado_irodak/img13.jpeg',
+                'assets/kiado_irodak/img14.jpeg',
+                'assets/kiado_irodak/img15.jpeg',
+                'assets/kiado_irodak/img16.jpeg',
+                'assets/kiado_irodak/img17.jpeg',
+                'assets/kiado_irodak/img18.jpeg',
+                'assets/kiado_irodak/img19.jpeg',
+                'assets/kiado_irodak/img20.jpeg',
+                'assets/kiado_irodak/img21.jpeg'
+            ]
+        ]
+    ];
+    
+    // Get property by ID
+    $this['property'] = $properties[$id] ?? $properties[1];
+}
+?>
+==
+<style>
+    /* Global Styles */
+    body {
+        background: #FFFFFF;
+        font-family: 'Roboto', sans-serif;
+    }
+    
+    /* Content Container */
+    .property-content {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 50px 20px;
+    }
+    
+    /* Header */
+    .property-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    
+    .property-header h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 42px;
+        color: #C5A065;
+        font-weight: 400;
+        margin-bottom: 15px;
+        line-height: 1.2;
+    }
+    
+    .property-date {
+        font-family: 'Playfair Display', serif;
+        color: #E6B8B8;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 15px;
+    }
+    
+    /* Description */
+    .property-description {
+        margin-bottom: 60px;
+        color: #8D6E63;
+        font-size: 16px;
+        line-height: 1.6;
+        text-align: left;
+        font-weight: 400;
+    }
+    
+    .property-description p {
+        margin-bottom: 0;
+    }
+    
+    .property-description strong {
+        color: #8D6E63;
+        font-weight: 600;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-top: 40px;
+        padding-bottom: 40px;
+    }
+    
+    .gallery-item {
+        aspect-ratio: 4/3;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+    
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+    
+    .gallery-item:hover {
+        transform: translateY(-5px);
+    }
+    
+    .gallery-item:hover img {
+        transform: scale(1.1);
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 1024px) {
+        .gallery-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .gallery-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .property-header h1 {
+            font-size: 26px;
+        }
+    }
+    
+    /* Lightbox Styles */
+    .lightbox-close:hover {
+        background: rgba(0, 0, 0, 0.8) !important;
+        transform: scale(1.1);
+    }
+    
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+        background: rgba(0, 0, 0, 0.7) !important;
+        transform: translateY(-50%) scale(1.1);
+    }
+    
+    #lightbox-img {
+        transition: opacity 0.3s ease;
+    }
+    
+    .lightbox-thumbnails::-webkit-scrollbar {
+        height: 6px;
+    }
+    
+    .lightbox-thumbnails::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+    }
+    
+    .lightbox-thumbnails::-webkit-scrollbar-thumb {
+        background: rgba(197, 160, 101, 0.8);
+        border-radius: 3px;
+    }
+    
+    .lightbox-thumbnails::-webkit-scrollbar-thumb:hover {
+        background: rgba(197, 160, 101, 1);
+    }
+    
+    /* Hide header/menu when lightbox is open */
+    body.lightbox-active header,
+    body.lightbox-active .header,
+    body.lightbox-active .wnd-header,
+    body.lightbox-active .wnd-menu-btn,
+    body.lightbox-active nav {
+        z-index: -1 !important;
+    }
+</style>
+
+<section class="s s-basic cf sc-w wnd-w-wider wnd-s-higher wnd-h-auto wn-space-top">
+    <div class="s-w cf">
+        <div class="s-o s-fs cf">
+            <div class="s-c s-fs cf">
+                <div class="ez cf wnd-no-cols">
+                    <div class="ez-c">
+                        <div class="property-content">
+                            <!-- Header (Title & Date) -->
+                            <div class="property-header">
+                                <h1>{{ property.title }}</h1>
+                                <div class="property-date">{{ property.date }}</div>
+                            </div>
+                            
+                            <!-- Description (Single Block) -->
+                            <div class="property-description">
+                                {{ property.description|raw }}
+                            </div>
+                            
+                            <!-- Gallery -->
+                            <div class="property-gallery">
+                                <div class="gallery-grid">
+                                    {% for img in property.gallery %}
+                                    <div class="gallery-item" onclick="openLightbox({{ loop.index0 }})">
+                                        <img src="{{ img|theme }}" alt="{{ property.title }}" loading="lazy">
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                
+                                <!-- Lightbox Modal -->
+                                <div id="lightbox-modal" class="lightbox-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(245, 240, 235, 0.96); z-index: 99999; align-items: center; justify-content: center;">
+                                    <!-- Close Button -->
+                                    <button onclick="closeLightbox()" class="lightbox-close" style="position: absolute; top: 90px; right: 24px; background: rgba(0, 0, 0, 0.6); border: none; color: white; font-size: 40px; cursor: pointer; z-index: 10001; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; transition: all 0.3s; border-radius: 50%;">
+                                        ×
+                                    </button>
+                                    
+                                    <!-- Previous Button -->
+                                    <button onclick="changeImage(-1)" class="lightbox-prev" style="position: absolute; left: 30px; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.5); border: none; color: white; font-size: 30px; cursor: pointer; z-index: 10001; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s;">
+                                        ‹
+                                    </button>
+                                    
+                                    <!-- Image Container -->
+                                    <div style="max-width: 90%; max-height: 85%; display: flex; align-items: center; justify-content: center;">
+                                        <img id="lightbox-img" src="" alt="Property Image" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 8px 32px rgba(0,0,0,0.3);">
+                                    </div>
+                                    
+                                    <!-- Next Button -->
+                                    <button onclick="changeImage(1)" class="lightbox-next" style="position: absolute; right: 30px; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.5); border: none; color: white; font-size: 30px; cursor: pointer; z-index: 10001; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s;">
+                                        ›
+                                    </button>
+                                    
+                                    <!-- Thumbnail Strip -->
+                                    <div class="lightbox-thumbnails" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; overflow-x: auto; max-width: 90%; padding: 10px; background: rgba(250, 245, 240, 0.95); border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                                        {% for img in property.gallery %}
+                                        <img src="{{ img|theme }}" alt="Thumbnail {{ loop.index }}" class="lightbox-thumb" data-index="{{ loop.index0 }}" onclick="openLightbox({{ loop.index0 }})" style="width: 80px; height: 60px; object-fit: cover; cursor: pointer; border-radius: 4px; opacity: 0.6; transition: opacity 0.3s, transform 0.3s; border: 2px solid transparent;">
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                
+                                <script>
+                                    let currentImageIndex = 0;
+                                    const galleryImages = [
+                                        {% for img in property.gallery %}
+                                        "{{ img|theme }}"{% if not loop.last %},{% endif %}
+                                        {% endfor %}
+                                    ];
+                                    
+                                    function openLightbox(index) {
+                                        currentImageIndex = index;
+                                        const modal = document.getElementById('lightbox-modal');
+                                        const img = document.getElementById('lightbox-img');
+                                        
+                                        img.src = galleryImages[currentImageIndex];
+                                        modal.style.display = 'flex';
+                                        document.body.style.overflow = 'hidden';
+                                        
+                                        // Add class to body to hide header/menu via CSS
+                                        document.body.classList.add('lightbox-active');
+                                        
+                                        updateThumbnails();
+                                    }
+                                    
+                                    function closeLightbox() {
+                                        const modal = document.getElementById('lightbox-modal');
+                                        modal.style.display = 'none';
+                                        document.body.style.overflow = 'auto';
+                                        
+                                        // Remove class from body to show header/menu again
+                                        document.body.classList.remove('lightbox-active');
+                                    }
+                                    
+                                    function changeImage(direction) {
+                                        currentImageIndex += direction;
+                                        
+                                        if (currentImageIndex < 0) {
+                                            currentImageIndex = galleryImages.length - 1;
+                                        } else if (currentImageIndex >= galleryImages.length) {
+                                            currentImageIndex = 0;
+                                        }
+                                        
+                                        const img = document.getElementById('lightbox-img');
+                                        img.style.opacity = '0';
+                                        
+                                        setTimeout(() => {
+                                            img.src = galleryImages[currentImageIndex];
+                                            img.style.opacity = '1';
+                                            updateThumbnails();
+                                        }, 150);
+                                    }
+                                    
+                                    function updateThumbnails() {
+                                        const thumbnails = document.querySelectorAll('.lightbox-thumb');
+                                        thumbnails.forEach((thumb, index) => {
+                                            if (index === currentImageIndex) {
+                                                thumb.style.opacity = '1';
+                                                thumb.style.border = '2px solid #C5A065';
+                                                thumb.style.transform = 'scale(1.1)';
+                                                thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                                            } else {
+                                                thumb.style.opacity = '0.6';
+                                                thumb.style.border = '2px solid transparent';
+                                                thumb.style.transform = 'scale(1)';
+                                            }
+                                        });
+                                    }
+                                    
+                                    // Keyboard navigation
+                                    document.addEventListener('keydown', function(e) {
+                                        const modal = document.getElementById('lightbox-modal');
+                                        if (modal.style.display === 'flex') {
+                                            if (e.key === 'ArrowLeft') {
+                                                changeImage(-1);
+                                            } else if (e.key === 'ArrowRight') {
+                                                changeImage(1);
+                                            } else if (e.key === 'Escape') {
+                                                closeLightbox();
+                                            }
+                                        }
+                                    });
+                                    
+                                    // Click outside to close
+                                    document.getElementById('lightbox-modal').addEventListener('click', function(e) {
+                                        if (e.target === this) {
+                                            closeLightbox();
+                                        }
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
