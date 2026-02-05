@@ -183,7 +183,7 @@ body_class = "wt-contact-page"
     }
 
     .form-control {
-        width: 100%;
+        width: 80%;
         padding: 12px 15px;
         border: 1px solid #E0E0E0;
         border-radius: 4px;
@@ -251,6 +251,12 @@ body_class = "wt-contact-page"
         .contact-grid {
             grid-template-columns: 1fr;
             gap: 40px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .contact-container {
+            padding: 40px 30px;
         }
     }
 </style>
@@ -341,7 +347,7 @@ body_class = "wt-contact-page"
 
         <!-- Map -->
         <div class="map-section animate-fade-up delay-4">
-             <iframe src="{{ 'assets/embed.html'|theme }}" loading="lazy"></iframe>
+             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2729.80525622144!2d20.149714976767667!3d46.255747080413005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47448872a93fe7bd%3A0xd664239e9ecafb7!2sArany%20J%C3%A1nos%20u.%209%2C%206720!5e0!3m2!1sen!2shu!4v1738789531121!5m2!1sen!2shu" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
 </div>
