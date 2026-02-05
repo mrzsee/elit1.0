@@ -80,59 +80,159 @@ description = "Default layout"
     </div>
 
     <!-- Cookie Bar -->
-    <section class="cb cb-dark" id="cookiebar" style="display:none;">
-        <div class="cb-bar cb-scrollable">
-            <div class="cb-bar-c">
-                <div class="cb-bar-text">Sütiket használunk, hogy biztosítsuk a weboldal megfelelő működését és biztonságát, valamint hogy a lehető legjobb felhasználói élményt kínáljuk Neked.</div>
-                <div class="cb-bar-buttons">
-                    <button class="cb-button cb-close-basic" data-action="accept-necessary">
-                        <span class="cb-button-content">Csak a legszükségesebbek elfogadása</span>
-                    </button>
-                    <button class="cb-button cb-close-basic" data-action="accept-all">
-                        <span class="cb-button-content">Összes elfogadása</span>
-                    </button>
-                </div>
+    <!-- Advanced Cookie Consent System -->
+    <!-- Main Banner -->
+    <div id="app-consent-ui" style="position: fixed; bottom: 0; left: 0; width: 100%; background: #1a1a1a; color: #fff; padding: 25px 20px; z-index: 99998; display: none; box-shadow: 0 -5px 25px rgba(0,0,0,0.5); font-family: 'Roboto', sans-serif; border-top: 3px solid #C5A065;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px;">
+            <div style="font-size: 15px; line-height: 1.6; flex: 1; color: #e0e0e0; min-width: 280px;">
+                <strong>Adatvédelmi beállítások</strong><br>
+                Sütiket használunk a felhasználói élmény javítása, a weboldal biztonsága és a személyre szabott marketing érdekében. Választhatja az "Összes elfogadása" opciót, vagy testreszabhatja preferenciáit a "Beállítások" gombra kattintva.
             </div>
-            <div class="cb-close cb-close-basic" data-action="accept-necessary"></div>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <button id="btn-settings" style="background: transparent; color: #C5A065; border: 1px solid #C5A065; padding: 10px 20px; font-weight: 600; cursor: pointer; border-radius: 4px; font-size: 14px; text-transform: uppercase; transition: all 0.3s;">
+                    Beállítások
+                </button>
+                <button id="btn-accept-all" style="background: #C5A065; color: #fff; border: none; padding: 10px 30px; font-weight: 600; cursor: pointer; border-radius: 4px; font-size: 14px; text-transform: uppercase; box-shadow: 0 4px 6px rgba(0,0,0,0.2); transition: all 0.3s;">
+                    Összes elfogadása
+                </button>
+            </div>
         </div>
-        <div class="cb-popup cb-light close">
-            <div class="cb-popup-c">
-                <div class="cb-popup-head">
-                    <h3 class="cb-popup-title">Haladó beállítások</h3>
-                    <p class="cb-popup-text">Itt testreszabhatod a süti beállításokat. Engedélyezd vagy tiltsd le a következő kategóriákat, és mentsd el a módosításokat.</p>
-                </div>
-                <div class="cb-popup-options cb-scrollable">
-                    <div class="cb-option">
-                        <input class="cb-option-input" type="checkbox" id="necessary" name="necessary" readonly="readonly" disabled="disabled" checked="checked">
-                        <div class="cb-option-checkbox"></div>
-                        <label class="cb-option-label" for="necessary">Szükséges sütik</label>
-                        <div class="cb-option-text">Az alapvető sütik elengedhetetlenek weboldal biztonságos és helyes működéséhez, valamint a regisztrációs folyamathoz.</div>
-                    </div><div class="cb-option">
-                        <input class="cb-option-input" type="checkbox" id="functional" name="functional">
-                        <div class="cb-option-checkbox"></div>
-                        <label class="cb-option-label" for="functional">Funkcionális sütik</label>
-                        <div class="cb-option-text">A funkcionális sütik megjegyzik a weboldallal kapcsolatos preferenciákat és lehetővé teszik annak testreszabását.</div>
-                    </div><div class="cb-option">
-                        <input class="cb-option-input" type="checkbox" id="performance" name="performance">
-                        <div class="cb-option-checkbox"></div>
-                        <label class="cb-option-label" for="performance">Teljesítmény sütik</label>
-                        <div class="cb-option-text">A teljesítmény sütik figyelik a weboldal teljesítményét.</div>
-                    </div><div class="cb-option">
-                        <input class="cb-option-input" type="checkbox" id="marketing" name="marketing">
-                        <div class="cb-option-checkbox"></div>
-                        <label class="cb-option-label" for="marketing">Marketing/harmadik féltől származó sütik</label>
-                        <div class="cb-option-text">A marketing sütik lehetővé teszik, hogy mérjük és elemezzük weboldalunk teljesítményét.</div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="cookie-modal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px);">
+        <div style="background: #212121; width: 90%; max-width: 600px; max-height: 90vh; overflow-y: auto; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); border: 1px solid #333;">
+            
+            <!-- Modal Header -->
+            <div style="padding: 20px 30px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: #C5A065; margin: 0; font-family: 'Playfair Display', serif; font-size: 24px;">Süti beállítások</h3>
+                <button id="btn-close-modal" style="background: none; border: none; color: #fff; font-size: 24px; cursor: pointer;">&times;</button>
+            </div>
+
+            <!-- Modal Body -->
+            <div style="padding: 30px;">
+                <p style="color: #ccc; font-size: 14px; margin-bottom: 30px; line-height: 1.6;">
+                    Itt dönthet arról, hogy mely süti kategóriákat engedélyezi. A "Szükséges" sütik elengedhetetlenek az oldal működéséhez.
+                </p>
+
+                <!-- Toggle Item: Necessary -->
+                <div style="display: flex; justify-content: space-between; margin-bottom: 25px; align-items: center;">
+                    <div style="padding-right: 20px;">
+                        <div style="color: #fff; font-weight: 700; margin-bottom: 5px;">Szükséges munkamenet sütik</div>
+                        <div style="color: #888; font-size: 12px;">Az oldal alapvető működéséhez szükségesek. Nem kapcsolhatók ki.</div>
+                    </div>
+                    <div>
+                        <input type="checkbox" checked disabled style="transform: scale(1.5); accent-color: #666; cursor: not-allowed;">
                     </div>
                 </div>
-                <div class="cb-popup-footer">
-                    <button class="cb-button cb-save-popup" data-action="advanced-save">
-                        <span class="cb-button-content">Mentés</span>
-                    </button>
+
+                <!-- Toggle Item: Analytics -->
+                <div style="display: flex; justify-content: space-between; margin-bottom: 25px; align-items: center;">
+                    <div style="padding-right: 20px;">
+                        <div style="color: #fff; font-weight: 700; margin-bottom: 5px;">Statisztikai sütik</div>
+                        <div style="color: #888; font-size: 12px;">Segítenek megérteni látogatóink viselkedését névtelen adatok gyűjtésével.</div>
+                    </div>
+                    <label class="switch" style="position: relative; display: inline-block; width: 50px; height: 26px;">
+                        <input type="checkbox" id="chk-analytics" style="opacity: 0; width: 0; height: 0;">
+                        <span class="slider" style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #444; transition: .4s; border-radius: 34px;"></span>
+                        <span class="slider-before" style="position: absolute; content: ''; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%;"></span>
+                    </label>
                 </div>
-                <div class="cb-close cb-close-popup" data-action="close"></div>
+
+                <!-- Toggle Item: Marketing -->
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px; align-items: center;">
+                    <div style="padding-right: 20px;">
+                        <div style="color: #fff; font-weight: 700; margin-bottom: 5px;">Marketing sütik</div>
+                        <div style="color: #888; font-size: 12px;">Releváns hirdetések megjelenítésére szolgálnak a böngészés során.</div>
+                    </div>
+                    <label class="switch" style="position: relative; display: inline-block; width: 50px; height: 26px;">
+                        <input type="checkbox" id="chk-marketing" style="opacity: 0; width: 0; height: 0;">
+                        <span class="slider" style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #444; transition: .4s; border-radius: 34px;"></span>
+                        <span class="slider-before" style="position: absolute; content: ''; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%;"></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div style="padding: 20px 30px; background: #1a1a1a; border-top: 1px solid #333; text-align: right;">
+                <button id="btn-save-selection" style="background: #C5A065; color: #fff; border: none; padding: 12px 25px; font-weight: 600; cursor: pointer; border-radius: 4px; font-size: 14px; text-transform: uppercase;">
+                    Kiválasztottak mentése
+                </button>
             </div>
         </div>
-    </section>
+    </div>
+
+    <!-- Toggle Switch Styling Script Inject -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // CSS Injection for Switches (to keep HTML clean)
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .switch input:checked + .slider { background-color: #C5A065 !important; }
+            .switch input:focus + .slider { box-shadow: 0 0 1px #C5A065; }
+            .switch input:checked + .slider .slider-before, 
+            .switch input:checked + .slider + .slider-before { transform: translateX(24px); }
+            /* Fix for slider before element manually since CSS sibling selector is tricky with span structure above */
+            .slider-before { pointer-events: none; }
+        `;
+        document.head.appendChild(style);
+
+        // Fix slider logic JS-side to avoid complex CSS in replacement
+        document.querySelectorAll('.switch input').forEach(input => {
+            input.addEventListener('change', function() {
+                const sliderBefore = this.parentElement.querySelector('.slider-before');
+                if(this.checked) {
+                    sliderBefore.style.transform = 'translateX(24px)';
+                    this.parentElement.querySelector('.slider').style.backgroundColor = '#C5A065';
+                } else {
+                    sliderBefore.style.transform = 'translateX(0)';
+                    this.parentElement.querySelector('.slider').style.backgroundColor = '#444';
+                }
+            });
+        });
+
+        const banner = document.getElementById('app-consent-ui');
+        const modal = document.getElementById('cookie-modal');
+        
+        // Check Consent
+        if (!localStorage.getItem('cookieConsent')) {
+            setTimeout(() => { if(banner) banner.style.display = 'block'; }, 1000);
+        }
+
+        // Open Settings
+        document.getElementById('btn-settings').addEventListener('click', () => {
+             modal.style.display = 'flex';
+        });
+
+        // Close Modal
+        document.getElementById('btn-close-modal').addEventListener('click', () => {
+             modal.style.display = 'none';
+        });
+
+        // Accept All
+        document.getElementById('btn-accept-all').addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'true');
+            localStorage.setItem('cookieConsent_analytics', 'true');
+            localStorage.setItem('cookieConsent_marketing', 'true');
+            banner.style.display = 'none';
+            modal.style.display = 'none';
+        });
+
+        // Save Selection
+        document.getElementById('btn-save-selection').addEventListener('click', () => {
+            const analytics = document.getElementById('chk-analytics').checked;
+            const marketing = document.getElementById('chk-marketing').checked;
+            
+            localStorage.setItem('cookieConsent', 'true');
+            localStorage.setItem('cookieConsent_analytics', analytics);
+            localStorage.setItem('cookieConsent_marketing', marketing);
+            
+            banner.style.display = 'none';
+            modal.style.display = 'none';
+        });
+    });
+    </script>
 
     <script src="{{ 'assets/3eml8v.js'|theme }}" crossorigin="anonymous" type="module"></script>
     <script>document.querySelector(".wnd-fe")&&[...document.querySelectorAll(".c")].forEach((e=>{const t=e.querySelector(".b-text:only-child");t&&""===t.querySelector(".b-text-c").innerText&&e.classList.add("column-empty")}))</script>
