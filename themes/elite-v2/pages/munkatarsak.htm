@@ -152,18 +152,26 @@ function onStart() {
     }
 
     @media (max-width: 767px) {
+        .team-container {
+            padding-top: 110px; /* Push content down on mobile */
+        }
         .item-wrapper {
             flex-direction: column !important;
         }
+
         .item-media {
             width: 100%;
-            height: 300px; /* Fixed height on mobile */
+            height: 450px; /* Increased height for full portrait */
+        }
+        .item-media img {
+            object-position: top center; /* Anchor to top to keep heads visible */
         }
         .team-item {
             margin-bottom: 40px;
         }
     }
 </style>
+
 
 <section class="team-section">
     <div class="team-container">

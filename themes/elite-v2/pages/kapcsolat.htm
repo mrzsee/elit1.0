@@ -3,270 +3,15 @@ url = "/kapcsolat"
 layout = "default"
 body_class = "wt-contact-page"
 ==
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&display=swap');
+<link rel="stylesheet" href="{{ 'assets/css/contact-section.css'|theme }}?v=2">
 
-    /* Global Styles for Contact Page */
-    .contact-page {
-        background-color: #FFFFFF;
-        font-family: 'Roboto', sans-serif;
-        color: #5D4037;
-        padding-bottom: 60px;
-    }
-
-    /* Animations */
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .animate-fade-up {
-        opacity: 0;
-        animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.3s; }
-    .delay-3 { animation-delay: 0.5s; }
-    .delay-4 { animation-delay: 0.7s; }
-
-    /* Content Container */
-    .contact-container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 60px 20px;
-    }
-
-    /* Header */
-    .contact-header {
-        text-align: center;
-        margin-bottom: 60px;
-    }
-
-    .contact-header h1 {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 39px;
-        color: #C5A065;
-        margin-bottom: 30px;
-        font-weight: 600;
-        font-style: italic;
-        line-height: 1.2;
-    }
-
-    .intro-text p {
-        font-size: 16px;
-        color: #8D6E63;
-        margin-bottom: 0;
-        text-align: left; 
-    }
-
-    /* Grid Layout */
-    .contact-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
-        align-items: start;
-    }
-
-    /* Left Column: Contact Info */
-    .info-list {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    .info-item {
-        display: flex;
-        align-items: flex-start;
-        font-size: 16px;
-        transition: transform 0.4s ease, opacity 0.3s ease;
-        padding: 10px;
-        border-radius: 8px;
-    }
-    
-    .info-item:hover {
-        transform: translateX(10px);
-        background-color: rgba(197, 160, 101, 0.05); /* Subtle Gold Tint */
-    }
-
-    .info-icon {
-        width: 24px;
-        margin-right: 15px;
-        color: #C5A065;
-        flex-shrink: 0;
-        text-align: center;
-        margin-top: 3px;
-        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    
-    .info-item:hover .info-icon {
-        transform: scale(1.2);
-    }
-    
-    .info-icon svg {
-        width: 20px;
-        height: 20px;
-        fill: currentColor;
-    }
-
-    .info-content h3 {
-        font-family: 'Playfair Display', serif;
-        font-size: 20px;
-        font-weight: 700;
-        color: #C5A065;
-        margin: 0 0 5px;
-    }
-    
-    .info-content strong {
-        font-weight: 700;
-        color: #8D6E63;
-    }
-
-    .info-content p, .info-content div {
-        margin: 0;
-        color: #8D6E63;
-        line-height: 1.5;
-    }
-
-    .info-content a {
-        color: #8D6E63;
-        text-decoration: none;
-        position: relative;
-    }
-    
-    .info-content a::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 1px;
-        bottom: -2px;
-        left: 0;
-        background-color: #C5A065;
-        transition: width 0.3s ease;
-    }
-    
-    .info-content a:hover {
-        color: #C5A065;
-    }
-
-    .info-content a:hover::after {
-        width: 100%;
-    }
-
-    /* Right Column: Form */
-    .contact-form {
-        margin-top: 50px;
-    }
-
-    .form-group {
-        margin-bottom: 25px;
-        position: relative;
-    }
-    
-    .form-label {
-        display: block;
-        font-weight: 700;
-        color: #8D6E63;
-        margin-bottom: 8px;
-        font-size: 14px;
-        transition: color 0.3s;
-    }
-    
-    .form-group:focus-within .form-label {
-        color: #C5A065;
-    }
-
-    .form-control {
-        width: 80%;
-        padding: 12px 15px;
-        border: 1px solid #E0E0E0;
-        border-radius: 4px;
-        font-size: 16px;
-        font-family: 'Roboto', sans-serif;
-        background: #FFFFFF;
-        box-sizing: border-box;
-        transition: all 0.3s ease;
-    }
-    
-    .form-control:focus {
-        outline: none;
-        border-color: #C5A065;
-        box-shadow: 0 4px 15px rgba(197, 160, 101, 0.15);
-        transform: translateY(-2px);
-    }
-    
-    textarea.form-control {
-        resize: vertical;
-        min-height: 150px;
-    }
-
-    .btn-submit {
-        background: #6D4C41;
-        color: #FFFFFF;
-        border: none;
-        padding: 12px 35px;
-        font-size: 16px;
-        font-weight: 500;
-        border-radius: 25px;
-        cursor: pointer;
-        font-family: 'Roboto', sans-serif;
-        margin-top: 10px;
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        box-shadow: 0 4px 10px rgba(109, 76, 65, 0.2);
-    }
-
-    .btn-submit:hover {
-        background: #5D4037;
-        transform: translateY(-3px) scale(1.02);
-        box-shadow: 0 8px 20px rgba(109, 76, 65, 0.3);
-    }
-    
-    .btn-submit:active {
-        transform: translateY(-1px);
-    }
-
-    /* Map Section */
-    .map-section {
-        margin-top: 80px;
-        height: 400px;
-        width: 100%;
-        border-top: 1px solid #EEE;
-        padding-top: 40px;
-    }
-
-    .map-section iframe {
-        width: 100%;
-        height: 100%;
-        border: 0;
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-        .contact-grid {
-            grid-template-columns: 1fr;
-            gap: 40px;
-        }
-    }
-
-    @media (max-width: 600px) {
-        .contact-container {
-            padding: 40px 30px;
-        }
-    }
-</style>
 
 <div class="contact-page">
     <div class="contact-container">
         
         <!-- Header -->
         <header class="contact-header animate-fade-up">
-            <h1>Kedves Érdeklődő! Köszönjük, hogy felkerestél minket az Elit- Ingatlanban!</h1>
+            <h1>Kedves Érdeklődő!<br>Köszönjük, hogy felkerestél minket az Elit- Ingatlanban!</h1>
         </header>
 
         <!-- Grid -->
@@ -322,9 +67,10 @@ body_class = "wt-contact-page"
             <div class="contact-form animate-fade-up delay-3">
                 <form action="https://www.elit-ingatlaniroda.hu/kapcsolat/" method="post">
                     
-                    <!-- Empty Label Field (Name) -->
+                    <!-- Name Field -->
                     <div class="form-group">
-                        <input type="text" name="wnd_ShortTextField_588996599" id="field-wnd_ShortTextField_588996599" class="form-control" required maxlength="150" placeholder="">
+                        <label class="form-label" for="field-wnd_ShortTextField_588996599">Név</label>
+                        <input type="text" name="wnd_ShortTextField_588996599" id="field-wnd_ShortTextField_588996599" class="form-control" required maxlength="150" placeholder="Név">
                     </div>
                     
                     <!-- Email -->
@@ -339,7 +85,7 @@ body_class = "wt-contact-page"
                         <textarea name="wnd_LongTextField_760365836" id="field-wnd_LongTextField_760365836" class="form-control" rows="5" required></textarea>
                     </div>
 
-                    <button type="submit" class="btn-submit" name="send" value="wnd_FormBlock_497377531">Küldés</button>
+                    <button type="submit" class="btn-submit" name="send" value="wnd_FormBlock_497377531" aria-label="Kapcsolatfelvételi űrlap elküldése">Küldés</button>
                 </form>
             </div>
 

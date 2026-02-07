@@ -21,6 +21,8 @@
         align-items: center;
         justify-content: center;
         gap: 8px;
+        width: 1050px;
+        /* Fixed width to prevent jumping between pages */
 
         background: rgba(255, 255, 255, 0.85);
         backdrop-filter: blur(12px);
@@ -63,6 +65,8 @@
         line-height: normal;
         text-align: center;
         width: auto;
+        border: 1px solid transparent;
+        /* Prevent layout shift on active state */
     }
 
     /* KILL ALL GHOST ELEMENTS */
@@ -91,24 +95,16 @@
     }
 
     /* --- SPECIFIC FIX FOR HOMEPAGE (Kezdőlap) --- */
-    /* FORCE FIXED WIDTH to guarantee centering */
-    nav#menu li.wnd-homepage a.menu-item {
-        padding: 0 !important;
-        /* Zero padding */
+    /* Target FIRST ITEM (Kezdőlap) constantly to ensure same width/alignment on ALL pages */
+    nav#menu ul.level-1>li:first-child a.menu-item {
         width: 120px !important;
-        /* Fixed width */
         min-width: 120px !important;
-
-        background-image: none !important;
-        justify-content: center !important;
-        text-indent: 0 !important;
-        margin-left: 0 !important;
-    }
-
-    /* Active Homepage Fix */
-    nav#menu li.wnd-homepage.wnd-active a.menu-item {
         padding: 0 !important;
-        width: 120px !important;
+        justify-content: center !important;
+        /* Flex centering */
+        text-align: center !important;
+        /* Text centering */
+        margin-left: 0 !important;
     }
 
     /* 4. Hover State */
@@ -134,11 +130,7 @@
         justify-content: center !important;
     }
 
-    /* Ensure Fixed Width persists on Active for Home */
-    nav#menu li.wnd-homepage.wnd-active a.menu-item {
-        padding: 0 !important;
-        width: 120px !important;
-    }
+
 
     nav#menu .menu-item span {
         border: none !important;

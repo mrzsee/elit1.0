@@ -5,20 +5,105 @@ body_class = "wt-page"
 id = "kiado-ingatlanok"
 ==
 <style>
+    /* Global Article Reset */
+    article.item {
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
+        border: none !important;
+    }
+
+    /* Layout */
     .item-wrapper {
         display: flex !important;
         flex-direction: row !important;
         gap: 30px !important;
+        margin-bottom: 30px !important;
+        align-items: flex-start !important;
     }
+    
+    /* Media/Image */
     .item-media {
         order: 1 !important;
+        flex: 0 0 320px !important;
+        max-width: 320px !important;
     }
+    .item-media img {
+        border-radius: 10px !important;
+        width: 100% !important;
+        height: auto !important;
+        object-fit: cover !important;
+        display: block !important;
+        aspect-ratio: 4/3 !important;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
+    }
+
+    /* Content */
     .item-content {
         order: 2 !important;
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding-top: 0 !important;
     }
+
+    /* Typography */
+    .item-head h2 {
+        margin-top: 0 !important;
+        margin-bottom: 10px !important;
+        line-height: 1.3 !important;
+    }
+    .item-head h2 a {
+        color: #C5A065 !important; /* Gold */
+        font-family: 'Playfair Display', serif !important;
+        font-size: 24px !important;
+        text-decoration: none !important;
+        font-weight: 400 !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+    
+    .item-date {
+        margin-bottom: 15px !important;
+    }
+    .item-date .ld-c {
+        font-size: 14px !important;
+        font-style: italic !important;
+        color: #E6B8B8 !important; /* Rose Gold/Pinkish */
+        font-family: 'Roboto', sans-serif !important;
+        font-weight: 300 !important;
+    }
+
+    .item-perex p {
+        color: #8D6E63 !important; /* Warm Brownish Gray */
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+        font-family: 'Roboto', sans-serif !important;
+        margin: 0 !important;
+        font-weight: 300 !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    /* Mobile */
     @media (max-width: 767px) {
         .item-wrapper {
             flex-direction: column !important;
+            gap: 20px !important;
+            margin-bottom: 40px !important;
+        }
+        .item-media {
+            flex: 0 0 auto !important;
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+        .item-media img {
+             width: 100% !important;
         }
     }
 </style>
@@ -28,7 +113,7 @@ id = "kiado-ingatlanok"
 			<div class="s-bg cf">
 				<div class="s-bg-l">
                     
-					
+				
 				</div>
 			</div>
 			<div class="s-c s-fs cf">
@@ -39,183 +124,302 @@ id = "kiado-ingatlanok"
 </div><div class="blog blog-basic thumb-float no-grid b b-s">
 	<div class="custom-blog-inner b-cs">
 		<div class="blog-container custom-blog-list">
+
+			<!-- Item 1: Kiadó irodák -->
 			<article class="item">
 				<div class="item-wrapper">
-					<div class="item-media"><a href="{{ '/kiado-ingatlanok/reszletek/1'|app }}"><div class="b-tb wnd-orientation-landscape" id="wnd_ThumbnailBlock_3a9e12t8dm2g00000000000000">
-    <picture><img src="{{ 'assets/kiado_irodak/img1.jpeg'|theme }}" alt="Kiadó irodák Fonógyári út" width="1024" height="768" loading="lazy"></picture>
-</div></a></div>
-					<div class="item-content">
-						<div class="item-head">
-							<h2><a href="{{ '/kiado-ingatlanok/reszletek/1'|app }}"><div class="ld">
-	<span class="ld-c">Kiadó irodák Szegeden, a Fonógyári úton!</span>
-</div></a></h2>
-							<div class="item-date"><div class="ld">
-	<span class="ld-c">2025.08.14</span>
-</div></div>
-						</div>
-						<div class="item-perex"><div class="perex">
-	<div class="perex-content"><p>Kiváló elhelyezkedésű, világos irodák bérelhetők modern környezetben, rugalmas kialakítási lehetőségekkel. Ideális választás cégeknek, vállalkozásoknak, akik költséghatékony, mégis professzionális irodát keresnek.</p></div>
-</div></div>
+					<div class="item-media">
+						<a href="{{ '/kiado-ingatlanok/reszletek/1'|app }}">
+							<div class="b-tb wnd-orientation-landscape">
+								<picture><img src="{{ 'assets/kiado_irodak/img1.jpeg'|theme }}" alt="Kiadó irodák Fonógyári" width="1920" height="1440" loading="lazy"></picture>
+							</div>
+						</a>
 					</div>
-				</div>
-			</article><article class="item">
-				<div class="item-wrapper">
-					<div class="item-media"><a href="https://www.elit-ingatlaniroda.hu/l/kiado-butorozott-lakas-szeged-sziveben-puspok-utca/"><div class="b-tb wnd-orientation-landscape" id="wnd_ThumbnailBlock_6ed48bavadk000000000000000">
-    <picture><img src="{{ 'assets/1-39.jpeg'|theme }}" alt="" width="1440" height="1080" loading="lazy"></picture>
-</div></a></div>
 					<div class="item-content">
 						<div class="item-head">
-							<h2><a href="https://www.elit-ingatlaniroda.hu/l/kiado-butorozott-lakas-szeged-sziveben-puspok-utca/"><div class="ld">
-	<span class="ld-c">Kiadó bútorozott lakás Szeged szívében – Püspök utca </span>
-</div></a></h2>
-							<div class="item-date"><div class="ld">
-	<span class="ld-c">2025.08.14</span>
-</div></div>
+							<h2>
+								<a href="{{ '/kiado-ingatlanok/reszletek/1'|app }}">
+									<div class="ld">
+										<span class="ld-c">Kiadó irodák Szegeden, a Fonógyári úton!</span>
+									</div>
+								</a>
+							</h2>
+							<div class="item-date">
+								<div class="ld">
+									<span class="ld-c">2025.08.14</span>
+								</div>
+							</div>
 						</div>
-						<div class="item-perex"><div class="perex">
-	<div class="perex-content"><p>Szeged belvárosában, a Püspök utcában kínálunk hosszú távú bérlésre egy igényesen berendezett, 2 szobás + amerikai konyhás nappalival rendelkező lakást.</p></div>
-</div></div>
-					</div>
-				</div>
-			</article><article class="item">
-				<div class="item-wrapper">
-					<div class="item-media"><a href="https://www.elit-ingatlaniroda.hu/l/kiado-terem-szegeden-a-fonogyari-uton/"><div class="b-tb wnd-orientation-landscape">
-    <picture><img src="{{ 'assets/30-18.jpeg'|theme }}" alt="" width="600" height="450" loading="lazy"></picture>
-</div></a></div>
-					<div class="item-content">
-						<div class="item-head">
-							<h2><a href="https://www.elit-ingatlaniroda.hu/l/kiado-terem-szegeden-a-fonogyari-uton/"><div class="ld">
-	<span class="ld-c">Kiadó terem Szegeden a Fonógyári úton!</span>
-</div></a></h2>
-							<div class="item-date"><div class="ld">
-	<span class="ld-c">2025.08.14</span>
-</div></div>
+						<div class="item-perex">
+							<div class="perex">
+								<div class="perex-content">
+									<p>Kiváló elhelyezkedésű, világos irodák bérelhetők modern környezetben, rugalmas kialakítási lehetőségekkel. Ideális választás cégeknek, vállalkozásoknak, akik költséghatékony, mégis professzionális irodát keresnek.</p>
+								</div>
+							</div>
 						</div>
-						<div class="item-perex"><div class="perex">
-	<div class="perex-content"><p>Helyszín: II. emelet, Méret: 285 m² (igény szerint variálható)</p></div>
-</div></div>
-					</div>
-				</div>
-			</article><article class="item">
-				<div class="item-wrapper">
-					<div class="item-media"><a href="https://www.elit-ingatlaniroda.hu/l/kiado-iroda-szeged-sziveben-sajat-parkoloval/"><div class="b-tb wnd-orientation-landscape" id="wnd_ThumbnailBlock_1iqflotcuj0000000000000000">
-    <picture><img src="{{ 'assets/1-48.jpeg'|theme }}" alt="" width="1920" height="1440" loading="lazy"></picture>
-</div></a></div>
-					<div class="item-content">
-						<div class="item-head">
-							<h2><a href="https://www.elit-ingatlaniroda.hu/l/kiado-iroda-szeged-sziveben-sajat-parkoloval/"><div class="ld">
-	<span class="ld-c">Kiadó iroda Szeged szívében, saját parkolóval!</span>
-</div></a></h2>
-							<div class="item-date"><div class="ld">
-	<span class="ld-c">2025.08.14</span>
-</div></div>
-						</div>
-						<div class="item-perex"><div class="perex">
-	<div class="perex-content"><p>Szeged belvárosában, a közkedvelt Török utcában kiadó egy földszinti, 90 nm-es iroda, saját udvari parkolóval!</p></div>
-</div></div>
-					</div>
-				</div>
-			</article><article class="item">
-				<div class="item-wrapper">
-					<div class="item-media"><a href="https://www.elit-ingatlaniroda.hu/l/kiado-uzlethelyiseg-frekventalt-helyen-szeged-rokus-varosresz/"><div class="b-tb wnd-orientation-landscape" id="wnd_ThumbnailBlock_4sctd5j4jpk000000000000000">
-    <picture><img src="{{ 'assets/12-3.jpeg'|theme }}" alt="" width="1920" height="1440" loading="lazy"></picture>
-</div></a></div>
-					<div class="item-content">
-						<div class="item-head">
-							<h2><a href="https://www.elit-ingatlaniroda.hu/l/kiado-uzlethelyiseg-frekventalt-helyen-szeged-rokus-varosresz/"><div class="ld">
-	<span class="ld-c">Kiadó üzlethelyiség frekventált helyen – Szeged, Rókus városrész</span>
-</div></a></h2>
-							<div class="item-date"><div class="ld">
-	<span class="ld-c">2025.08.13</span>
-</div></div>
-						</div>
-						<div class="item-perex"><div class="perex">
-	<div class="perex-content"><p>Szeged egyik forgalmas kereskedelmi övezetében, több nagykereskedelmi egység (pláza, OBI, Bodrogibau, konditerem) közvetlen szomszédságában hosszú távra kiadó egy 530 m²-es, egylégterű üzlethelyiség.</p></div>
-</div></div>
-					</div>
-				</div>
-			</article><article class="item">
-				<div class="item-wrapper">
-					<div class="item-media"><a href="https://www.elit-ingatlaniroda.hu/l/kiado-lakas-ujszeged-egyik-legjobb-reszen/"><div class="b-tb wnd-orientation-portrait" id="wnd_ThumbnailBlock_5sns45858n9000000000000000">
-    <picture><img src="{{ 'assets/1-30.jpeg'|theme }}" alt="" width="1080" height="1440" loading="lazy"></picture>
-</div></a></div>
-					<div class="item-content">
-						<div class="item-head">
-							<h2><a href="https://www.elit-ingatlaniroda.hu/l/kiado-lakas-ujszeged-egyik-legjobb-reszen/"><div class="ld">
-	<span class="ld-c">Kiadó lakás Újszeged egyik legjobb részén!</span>
-</div></a></h2>
-							<div class="item-date"><div class="ld">
-	<span class="ld-c">2025.08.13</span>
-</div></div>
-						</div>
-						<div class="item-perex"><div class="perex">
-	<div class="perex-content"><p>Kiadó egy 100 m²-es, bútorozott lakás Újszegeden, a Fő fasor elején, közvetlenül az egyetemek, a Biológiai Kutatóközpont és a Liget szomszédságában.</p></div>
-</div></div>
-					</div>
-				</div>
-			</article><article class="item">
-				<div class="item-wrapper">
-					<div class="item-media"><a href="https://www.elit-ingatlaniroda.hu/l/kiado-lakas-szeged-osz-utcaban-2-szoba-konyha-csendes-kornyezet-kivalo-kozlekedes/"><div class="b-tb wnd-orientation-landscape" id="wnd_ThumbnailBlock_21a7ctfske0000000000000000">
-    <picture><img src="{{ 'assets/15.jpeg'|theme }}" alt="" width="1920" height="1440" loading="lazy"></picture>
-</div></a></div>
-					<div class="item-content">
-						<div class="item-head">
-							<h2><a href="https://www.elit-ingatlaniroda.hu/l/kiado-lakas-szeged-osz-utcaban-2-szoba-konyha-csendes-kornyezet-kivalo-kozlekedes/"><div class="ld">
-	<span class="ld-c">Kiadó lakás Szeged Ősz utcában – 2 szoba + konyha, csendes környezet, kiváló közlekedés!</span>
-</div></a></h2>
-							<div class="item-date"><div class="ld">
-	<span class="ld-c">2025.08.13</span>
-</div></div>
-						</div>
-						<div class="item-perex"><div class="perex">
-	<div class="perex-content"><p>Szeged egyik legkedveltebb részén, az Ősz utcában kínálunk kiadásra egy praktikus elrendezésű, 2 szobás lakást, amely ideális választás lehet pároknak vagy egyetemistáknak!</p></div>
-</div></div>
-					</div>
-				</div>
-			</article><article class="item">
-				<div class="item-wrapper">
-					<div class="item-media"><a href="https://www.elit-ingatlaniroda.hu/l/szeged-sziveben-az-egyetemek-szomszedsagaban-a-szentharomsag-utcaban-ujabb-epitesu-liftes-tarsashaz-2-emeleten-kiado-egy-84-m2-es-nappali-2-haloszobas-dupla-komfortos-lakas/"><div class="b-tb wnd-orientation-landscape" id="wnd_ThumbnailBlock_1net1hmca6c800000000000000">
-    <picture><img src="{{ 'assets/1-3.jpeg'|theme }}" alt="" width="1920" height="1440" loading="lazy"></picture>
-</div></a></div>
-					<div class="item-content">
-						<div class="item-head">
-							<h2><a href="https://www.elit-ingatlaniroda.hu/l/szeged-sziveben-az-egyetemek-szomszedsagaban-a-szentharomsag-utcaban-ujabb-epitesu-liftes-tarsashaz-2-emeleten-kiado-egy-84-m2-es-nappali-2-haloszobas-dupla-komfortos-lakas/"><div class="ld">
-	<span class="ld-c">Szeged szívében, az egyetemek szomszédságában, a Szentháromság utcában újabb építésű, liftes társasház 2. emeletén kiadó egy 84 m²-es, nappali + 2 hálószobás, dupla komfortos lakás.</span>
-</div></a></h2>
-							<div class="item-date"><div class="ld">
-	<span class="ld-c">2025.08.13</span>
-</div></div>
-						</div>
-						<div class="item-perex"><div class="perex">
-	<div class="perex-content"><p>Az ingatlan tágas, világos, nagy terasszal, klimatizált, teljesen berendezett és gépesített minden adott a kényelmes beköltözéshez.</p></div>
-</div></div>
-					</div>
-				</div>
-			</article><article class="item">
-				<div class="item-wrapper">
-					<div class="item-media"><a href="https://www.elit-ingatlaniroda.hu/l/kulonleges-lakas-a-belvaros-sziveben-privat-szfera-tagas-terek-kivalo-elhelyezkedes-legyen-on-az-elso-lakoja-a-vadiujonnan-elkeszult-lakasnak/"><div class="b-tb wnd-orientation-landscape" id="wnd_ThumbnailBlock_6dm9fhn843d000000000000000">
-    <picture><img src="{{ 'assets/1.jpeg'|theme }}" alt="" width="1920" height="1440" loading="lazy"></picture>
-</div></a></div>
-					<div class="item-content">
-						<div class="item-head">
-							<h2><a href="https://www.elit-ingatlaniroda.hu/l/kulonleges-lakas-a-belvaros-sziveben-privat-szfera-tagas-terek-kivalo-elhelyezkedes-legyen-on-az-elso-lakoja-a-vadiujonnan-elkeszult-lakasnak/"><div class="ld">
-	<span class="ld-c">Különleges lakás a belváros szívében – Privát szféra, tágas terek, kiváló elhelyezkedés! Legyen Ön az első lakója a vadiújonnan elkészült lakásnak! </span>
-</div></a></h2>
-							<div class="item-date"><div class="ld">
-	<span class="ld-c">2025.08.13</span>
-</div></div>
-						</div>
-						<div class="item-perex"><div class="perex">
-	<div class="perex-content"><p>Szeged egyik legkeresettebb részén, a Szentháromság utcában kiadó egy egyedi hangulatú, 2. emeleti téglaépítésű lakás, amely az emeleten egyedüli lakásként garantálja a teljes nyugalmat és privát szférát.</p></div>
-</div></div>
 					</div>
 				</div>
 			</article>
+
+			<!-- Item 2: Püspök utca -->
+			<article class="item">
+				<div class="item-wrapper">
+					<div class="item-media">
+						<div class="b-tb wnd-orientation-landscape">
+							<picture><img src="{{ 'assets/1-39.jpeg'|theme }}" alt="Kiadó lakás Püspök utca" width="1920" height="1440" loading="lazy"></picture>
+						</div>
+					</div>
+					<div class="item-content">
+						<div class="item-head">
+							<h2>
+								<div class="ld">
+									<span class="ld-c">Kiadó bútorozott lakás Szeged szívében – Püspök utca</span>
+								</div>
+							</h2>
+							<div class="item-date">
+								<div class="ld">
+									<span class="ld-c">2025.08.14</span>
+								</div>
+							</div>
+						</div>
+						<div class="item-perex">
+							<div class="perex">
+								<div class="perex-content">
+									<p>Szeged belvárosában, a Püspök utcában kínálunk hosszú távú bérlésre egy igényesen berendezett, 2 szobás + amerikai konyhás nappalival rendelkező lakást.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+
+			<!-- Item 3: Kiadó terem -->
+			<article class="item">
+				<div class="item-wrapper">
+					<div class="item-media">
+						<div class="b-tb wnd-orientation-landscape">
+							<picture><img src="{{ 'assets/30-18.jpeg'|theme }}" alt="Kiadó terem Fonógyári" width="1920" height="1440" loading="lazy"></picture>
+						</div>
+					</div>
+					<div class="item-content">
+						<div class="item-head">
+							<h2>
+								<div class="ld">
+									<span class="ld-c">Kiadó terem Szegeden a Fonógyári úton!</span>
+								</div>
+							</h2>
+							<div class="item-date">
+								<div class="ld">
+									<span class="ld-c">2025.08.14</span>
+								</div>
+							</div>
+						</div>
+						<div class="item-perex">
+							<div class="perex">
+								<div class="perex-content">
+									<p>Helyszín: II. emelet, Méret: 285 m² (igény szerint variálható)</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+
+			<!-- Item 4: Kiadó iroda Török utca -->
+			<article class="item">
+				<div class="item-wrapper">
+					<div class="item-media">
+						<div class="b-tb wnd-orientation-landscape">
+							<picture><img src="{{ 'assets/1-48.jpeg'|theme }}" alt="Kiadó iroda Török utca" width="1920" height="1440" loading="lazy"></picture>
+						</div>
+					</div>
+					<div class="item-content">
+						<div class="item-head">
+							<h2>
+								<div class="ld">
+									<span class="ld-c">Kiadó iroda Szeged szívében, saját parkolóval!</span>
+								</div>
+							</h2>
+							<div class="item-date">
+								<div class="ld">
+									<span class="ld-c">2025.08.14</span>
+								</div>
+							</div>
+						</div>
+						<div class="item-perex">
+							<div class="perex">
+								<div class="perex-content">
+									<p>Szeged belvárosában, a közkedvelt Török utcában kiadó egy földszinti, 90 nm-es iroda, saját udvari parkolóval!</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+
+			<!-- Item 5: Üzlethelyiség Rókus -->
+			<article class="item">
+				<div class="item-wrapper">
+					<div class="item-media">
+						<div class="b-tb wnd-orientation-landscape">
+							<picture><img src="{{ 'assets/12-3.jpeg'|theme }}" alt="Üzlethelyiség Rókus" width="1920" height="1440" loading="lazy"></picture>
+						</div>
+					</div>
+					<div class="item-content">
+						<div class="item-head">
+							<h2>
+								<div class="ld">
+									<span class="ld-c">Kiadó üzlethelyiség frekventált helyen – Szeged, Rókus városrész</span>
+								</div>
+							</h2>
+							<div class="item-date">
+								<div class="ld">
+									<span class="ld-c">2025.08.13</span>
+								</div>
+							</div>
+						</div>
+						<div class="item-perex">
+							<div class="perex">
+								<div class="perex-content">
+									<p>Szeged egyik forgalmas kereskedelmi övezetében, több nagykereskedelmi egység (pláza, OBI, Bodrogibau, konditerem) közvetlen szomszédságában hosszú távra kiadó egy 530 m²-es, egylégterű üzlethelyiség.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+
+			<!-- Item 6: Újszeged lakás -->
+			<article class="item">
+				<div class="item-wrapper">
+					<div class="item-media">
+						<div class="b-tb wnd-orientation-landscape">
+							<picture><img src="{{ 'assets/1-30.jpeg'|theme }}" alt="Újszeged lakás" width="1920" height="1440" loading="lazy"></picture>
+						</div>
+					</div>
+					<div class="item-content">
+						<div class="item-head">
+							<h2>
+								<div class="ld">
+									<span class="ld-c">Kiadó lakás Újszeged egyik legjobb részén!</span>
+								</div>
+							</h2>
+							<div class="item-date">
+								<div class="ld">
+									<span class="ld-c">2025.08.13</span>
+								</div>
+							</div>
+						</div>
+						<div class="item-perex">
+							<div class="perex">
+								<div class="perex-content">
+									<p>Kiadó egy 100 m²-es, bútorozott lakás Újszegeden, a Fő fasor elején, közvetlenül az egyetemek, a Biológiai Kutatóközpont és a Liget szomszédságában.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+
+			<!-- Item 7: Ősz utca -->
+			<article class="item">
+				<div class="item-wrapper">
+					<div class="item-media">
+						<div class="b-tb wnd-orientation-landscape">
+							<picture><img src="{{ 'assets/15.jpeg'|theme }}" alt="Ősz utca lakás" width="1920" height="1440" loading="lazy"></picture>
+						</div>
+					</div>
+					<div class="item-content">
+						<div class="item-head">
+							<h2>
+								<div class="ld">
+									<span class="ld-c">Kiadó lakás Szeged Ősz utcában – 2 szoba + konyha, csendes környezet, kiváló közlekedés!</span>
+								</div>
+							</h2>
+							<div class="item-date">
+								<div class="ld">
+									<span class="ld-c">2025.08.13</span>
+								</div>
+							</div>
+						</div>
+						<div class="item-perex">
+							<div class="perex">
+								<div class="perex-content">
+									<p>Szeged egyik legkedveltebb részén, az Ősz utcában kínálunk kiadásra egy praktikus elrendezésű, 2 szobás lakást, amely ideális választás lehet pároknak vagy egyetemistáknak!</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+
+			<!-- Item 8: Szentháromság utca -->
+			<article class="item">
+				<div class="item-wrapper">
+					<div class="item-media">
+						<div class="b-tb wnd-orientation-landscape">
+							<picture><img src="{{ 'assets/1-3.jpeg'|theme }}" alt="Szentháromság utca" width="1920" height="1440" loading="lazy"></picture>
+						</div>
+					</div>
+					<div class="item-content">
+						<div class="item-head">
+							<h2>
+								<div class="ld">
+									<span class="ld-c">Szeged szívében, az egyetemek szomszédságában, a Szentháromság utcában újabb építésű, liftes társasház 2. emeletén kiadó egy 84 m²-es, nappali + 2 hálószobás, dupla komfortos lakás.</span>
+								</div>
+							</h2>
+							<div class="item-date">
+								<div class="ld">
+									<span class="ld-c">2025.08.13</span>
+								</div>
+							</div>
+						</div>
+						<div class="item-perex">
+							<div class="perex">
+								<div class="perex-content">
+									<p>Az ingatlan tágas, világos, nagy terasszal, klimatizált, teljesen berendezett és gépesített minden adott a kényelmes beköltözéshez.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+
+			<!-- Item 9: Különleges lakás -->
+			<article class="item">
+				<div class="item-wrapper">
+					<div class="item-media">
+						<div class="b-tb wnd-orientation-landscape">
+							<picture><img src="{{ 'assets/1.jpeg'|theme }}" alt="Különleges lakás belváros" width="1920" height="1440" loading="lazy"></picture>
+						</div>
+					</div>
+					<div class="item-content">
+						<div class="item-head">
+							<h2>
+								<div class="ld">
+									<span class="ld-c">Különleges lakás a belváros szívében – Privát szféra, tágas terek, kiváló elhelyezkedés! Legyen Ön az első lakója a vadiújonnan elkészült lakásnak!</span>
+								</div>
+							</h2>
+							<div class="item-date">
+								<div class="ld">
+									<span class="ld-c">2025.08.13</span>
+								</div>
+							</div>
+						</div>
+						<div class="item-perex">
+							<div class="perex">
+								<div class="perex-content">
+									<p>Szeged egyik legkeresettebb részén, a Szentháromság utcában kiadó egy egyedi hangulatú, 2. emeleti téglaépítésű lakás, amely az emeleten egyedüli lakásként garantálja a teljes nyugalmat és privát szférát.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+
 		</div>
-		
-	</div>
-	<div class="blog-empty-listing"></div>
-</div><div class="b b-s b-hr-line line-auto">
+		<div class="blog-empty-listing"></div>
+	</div><div class="b b-s b-hr-line line-auto">
     <hr class="line-style line-color">
 </div></div>
 </div>

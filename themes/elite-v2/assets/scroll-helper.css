@@ -1,6 +1,10 @@
-/* Elektro-Style Scroll Helper & Side Navigation (Restored) */
+/* Enhanced Scroll Navigation System */
 
-/* 1. Scroll Down Arrow (Bottom Center) */
+/* ==========================================
+   1. SCROLL DOWN HELPERS (Multiple Positions)
+   ========================================== */
+
+/* Original Bottom Center Arrow (Home Section) - Absolute to stay with section */
 .scroll-down-helper {
     position: absolute;
     bottom: 30px;
@@ -9,21 +13,91 @@
     z-index: 999;
 }
 
+
+
+
+/* New Scroll Helpers at Different Sections */
+/* All helpers centered horizontally */
+.scroll-helper-services,
+.scroll-helper-about,
+.scroll-helper-contact {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    pointer-events: none;
+}
+
+/* Vertical positioning */
+.scroll-helper-services,
+.scroll-helper-about {
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.scroll-helper-contact {
+    bottom: 30px;
+    transform: translateX(-50%);
+}
+
+
+
 .scroll-link {
     display: block;
     cursor: pointer;
-    padding: 10px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    pointer-events: all;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+.scroll-link:hover {
+    transform: scale(1.2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Arrow Styling - Dynamic Color Based on Background */
 .scroll-link span {
     display: block;
-    width: 24px;
-    height: 24px;
-    border-bottom: 3px solid #fff;
-    border-right: 3px solid #fff;
+    width: 30px;
+    height: 30px;
+    border-bottom: 4px solid #fff;
+    border-right: 4px solid #fff;
     transform: rotate(45deg);
     animation: scroll-down-simple 2s infinite;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Gold Arrow for Light Backgrounds */
+.scroll-link.gold-arrow span {
+    border-bottom-color: #C5A065;
+    border-right-color: #C5A065;
+    box-shadow: 2px 2px 5px rgba(197, 160, 101, 0.3);
+}
+
+/* White Arrow for Dark Backgrounds */
+.scroll-link.white-arrow span {
+    border-bottom-color: #ffffff;
+    border-right-color: #ffffff;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Scroll Up Arrow (Rotated to point UP) */
+.scroll-link.scroll-up span {
+    transform: rotate(-135deg);
+    animation: scroll-up-simple 2s infinite;
+}
+
+.scroll-link.scroll-up.gold-arrow span {
+    border-bottom-color: #C5A065;
+    border-right-color: #C5A065;
+}
+
+.scroll-link.scroll-up.white-arrow span {
+    border-bottom-color: #ffffff;
+    border-right-color: #ffffff;
 }
 
 @keyframes scroll-down-simple {
@@ -42,7 +116,31 @@
     }
 }
 
-/* 2. Side Navigation Dots (Right Side) - "Lapozó" */
+/* Scroll Up Animation */
+@keyframes scroll-up-simple {
+    0% {
+        opacity: 0;
+        transform: rotate(-135deg) translate(-10px, -10px);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(-135deg) translate(10px, 10px);
+    }
+}
+
+.scroll-link.scroll-up span {
+    animation: scroll-up-simple 2s infinite;
+}
+
+/* ==========================================
+   2. SIDE NAVIGATION DOTS (Right Side)
+   ========================================== */
+
 .side-nav {
     position: fixed;
     right: 30px;
@@ -52,12 +150,19 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    /* Távolság a pöttyök között */
 }
 
 /* Hide on mobile */
 @media (max-width: 768px) {
     .side-nav {
+        display: none;
+    }
+
+    /* Also hide scroll helpers on mobile */
+    .scroll-down-helper,
+    .scroll-helper-services,
+    .scroll-helper-about,
+    .scroll-helper-contact {
         display: none;
     }
 }
@@ -67,9 +172,7 @@
     width: 14px;
     height: 14px;
     background: rgba(100, 100, 100, 0.4);
-    /* Alap szürke */
     border: 2px solid rgba(255, 255, 255, 0.6);
-    /* Fehér keret */
     border-radius: 50%;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
@@ -78,7 +181,6 @@
 
 .side-nav-dot:hover {
     background: #C5A065;
-    /* Arany hover */
     transform: scale(1.3);
     border-color: #fff;
 }
@@ -86,17 +188,18 @@
 /* Active State */
 .side-nav-dot.active {
     background: #C5A065;
-    /* Arany aktív */
     transform: scale(1.5);
     box-shadow: 0 0 15px rgba(197, 160, 101, 0.8);
     border-color: #fff;
 }
 
-/* 3. Base Scroll Behavior (Snap) */
+/* ==========================================
+   3. BASE SCROLL BEHAVIOR
+   ========================================== */
+
 html {
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory;
-    /* Perforációs hatás */
     height: 100vh;
     overflow-y: auto;
     scroll-padding-top: 0;
@@ -109,7 +212,10 @@ footer {
     scroll-snap-stop: normal;
 }
 
-/* 4. Fade In Animation */
+/* ==========================================
+   4. FADE IN ANIMATION
+   ========================================== */
+
 .fade-in-section {
     opacity: 0;
     transform: translateY(30px);
@@ -119,4 +225,48 @@ footer {
 .fade-in-section.is-visible {
     opacity: 1;
     transform: none;
+}
+
+/* Disable fade-in animation on mobile/tablets to prevent visibility issues */
+@media (max-width: 1200px) {
+    .fade-in-section {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        visibility: visible !important;
+    }
+
+    /* Ensure content is strictly visible */
+    .contact-container,
+    .contact-grid,
+    .info-list,
+    .contact-form {
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+    }
+
+    /* Restore Grid for inner layout if needed, block otherwise */
+    .contact-grid {
+        display: grid !important;
+    }
+}
+
+/* Home Page Color Overrides for Dark Background */
+#contact .intro-text p,
+#contact .info-content strong,
+#contact .info-content p,
+#contact .info-content a,
+#contact .form-label {
+    color: #f0f0f0;
+    /* Light gray for readability on dark overlay */
+}
+
+#contact .info-content h3 {
+    color: #C5A065;
+    /* Keep Gold */
+}
+
+#contact .info-icon svg {
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
 }
