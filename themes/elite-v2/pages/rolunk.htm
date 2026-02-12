@@ -7,6 +7,12 @@ id = "rolunk"
 <section class="s s-hm s-hm-hidden wnd-h-hidden cf sc-w   hn-centered" style=""></section>
 
 <style>
+    /* Force entire page background to Bone White (matching Szolgáltatások) */
+    body, .wnd-page, .l-w, .l-bg, .l-bg .s-bg-l, .l-m, .s-bg, .s-bg-l {
+        background-color: #FBF8F6 !important;
+        background: #FBF8F6 !important;
+    }
+
     /* ===== Rólunk Page - Two Column Layout ===== */
     .rolunk-page {
         max-width: 1200px;
@@ -101,8 +107,9 @@ id = "rolunk"
         transition: transform 0.4s ease;
     }
 
-    .founder-card:hover .founder-avatar img {
-        transform: scale(1.05);
+    .founder-card:hover .founder-avatar img,
+    .founder-avatar img:hover {
+        transform: scale(1.12);
     }
 
     .founder-avatar::after {
