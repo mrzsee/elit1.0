@@ -1,0 +1,71 @@
+description = "Default Layout"
+==
+<!DOCTYPE html>
+<html lang="hu" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ this.page.title }} - Restás Renáta</title>
+    <meta name="description" content="{{ this.page.meta_description }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: { extend: {
+                colors: {
+                    background: '#0F1113', surface: '#1A1D20', primary: '#94A3B8',
+                    'primary-dark': '#64748B', text: '#F8FAFC', 'text-muted': '#94A3B8', divider: '#2D3339',
+                },
+                fontFamily: { sans: ['Montserrat', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
+                borderRadius: { 'DEFAULT': '0' },
+                animation: { 'float': 'float 6s ease-in-out infinite' },
+                keyframes: { float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } } }
+            }}
+        }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        [x-cloak] { display: none !important; }
+        .glass-nav { background-image: url('{{ "assets/images/architectural_menu_bg.png"|theme }}'); background-size: cover; background-position: center; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(148,163,184,0.1); position: relative; }
+        .glass-nav::before { content: ''; position: absolute; inset: 0; background: rgba(15,17,19,0.85); z-index: -1; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 1s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .luxury-texture { background-image: url('{{ "assets/images/bg_texture.png"|theme }}'); background-repeat: repeat; background-size: 600px; opacity: 0.03; pointer-events: none; mix-blend-mode: overlay; }
+        .logo-card-transition { transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .scroll-nav-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(148,163,184,0.3); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; border: 1px solid rgba(255,255,255,0.05); }
+        .scroll-nav-dot.active { background: #94A3B8; transform: scale(1.5); box-shadow: 0 0 15px rgba(148,163,184,0.4); }
+        .scroll-indicator-container { position: fixed; right: 40px; top: 50%; transform: translateY(-50%); z-index: 100; display: flex; flex-direction: column; gap: 20px; padding: 20px 10px; background: rgba(15,17,19,0.4); backdrop-filter: blur(8px); border-radius: 100px; border: 1px solid rgba(255,255,255,0.05); opacity: 0; visibility: hidden; transition: all 0.6s ease; }
+        .scroll-indicator-container.visible { opacity: 1; visibility: visible; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0F1113; }
+        ::-webkit-scrollbar-thumb { background: #2D3339; }
+        ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+    </style>
+</head>
+<body class="bg-background text-text font-sans antialiased selection:bg-primary/30 selection:text-white relative" x-data="{ scrollY: 0 }" @scroll.window="scrollY = window.scrollY">
+    <div class="fixed inset-0 z-0 luxury-texture"></div>
+    <div id="scroll-indicator" class="scroll-indicator-container hidden md:flex"></div>
+    {% partial "header" %}
+    <main class="relative z-10 pt-24 min-h-screen">
+        {% page %}
+    </main>
+    {% partial "footer" %}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            const revealOnScroll = () => { const wh = window.innerHeight; reveals.forEach(r => { if (r.getBoundingClientRect().top < wh - 100) r.classList.add('active'); }); };
+            window.addEventListener('scroll', revealOnScroll); revealOnScroll();
+            const sections = Array.from(document.querySelectorAll('section, footer'));
+            const indicator = document.getElementById('scroll-indicator');
+            let scrollTimeout;
+            sections.forEach((_, i) => { const d = document.createElement('div'); d.className = 'scroll-nav-dot'; d.onclick = () => sections[i].scrollIntoView({ behavior: 'smooth' }); indicator.appendChild(d); });
+            const update = () => { const dots = document.querySelectorAll('.scroll-nav-dot'); let cur = 0; sections.forEach((s, i) => { if (s.getBoundingClientRect().top < window.innerHeight / 2) cur = i; }); dots.forEach((d, i) => d.classList.toggle('active', i === cur)); indicator.classList.add('visible'); clearTimeout(scrollTimeout); scrollTimeout = setTimeout(() => indicator.classList.remove('visible'), 2000); };
+            window.addEventListener('scroll', update); update();
+            const cp = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-link').forEach(l => { if(l.getAttribute('href').includes(cp)) { l.classList.add('text-primary'); l.querySelector('span')?.classList.add('w-full'); }});
+        });
+    </script>
+</body>
+</html>

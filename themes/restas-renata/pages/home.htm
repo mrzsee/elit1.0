@@ -1,0 +1,106 @@
+title = "Kezdőlap"
+url = "/"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+meta_description = "Bízd rám ingatlanod eladását vagy kiadását! Professzionális ingatlanközvetítés Szegeden és környékén."
+==
+<section class="relative min-h-[95vh] flex items-center overflow-hidden px-4 md:px-0 pt-20" x-data='{ activeSlide: 0, slides: ["{{ "assets/images/properties/prop_1.jpg"|theme }}"], init() { setInterval(() => { this.activeSlide = (this.activeSlide + 1) % this.slides.length; }, 2000); } }'>
+    <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <template x-for="(slide, index) in slides" :key="'bg-' + index">
+            <div x-show="activeSlide === index" x-transition:enter="transition ease-out duration-1000" x-transition:enter-start="opacity-0 scale-125" x-transition:enter-end="opacity-40 scale-100" x-transition:leave="transition ease-in duration-1000" x-transition:leave-start="opacity-40 scale-100" x-transition:leave-end="opacity-0 scale-110" class="absolute inset-0 bg-cover bg-center blur-[120px] saturate-150" :style="'background-image: url(' + slide + ')'"></div>
+        </template>
+    </div>
+    <div class="absolute inset-0 z-1 bg-background/60 backdrop-blur-3xl border-b border-white/5"></div>
+    <div class="absolute inset-0 z-1 bg-white/[0.02] mix-blend-overlay"></div>
+    <div class="max-w-7xl mx-auto px-8 relative z-10 w-full grid md:grid-cols-2 gap-20 items-center">
+        <div class="space-y-10 reveal">
+            <div class="inline-flex items-center gap-4">
+                <span class="h-px w-8 bg-primary"></span>
+                <span class="text-primary tracking-[0.4em] uppercase text-[10px] font-bold">Exkluzív Ingatlanok</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-serif text-text leading-[1.1] drop-shadow-sm">Nyerje vissza a nyugalmát az ingatlanügyekben</h1>
+            <p class="text-sm md:text-base text-text/70 max-w-lg leading-relaxed font-light border-l border-primary/20 pl-8">Teljes körű ügyintézés az eladástól a szerződéskötésig.</p>
+            <div class="pt-10 space-y-6" x-data="{ quickSearch: '' }">
+                <div class="bg-white/5 backdrop-blur-xl border border-white/10 p-2 flex items-center max-w-md shadow-2xl">
+                    <input type="text" x-model="quickSearch" @keyup.enter="window.location.href = '{{ 'ingatlanok'|page }}?search=' + encodeURIComponent(quickSearch)" placeholder="Város (pl. Szeged)..." class="bg-transparent border-none outline-none px-6 py-3 text-sm text-text/80 placeholder:text-text/30 flex-grow font-light">
+                    <button @click="window.location.href = '{{ 'ingatlanok'|page }}?search=' + encodeURIComponent(quickSearch)" class="bg-primary hover:bg-white text-background px-8 py-3 text-[10px] uppercase tracking-[0.2em] font-bold transition-all">Keresés</button>
+                </div>
+                <div class="flex gap-4">
+                    <a href="{{ 'ingatlanok'|page }}?type=Lakás" class="text-[10px] uppercase tracking-[0.2em] text-text/40 hover:text-primary transition-colors">#Lakás</a>
+                    <a href="{{ 'ingatlanok'|page }}?type=Ház" class="text-[10px] uppercase tracking-[0.2em] text-text/40 hover:text-primary transition-colors">#Ház</a>
+                    <a href="{{ 'ingatlanok'|page }}?type=Telek" class="text-[10px] uppercase tracking-[0.2em] text-text/40 hover:text-primary transition-colors">#Telek</a>
+                </div>
+            </div>
+        </div>
+        <div class="relative reveal delay-200">
+            <div class="relative z-10">
+                <div class="relative aspect-[4/5] bg-surface overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.9)] border border-white/10">
+                    <template x-for="(slide, index) in slides" :key="'sharp-' + index">
+                        <div x-show="activeSlide === index" x-transition:enter="transition ease-out duration-700" x-transition:enter-start="opacity-0 scale-110" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-700" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="absolute inset-0 bg-cover bg-center" :style="'background-image: url(' + slide + ')'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent"></div>
+                        </div>
+                    </template>
+                </div>
+                <div class="absolute -top-10 -right-10 w-full h-full border border-primary/10 -z-10"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-40 relative border-y border-divider">
+    <div class="max-w-5xl mx-auto px-8 relative z-10">
+        <div class="grid md:grid-cols-[1.2fr_2fr] gap-24 items-start reveal">
+            <div class="space-y-8">
+                <span class="text-primary tracking-[0.4em] uppercase text-[10px] font-bold block">Küldetésem</span>
+                <h2 class="text-3xl md:text-4xl font-serif text-text italic leading-tight">Bízd rám ingatlanod eladását / kiadását!</h2>
+            </div>
+            <div class="space-y-10">
+                <p class="text-xl md:text-2xl text-text/90 font-serif leading-relaxed italic border-l-2 border-primary/40 pl-10">"Rájöttem, hogy a valódi hivatásom az, hogy levegyem az Ügyfelek vállairól a terhet, ami egy ingatlan eladása / kiadása / vétele / bérlése jelent!"</p>
+                <p class="text-sm md:text-base text-text/50 font-light leading-loose tracking-wide">Biztos vagyok abban, hogy a munkád, és a napi kötelezettségeid mellett Neked is kevés időd van a számodra fontos és kellemes dolgokkal foglalkozni, ezért ne áldozd az értékes időd hirdetésekre, telefonálásra...<span class="text-white font-medium"> Bízd az ingatlanoddal kapcsolatos ügyeid rám!</span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-32 relative bg-surface/30">
+    <div class="max-w-7xl mx-auto px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
+            <div class="p-10 border border-white/5 group hover:border-primary/40 transition-all">
+                <p class="text-4xl font-serif text-text mb-4 group-hover:text-primary transition-colors">15+</p>
+                <p class="text-text/40 text-[10px] tracking-[0.3em] uppercase">Év tapasztalat</p>
+            </div>
+            <div class="p-10 border border-white/5 group hover:border-primary/40 transition-all">
+                <p class="text-4xl font-serif text-text mb-4 group-hover:text-primary transition-colors">Számos</p>
+                <p class="text-text/40 text-[10px] tracking-[0.3em] uppercase">Sikeres tranzakció</p>
+            </div>
+            <div class="p-10 border border-white/5 group hover:border-primary/40 transition-all">
+                <p class="text-4xl font-serif text-text mb-4 group-hover:text-primary transition-colors">100%</p>
+                <p class="text-text/40 text-[10px] tracking-[0.3em] uppercase">Elégedett ügyfél</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-40 relative">
+    <div class="max-w-7xl mx-auto px-8">
+        <div class="grid md:grid-cols-3 gap-1 reveal">
+            <div class="group relative bg-surface p-12 border border-white/5 hover:bg-white/5 transition-all duration-700 min-h-[400px] flex flex-col justify-end">
+                <div class="absolute top-12 left-12 w-10 h-px bg-primary/40 group-hover:w-20 transition-all"></div>
+                <h3 class="text-2xl font-serif mb-6 text-text">Ingatlan Eladás &amp; Kiadás</h3>
+                <p class="text-text/40 leading-relaxed font-light text-sm">Levesszük a válláról a terhet: hirdetés, bemutatás, tárgyalás.</p>
+            </div>
+            <div class="group relative bg-surface p-12 border border-white/5 hover:bg-white/5 transition-all duration-700 min-h-[400px] flex flex-col justify-end">
+                <div class="absolute top-12 left-12 w-10 h-px bg-primary/40 group-hover:w-20 transition-all"></div>
+                <h3 class="text-2xl font-serif mb-6 text-text">Adminisztráció &amp; Jogi Háttér</h3>
+                <p class="text-text/40 leading-relaxed font-light text-sm">Energetikai tanúsítvány, tulajdoni lap, ügyvédi háttér biztosítása.</p>
+            </div>
+            <div class="group relative bg-surface p-12 border border-white/5 hover:bg-white/5 transition-all duration-700 min-h-[400px] flex flex-col justify-end">
+                <div class="absolute top-12 left-12 w-10 h-px bg-primary/40 group-hover:w-20 transition-all"></div>
+                <h3 class="text-2xl font-serif mb-6 text-text">Szakemberek Ajánlása</h3>
+                <p class="text-text/40 leading-relaxed font-light text-sm">Megbízható szakemberek a felújításhoz, hitelügyintézéshez.</p>
+            </div>
+        </div>
+    </div>
+</section>

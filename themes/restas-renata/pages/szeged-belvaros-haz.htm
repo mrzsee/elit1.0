@@ -1,0 +1,140 @@
+title = "Szeged – Belváros, 275 m2-es ház eladó!"
+url = "/ingatlanok/szeged-belvaros-haz"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+meta_description = "Szeged – Belváros, 275 m2-es ház eladó! Exkluzív luxus családi fészek a Belvárosban."
+==
+{% put styles %}
+<style>
+    .glass-nav-detail { background: rgba(15, 17, 19, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(148, 163, 184, 0.1); }
+</style>
+{% endput %}
+
+<div x-data="{
+    modalOpen: false, currentIndex: 0,
+    get currentImg() { return this.images[this.currentIndex] },
+    next() { this.currentIndex = (this.currentIndex + 1) % this.images.length },
+    prev() { this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length },
+    images: [
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/c68/682eeac686484789285951.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/c6e/682eeac6ee993169913509.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/c83/682eeac83eb7b000932477.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/c7c/682eeac7c9958364511803.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/c81/682eeac81d971794422826.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/c8d/682eeac8defa0917609039.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/c99/682eeac99a616914138551.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/ca5/682eeaca54261691118702.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/cb3/682eeacb3b23f572641936.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/cc2/682eeacc20ec9524580441.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/cd5/682eeacd5ad16307219631.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/ce5/682eeace5c74d522893543.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/cf0/682eeacf0a6f3030968598.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/cf8/682eeacf8d2bf576231232.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/d0c/682eead0ca542644690334.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/d26/682eead263189541889549.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/d3e/682eead3ecd85579302334.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/d49/682eead499bb8472218002.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/d57/682eead579c9d651465407.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/d65/682eeac65b603265650350.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/d71/682eead710375689985129.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/d95/682eead955acf972357271.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/dab/682eeadab11db120572973.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/db5/682eeadb53a02384459149.jpg',
+        'https://restasrenata.hu/storage/app/uploads/public/682/eea/db9/682eeadb99f17606569176.jpg'
+    ]
+}" @keydown.right.window="if(modalOpen) next()" @keydown.left.window="if(modalOpen) prev()" @keydown.escape.window="modalOpen = false">
+
+<!-- Hero Section -->
+<section class="relative h-[70vh] flex items-end overflow-hidden -mt-24">
+    <div class="absolute inset-0 z-0">
+        <img src="https://restasrenata.hu/storage/app/uploads/public/682/eea/c68/682eeac686484789285951.jpg" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-8 w-full pb-20 relative z-10">
+        <div class="reveal active space-y-6">
+            <span class="text-primary tracking-[0.4em] uppercase text-[10px] font-bold">Kiemelt Ingatlan</span>
+            <h1 class="text-4xl md:text-6xl font-serif text-text leading-tight italic">Szeged – Belváros, <br> 275 m2-es ház eladó!</h1>
+            <div class="flex gap-12 pt-8">
+                <div><p class="text-[10px] uppercase tracking-[0.4em] text-text/30 mb-2">Irányár</p><p class="text-3xl font-serif text-primary">270 M Ft</p></div>
+                <div><p class="text-[10px] uppercase tracking-[0.4em] text-text/30 mb-2">Terület</p><p class="text-3xl font-serif text-text">275 m²</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content Grid -->
+<section class="py-20 lg:py-32">
+    <div class="max-w-7xl mx-auto px-8">
+        <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-4 mb-4"><span class="h-px w-8 bg-primary"></span><span class="text-primary tracking-[0.4em] uppercase text-[10px] font-bold">Galéria</span></div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                    <template x-for="(img, index) in images" :key="index">
+                        <div class="aspect-square overflow-hidden cursor-pointer group border border-white/5" @click="currentIndex = index; modalOpen = true">
+                            <img :src="img" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </template>
+                </div>
+            </div>
+            <div class="space-y-16">
+                <div class="reveal active space-y-10">
+                    <div class="space-y-6">
+                        <h2 class="text-2xl font-serif italic text-primary border-l-2 border-primary/40 pl-8">Az ingatlan bemutatása</h2>
+                        <div class="text-text/70 leading-relaxed font-light space-y-6 text-lg">
+                            <p>Egyszerre vagyunk Szeged Belvárosában és egyszerre érezzük úgy a mediterrán stílus miatt, mintha nyaralnánk!</p>
+                            <p>Az ingatlan adatai: Szeged – Belváros, Novotelhez közel, 275 m2-es, kétszintes, felújított családi ház, 529 m2-es telken eladó. Helyiségek: összesen 8 db szoba, 1 db konyha, 1 db étkező, 1 db éttermi rész, 1 db kamra, 1 db borospince, 5 db fürdőszoba WC-vel, 3 db WC, 8 db közlekedő/előszoba, 2 db gardrób és 2 db garázs. A házban összesen 4 db klíma van. Fűtése: gázcirkó.</p>
+                            <p>Panzióként üzemelt (16 fő elszállásolható), de akár 7 db lakásra is fel lehet osztani! A felújítás során 6 rétegű szigetelést kapott a ház, cserélve lettek a víz-, és villanyvezetékek, megújult a tetőszerkezet, Beretta kondenzációs kazán lett felszerelve, új burkolat lett lerakva, a külső homlokzat festést kapott, megújultak a nyílászárók, a kapu elektromos lett és mozgásérzékelős lámpa is felszerelésre került.</p>
+                            <p>A parkolás a város ezen részén fizetős, de van egy kétállásos 30 m2-es garázs, van még hely további 4 db autónak az udvarban és 2 db kocsinak az utcán. A 120 m2-es tetőtér beépíthető!</p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <h2 class="text-2xl font-serif italic text-primary border-l-2 border-primary/40 pl-8">Kinek ajánlom?</h2>
+                        <p class="text-text/70 leading-relaxed font-light text-lg">Ideális lehet vállalkozónak, aki panzióként üzemeltetné, vagy olyannak, aki több apartmant kialakít és akár hosszú, akár rövidtávra kiadja. El tudok itt képzelni magánklinikát is. Nagycsaládnak is alkalmas.</p>
+                    </div>
+                    <blockquote class="italic text-primary-dark font-serif text-xl border-l-2 border-primary/20 pl-8 py-4 bg-primary/5">"Az egri pincészeteket idéző borospince, és az udvar mediterrán stílusa azonnal kikapcsolt, és egyből kiszakadtam a rohanó hétköznapokból!"</blockquote>
+                </div>
+                <div class="bg-surface p-10 border border-white/5 reveal active">
+                    <h3 class="text-[10px] uppercase tracking-[0.4em] text-primary font-bold mb-10">Műszaki adatok</h3>
+                    <ul class="space-y-4 text-sm font-light">
+                        <li class="flex justify-between border-b border-white/5 pb-3"><span class="text-text/40 tracking-widest uppercase text-[10px]">Típus</span><span class="text-text/80">Családi ház</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-3"><span class="text-text/40 tracking-widest uppercase text-[10px]">Ház mérete</span><span class="text-text/80">275 m²</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-3"><span class="text-text/40 tracking-widest uppercase text-[10px]">Telek mérete</span><span class="text-text/80">529 m²</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-3"><span class="text-text/40 tracking-widest uppercase text-[10px]">Szobák</span><span class="text-text/80">8 db</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-3"><span class="text-text/40 tracking-widest uppercase text-[10px]">Fürdők</span><span class="text-text/80">5 db + 3 WC</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-3"><span class="text-text/40 tracking-widest uppercase text-[10px]">Fűtés</span><span class="text-text/80">Gázcirkó</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-3"><span class="text-text/40 tracking-widest uppercase text-[10px]">Klíma</span><span class="text-text/80">4 db</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-3"><span class="text-text/40 tracking-widest uppercase text-[10px]">Garázs</span><span class="text-text/80">2 állásos (30m²)</span></li>
+                    </ul>
+                </div>
+                <div class="bg-primary/5 p-10 border border-primary/10 space-y-8 reveal active">
+                    <div class="flex items-center gap-6">
+                        <img src="{{ 'assets/images/logo3.png'|theme }}" class="h-12 w-auto opacity-50">
+                        <div><p class="text-xs font-serif text-text tracking-widest uppercase">Restás <span class="font-light italic">Renáta</span></p><p class="text-[10px] text-text/30 uppercase tracking-[0.2em] mt-1">Ingatlanközvetítő</p></div>
+                    </div>
+                    <a href="tel:+36703845025" class="block w-full text-center py-5 bg-white text-background uppercase text-[10px] tracking-[0.3em] font-bold hover:bg-primary transition-all">Érdeklődöm: +36 70 384 5025</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div x-show="modalOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" class="fixed inset-0 z-[100] bg-background/98 backdrop-blur-3xl flex flex-col" x-cloak>
+    <div class="flex justify-between items-center p-8 z-50">
+        <p class="text-text/40 uppercase tracking-[0.4em] text-[10px]"><span x-text="currentIndex + 1" class="text-text"></span> / <span x-text="images.length"></span></p>
+        <button @click="modalOpen = false" class="text-text/50 hover:text-white transition-colors p-2"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    </div>
+    <div class="relative flex-grow flex items-center justify-center p-4 h-full overflow-hidden">
+        <button @click="prev()" class="absolute left-8 z-50 p-4 text-text/20 hover:text-primary transition-all hidden md:block"><svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 19l-7-7 7-7"/></svg></button>
+        <div class="relative w-full h-full flex items-center justify-center"><img :src="currentImg" class="max-h-full max-w-full object-contain shadow-2xl transition-all duration-500" :key="currentImg"></div>
+        <button @click="next()" class="absolute right-8 z-50 p-4 text-text/20 hover:text-primary transition-all hidden md:block"><svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+    <div class="flex md:hidden justify-center gap-12 p-12">
+        <button @click="prev()" class="p-4 text-primary"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
+        <button @click="next()" class="p-4 text-primary"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+</div>
+
+</div>

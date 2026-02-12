@@ -1,0 +1,70 @@
+title = "Ingatlanok"
+url = "/ingatlanok"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+meta_description = "Eladó és kiadó ingatlanok Szegeden. Találja meg álmai otthonát kínálatunkban."
+==
+<div class="py-40 text-center relative overflow-hidden">
+    <div class="absolute inset-0 z-0 bg-background/40 backdrop-blur-3xl"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-8">
+        <span class="text-primary tracking-[0.4em] uppercase text-[10px] font-bold block mb-10">Kínálatunk</span>
+        <h1 class="text-3xl md:text-5xl font-serif text-text italic reveal leading-tight">Válogasson exkluzív ingatlanainkból</h1>
+    </div>
+</div>
+
+<section class="pb-40 relative px-8" x-data='{ 
+    search: "", type: "Mindegy", minPrice: 0, maxPrice: 300,
+    properties: [
+        { "city": "Szeged", "type": "Ház", "price": 270000000, "area": 275, "title": "Szeged – Belváros, 275 m2-es ház eladó!", "image": "{{ "assets/images/properties/prop_1.jpg"|theme }}", "desc": "Egyszerre vagyunk Szeged Belvárosában, s mégis a csend és nyugalom szigetén. Egy 718 m2-es, parkosított és intim díszkertben bújik meg ez az exkluzív luxus családi fészek.", "details": ["Belváros", "Luxus", "718 m2 kert", "Exkluzív"] }
+    ],
+    modalOpen: false, selectedP: null,
+    init() { const p = new URLSearchParams(window.location.search); if (p.get("search")) this.search = p.get("search"); if (p.get("type")) this.type = p.get("type"); },
+    openDetail(p) { this.selectedP = p; this.modalOpen = true; document.body.style.overflow = "hidden"; },
+    closeDetail() { this.modalOpen = false; document.body.style.overflow = "auto"; }
+}'>
+    <div class="max-w-7xl mx-auto mb-24 reveal">
+        <div class="bg-surface/50 backdrop-blur-3xl border border-white/5 p-8 md:p-12 shadow-2xl grid md:grid-cols-4 gap-8">
+            <div class="space-y-4"><label class="text-[10px] uppercase tracking-[0.4em] text-text/30">Város</label><input type="text" x-model="search" placeholder="Pl. Szeged" class="w-full bg-transparent border-b border-white/10 py-2 focus:border-primary outline-none transition-all font-light text-text/80"></div>
+            <div class="space-y-4"><label class="text-[10px] uppercase tracking-[0.4em] text-text/30">Típus</label><select x-model="type" class="w-full bg-transparent border-b border-white/10 py-2 focus:border-primary outline-none transition-all font-light text-text/80 appearance-none"><option value="Mindegy" class="bg-surface">Mindegy</option><option value="Lakás" class="bg-surface">Lakás</option><option value="Ház" class="bg-surface">Ház</option><option value="Telek" class="bg-surface">Telek</option><option value="Üzlethelyiség" class="bg-surface">Üzlethelyiség</option></select></div>
+            <div class="space-y-4"><label class="text-[10px] uppercase tracking-[0.4em] text-text/30">Min. ár (M Ft)</label><input type="number" x-model="minPrice" placeholder="0" class="w-full bg-transparent border-b border-white/10 py-2 focus:border-primary outline-none transition-all font-light text-text/80"></div>
+            <div class="space-y-4"><label class="text-[10px] uppercase tracking-[0.4em] text-text/30">Max. ár (M Ft)</label><input type="number" x-model="maxPrice" placeholder="300" class="w-full bg-transparent border-b border-white/10 py-2 focus:border-primary outline-none transition-all font-light text-text/80"></div>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-1 reveal group/grid">
+            <template x-for="p in properties.filter(i => (search === '' || i.city.toLowerCase().includes(search.toLowerCase())) && (type === 'Mindegy' || i.type === type) && (i.price >= minPrice * 1000000) && (i.price <= maxPrice * 1000000))" :key="p.title">
+                <div class="group relative bg-surface border border-white/5 transition-all duration-700 hover:scale-[1.02] hover:z-20 hover:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden">
+                    <div class="aspect-[4/3] overflow-hidden"><img :src="p.image" class="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"></div>
+                    <div class="p-8 space-y-6">
+                        <div class="flex justify-between items-start"><span class="text-[10px] uppercase tracking-[0.4em] text-primary font-bold" x-text="p.type"></span><span class="text-[10px] uppercase tracking-[0.4em] text-text/30" x-text="p.city"></span></div>
+                        <h3 class="text-xl font-serif text-text leading-tight group-hover:text-primary transition-colors h-14" x-text="p.title"></h3>
+                        <div class="pt-6 border-t border-white/5 flex justify-between items-center"><p class="text-xl font-serif text-text/90" x-text="(p.price/1000000).toFixed(1) + ' M Ft'"></p><p class="text-[10px] uppercase tracking-[0.4em] text-text/30" x-text="p.area + ' m²'"></p></div>
+                        <div class="pt-4"><div @click="openDetail(p)" class="w-full text-center py-4 border border-white/10 uppercase text-[10px] tracking-[0.4em] font-bold hover:bg-white hover:text-background transition-all cursor-pointer">Részletek</div></div>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div x-show="modalOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8" x-cloak>
+        <div class="absolute inset-0 bg-background/90 backdrop-blur-xl" @click="closeDetail()"></div>
+        <div class="relative w-full max-w-6xl bg-surface border border-white/10 shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[80vh]" @click.away="closeDetail()">
+            <button @click="closeDetail()" class="absolute top-6 right-6 z-50 text-white/50 hover:text-white transition-colors"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            <div class="w-full md:w-1/2 bg-black flex items-center justify-center relative group"><img :src="selectedP?.image" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div><div class="absolute bottom-8 left-8 text-white"><p class="text-[10px] uppercase tracking-[0.4em] text-primary font-bold mb-2" x-text="selectedP?.type"></p><h2 class="text-2xl md:text-3xl font-serif" x-text="selectedP?.title"></h2></div></div>
+            <div class="w-full md:w-1/2 p-8 overflow-y-auto bg-surface relative">
+                <div class="space-y-6">
+                    <section class="grid grid-cols-2 gap-8 border-b border-white/5 pb-10"><div class="space-y-2"><p class="text-[10px] uppercase tracking-[0.4em] text-text/30">Irányár</p><p class="text-3xl font-serif text-primary" x-text="(selectedP?.price/1000000).toFixed(1) + ' M Ft'"></p></div><div class="space-y-2"><p class="text-[10px] uppercase tracking-[0.4em] text-text/30">Alapterület</p><p class="text-3xl font-serif text-text" x-text="selectedP?.area + ' m²'"></p></div></section>
+                    <section class="space-y-6"><h4 class="text-[10px] uppercase tracking-[0.4em] text-primary font-bold">Leírás</h4><p class="text-text/70 leading-relaxed font-light" x-text="selectedP?.desc"></p></section>
+                    <section class="space-y-6"><h4 class="text-[10px] uppercase tracking-[0.4em] text-primary font-bold">Jellemzők</h4><div class="grid grid-cols-2 gap-4"><template x-for="detail in selectedP?.details" :key="detail"><div class="flex items-center gap-3 text-sm text-text/50 font-light"><span class="w-1 h-1 bg-primary"></span><span x-text="detail"></span></div></template></div></section>
+                    <section class="pt-10 border-t border-white/5 space-y-8">
+                        <div class="flex items-center gap-6"><img src="{{ 'assets/images/logo3.png'|theme }}" class="h-12 w-auto opacity-50"><div><p class="text-xs font-serif text-text tracking-widest uppercase">Restás <span class="font-light italic">Renáta</span></p><p class="text-[10px] text-text/30 uppercase tracking-[0.2em] mt-1">Ingatlanközvetítő</p></div></div>
+                        <div class="flex flex-col md:flex-row gap-6 mt-6"><a href="tel:+36703845025" class="flex-grow text-center py-5 bg-white text-background uppercase text-[10px] tracking-[0.3em] font-bold hover:bg-primary transition-all">Hívás: +36 70 384 5025</a><a href="mailto:hello@restasrenata.hu" class="flex-grow text-center py-5 border border-white/20 uppercase text-[10px] tracking-[0.3em] font-bold hover:bg-white hover:text-background transition-all">Email küldése</a></div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

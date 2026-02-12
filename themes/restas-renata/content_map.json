@@ -1,0 +1,90 @@
+[
+    {
+        "filename": "index.html",
+        "title": "Kezdőlap - Restás Renáta",
+        "h1": "Ingatlanügyek, személyre szabva",
+        "description": "Bízd rám ingatlanod eladását vagy kiadását! Professzionális ingatlanközvetítés Szegeden és környékén.",
+        "content_type": "home",
+        "sections": {
+            "hero": {
+                "headline": "Nyerje vissza a nyugalmát az ingatlanügyekben",
+                "subheadline": "Teljes körű ügyintézés az eladástól a szerződéskötésig.",
+                "cta": "Időpontfoglalás"
+            },
+            "stats": [
+                {
+                    "label": "Év tapasztalat",
+                    "value": "15+"
+                },
+                {
+                    "label": "Sikeres tranzakció",
+                    "value": "Számos"
+                },
+                {
+                    "label": "Elégedett ügyfél",
+                    "value": "100%"
+                }
+            ],
+            "services": [
+                {
+                    "title": "Ingatlan Eladás & Kiadás",
+                    "desc": "Levesszük a válláról a terhet: hirdetés, bemutatás, tárgyalás.",
+                    "icon": "home"
+                },
+                {
+                    "title": "Adminisztráció & Jogi Háttér",
+                    "desc": "Energetikai tanúsítvány, tulajdoni lap, ügyvédi háttér biztosítása.",
+                    "icon": "document-text"
+                },
+                {
+                    "title": "Szakemberek Ajánlása",
+                    "desc": "Megbízható szakemberek a felújításhoz, hitelügyintézéshez.",
+                    "icon": "user-group"
+                }
+            ],
+            "trust": "Partner a bizalomban",
+            "faq": [
+                {
+                    "q": "Miért érdemes ingatlanközvetítőt fogadni?",
+                    "a": "Spórolunk az idejével, kiszűrjük a komolytalan érdeklődőket, és szakmai tapasztalattal segítjük az alkut és az ügymenetet."
+                },
+                {
+                    "q": "Milyen területeken dolgozik?",
+                    "a": "Főként Szegeden és vonzáskörzetében vállalok megbízásokat."
+                },
+                {
+                    "q": "Milyen költségekkel jár a szolgáltatás?",
+                    "a": "A közvetítői díj sikerdíjas alapú, csak sikeres tranzakció esetén fizetendő."
+                }
+            ]
+        }
+    },
+    {
+        "filename": "ingatlanok/index.html",
+        "title": "Ingatlanok - Restás Renáta",
+        "h1": "Aktuális Ingatlan Kínálat",
+        "description": "Eladó és kiadó ingatlanok Szegeden. Találja meg álmai otthonát kínálatunkban.",
+        "content_type": "properties",
+        "content": "Jelenleg feltöltés alatt. Kérjük, érdeklődjön telefonon az aktuális kínálatról!"
+    },
+    {
+        "filename": "rolunk/index.html",
+        "title": "Rólam - Restás Renáta",
+        "h1": "Bemutatkozás",
+        "description": "Restás Renáta ingatlanközvetítő - 2009 óta az ingatlanpiacon.",
+        "content_type": "about",
+        "content": "<p>Az ingatlanértékesítéssel még nagyon fiatalon, 2009-ben találkoztam először. Már kezdőként kirajzolódott bennem, hogy tetszik az, amit ez a szakma nyújthat nekem.</p><p>2018. január 5-én lettem vállalkozó szinten is ingatlanközvetítő!</p><p>Célom, hogy levegyem az Ügyfelek vállairól a terhet, amit egy ingatlan eladása, kiadása, vétele vagy bérlése jelent. Egy költözés eleve stresszel jár, én azért dolgozom, hogy ez a folyamat minél zökkenőmentesebb legyen.</p>"
+    },
+    {
+        "filename": "kapcsolat/index.html",
+        "title": "Kapcsolat - Restás Renáta",
+        "h1": "Vegye fel velem a kapcsolatot",
+        "description": "Ingatlanügyekben segítségre van szüksége? Keressen bizalommal!",
+        "content_type": "contact",
+        "contact_info": {
+            "email": "hello@restasrenata.hu",
+            "phone": "+3670/384-5025",
+            "address": "Szeged"
+        }
+    }
+]
