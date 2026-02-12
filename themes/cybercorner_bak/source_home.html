@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="hu" class="dark">
+
+<head>
+    <meta charset="utf-8">
+    <title>Főoldal - Cyberwinter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind Play CDN for rapid prototyping -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            black: '#0b0e14',
+                            dark: '#1a1d23',
+                            cyan: '#00f3ff',
+                            pink: '#ff00ff',
+                            yellow: '#fcee0a',
+                            magenta: '#ff003c'
+                        }
+                    },
+                    fontFamily: {
+                        cyber: ['Orbitron', 'sans-serif'],
+                        body: ['Rajdhani', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-cyber-black text-gray-300 font-body;
+            }
+            h1, h2, h3 {
+                @apply font-cyber tracking-widest uppercase;
+            }
+        }
+        
+        @layer components {
+            .neon-border {
+                @apply border border-cyber-cyan shadow-[0_0_10px_rgba(0,243,255,0.5)];
+            }
+            .neon-text-cyan {
+                @apply text-cyber-cyan shadow-[0_0_5px_rgba(0,243,255,0.8)];
+            }
+            .neon-button {
+                @apply px-6 py-2 bg-transparent border-2 border-cyber-pink text-cyber-pink font-cyber text-sm hover:bg-cyber-pink hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(255,0,255,0.3)] hover:shadow-[0_0_25px_rgba(255,0,255,0.6)];
+            }
+            .cyber-grid {
+                background-image: linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+                                  linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+                background-size: 30px 30px;
+            }
+        }
+    </style>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    </head>
+
+<body class="cyber-grid min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <div x-data="{ mobileMenuOpen: false }">
+    <!-- Sticky Header Bar -->
+    <header class="sticky top-0 z-50 bg-cyber-black/90 backdrop-blur-lg border-b border-cyber-cyan/30">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="/" class="flex items-center gap-2 group">
+                <div
+                    class="w-8 h-8 md:w-10 md:h-10 bg-cyber-cyan shadow-[0_0_15px_#00f3ff] clip-path-polygon-[0%_0%,100%_0%,100%_75%,75%_100%,0%_100%]">
+                </div>
+                <span
+                    class="text-xl md:text-2xl font-cyber text-white group-hover:neon-text-cyan transition duration-300">
+                    CYBER<span class="text-cyber-cyan">WINTER</span>
+                </span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="/"
+                    class="text-sm font-cyber hover:text-cyber-cyan transition text-cyber-cyan">Főoldal</a>
+                <a href="/szolgaltatasok"
+                    class="text-sm font-cyber hover:text-cyber-cyan transition ">Szolgáltatások</a>
+                <a href="/kapcsolat"
+                    class="text-sm font-cyber hover:text-cyber-cyan transition ">Kapcsolat</a>
+                <a href="/kapcsolat" class="neon-button">Kérj ajánlatot</a>
+            </nav>
+
+            <!-- Mobile Toggle -->
+            <button @click="mobileMenuOpen = true" class="md:hidden text-cyber-cyan text-2xl p-2">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0" class="fixed inset-0 z-[100] md:hidden" style="display: none;">
+
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/95" @click="mobileMenuOpen = false"></div>
+
+        <!-- content container -->
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300 transform"
+            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+            x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="translate-x-0"
+            x-transition:leave-end="translate-x-full"
+            class="absolute right-0 top-0 bottom-0 w-80 p-8 flex flex-col shadow-2xl"
+            style="background-color: #0b0e14 !important; border-left: 1px solid rgba(0, 243, 255, 0.3);">
+
+            <div class="flex justify-end mb-12">
+                <button @click="mobileMenuOpen = false" class="text-cyber-cyan text-3xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <nav class="flex flex-col gap-8 text-lg font-cyber">
+                <a href="/"
+                    class="hover:text-cyber-cyan transition text-cyber-cyan">Főoldal</a>
+                <a href="/szolgaltatasok"
+                    class="hover:text-cyber-cyan transition ">Szolgáltatások</a>
+                <a href="/kapcsolat"
+                    class="hover:text-cyber-cyan transition ">Kapcsolat</a>
+                <a href="/kapcsolat" class="neon-button text-center mt-4">Kérj ajánlatot</a>
+            </nav>
+
+            <div class="mt-auto pt-8 border-t border-white/5">
+                <div class="text-xs text-gray-500 uppercase tracking-widest mb-4">Kapcsolat</div>
+                <div class="text-sm text-gray-400">info@cyberwinter.hu</div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Content -->
+    <main class="flex-grow">
+        <section class="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+    <!-- Animated background element -->
+    <div class="absolute w-[500px] h-[500px] bg-cyber-pink/20 rounded-full blur-[120px] -top-20 -left-20 animate-pulse">
+    </div>
+    <div class="absolute w-[400px] h-[400px] bg-cyber-cyan/10 rounded-full blur-[100px] -bottom-20 -right-20 animate-pulse"
+        style="animation-delay: 2s;"></div>
+
+    <div class="max-w-7xl mx-auto px-4 relative z-10 text-center">
+        <h2 class="text-cyber-cyan text-xs md:text-sm tracking-[0.5em] mb-4 opacity-80 uppercase">Est. 2024 // Cybercore
+            Systems
+        </h2>
+        <h1 class="text-4xl md:text-6xl lg:text-8xl font-cyber mb-6 text-white leading-tight">
+            A JÖVŐ <br class="hidden md:block">
+            <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-pink to-cyber-magenta">TECHNOLÓGIÁJA</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 font-body">
+            Digitális megoldások a Cyberwinter stílusában. Szoftverfejlesztés, design és stratégia azoknak, akik nem a
+            mának, hanem a holnapnak építenek.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
+            <a href="/szolgaltatasok" class="neon-button !text-base md:!text-lg !px-6 md:!px-10">Mire vagyunk
+                képesek?</a>
+            <a href="/kapcsolat"
+                class="px-8 py-3 bg-white/5 border border-white/10 text-white font-cyber text-xs md:text-sm hover:bg-white/10 transition backdrop-blur-sm">Kapcsolat
+                felvétel</a>
+        </div>
+    </div>
+</section>
+
+<!-- Stats / Features -->
+<section class="py-20 bg-cyber-black/50 border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-6 md:p-8 border-l-2 border-cyber-cyan bg-cyber-dark/40">
+            <div
+                class="text-2xl md:text-3xl font-cyber text-white mb-2 underline decoration-cyber-cyan decoration-2 underline-offset-8">
+                01. FEJLESZTÉS</div>
+            <p class="text-xs md:text-sm text-gray-500 mt-4">Nagy teherbírású rendszerek, skálázható architektúrák.</p>
+        </div>
+        <div class="p-6 md:p-8 border-l-2 border-cyber-pink bg-cyber-dark/40">
+            <div
+                class="text-2xl md:text-3xl font-cyber text-white mb-2 underline decoration-cyber-pink decoration-2 underline-offset-8">
+                02. DESIGN</div>
+            <p class="text-xs md:text-sm text-gray-500 mt-4">UI/UX a jövőből. Modern, letisztult, futurisztikus.</p>
+        </div>
+        <div class="p-6 md:p-8 border-l-2 border-cyber-yellow bg-cyber-dark/40">
+            <div
+                class="text-2xl md:text-3xl font-cyber text-white mb-2 underline decoration-cyber-yellow decoration-2 underline-offset-8">
+                03. STRATÉGIA</div>
+            <p class="text-xs md:text-sm text-gray-500 mt-4">Digitális transzformáció és üzleti növekedés.</p>
+        </div>
+    </div>
+</section>    </main>
+
+    <!-- Footer -->
+    <footer class="bg-cyber-dark py-12 border-t border-cyber-cyan/20">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div class="col-span-1 md:col-span-2">
+            <div class="flex items-center gap-2 mb-6">
+                <div class="w-6 h-6 bg-cyber-pink shadow-[0_0_10px_#ff00ff] clip-path-polygon-[0%_0%,100%_0%,100%_75%,75%_100%,0%_100%]"></div>
+                <span class="text-xl font-cyber text-white">CYBER<span class="text-cyber-pink">WINTER</span></span>
+            </div>
+            <p class="text-gray-500 max-w-sm mb-6 font-body">
+                A következő generációs digitális ügynökség. Night City technológiái, ma elérhetővé téve az Ön vállalkozása számára.
+            </p>
+            <div class="flex gap-4">
+                <a href="#" class="text-gray-400 hover:text-cyber-cyan transition"><i class="fab fa-twitter text-xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-cyber-cyan transition"><i class="fab fa-github text-xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-cyber-cyan transition"><i class="fab fa-discord text-xl"></i></a>
+            </div>
+        </div>
+
+        <div>
+            <h4 class="text-white font-cyber text-sm tracking-widest uppercase mb-6">Navigáció</h4>
+            <ul class="flex flex-col gap-4 text-sm text-gray-500">
+                <li><a href="/" class="hover:text-cyber-cyan transition">Főoldal</a></li>
+                <li><a href="/szolgaltatasok" class="hover:text-cyber-cyan transition">Szolgáltatások</a></li>
+                <li><a href="/kapcsolat" class="hover:text-cyber-cyan transition">Kapcsolat</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="text-white font-cyber text-sm tracking-widest uppercase mb-6">Jogi nyilatkozat</h4>
+            <ul class="flex flex-col gap-4 text-sm text-gray-500">
+                <li><a href="#" class="hover:text-cyber-cyan transition">Adatvédelem</a></li>
+                <li><a href="#" class="hover:text-cyber-cyan transition">Általános szerződési feltételek</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 mt-12 pt-8 border-t border-white/5 text-center text-xs text-gray-600 tracking-widest uppercase">
+        &copy; 2026 Cyberwinter Agency. All rights reserved. // <span class="text-cyber-cyan">Secure Connection Established</span>
+    </div>
+</footer>
+    </body>
+
+</html>

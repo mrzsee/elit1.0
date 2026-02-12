@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="hu" class="dark">
+
+<head>
+    <meta charset="utf-8">
+    <title>Cyberwinter - Preview Batch 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { cyber: { black: '#0b0e14', dark: '#1a1d23', cyan: '#00f3ff', pink: '#ff00ff', yellow: '#fcee0a', magenta: '#ff003c' } },
+                    fontFamily: { cyber: ['Orbitron', 'sans-serif'], body: ['Rajdhani', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base { body { @apply bg-cyber-black text-gray-300 font-body; } h1, h2, h3 { @apply font-cyber tracking-widest uppercase; } }
+        @layer components {
+            .neon-button { @apply px-6 py-2 bg-transparent border-2 border-cyber-pink text-cyber-pink font-cyber text-sm hover:bg-cyber-pink hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(255,0,255,0.3)] hover:shadow-[0_0_25px_rgba(255,0,255,0.6)]; }
+            .cyber-grid { background-image: linear-gradient(rgba(0,243,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,243,255,0.05) 1px, transparent 1px); background-size: 30px 30px; }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stagger-1 {
+            transition-delay: 0.1s;
+        }
+
+        .stagger-2 {
+            transition-delay: 0.2s;
+        }
+
+        .stagger-3 {
+            transition-delay: 0.3s;
+        }
+
+        .stagger-4 {
+            transition-delay: 0.4s;
+        }
+
+        .stagger-5 {
+            transition-delay: 0.5s;
+        }
+
+        .stagger-6 {
+            transition-delay: 0.6s;
+        }
+
+        @keyframes neon-pulse-pink {
+
+            0%,
+            100% {
+                box-shadow: 0 0 5px rgba(255, 0, 255, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(255, 0, 255, 0.6), 0 0 40px rgba(255, 0, 255, 0.3);
+            }
+        }
+
+        .neon-pulse-pink {
+            animation: neon-pulse-pink 2s ease-in-out infinite;
+        }
+
+        @keyframes glitch-anim {
+            0% {
+                clip-path: inset(40% 0 61% 0);
+                transform: translate(-2px, 2px);
+            }
+
+            20% {
+                clip-path: inset(92% 0 1% 0);
+                transform: translate(1px, -3px);
+            }
+
+            40% {
+                clip-path: inset(43% 0 1% 0);
+                transform: translate(-1px, 3px);
+            }
+
+            60% {
+                clip-path: inset(25% 0 58% 0);
+                transform: translate(3px, 1px);
+            }
+
+            80% {
+                clip-path: inset(54% 0 7% 0);
+                transform: translate(-3px, -2px);
+            }
+
+            100% {
+                clip-path: inset(58% 0 43% 0);
+                transform: translate(2px, -1px);
+            }
+        }
+
+        /* GLITCH TEXT EFFECT */
+        .glitch-text {
+            position: relative;
+            display: inline-block;
+        }
+
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+
+        .glitch-text:hover::before {
+            opacity: 0.8;
+            color: #00f3ff;
+            animation: glitch-anim 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+            z-index: -1;
+        }
+
+        .glitch-text:hover::after {
+            opacity: 0.8;
+            color: #ff00ff;
+            animation: glitch-anim 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+            z-index: -2;
+        }
+
+        /* 3D TILT CARD */
+        .tilt-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: transform 0.3s ease-out;
+        }
+
+        .tilt-card:hover .tilt-glow {
+            opacity: 1;
+        }
+
+        .tilt-glow {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* FLOATING */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .float-anim {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .scanlines::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 243, 255, 0.015) 2px, rgba(0, 243, 255, 0.015) 4px);
+            pointer-events: none;
+            z-index: 9999;
+        }
+    </style>
+</head>
+
+<body class="cyber-grid min-h-screen flex flex-col scanlines">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 bg-cyber-black/90 backdrop-blur-lg border-b border-cyber-cyan/30">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 bg-cyber-cyan shadow-[0_0_15px_#00f3ff]"
+                    style="clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 100%, 0% 100%);"></div>
+                <span class="text-2xl font-cyber text-white">CYBER<span class="text-cyber-cyan">WINTER</span></span>
+            </a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#" class="text-sm font-cyber text-cyber-cyan">Főoldal</a>
+                <a href="#services" class="text-sm font-cyber hover:text-cyber-cyan transition">Szolgáltatások</a>
+                <a href="#" class="text-sm font-cyber hover:text-cyber-cyan transition">Kapcsolat</a>
+                <a href="#" class="neon-button">Kérj ajánlatot</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+
+        <!-- SERVICE CARDS with 3D Tilt + Glitch Text -->
+        <section id="services" class="py-24 relative overflow-hidden">
+            <div class="absolute w-[500px] h-[500px] bg-cyber-cyan/5 rounded-full blur-[150px] -top-32 -right-32"></div>
+            <div class="max-w-7xl mx-auto px-4 relative z-10">
+                <h2 class="text-cyber-cyan text-xs tracking-[0.5em] mb-4 opacity-80 uppercase reveal-up">Portfolio //
+                    Services</h2>
+                <h1 class="text-4xl md:text-6xl font-cyber mb-16 text-white reveal-up stagger-1">
+                    AMIT <span class="glitch-text text-cyber-pink" data-text="KÍNÁLUNK">KÍNÁLUNK</span>
+                </h1>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div
+                        class="tilt-card p-8 border border-white/5 bg-cyber-dark/30 backdrop-blur-sm group hover:border-cyber-cyan/50 transition-all duration-500 relative reveal-up stagger-1">
+                        <div class="tilt-glow"></div>
+                        <div class="relative z-10">
+                            <div
+                                class="text-cyber-cyan text-4xl mb-6 group-hover:scale-110 transition duration-500 float-anim">
+                                <i class="fas fa-terminal"></i></div>
+                            <h3 class="text-xl font-cyber text-white mb-4 glitch-text" data-text="Szoftverfejlesztés">
+                                Szoftverfejlesztés</h3>
+                            <p class="text-gray-500 font-body text-sm leading-relaxed">Egyedi webes alkalmazások,
+                                skálázható backend rendszerek és modern frontend megoldások.</p>
+                            <div class="mt-8 pt-6 border-t border-white/5 flex justify-between items-center">
+                                <span
+                                    class="text-[10px] text-cyber-cyan font-cyber tracking-widest uppercase">Full-Stack
+                                    dev</span>
+                                <i
+                                    class="fas fa-arrow-right text-cyber-cyan opacity-0 group-hover:opacity-100 transition translate-x-[-10px] group-hover:translate-x-0"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="tilt-card p-8 border border-white/5 bg-cyber-dark/30 backdrop-blur-sm group hover:border-cyber-pink/50 transition-all duration-500 relative reveal-up stagger-2">
+                        <div class="tilt-glow"></div>
+                        <div class="relative z-10">
+                            <div class="text-cyber-pink text-4xl mb-6 group-hover:scale-110 transition duration-500 float-anim"
+                                style="animation-delay: 0.5s;"><i class="fas fa-bezier-curve"></i></div>
+                            <h3 class="text-xl font-cyber text-white mb-4 glitch-text" data-text="UI/UX Design">UI/UX
+                                Design</h3>
+                            <p class="text-gray-500 font-body text-sm leading-relaxed">Futurisztikus és funkcionális
+                                interfészek tervezése.</p>
+                            <div class="mt-8 pt-6 border-t border-white/5 flex justify-between items-center">
+                                <span class="text-[10px] text-cyber-pink font-cyber tracking-widest uppercase">Visual
+                                    Identity</span>
+                                <i
+                                    class="fas fa-arrow-right text-cyber-pink opacity-0 group-hover:opacity-100 transition translate-x-[-10px] group-hover:translate-x-0"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="tilt-card p-8 border border-white/5 bg-cyber-dark/30 backdrop-blur-sm group hover:border-cyber-yellow/50 transition-all duration-500 relative reveal-up stagger-3">
+                        <div class="tilt-glow"></div>
+                        <div class="relative z-10">
+                            <div class="text-cyber-yellow text-4xl mb-6 group-hover:scale-110 transition duration-500 float-anim"
+                                style="animation-delay: 1s;"><i class="fas fa-shield-halved"></i></div>
+                            <h3 class="text-xl font-cyber text-white mb-4 glitch-text" data-text="Cyberbiztonság">
+                                Cyberbiztonság</h3>
+                            <p class="text-gray-500 font-body text-sm leading-relaxed">Rendszerek auditálása, biztonsági
+                                rések feltárása.</p>
+                            <div class="mt-8 pt-6 border-t border-white/5 flex justify-between items-center">
+                                <span
+                                    class="text-[10px] text-cyber-yellow font-cyber tracking-widest uppercase">Security
+                                    Audit</span>
+                                <i
+                                    class="fas fa-arrow-right text-cyber-yellow opacity-0 group-hover:opacity-100 transition translate-x-[-10px] group-hover:translate-x-0"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="tilt-card p-8 border border-white/5 bg-cyber-dark/30 backdrop-blur-sm group hover:border-cyber-magenta/50 transition-all duration-500 relative reveal-up stagger-4">
+                        <div class="tilt-glow"></div>
+                        <div class="relative z-10">
+                            <div class="text-cyber-magenta text-4xl mb-6 group-hover:scale-110 transition duration-500 float-anim"
+                                style="animation-delay: 1.5s;"><i class="fas fa-cloud"></i></div>
+                            <h3 class="text-xl font-cyber text-white mb-4 glitch-text" data-text="Felhő infrastruktúra">
+                                Felhő infrastruktúra</h3>
+                            <p class="text-gray-500 font-body text-sm leading-relaxed">AWS, Azure, GCP felhő
+                                architektúrák és DevOps.</p>
+                            <div class="mt-8 pt-6 border-t border-white/5 flex justify-between items-center">
+                                <span class="text-[10px] text-cyber-magenta font-cyber tracking-widest uppercase">Cloud
+                                    & DevOps</span>
+                                <i
+                                    class="fas fa-arrow-right text-cyber-magenta opacity-0 group-hover:opacity-100 transition translate-x-[-10px] group-hover:translate-x-0"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="tilt-card p-8 border border-white/5 bg-cyber-dark/30 backdrop-blur-sm group hover:border-cyber-cyan/50 transition-all duration-500 relative reveal-up stagger-5">
+                        <div class="tilt-glow"></div>
+                        <div class="relative z-10">
+                            <div class="text-cyber-cyan text-4xl mb-6 group-hover:scale-110 transition duration-500 float-anim"
+                                style="animation-delay: 2s;"><i class="fas fa-brain"></i></div>
+                            <h3 class="text-xl font-cyber text-white mb-4 glitch-text" data-text="AI / ML megoldások">AI
+                                / ML megoldások</h3>
+                            <p class="text-gray-500 font-body text-sm leading-relaxed">AI automatizáció, chatbotok és
+                                prediktív analitika.</p>
+                            <div class="mt-8 pt-6 border-t border-white/5 flex justify-between items-center">
+                                <span class="text-[10px] text-cyber-cyan font-cyber tracking-widest uppercase">Machine
+                                    Learning</span>
+                                <i
+                                    class="fas fa-arrow-right text-cyber-cyan opacity-0 group-hover:opacity-100 transition translate-x-[-10px] group-hover:translate-x-0"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="tilt-card p-8 border border-white/5 bg-cyber-dark/30 backdrop-blur-sm group hover:border-cyber-pink/50 transition-all duration-500 relative reveal-up stagger-6">
+                        <div class="tilt-glow"></div>
+                        <div class="relative z-10">
+                            <div class="text-cyber-pink text-4xl mb-6 group-hover:scale-110 transition duration-500 float-anim"
+                                style="animation-delay: 2.5s;"><i class="fas fa-headset"></i></div>
+                            <h3 class="text-xl font-cyber text-white mb-4 glitch-text" data-text="IT Tanácsadás">IT
+                                Tanácsadás</h3>
+                            <p class="text-gray-500 font-body text-sm leading-relaxed">Stratégiai IT tanácsadás és
+                                digitális transzformáció.</p>
+                            <div class="mt-8 pt-6 border-t border-white/5 flex justify-between items-center">
+                                <span
+                                    class="text-[10px] text-cyber-pink font-cyber tracking-widest uppercase">Consulting</span>
+                                <i
+                                    class="fas fa-arrow-right text-cyber-pink opacity-0 group-hover:opacity-100 transition translate-x-[-10px] group-hover:translate-x-0"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-28 border-t border-white/5 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-cyber-black/0 via-cyber-pink/5 to-cyber-black/0"></div>
+            <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+                <h2 class="text-3xl md:text-4xl font-cyber text-white mb-8 reveal-up">INDÍTSUNK EL EGY <span
+                        class="glitch-text text-cyber-pink" data-text="PROJEKTET?">PROJEKTET?</span></h2>
+                <p class="text-gray-400 font-body text-lg mb-12 reveal-up stagger-1">Kérj ajánlatot a projektedre, és 24
+                    órán belül válaszolunk.</p>
+                <div class="reveal-up stagger-2"><a href="#"
+                        class="neon-button !text-lg !px-12 !py-4 neon-pulse-pink">Kérj ajánlatot <i
+                            class="fas fa-arrow-right ml-2"></i></a></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-cyber-dark py-8 border-t border-cyber-cyan/20">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-gray-600 tracking-widest uppercase">&copy; 2026
+            Cyberwinter Agency. // <span class="text-cyber-cyan">Secure Connection</span></div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Reveal
+            const revealEls = document.querySelectorAll('.reveal-up, .reveal-scale');
+            const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('active'); observer.unobserve(e.target); } }); }, { threshold: 0.15 });
+            revealEls.forEach(el => observer.observe(el));
+
+            // 3D Tilt cards
+            document.querySelectorAll('.tilt-card').forEach(card => {
+                const glowEl = card.querySelector('.tilt-glow');
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left, y = e.clientY - rect.top;
+                    const rotateX = (y - rect.height / 2) / (rect.height / 2) * -8;
+                    const rotateY = (x - rect.width / 2) / (rect.width / 2) * 8;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                    if (glowEl) glowEl.style.background = `radial-gradient(circle at ${(x / rect.width) * 100}% ${(y / rect.height) * 100}%, rgba(0,243,255,0.15) 0%, transparent 60%)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+                    if (glowEl) glowEl.style.background = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
