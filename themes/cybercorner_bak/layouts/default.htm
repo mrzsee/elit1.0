@@ -5,7 +5,7 @@ description = "Default Layout"
 
 <head>
     <meta charset="utf-8">
-    <title>{{ this.page.meta_title ?: this.page.title }} - Cyberwinter</title>
+    <title>{{ this.page.meta_title ?: this.page.title }} - Cybercorner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ this.page.meta_description }}">
 
@@ -390,7 +390,7 @@ description = "Default Layout"
             <!-- Logo mark -->
             <div style="width:60px; height:60px; margin:0 auto 30px; background:#00f3ff; box-shadow: 0 0 30px #00f3ff, 0 0 60px rgba(0,243,255,0.3); clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 100%, 0% 100%); animation: float 2s ease-in-out infinite;"></div>
             <!-- Text -->
-            <div style="font-family:'Orbitron',sans-serif; font-size:28px; color:white; letter-spacing:0.3em; margin-bottom:8px;">CYBER<span style="color:#ff00ff;">WINTER</span></div>
+            <div style="font-family:'Orbitron',sans-serif; font-size:28px; color:white; letter-spacing:0.3em; margin-bottom:8px;">CYBER<span style="color:#ff00ff;">CORNER</span></div>
             <div style="font-family:'Rajdhani',sans-serif; font-size:12px; color:rgba(0,243,255,0.6); letter-spacing:0.5em; text-transform:uppercase; margin-bottom:40px;">Initializing Secure Connection...</div>
             <!-- Progress bar -->
             <div style="width:250px; height:2px; background:rgba(255,255,255,0.05); margin:0 auto; position:relative; overflow:hidden;">
@@ -403,7 +403,7 @@ description = "Default Layout"
 
     <!-- Page Transition Overlay -->
     <div id="page-transition">
-        <div class="transition-logo">CYBER<span style="color:#ff00ff;">WINTER</span></div>
+        <div class="transition-logo">CYBER<span style="color:#ff00ff;">CORNER</span></div>
     </div>
 
     <!-- Scroll to Top -->
@@ -468,8 +468,11 @@ description = "Default Layout"
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', e => {
                 e.preventDefault();
-                const t = document.querySelector(a.getAttribute('href'));
-                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const href = a.getAttribute('href');
+                if (href.length > 1) {
+                    const t = document.querySelector(href);
+                    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             });
         });
 
@@ -635,7 +638,7 @@ description = "Default Layout"
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             const ctx = canvas.getContext('2d');
-            const chars = 'CYBERWINTERAG3NCY01アイウエオカキクケコサシスセソ'.split('');
+            const chars = 'CYBERCORNERAG3NCY01アイウエオカキクケコサシスセソ'.split('');
             const fontSize = 14;
             const columns = Math.floor(canvas.width / fontSize);
             const drops = Array(columns).fill(1);
@@ -665,7 +668,7 @@ description = "Default Layout"
 
         // Console branding
         console.log('%c ╔═══════════════════════════════════════╗ ', 'color: #00f3ff; font-family: monospace;');
-        console.log('%c ║        CYBERWINTER AGENCY             ║ ', 'color: #00f3ff; font-family: monospace; font-weight: bold;');
+        console.log('%c ║        CYBERCORNER AGENCY             ║ ', 'color: #00f3ff; font-family: monospace; font-weight: bold;');
         console.log('%c ║  Secure. Innovate. Dominate.          ║ ', 'color: #ff00ff; font-family: monospace;');
         console.log('%c ╚═══════════════════════════════════════╝ ', 'color: #00f3ff; font-family: monospace;');
         console.log('%c Try the Konami Code! ↑↑↓↓←→←→BA', 'color: #fcee0a; font-family: monospace; font-size: 10px;');

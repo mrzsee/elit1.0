@@ -1,7 +1,7 @@
-<header class="sticky top-0 z-50 bg-cyber-black/80 backdrop-blur-md border-b border-white/5">
+<header class="sticky top-0 z-50 bg-cyber-black/80 backdrop-blur-md border-b border-white/5" x-data="{ mobileMenu: false }">
     <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
         <!-- Logo -->
-        <a href="{{ 'home'|page }}" class="logo-wild-glitch group">
+        <a href="{{ 'home'|page }}" class="logo-wild-glitch group z-[101] relative">
             <div class="w-10 h-10 bg-cyber-cyan logo-box-flicker relative overflow-hidden"
                  style="clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 100%, 0% 100%);">
                 <div class="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent"></div>
@@ -10,7 +10,7 @@
             </div>
             <div class="ml-3 flex flex-col leading-none">
                 <span class="text-xl md:text-2xl font-cyber text-white tracking-widest uppercase wild-text-shake">
-                    CYBER<span class="text-cyber-cyan glitch-text" data-text="WINTER">WINTER</span>
+                    CYBER<span class="text-cyber-cyan glitch-text" data-text="CORNER">CORNER</span>
                 </span>
                 <span class="text-[8px] font-cyber text-cyber-cyan/50 tracking-[0.4em] uppercase border-t border-cyber-cyan/20 pt-0.5">
                     Security Collective
@@ -38,23 +38,46 @@
         </nav>
 
         <!-- Mobile Menu Toggle -->
-        <button class="md:hidden text-white text-2xl" @click="mobileMenu = !mobileMenu">
-            <i class="fas fa-bars"></i>
+        <button class="md:hidden text-white text-2xl z-[101] relative focus:outline-none" @click="mobileMenu = !mobileMenu">
+            <i class="fas" :class="mobileMenu ? 'fa-times' : 'fa-bars'"></i>
         </button>
     </div>
 
     <!-- Mobile Navigation Overlay -->
     <div x-show="mobileMenu" 
          x-transition:enter="transition ease-out duration-300"
-         x-transition:enter-start="opacity-0 -translate-y-full"
+         x-transition:enter-start="opacity-0 translate-y-[-20px]"
          x-transition:enter-end="opacity-100 translate-y-0"
-         class="fixed inset-0 z-40 bg-cyber-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 md:hidden">
-        <button class="absolute top-6 right-6 text-white text-3xl" @click="mobileMenu = false">
-            <i class="fas fa-times"></i>
-        </button>
-        <a href="{{ 'home'|page }}" @click="mobileMenu = false" class="text-2xl font-cyber text-white hover:text-cyber-cyan transition">Főoldal</a>
-        <a href="{{ 'szolgaltatasok'|page }}" @click="mobileMenu = false" class="text-2xl font-cyber text-white hover:text-cyber-cyan transition">Szolgáltatások</a>
-        <a href="{{ 'kapcsolat'|page }}" @click="mobileMenu = false" class="text-2xl font-cyber text-white hover:text-cyber-cyan transition">Kapcsolat</a>
-        <a href="{{ 'kapcsolat'|page }}" @click="mobileMenu = false" class="neon-button mt-4">Kérj ajánlatot</a>
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100 translate-y-0"
+         x-transition:leave-end="opacity-0 translate-y-[-20px]"
+         style="display: none; background-color: rgba(11, 14, 20, 0.96);"
+         class="fixed inset-0 z-[100] backdrop-blur-xl flex flex-col items-center justify-center gap-8 md:hidden h-screen w-screen transform-none overflow-hidden">
+        
+        <!-- Decoration background -->
+        <div class="absolute inset-0 z-[-1] overflow-hidden pointer-events-none">
+            <div class="absolute top-[-10%] right-[-10%] w-[50vh] h-[50vh] bg-cyber-cyan/10 rounded-full blur-[100px]"></div>
+            <div class="absolute bottom-[-10%] left-[-10%] w-[50vh] h-[50vh] bg-cyber-pink/10 rounded-full blur-[100px]"></div>
+            <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+        </div>
+
+        <a href="{{ 'home'|page }}" @click="mobileMenu = false" class="text-2xl font-cyber text-white hover:text-cyber-cyan transition uppercase tracking-widest relative group">
+            Főoldal
+            <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-cyber-cyan transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="{{ 'szolgaltatasok'|page }}" @click="mobileMenu = false" class="text-2xl font-cyber text-white hover:text-cyber-cyan transition uppercase tracking-widest relative group">
+            Szolgáltatások
+            <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-cyber-cyan transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="{{ 'kapcsolat'|page }}" @click="mobileMenu = false" class="text-2xl font-cyber text-white hover:text-cyber-cyan transition uppercase tracking-widest relative group">
+            Kapcsolat
+            <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-cyber-cyan transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        
+        <div class="w-16 h-px bg-white/20 my-4"></div>
+
+        <a href="{{ 'kapcsolat'|page }}" @click="mobileMenu = false" class="neon-button text-lg px-8 py-3">
+            Kérj ajánlatot
+        </a>
     </div>
 </header>

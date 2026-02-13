@@ -1,5 +1,5 @@
 /* ================================================
-   Cyberwinter Theme - Reveal Animations
+   Cybercorner Theme - Reveal Animations
    ================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
