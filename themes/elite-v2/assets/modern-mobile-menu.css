@@ -8,7 +8,11 @@
     #menu-mobile,
     .nav-mobile,
     .mobile-menu-container-old,
-    .menu-default .n-l {
+    .menu-default .n-l,
+    /* Hide Desktop Header Elements on Mobile */
+    .custom-hero-header,
+    .custom-logo-brand,
+    .custom-logo-text-wrapper {
         display: none !important;
     }
 }
@@ -20,7 +24,6 @@
     top: 25px;
     right: 25px;
     z-index: 10020;
-    /* Increased to remain above header text (10005) */
     width: 50px;
     height: 50px;
     background: rgba(255, 255, 255, 0.95);
@@ -35,40 +38,65 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 2.1 The Mobile Logo (Left Top) - Fixed */
+/* 2.1 The Mobile Logo (BIGGER TO COVER WINDOW) */
 .mobile-logo-trigger {
     display: none;
     position: absolute;
-    /* Scrolls with page, stays in banner */
-    top: 10px;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    /* Bouncy transition */
-    left: 20px;
+
+    /* POSITION FOR TALL SCREENS (>800px like iPhone 12 Pro, XR) */
+    top: 19vh;
+    /* Higher up to compensate for tall screen */
+
+    /* CENTERED HORIZONTALLY RELATIVE TO VIEWPORT */
+    left: 50vw;
+    /* Use Viewport Width to avoid body scroll issues */
+    transform: translate(-50%, -50%);
+    /* Center Perfectly */
+
     z-index: 10020;
-    /* Increased to remain above header text (10005) */
-    width: 120px;
-    height: 120px;
-    background: rgba(255, 255, 255, 0.05);
-    /* 5% Glass Effect */
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border-radius: 50%;
-    /* Circular backdrop for logo visibility */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+    /* INCREASED SIZE TO COVER THE WINDOW WIDTH */
+    width: 70vw;
+    /* 70% of screen width */
+    max-width: 260px;
+    /* Much wider limit (was 160px) */
+    height: auto;
+
+    /* CUT GLASS EFFECT */
+    padding: 5px;
+    /* Slightly more padding for the larger box */
+
+    /* LIGHTER SMOKED GLASS (20% opacity) */
+    background: rgba(0, 0, 0, 0.2);
+    /* 20% Black */
+
+    backdrop-filter: blur(10px);
+    /* Stronger blur */
+    -webkit-backdrop-filter: blur(10px);
+
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    /* Stronger shadow */
     align-items: center;
     justify-content: center;
     overflow: hidden;
     text-decoration: none;
+
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .mobile-logo-trigger:hover,
 .mobile-logo-trigger:active {
-    transform: scale(1.5);
+    /* Maintain Center with Vertical Shift */
+    transform: translate(-50%, -50%) scale(0.98);
     z-index: 10020;
 }
 
 .mobile-logo-trigger img {
-    width: 80%;
+    width: 100%;
+    /* Fill container */
     height: auto;
     object-fit: contain;
 }
@@ -82,17 +110,17 @@
         display: flex;
     }
 
+    /* HIDE TEXT COMPLETELY */
     .mobile-header-text {
-        display: block !important;
+        display: none !important;
     }
 }
 
 .mobile-header-text {
-    display: none;
+    display: none !important;
+    /* HIDE ALWAYS */
     position: absolute;
     top: 140px;
-    /* Below the logo */
-    /* Vertically positioned in banner */
     left: 0;
     width: 100%;
     text-align: center;
@@ -100,7 +128,6 @@
     font-size: 24px;
     font-weight: 700;
     color: #4a3b2a;
-    /* Dark Brown */
     letter-spacing: 1px;
     z-index: 10005;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
@@ -175,7 +202,6 @@
     top: 0;
     bottom: 0;
     width: 100%;
-    /* High opacity background for visibility on ALL devices */
     background: rgba(251, 248, 246, 0.98);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
@@ -184,15 +210,12 @@
     flex-direction: column;
     justify-content: flex-start;
     padding-top: 100px;
-    /* Default top padding */
     align-items: center;
     opacity: 0;
     pointer-events: none;
     transform: none;
-    /* Removed scale animation to be safe */
     transition: opacity 0.3s ease;
     overflow-y: auto !important;
-    /* Always allow scrolling */
     -webkit-overflow-scrolling: touch;
 }
 
@@ -211,25 +234,17 @@
     text-align: center;
     width: 100%;
     padding-bottom: 40px;
-    /* Space for scrolling */
 }
 
 .mobile-nav-item {
     margin: 3px 0;
-    /* Thin stripe gap */
     opacity: 1;
-    /* Always visible inside the container */
     transform: none;
-    /* No transform */
     transition: background 0.3s ease;
-    /* Only animate background color */
-    /* Striped Opal Effect */
     background: rgba(251, 248, 246, 0.45);
-    /* More translucent (was 0.70) */
     backdrop-filter: blur(10px);
     padding: 20px 0;
     width: 100%;
-    /* Full width strip */
     border-radius: 0;
 }
 
@@ -242,7 +257,6 @@
 .mobile-nav-link {
     font-family: 'Roboto Slab', serif;
     font-size: 22px;
-    /* Reduced font size from 28px */
     font-weight: 600;
     color: #6a523d;
     text-decoration: none;
@@ -252,8 +266,10 @@
     display: inline-block;
 }
 
-/* Small Screen Adjustments (iPhone SE, S8+, etc.) */
-@media (max-height: 850px) {
+/* Small Screen Adjustments (iPhone SE, S8+, etc.) - EXCLUDING iPhone 12 Pro (844px) */
+@media (max-height: 800px) {
+
+    /* Changed from 850px to 800px */
     .modern-mobile-overlay {
         display: flex !important;
         flex-direction: column !important;
@@ -263,27 +279,28 @@
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch;
         background-color: rgba(251, 248, 246, 0.98) !important;
-        /* Higher opacity background */
     }
 
+    /* Keep header text hidden */
     .mobile-header-text {
-        top: 50px !important;
-        font-size: 16px !important;
-        padding: 5px 0 !important;
-        display: block !important;
+        display: none !important;
     }
 
+    /* FIX FOR NORMAL/SMALL SCREENS (<800px like iPhone SE, S8, but NOT 12 Pro) */
     .mobile-logo-trigger {
-        transform: scale(0.7);
-        top: 5px;
-        left: 5px;
+        top: 26vh !important;
+        /* Keep original comfortable position */
+        left: 50vw !important;
+        /* Viewport Centering */
+        transform: translate(-50%, -50%) scale(0.9) !important;
+        max-width: 240px !important;
+        /* Slightly smaller on tiny screens */
     }
 
     .mobile-nav-item {
         padding: 10px 0 !important;
         margin: 1px 0;
         opacity: 1 !important;
-        /* Force visibility */
         transform: none !important;
         visibility: visible !important;
         display: block !important;
@@ -301,8 +318,6 @@
         display: block;
     }
 }
-
-
 
 .mobile-nav-link::after {
     content: '';

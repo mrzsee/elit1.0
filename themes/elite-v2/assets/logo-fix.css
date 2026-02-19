@@ -1,132 +1,172 @@
 /* 
-   Logo Fix CSS - Elite Ingatlaniroda
-   Forces consistent sizes and colors for the logo brand/text.
+   CUSTOM HERO HEADER CSS - Elite Ingatlaniroda
+   Clean Luxury Animation (Static text).
 */
 
-/* 1. Logo Image (The House Icon) */
-.logo-content,
-.logo-link,
-.logo-image-cell {
-    width: auto !important;
-    max-width: none !important;
+/* 0. FORCE PARENT CONTAINERS TO BE COMPACT */
+.s-hn,
+.n-l-i,
+.slogan-container,
+.s-c {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    min-height: 0 !important;
 }
 
-.logo-image,
-.b-l-image {
-    width: 500px !important;
-    /* Huge increase for readability */
-    height: auto !important;
-    max-width: none !important;
-    /* Remove constraints */
-    margin-top: 60px !important;
-    /* Prevent clipping on zoom */
-    transition: transform 0.4s ease;
-    /* For hover effect */
-    display: block !important;
-    margin: 0 auto !important;
+/* 1. Main Container */
+.custom-hero-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 50%;
+    min-width: 320px;
+    margin: 0 auto;
+
+    /* VERTICAL CENTERING ADJUSTMENT */
+    margin-top: 35px;
+    margin-bottom: 5px;
+
+    text-align: center;
+
+    /* Subtle Entrance Animation */
+    animation: fade-in-up 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.logo-image:hover,
-.b-l-image:hover {
-    transform: scale(1.1);
-    /* Gentle Zoom In on hover */
+/* 2. Logo Image Wrapper */
+.custom-logo-wrapper {
+    margin-bottom: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    /* CONTINUOUS FLOATING ANIMATION LOGO ONLY */
+    animation: luxury-float 6s ease-in-out infinite;
 }
 
-/* ANIMATION RESTORATION */
-.logo-image img,
-.b-l-image img {
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s !important;
-    /* Rugalmas átmenet */
+.custom-logo-link {
+    display: block;
+    width: auto;
 }
 
-/* Hover Effect: Zoom & Lift */
-.logo-content:hover .logo-image img,
-.logo-link:hover .logo-image img,
-.logo-image:hover img,
-.b-l-image:hover img {
-    transform: scale(1.15) translateY(-5px) !important;
-    filter: brightness(1.1) drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1)) !important;
+/* 3. The Logo Image */
+.custom-logo-img {
+    display: block;
+    width: 270px;
+    /* Reduced by 10% (was 300px) */
+    height: auto;
+    max-width: 90vw;
+
+    transition: transform 0.3s ease;
+    will-change: transform;
+}
+
+.custom-logo-img:hover {
+    transform: scale(1.15);
+    /* Much bigger zoom (15%) */
     cursor: pointer;
+    /* FILTER REMOVED TO KEEP COLOR EXACTLY THE SAME */
 }
 
-.logo-image img,
-.b-l-image img {
-    width: 100% !important;
-    height: auto !important;
-    object-fit: contain !important;
-    /* Ensure image fits */
+/* 4. Brand Text */
+.custom-logo-text-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+
+    /* STATIC TEXT (No Float) */
+    animation: none;
 }
 
-/* 2. Logo Wrapper (Container) */
-.wnd-logo-wrapper {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-}
-
-/* 3. Text Styling (Brand Name) */
-.logo-text-cell,
-.logo-text strong,
-.logo-text {
-    font-family: 'Roboto Slab', 'Times New Roman', serif !important;
-    font-size: 28px !important;
-    font-weight: 700 !important;
-    color: #6a523d !important;
-    /* Még 25%-kal sötétebb (#8d6d51 -> #6a523d) */
-    letter-spacing: 2px !important;
-    text-transform: none !important;
+.custom-logo-brand {
+    font-family: 'Roboto Slab', 'Times New Roman', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #6a523d;
+    letter-spacing: 2px;
+    text-transform: none;
     line-height: 1.2;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 25px;
 }
 
-/* Wings / Lines restoration - FLEXBOX REFACTOR (Robust) */
-.logo-text {
-    position: relative !important;
-    display: flex !important;
-    /* Use Flexbox */
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 25px !important;
-    /* Fix spacing */
-    padding: 0 !important;
-    width: auto !important;
-    margin: 0 auto !important;
+.custom-logo-brand::before,
+.custom-logo-brand::after {
+    content: '';
+    display: block;
+    width: 55px;
+    height: 1px;
+    background-color: #6a523d;
+    transition: width 0.6s ease;
 }
 
-/* Wings Styles */
-.logo-text::before,
-.logo-text::after {
-    content: '' !important;
-    position: static !important;
-    /* Not absolute */
-    display: block !important;
-    width: 55px !important;
-    height: 1px !important;
-    background-color: #6a523d !important;
-    /* Line color */
-    border: none !important;
-    flex-shrink: 0 !important;
-    margin: 0 !important;
-    /* Gap handles spacing */
+.custom-hero-header:hover .custom-logo-brand::before,
+.custom-hero-header:hover .custom-logo-brand::after {
+    width: 80px;
+    opacity: 0.8;
 }
 
-/* Mobile Adjustments */
+/* 5. Responsive Adjustments */
+@media (max-width: 1200px) {
+    .custom-logo-img {
+        width: 240px;
+        /* Reduced somewhat proportionally */
+    }
+}
+
 @media (max-width: 768px) {
-
-    .logo-text-cell,
-    .logo-text strong,
-    .logo-text {
-        font-size: 22px !important;
-        letter-spacing: 1px !important;
+    .custom-hero-header {
+        max-width: 95%;
+        margin-bottom: 5px;
     }
 
-    .logo-text {
-        gap: 15px !important;
+    .custom-logo-img {
+        width: 100%;
+        max-width: 180px;
     }
 
-    .logo-text::before,
-    .logo-text::after {
-        width: 30px !important;
+    .custom-logo-brand {
+        font-size: 22px;
+        gap: 15px;
+    }
+
+    .custom-logo-brand::before,
+    .custom-logo-brand::after {
+        width: 30px;
+    }
+}
+
+/* --- ANIMATION KEYFRAMES --- */
+
+/* Only Float (Lebegés) */
+@keyframes luxury-float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Entrance (Beúszás) */
+@keyframes fade-in-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

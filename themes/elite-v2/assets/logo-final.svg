@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350">
+  <defs>
+    <!-- Lebegő szürke árnyék -->
+    <filter id="float-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2.5" result="blur"/> <!-- Finomabb elmosás -->
+      <feOffset in="blur" dx="0" dy="3" result="offsetBlur"/>
+      <feFlood flood-color="#000000" flood-opacity="0.45" result="shadowColor"/> <!-- Kevésbé agresszív fekete -->
+      <feComposite in="shadowColor" in2="offsetBlur" operator="in" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Arany színátmenet -->
+    <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#BF953F;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#FCF6BA;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#B38728;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#FBF5B7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#AA771C;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    .gold-stroke {
+      fill: none;
+      stroke: url(#gold-gradient);
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: url(#float-shadow);
+    }
+    .text-elite {
+      font-family: "Times New Roman", serif;
+      font-weight: bold;
+      font-size: 130px;
+      text-anchor: middle;
+      fill: url(#gold-gradient);
+      filter: url(#float-shadow);
+    }
+    .text-sub {
+      font-family: "Times New Roman", serif;
+      font-size: 50px; /* Increased again: 45px -> 50px */
+      text-anchor: middle;
+      fill: url(#gold-gradient); 
+      stroke: #AA771C; 
+      stroke-width: 0.5px;
+      filter: url(#float-shadow);
+      letter-spacing: 1.5px; 
+    }
+    /* Ablakkeret és rács stílus - MEGERŐSÍTVE */
+    .window-frame {
+      fill: none;
+      stroke: url(#gold-gradient);
+      stroke-width: 6; /* Vastag keret */
+      filter: url(#float-shadow);
+    }
+    .window-grid {
+      stroke: url(#gold-gradient);
+      stroke-width: 6; /* Vastag rács, nem fill, hanem stroke! */
+      stroke-linecap: butt;
+      filter: url(#float-shadow);
+    }
+  </style>
+
+  <!-- Ikon Csoport (FELJEBB MOZGATVA Y=70) -->
+  <g transform="translate(250, 70)">
+    <!-- Tető -->
+    <path d="M-110 60 L0 -40" class="gold-stroke" />
+    <path d="M0 -40 L110 60" class="gold-stroke" />
+    
+    <!-- Ablak (Középen, ráccsal +) -->
+    <g transform="translate(-25, 10)">
+      <!-- Keret -->
+      <rect x="0" y="0" width="50" height="50" class="window-frame"/>
+      <!-- Rács (+) - Explicit koordináták -->
+      <line x1="25" y1="0" x2="25" y2="50" class="window-grid"/>
+      <line x1="0" y1="25" x2="50" y2="25" class="window-grid"/>
+    </g>
+  </g>
+
+  <!-- Szöveg: ELIT -->
+  <text x="250" y="225" class="text-elite">ELIT</text>
+
+  <!-- Szöveg: Ingatlan iroda (Külön írva, lejjebb tolva: 285 -> 290) -->
+  <text x="250" y="290" class="text-sub">Ingatlan iroda</text>
+
+</svg>

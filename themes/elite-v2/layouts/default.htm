@@ -46,10 +46,10 @@ description = "Default layout"
     <link rel="stylesheet" href="{{ 'assets/mobile-fix.css'|theme }}">
     <link rel="stylesheet" href="{{ 'assets/scroll-helper.css'|theme }}">
 
-    <link rel="stylesheet" href="{{ 'assets/logo-fix.css'|theme }}?v=27">
+    <link rel="stylesheet" href="{{ 'assets/logo-fix.css'|theme }}?v=41">
     <link rel="stylesheet" href="{{ 'assets/aceternity-navbar.css'|theme }}">
     <link rel="stylesheet" href="{{ 'assets/header-anim.css'|theme }}?v=3">
-    <link rel="stylesheet" href="{{ 'assets/modern-mobile-menu.css'|theme }}?v=31">
+    <link rel="stylesheet" href="{{ 'assets/modern-mobile-menu.css'|theme }}?v=49">
 
 
 
@@ -253,29 +253,19 @@ description = "Default layout"
         trigger.innerHTML = '<div class="hamburger-box"><div class="hamburger-line"></div><div class="hamburger-line"></div><div class="hamburger-line"></div></div>';
         document.body.appendChild(trigger);
 
-        // 1.1 Create Mobile Logo (Left) & Header Text - ONLY ON HOMEPAGE
-        // Detect homepage by presence of the unique hero title element
-        if (document.querySelector('.hero-glass-title')) {
-            const mobileLogoLink = document.createElement('div'); // Changed to div to prevent navigation
+        // 1.1 Create Mobile Logo - ONLY ON HOMEPAGE
+        {% if this.page.id == 'home' %}
+        // Detect homepage logic inside Twig block
+        if (document.querySelector('.hero-glass-title') || document.querySelector('.custom-hero-header')) {
+            const mobileLogoLink = document.createElement('div');
             mobileLogoLink.className = 'mobile-logo-trigger';
-            // No href, acts as visual element only
-            
-            // Try to find the existing logo image source
-            const existingLogo = document.querySelector('.wnd-logo-img, .logo-image img, .b-l-image img');
-            let logoSrc = 'assets/logoo.jpeg'; // Fallback
-            if (existingLogo) {
-                logoSrc = existingLogo.src;
-            }
-    
+            const existingLogo = document.querySelector('.custom-logo-img, .wnd-logo-img, .logo-image img, .b-l-image img');
+            let logoSrc = '{{ "assets/logo-final.svg"|theme }}';
+            if (existingLogo) logoSrc = existingLogo.src;
             mobileLogoLink.innerHTML = `<img src="${logoSrc}" alt="Logo">`;
             document.body.appendChild(mobileLogoLink);
-
-            // 1.2 Create Mobile Header Text (Center)
-            const mobileHeaderText = document.createElement('div');
-            mobileHeaderText.className = 'mobile-header-text';
-            mobileHeaderText.innerHTML = '&mdash; Elit-Ingatlaniroda &mdash;';
-            document.body.appendChild(mobileHeaderText);
         }
+        {% endif %}
 
         // 2. Create Overlay
         const overlay = document.createElement('div');
