@@ -1,8 +1,8 @@
 /* MODERN MOBILE MENU - ELITE STYLE */
 /* Tailwind-inspired, Glassmorphism, Premium Animations */
 
-/* 1. Hide the old ugly menu for mobile (< 992px) */
-@media (max-width: 991px) {
+/* 1. Hide the old ugly menu for mobile (< 767px) */
+@media (max-width: 767px) {
 
     .wnd-mobile-nav,
     #menu-mobile,
@@ -101,7 +101,7 @@
     object-fit: contain;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 767px) {
     .modern-menu-trigger {
         display: flex;
     }
