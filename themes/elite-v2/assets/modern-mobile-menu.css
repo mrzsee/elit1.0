@@ -8,14 +8,17 @@
     #menu-mobile,
     .nav-mobile,
     .mobile-menu-container-old,
-    .menu-default .n-l,
-    /* Hide Desktop Header Elements on Mobile */
-    .custom-hero-header,
-    .custom-logo-brand,
-    .custom-logo-text-wrapper {
+    .menu-default .n-l {
         display: none !important;
     }
 }
+
+/* 1.1 Hide Desktop Header Elements on Homepage ALWAYS (to show the new Big Logo) 
+.wt-home .custom-hero-header,
+.wt-home .custom-logo-brand,
+.wt-home .custom-logo-text-wrapper {
+    display: none !important;
+} */
 
 /* 2. The Trigger Button (Hamburger) - Right Top */
 .modern-menu-trigger {
@@ -38,65 +41,57 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 2.1 The Mobile Logo (BIGGER TO COVER WINDOW) */
+/* 2.1 The Mobile Logo (OPAL GLASS STYLE - NOW FOR WEB & MOBILE) */
 .mobile-logo-trigger {
     display: none;
+    /* Hidden on desktop */
     position: absolute;
 
-    /* POSITION FOR TALL SCREENS (>800px like iPhone 12 Pro, XR) */
-    top: 19vh;
-    /* Higher up to compensate for tall screen */
+    /* POSITION FOR TALL SCREENS */
+    top: 18vh;
+    /* Moved 1% lower (17vh -> 18vh) */
 
     /* CENTERED HORIZONTALLY RELATIVE TO VIEWPORT */
     left: 50vw;
-    /* Use Viewport Width to avoid body scroll issues */
     transform: translate(-50%, -50%);
-    /* Center Perfectly */
 
     z-index: 10020;
 
-    /* INCREASED SIZE TO COVER THE WINDOW WIDTH */
-    width: 70vw;
-    /* 70% of screen width */
-    max-width: 260px;
-    /* Much wider limit (was 160px) */
+    /* SIZE SETTINGS */
+    width: 168px;
+    /* Increased by 20% (140px * 1.2) */
     height: auto;
 
-    /* CUT GLASS EFFECT */
-    padding: 5px;
-    /* Slightly more padding for the larger box */
+    /* DARK SMOKE GLASS STYLE (Sync with Desktop) */
+    background: rgba(5, 5, 5, 0.60);
+    /* Slightly more opaque smoke */
+    backdrop-filter: blur(1.15px);
+    /* +15% opalic blur */
+    -webkit-backdrop-filter: blur(1.15px);
 
-    /* LIGHTER SMOKED GLASS (20% opacity) */
-    background: rgba(0, 0, 0, 0.2);
-    /* 20% Black */
-
-    backdrop-filter: blur(10px);
-    /* Stronger blur */
-    -webkit-backdrop-filter: blur(10px);
-
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    padding: 3px 6px;
+    /* Compact padding */
+    border: 1px solid rgba(255, 255, 255, 0.05);
 
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    /* Stronger shadow */
     align-items: center;
     justify-content: center;
     overflow: hidden;
     text-decoration: none;
 
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.mobile-logo-trigger:hover,
-.mobile-logo-trigger:active {
-    /* Maintain Center with Vertical Shift */
+/* Desktop Specific Adjustments Removed (Hidden on Desktop) */
+
+.mobile-logo-trigger:hover {
     transform: translate(-50%, -50%) scale(0.98);
-    z-index: 10020;
+    background: rgba(0, 0, 0, 0.25);
 }
 
 .mobile-logo-trigger img {
     width: 100%;
-    /* Fill container */
     height: auto;
     object-fit: contain;
 }
@@ -108,37 +103,23 @@
 
     .mobile-logo-trigger {
         display: flex;
+        /* Show only on mobile */
     }
 
-    /* HIDE TEXT COMPLETELY */
-    .mobile-header-text {
-        display: none !important;
+    /* Small Screen Height Adjustments */
+    @media (max-height: 800px) {
+        .mobile-logo-trigger {
+            top: 22vh !important;
+            /* Moved 1% lower (21vh -> 22vh) */
+            transform: translate(-50%, -50%) scale(0.9) !important;
+            max-width: 240px !important;
+        }
     }
 }
 
+/* HIDE TEXT COMPLETELY ALWAYS */
 .mobile-header-text {
     display: none !important;
-    /* HIDE ALWAYS */
-    position: absolute;
-    top: 140px;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    font-family: 'Roboto Slab', serif;
-    font-size: 24px;
-    font-weight: 700;
-    color: #4a3b2a;
-    letter-spacing: 1px;
-    z-index: 10005;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 10px 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    pointer-events: none;
 }
 
 .modern-menu-trigger:hover {
@@ -266,59 +247,6 @@
     display: inline-block;
 }
 
-/* Small Screen Adjustments (iPhone SE, S8+, etc.) - EXCLUDING iPhone 12 Pro (844px) */
-@media (max-height: 800px) {
-
-    /* Changed from 850px to 800px */
-    .modern-mobile-overlay {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: flex-start !important;
-        padding-top: 80px !important;
-        overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch;
-        background-color: rgba(251, 248, 246, 0.98) !important;
-    }
-
-    /* Keep header text hidden */
-    .mobile-header-text {
-        display: none !important;
-    }
-
-    /* FIX FOR NORMAL/SMALL SCREENS (<800px like iPhone SE, S8, but NOT 12 Pro) */
-    .mobile-logo-trigger {
-        top: 26vh !important;
-        /* Keep original comfortable position */
-        left: 50vw !important;
-        /* Viewport Centering */
-        transform: translate(-50%, -50%) scale(0.9) !important;
-        max-width: 240px !important;
-        /* Slightly smaller on tiny screens */
-    }
-
-    .mobile-nav-item {
-        padding: 10px 0 !important;
-        margin: 1px 0;
-        opacity: 1 !important;
-        transform: none !important;
-        visibility: visible !important;
-        display: block !important;
-    }
-
-    .mobile-nav-link {
-        font-size: 20px !important;
-        padding: 5px 10px;
-        color: #6a523d !important;
-    }
-
-    .mobile-nav-list {
-        padding-bottom: 120px;
-        width: 100%;
-        display: block;
-    }
-}
-
 .mobile-nav-link::after {
     content: '';
     position: absolute;
@@ -339,19 +267,4 @@
 .mobile-nav-link:hover::after,
 .mobile-nav-link.active::after {
     width: 80%;
-}
-
-/* Optional: Decorative circle behind */
-.modern-mobile-overlay::before {
-    content: '';
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(189, 146, 109, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: -1;
 }

@@ -46,10 +46,10 @@ description = "Default layout"
     <link rel="stylesheet" href="{{ 'assets/mobile-fix.css'|theme }}">
     <link rel="stylesheet" href="{{ 'assets/scroll-helper.css'|theme }}">
 
-    <link rel="stylesheet" href="{{ 'assets/logo-fix.css'|theme }}?v=41">
+    <link rel="stylesheet" href="{{ 'assets/logo-fix.css'|theme }}?v=43">
     <link rel="stylesheet" href="{{ 'assets/aceternity-navbar.css'|theme }}">
     <link rel="stylesheet" href="{{ 'assets/header-anim.css'|theme }}?v=3">
-    <link rel="stylesheet" href="{{ 'assets/modern-mobile-menu.css'|theme }}?v=50">
+    <link rel="stylesheet" href="{{ 'assets/modern-mobile-menu.css'|theme }}?v=64">
 
 
 
@@ -255,11 +255,12 @@ description = "Default layout"
 
         // 1.1 Create Mobile Logo - ONLY ON HOMEPAGE
         {% if this.page.id == 'home' %}
-        // Detect homepage logic inside Twig block
+        // Detect homepage
         if (document.querySelector('.hero-glass-title') || document.querySelector('.custom-hero-header')) {
-            const mobileLogoLink = document.createElement('div');
+            const mobileLogoLink = document.createElement('a');
+            mobileLogoLink.href = '{{ "/"|app }}';
             mobileLogoLink.className = 'mobile-logo-trigger';
-            const existingLogo = document.querySelector('.custom-logo-img, .wnd-logo-img, .logo-image img, .b-l-image img');
+            const existingLogo = document.querySelector('.custom-logo-img');
             let logoSrc = '{{ "assets/logo-final.svg"|theme }}';
             if (existingLogo) logoSrc = existingLogo.src;
             mobileLogoLink.innerHTML = `<img src="${logoSrc}" alt="Logo">`;

@@ -341,3 +341,8 @@ textarea.form-control {
         width: 100% !important;
     }
 }
+
+/* Custom overlay opacity reduction */
+.overlay-black-strong:before {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+}
