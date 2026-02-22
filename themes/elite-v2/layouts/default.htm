@@ -44,12 +44,11 @@ description = "Default layout"
     <script>window.checkAndChangeSvgColor=function(c){try{var a=document.getElementById(c);if(a){c=[["border","borderColor"],["outline","outlineColor"],["color","color"]];for(var h,b,d,f=[],e=0,m=c.length;e<m;e++)if(h=window.getComputedStyle(a)[c[e][1]].replace(/\s/g,"").match(/^rgb[a]?\(([0-9]{1,3}),([0-9]{1,3}),([0-9]{1,3})/i)){b="";for(var g=1;3>=g;g++)b+=("0"+parseInt(h[g],10).toString(16)).slice(-2);"0"===b.charAt(0)&&(d=parseInt(b.substr(0,2),16),d=Math.max(16,d),b=d.toString(16)+b.slice(-4));f.push(c[e][0]+"="+b)}if(f.length){var k=a.getAttribute("data-src"),l=k+(0>k.indexOf("?")?"?":"&")+f.join("&");a.src!=l&&(a.src=l,a.outerHTML=a.outerHTML)}}}catch(n){}};</script>
 
     <link rel="stylesheet" href="{{ 'assets/mobile-fix.css'|theme }}">
-    <link rel="stylesheet" href="{{ 'assets/scroll-helper.css'|theme }}">
-
-    <link rel="stylesheet" href="{{ 'assets/logo-fix.css'|theme }}?v=43">
+    <link rel="stylesheet" href="{{ 'assets/scroll-helper.css'|theme }}?v=3">
+    <link rel="stylesheet" href="{{ 'assets/logo-fix.css'|theme }}?v=45">
     <link rel="stylesheet" href="{{ 'assets/aceternity-navbar.css'|theme }}">
     <link rel="stylesheet" href="{{ 'assets/header-anim.css'|theme }}?v=3">
-    <link rel="stylesheet" href="{{ 'assets/modern-mobile-menu.css'|theme }}?v=64">
+    <link rel="stylesheet" href="{{ 'assets/modern-mobile-menu.css'|theme }}?v=71">
 
 
 
@@ -241,7 +240,7 @@ description = "Default layout"
 
     
     <script src="{{ 'assets/scroll-effect.js'|theme }}"></script>
-    <script src="{{ 'assets/scroll-helper.js'|theme }}"></script>
+    <script src="{{ 'assets/scroll-helper.js'|theme }}?v=5"></script>
     <!-- Header Slider Removed for Static Hotel Door Background -->
     
     <!-- MODERN MOBILE MENU SCRIPT -->
@@ -276,18 +275,15 @@ description = "Default layout"
         overlay.appendChild(ul);
         document.body.appendChild(overlay);
 
-        // 3. Find Desktop Menu Items and Clone
-        // Selectors tailored for this theme
+        // 3. Find Desktop Menu Items and Clone (Optimized with Fragment)
         const desktopMenuLinks = document.querySelectorAll('.menu-line li a, .nav li a, .navbar-nav li a, .wnd-menu li a, .menu-default li a');
-        
-        // Use a Set to avoid duplicates if multiple selectors match
+        const fragment = document.createDocumentFragment();
         const processedLinks = new Set();
 
         desktopMenuLinks.forEach(link => {
             const text = link.innerText.trim();
             const href = link.href;
             if(text === '' || processedLinks.has(href + text)) return;
-            
             processedLinks.add(href + text);
 
             const li = document.createElement('li');
@@ -301,14 +297,14 @@ description = "Default layout"
                 a.classList.add('active');
             }
             
-            a.addEventListener('click', toggleMenu);
-
+            a.addEventListener('click', toggleMenu, { passive: true });
             li.appendChild(a);
-            ul.appendChild(li);
+            fragment.appendChild(li);
         });
+        ul.appendChild(fragment);
 
         // 4. Toggle Logic
-        trigger.addEventListener('click', toggleMenu);
+        trigger.addEventListener('click', toggleMenu, { passive: true });
 
         function toggleMenu() {
             trigger.classList.toggle('is-active');

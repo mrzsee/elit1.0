@@ -47,23 +47,22 @@
     /* Hidden on desktop */
     position: absolute;
 
-    /* POSITION FOR TALL SCREENS */
-    top: 18vh;
-    /* Moved 1% lower (17vh -> 18vh) */
-
-    /* CENTERED HORIZONTALLY RELATIVE TO VIEWPORT */
+    /* PERCENTAGE LOCK: Scaled to background image window pane */
+    top: 7.5vw;
     left: 50vw;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
 
     z-index: 10020;
 
-    /* SIZE SETTINGS */
-    width: 168px;
-    /* Increased by 20% (140px * 1.2) */
-    height: auto;
+    /* DYNAMIC SIZE: Scaled based on viewport width to match window dividers */
+    width: 44vw;
+    height: 34vw;
+    max-width: 280px;
+    max-height: 220px;
 
     /* DARK SMOKE GLASS STYLE (Sync with Desktop) */
-    background: rgba(5, 5, 5, 0.60);
+    background: rgba(5, 5, 5, 0.50);
+    /* Lightened by 10% (from 0.60) */
     /* Slightly more opaque smoke */
     backdrop-filter: blur(1.15px);
     /* +15% opalic blur */
@@ -86,7 +85,7 @@
 /* Desktop Specific Adjustments Removed (Hidden on Desktop) */
 
 .mobile-logo-trigger:hover {
-    transform: translate(-50%, -50%) scale(0.98);
+    transform: translateX(-50%) scale(0.98);
     background: rgba(0, 0, 0, 0.25);
 }
 
@@ -106,15 +105,7 @@
         /* Show only on mobile */
     }
 
-    /* Small Screen Height Adjustments */
-    @media (max-height: 800px) {
-        .mobile-logo-trigger {
-            top: 22vh !important;
-            /* Moved 1% lower (21vh -> 22vh) */
-            transform: translate(-50%, -50%) scale(0.9) !important;
-            max-width: 240px !important;
-        }
-    }
+    /* Scaling is now handled by % and vw units globally for mobile */
 }
 
 /* HIDE TEXT COMPLETELY ALWAYS */

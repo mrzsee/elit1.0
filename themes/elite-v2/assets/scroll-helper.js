@@ -1,10 +1,9 @@
 /**
- * Scroll Helper Navigation Script
- * Dynamically shows/hides scroll helpers based on scroll position
+ * Optimized Scroll Helper Navigation Script
+ * Uses IntersectionObserver to avoid layout thrashing and main thread load
  */
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Get all scroll helpers
     const helpers = {
         home: document.querySelector('.scroll-down-helper'),
         services: document.querySelector('.scroll-helper-services'),
@@ -12,58 +11,51 @@ document.addEventListener('DOMContentLoaded', function () {
         contact: document.querySelector('.scroll-helper-contact')
     };
 
-    // Get all sections
-    const sections = {
-        home: document.querySelector('section#home'),
-        services: document.querySelector('section#services'),
-        about: document.querySelector('section#about'),
-        contact: document.querySelector('section#contact')
+    const sectionElements = document.querySelectorAll('section[id]');
+
+    // Hide all helpers initially
+    const hideAllHelpers = () => {
+        Object.values(helpers).forEach(h => { if (h) h.style.display = 'none'; });
     };
 
-    // Function to check which section is in view
-    function updateScrollHelpers() {
-        const scrollPos = window.scrollY + window.innerHeight / 2;
+    // Intersection Observer setup
+    const options = {
+        root: null,
+        rootMargin: '-10% 0px -10% 0px', // Trigger slightly before center
+        threshold: 0.2 // 20% visibility
+    };
 
-        // Hide all helpers first
-        Object.values(helpers).forEach(helper => {
-            if (helper) helper.style.display = 'none';
-        });
+    const observer = new IntersectionObserver((entries) => {
+        // Find the entry that is most visible
+        const visibleEntry = entries.find(entry => entry.isIntersecting);
 
-        // Show appropriate helper based on scroll position
-        if (sections.home && isInViewport(sections.home)) {
-            if (helpers.home) helpers.home.style.display = 'block';
-        } else if (sections.services && isInViewport(sections.services)) {
-            if (helpers.services) helpers.services.style.display = 'block';
-        } else if (sections.about && isInViewport(sections.about)) {
-            if (helpers.about) helpers.about.style.display = 'block';
-        } else if (sections.contact && isInViewport(sections.contact)) {
-            if (helpers.contact) helpers.contact.style.display = 'block';
+        if (visibleEntry && window.innerWidth > 1024) {
+            const id = visibleEntry.target.id;
+            hideAllHelpers();
+            if (helpers[id]) {
+                helpers[id].style.display = 'block';
+            }
         }
+    }, options);
+
+    // Initial check for mobile
+    if (window.innerWidth <= 1024) {
+        hideAllHelpers();
+        return;
     }
 
-    // Helper function to check if element is in viewport
-    function isInViewport(element) {
-        if (!element) return false;
-        const rect = element.getBoundingClientRect();
-        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    sectionElements.forEach(section => observer.observe(section));
 
-        // Element is in viewport if its center is visible
-        const elementCenter = rect.top + rect.height / 2;
-        return elementCenter >= 0 && elementCenter <= windowHeight;
-    }
-
-    // Update on scroll
-    window.addEventListener('scroll', updateScrollHelpers);
-
-    // Update on load (to ensure images are loaded and layout is stable)
-    window.addEventListener('load', updateScrollHelpers);
-
-    // Initial update immediately
-    updateScrollHelpers();
-
-    // Check again after a short delay to handle browser scroll restoration
-    setTimeout(updateScrollHelpers, 100);
-    setTimeout(updateScrollHelpers, 500);
-
-    // Note: Native CSS scroll-behavior: smooth ensures perfect sync with side-nav dots.
+    // Handle Resize (Throttle)
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            if (window.innerWidth <= 1024) {
+                hideAllHelpers();
+            } else {
+                // Force a check/refresh if needed
+            }
+        }, 250);
+    }, { passive: true });
 });

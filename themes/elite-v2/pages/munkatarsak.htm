@@ -392,5 +392,82 @@ function onStart() {
             </div>
         </article>
 
+        <!-- 9. Lulu -->
+        <article class="team-item">
+            <div class="item-wrapper">
+                <style>
+                    .lulu-slider {
+                        position: relative;
+                        width: 300px;
+                        height: 450px;
+                        overflow: hidden;
+                        flex-shrink: 0;
+                        background-color: #f0f0f0;
+                    }
+                    .lulu-slider img {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover; /* Fill the card again */
+                        opacity: 0;
+                        transition: opacity 1.2s ease-in-out;
+                    }
+                    /* Custom positioning to keep Lulu in frame for each photo */
+                    .lulu-img-1 { object-position: center 20%; }
+                    .lulu-img-2 { object-position: center center; }
+                    .lulu-img-3 { object-position: center 30%; }
+                    .lulu-img-4 { object-position: center center; }
+                    .lulu-slider img.active {
+                        opacity: 1;
+                    }
+                    @media (max-width: 767px) {
+                        .lulu-slider {
+                            width: 100%;
+                            height: 450px;
+                        }
+                    }
+                </style>
+                <div class="item-media lulu-slider" id="lulu-slider">
+                   <img src="{{ 'assets/lulu_4.webp'|theme }}" alt="Lulu" class="active lulu-img-1">
+                   <img src="{{ 'assets/lulu_2.webp'|theme }}" alt="Lulu" class="lulu-img-2">
+                   <img src="{{ 'assets/lulu_3.webp'|theme }}" alt="Lulu" class="lulu-img-3">
+                   <img src="{{ 'assets/lulu_5.webp'|theme }}" alt="Lulu" class="lulu-img-4">
+                </div>
+                <div class="item-content">
+                    <h3 class="team-name">Lulu</h3>
+                    <div class="team-role">Pszichológiai Támasz</div>
+                    
+                    <div class="team-bio">
+                         <p>És ő pedig a csapat pszichológiai támasza és a csapat egyik legnagyobb erénye! Lulu mindig gondoskodik a jókedvről, és farokcsóválva segít átlendülni a legnehezebb munkanapokon is.</p>
+                    </div>
+
+                    <div class="card-divider"></div>
+                    <span class="card-phone">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Nálunk lakik az irodában
+                    </span>
+                </div>
+            </div>
+        </article>
+
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('#lulu-slider img');
+    let currentIndex = 0;
+
+    if (images.length > 1) {
+        setInterval(() => {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }, 5000);
+    }
+});
+</script>

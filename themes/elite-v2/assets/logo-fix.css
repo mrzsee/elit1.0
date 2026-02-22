@@ -27,8 +27,10 @@
     margin: 0 auto;
 
     /* VERTICAL CENTERING ADJUSTMENT */
-    margin-top: 35px;
-    margin-bottom: 5px;
+    margin-top: 55px;
+    /* Increased from 35px for better breathing room */
+    margin-bottom: 15px;
+    /* Increased from 5px */
 
     text-align: center;
 
@@ -38,7 +40,7 @@
 
 /* 2. Logo Image Wrapper */
 .custom-logo-wrapper {
-    margin-bottom: 0px;
+    margin-bottom: 10px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -52,54 +54,53 @@
     width: auto;
     max-width: fit-content;
 
-    /* GLASSMORPHISM - DARK SMOKE GLASS (SCALED DOWN) */
-    background: rgba(0, 0, 0, 0.55);
-    /* Darker smoke gray */
-    backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(1px);
-    border-radius: 4px;
-    padding: 1px 2px;
-    /* Very compact */
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* GLASSMORPHISM - DARK SMOKE GLASS (PREMIUM) */
+    background: rgba(0, 0, 0, 0.48);
+    /* Lightened by 10% opacity (from 0.58) */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 8px;
+    padding: 2px 4px;
+    /* Slightly more breathe room */
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform, background, box-shadow;
 }
 
 .custom-logo-link:hover {
-    background: rgba(0, 0, 0, 0.43);
-    backdrop-filter: blur(2.4px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+    transform: translateY(-2px);
 }
 
 /* 3. The Logo Image */
 .custom-logo-img {
     display: block;
-    width: 186px;
-    /* Reduced by 31% (original 270px * 0.69) */
+    width: 200px;
+    /* Increased slightly for better visibility (from 186px) */
     height: auto;
     max-width: 90vw;
 
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     will-change: transform;
 }
 
 .custom-logo-img:hover {
-    transform: scale(1.15);
-    /* Much bigger zoom (15%) */
+    transform: scale(1.1);
     cursor: pointer;
-    /* FILTER REMOVED TO KEEP COLOR EXACTLY THE SAME */
 }
 
-/* 4. Brand Text */
+/* 4. Brand Text (Optional/Backup) */
 .custom-logo-text-wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 5px;
+    margin-top: 15px;
 
-    /* STATIC TEXT (No Float) */
+    /* STATIC TEXT */
     animation: none;
 }
 
@@ -108,7 +109,7 @@
     font-size: 28px;
     font-weight: 700;
     color: #6a523d;
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
     text-transform: none;
     line-height: 1.2;
     margin: 0;
@@ -136,42 +137,62 @@
 
 /* 5. Responsive Adjustments */
 @media (max-width: 1200px) {
+    .custom-hero-header {
+        margin-top: 45px;
+    }
+
     .custom-logo-img {
-        width: 165px;
+        width: 175px;
+    }
+}
+
+@media (max-width: 900px) {
+
+    /* Critical Fix for scroll arrow overlap and vertical spacing */
+    .custom-hero-header {
+        margin-top: 40px;
+        margin-bottom: 25px;
+    }
+
+    .custom-logo-img {
+        width: 135px;
+        /* Reduced from 150px for better balance */
     }
 }
 
 @media (max-width: 768px) {
+
+    /* Hide desktop hero header on mobile to avoid double logo with mobile-logo-trigger */
     .custom-hero-header {
-        max-width: 95%;
-        margin-bottom: 5px;
-    }
-
-    .custom-logo-img {
-        width: 100%;
-        max-width: 124px;
-        /* Reduced by 31% (original 180px * 0.69) */
-    }
-
-    .custom-logo-link {
-        padding: 20px 30px;
-        border-radius: 20px;
+        display: none !important;
     }
 
     .custom-logo-brand {
-        font-size: 22px;
+        font-size: 20px;
         gap: 15px;
     }
 
     .custom-logo-brand::before,
     .custom-logo-brand::after {
-        width: 30px;
+        width: 25px;
+    }
+}
+
+/* Small heights fix */
+@media (max-height: 700px) {
+    .custom-hero-header {
+        margin-top: 20px;
+        margin-bottom: 5px;
+    }
+
+    .custom-logo-img {
+        width: 120px;
     }
 }
 
 /* --- ANIMATION KEYFRAMES --- */
 
-/* Only Float (Lebegés) */
+/* Luxury Float */
 @keyframes luxury-float {
 
     0%,
@@ -180,19 +201,120 @@
     }
 
     50% {
-        transform: translateY(-8px);
+        transform: translateY(-10px);
     }
 }
 
-/* Entrance (Beúszás) */
+/* Entrance */
 @keyframes fade-in-up {
     0% {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
 
     100% {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* --- HERO TITLE STYLES (Refactored from home.htm) --- */
+
+.hero-glass-title {
+    background: rgba(140, 115, 85, 0.28) !important;
+    /* Warm Amber/Gold Glass effect */
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 100%) !important;
+
+    backdrop-filter: blur(10px) saturate(130%) !important;
+    /* Balanced blur to see background details */
+    -webkit-backdrop-filter: blur(10px) saturate(130%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    /* Thinner, more subtle border */
+    border-radius: 40px !important;
+    /* Even tighter pill shape */
+    padding: 8px 22px !important;
+    /* Minimalist fit around text */
+    display: block !important;
+    text-align: center !important;
+    width: fit-content !important;
+    margin: 0 auto !important;
+    max-width: 85% !important;
+    /* Sufficiently wide but not overwhelming */
+    box-sizing: border-box !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+
+    font-family: 'Roboto Slab', 'Times New Roman', serif !important;
+    letter-spacing: 2px !important;
+    transition: all 0.5s ease !important;
+}
+
+.hero-glass-title font,
+.hero-glass-title * {
+    color: #382b1f !important;
+    /* Lighter by ~20% than #221a13 */
+    text-shadow: none !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+    font-size: 28px !important;
+    line-height: 1.4 !important;
+    text-align: center !important;
+    display: inline-block !important;
+}
+
+.hero-glass-title {
+    color: #382b1f !important;
+}
+
+/* Response Fix for small screens to prevent overlaps */
+@media (max-width: 900px) {
+    .hero-glass-title {
+        margin-top: 120px !important;
+        /* Move down to avoid menu overlap */
+        padding: 20px 30px;
+        max-width: 90%;
+    }
+
+    .hero-glass-title font,
+    .hero-glass-title {
+        font-size: 16px !important;
+        /* Smaller text to fit two lines */
+        line-height: 1.2 !important;
+        white-space: nowrap !important;
+        /* Force stay on lines as much as possible */
+        text-align: center !important;
+    }
+
+    .hero-glass-title br {
+        display: block !important;
+        /* Ensure the <br> still breaks the lines where intended */
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-glass-title {
+        margin-top: 180px !important;
+        /* Adjusted to balance with big logo above */
+        padding: 15px 20px;
+    }
+
+    .hero-glass-title font,
+    .hero-glass-title {
+        font-size: 14px !important;
+        /* Even smaller for very narrow screens */
+        line-height: 1.2 !important;
+    }
+
+    .hero-glass-title {
+        padding: 5px 12px !important;
+        /* Ultra compact padding */
+        width: 95% !important;
+        max-width: 95% !important;
+    }
+}
+
+@media (max-height: 800px) and (max-width: 768px) {
+    .hero-glass-title {
+        margin-top: 140px !important;
+        /* Move up on short screens */
     }
 }

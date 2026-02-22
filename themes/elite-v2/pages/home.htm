@@ -4,13 +4,6 @@ layout = "default"
 body_class = "wt-home"
 id = "home"
 ==
-<!-- Side Navigation Dots -->
-<div class="side-nav">
-    <a href="#home" class="side-nav-dot active" title="Kezdőlap"></a>
-    <a href="#services" class="side-nav-dot" title="Szolgáltatások"></a>
-    <a href="#about" class="side-nav-dot" title="Rólunk"></a>
-    <a href="#contact" class="side-nav-dot" title="Kapcsolat"></a>
-</div>
 
 <section id="home" class="s s-hm s-hm-editzone wnd-p-cc cf sc-m wnd-background-image wnd-w-wider wnd-s-normal wnd-h-auto wnd-nh-m hn-centered" style="margin-top: -160px; padding-top: 160px;">
 	<div class="s-w cf">
@@ -56,67 +49,18 @@ id = "home"
 </div>
 </div>
     <!-- Inject CSS locally for home page -->
+    <!-- Inject CSS locally for home page -->
     {% put styles %}
     <link rel="stylesheet" href="{{ 'assets/services-grid.css'|theme }}">
     <style>
-        /* Override specific layout issues if necessary */
-        .services-grid { padding: 40px 0; }
-        .service-card { text-align: center; }
-
-        /* Hero Title Glassmorphism - Light & Pastel Version */
-        .hero-glass-title {
-            background: rgba(255, 253, 245, 0.10); /* 10% Opacity */
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 12px;
-            padding: 20px 40px;
-            display: table !important; /* Block-like centering behavior */
-            text-align: center !important;
-            width: auto !important;
-            margin: 0 auto !important;
-            max-width: 85%;
-            box-shadow: 0 10px 40px rgba(189, 146, 109, 0.15);
-            margin: 0 auto;
-            
-            /* Typography Match with Logo */
-            font-family: 'Roboto Slab', 'Times New Roman', serif !important;
-            font-size: 24px !important;
-            font-weight: 700 !important;
-            color: #8d6d51 !important;
-            letter-spacing: 2px !important;
-        }
-        
-        .hero-glass-title font, .hero-glass-title {
-            color: #6a523d !important; /* Még 25%-kal sötétebb (#8d6d51 -> #6a523d) */
-            text-shadow: none;
-            font-weight: 700 !important;
-            font-family: 'Roboto Slab', 'Times New Roman', serif !important;
-            text-transform: none !important; /* Megszüntetjük a nagybetűs kényszert */
-            letter-spacing: 2px !important;
-            font-size: 24px !important;
-            line-height: 1.4 !important; /* Kicsit nagyobb sorköz a br miatt */
-            text-align: center !important; /* Biztosítjuk a középre zárást */
-        }
-        
-        /* Mobile adjustment */
-        @media (max-width: 768px) {
-             .hero-glass-title font, .hero-glass-title {
-                font-size: 1.2rem !important;
-                padding: 15px 20px;
-                margin-top: 280px !important; /* Több hely a logó+szöveg alatt */
-             }
-        }
-
         /* Service Cards Animation */
         .service-card {
             transition: transform 0.4s ease, box-shadow 0.4s ease;
-            /* Ensure overflow hidden is applied somewhere if not already */
         }
         
         .service-card:hover {
-            transform: translateY(-10px); /* Lift Up */
-            z-index: 2; /* Bring to front */
+            transform: translateY(-10px);
+            z-index: 2;
         }
 
         .service-image-wrapper {
@@ -131,7 +75,27 @@ id = "home"
         .service-card:hover .service-image {
             transform: scale(1.05); /* Gentle Zoom In */
         }
+
+        /* Gallery Hover Zoom Effect */
+        .b-gal-img-wrap {
+            overflow: hidden !important;
+        }
+        
+        .b-gal-item img {
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        }
+        
+        .b-gal-item:hover img {
+            transform: scale(1.12) !important;
+        }
+
+        .b-gal-a {
+            cursor: default !important;
+            text-decoration: none !important;
+        }
     </style>
+    <!-- Preload only the most critical background image to avoid main thread bottlenecks -->
+    <link rel="preload" href="{{ 'assets/hero_sofa_city.png'|theme }}" as="image">
     {% endput %}
 
     <div class="services-grid">
@@ -226,7 +190,7 @@ id = "home"
 			</div>
 		</div>
 	</div>
-</section><section id="services" class="s s-basic cf sc-ml wnd-background-solid  wnd-w-wider wnd-s-higher wnd-h-auto fade-in-section">
+</section><section id="services-images" class="s s-basic cf sc-ml wnd-background-solid  wnd-w-wider wnd-s-higher wnd-h-auto fade-in-section">
 	<div class="s-w cf">
 		<div class="s-o s-fs cf">
 			<div class="s-bg cf">
@@ -240,7 +204,7 @@ id = "home"
 	<div class="ez-c"><div class="b-img b-img-default b b-s cf wnd-orientation-landscape wnd-type-image img-s-n" style="margin-left:0;margin-right:0;" id="wnd_ImageBlock_91185163">
 	<div class="b-img-w">
 		<div class="b-img-c" style="padding-bottom:39.18%;text-align:center;">
-            <picture><img id="wnd_ImageBlock_91185163_img" src="{{ 'assets/images-pexels-com-photos-7937688-pexels-photo-7937688-auto-compress-cs-tinysrgb-dpr-2-h-650-w-940.jpeg'|theme }}" alt="" width="1880" height="1255" loading="lazy" style="top:-35.22%;left:0%;width:100%;height:170.44%;position:absolute;"></picture>
+            <picture><img id="wnd_ImageBlock_91185163_img" src="{{ 'assets/gg_middleland.webp'|theme }}" alt="" width="1880" height="1255" loading="lazy" style="top:0;left:0;width:100%;height:100%;object-fit:cover;position:absolute;"></picture>
 			</div>
 		
 	</div>
@@ -266,7 +230,7 @@ id = "home"
 	<div class="c-c cf"><div class="b-img b-img-default b b-s cf wnd-orientation-landscape wnd-type-image img-s-n" style="margin-left:0;margin-right:0;" id="wnd_ImageBlock_805733322">
 	<div class="b-img-w">
 		<div class="b-img-c" style="padding-bottom:152.35%;text-align:center;">
-            <picture><img id="wnd_ImageBlock_805733322_img" src="{{ 'assets/images-pexels-com-photos-7937688-pexels-photo-7937688-auto-compress-cs-tinysrgb-dpr-2-h-650-w-940.jpeg'|theme }}" alt="" width="1880" height="1255" loading="lazy" style="top:0%;left:-62.98%;width:225.96%;height:100%;position:absolute;"></picture>
+            <picture><img id="wnd_ImageBlock_805733322_img" src="{{ 'assets/gg_inhouse.webp'|theme }}" alt="" width="1880" height="1255" loading="lazy" style="top:0%;left:0%;width:100%;height:100%;object-fit:cover;position:absolute;"></picture>
 			</div>
 		
 	</div>
@@ -275,7 +239,7 @@ id = "home"
 	<div class="c-c cf"><div class="b-img b-img-default b b-s cf wnd-orientation-landscape wnd-type-image img-s-n" style="margin-left:0;margin-right:0;" id="wnd_ImageBlock_525252928">
 	<div class="b-img-w">
 		<div class="b-img-c" style="padding-bottom:132.07%;text-align:center;">
-            <picture><img id="wnd_ImageBlock_525252928_img" src="{{ 'assets/0bbzs1.jpg'|theme }}" alt="" width="1920" height="1272" loading="lazy" style="top:0%;left:-50.63%;width:201.25786163522%;height:100%;position:absolute;"></picture>
+            <picture><img id="wnd_ImageBlock_525252928_img" src="{{ 'assets/gg_logo_key.webp'|theme }}" alt="" width="1920" height="1272" loading="lazy" style="top:0%;left:0%;width:100%;height:100%;object-fit:cover;position:absolute;"></picture>
 			</div>
 		
 	</div>
@@ -353,7 +317,19 @@ Szolgáltatásainkkal azért dolgozunk, hogy Önnek ne kelljen külön partnerek
 </div>
 </div></div>
 </div></div>
-</div><div class="gal-app b-gal b b-s" id="wnd_PhotoGalleryBlock_188132519"><div class="b-gal-classic b-gal-grid grid-4 "><div class="b-gal-item original"><a class="b-gal-a litebox bor-rad" data-litebox-group="gallery" data-litebox-text="" href="{{ 'assets/images-pexels-com-photos-7937688-pexels-photo-7937688-auto-compress-cs-tinysrgb-dpr-2-h-650-w-940.jpeg'|theme }}" width="1880" height="1255"><div class="b-gal-img-outer"><div class="b-gal-img bor-rad"><div class="b-gal-img-pos"><div class="b-gal-img-wrap"><picture class=""><img src="{{ 'assets/images-pexels-com-photos-7937688-pexels-photo-7937688-auto-compress-cs-tinysrgb-dpr-2-h-650-w-940.jpeg'|theme }}" alt="" width="1880" height="1255" loading="lazy" class="img bor-rad" style="aspect-ratio: 376 / 251;"></picture></div></div></div><div class="b-gal-t bor-rad"></div></div></a></div><div class="b-gal-item original"><a class="b-gal-a litebox bor-rad" data-litebox-group="gallery" data-litebox-text="" href="{{ 'assets/0pqhhb.png'|theme }}" width="1232" height="928"><div class="b-gal-img-outer"><div class="b-gal-img bor-rad"><div class="b-gal-img-pos"><div class="b-gal-img-wrap"><picture class="ldng"><img src="{{ 'assets/0pqhhb.png'|theme }}" alt="" width="1232" height="928" loading="lazy" class="img bor-rad" style="aspect-ratio: 77 / 58;"></picture></div></div></div><div class="b-gal-t bor-rad"></div></div></a></div><div class="b-gal-item original"><a class="b-gal-a litebox bor-rad" data-litebox-group="gallery" data-litebox-text="" href="{{ 'assets/0yf2wr.png'|theme }}" width="1232" height="928"><div class="b-gal-img-outer"><div class="b-gal-img bor-rad"><div class="b-gal-img-pos"><div class="b-gal-img-wrap"><picture class="ldng"><img src="{{ 'assets/0yf2wr.png'|theme }}" alt="" width="1232" height="928" loading="lazy" class="img bor-rad" style="aspect-ratio: 77 / 58;"></picture></div></div></div><div class="b-gal-t bor-rad"></div></div></a></div><div class="b-gal-item original"><a class="b-gal-a litebox bor-rad" data-litebox-group="gallery" data-litebox-text="" href="{{ 'assets/329wcb.png'|theme }}" width="1232" height="928"><div class="b-gal-img-outer"><div class="b-gal-img bor-rad"><div class="b-gal-img-pos"><div class="b-gal-img-wrap"><picture class="ldng"><img src="{{ 'assets/329wcb.png'|theme }}" alt="" width="1232" height="928" loading="lazy" class="img bor-rad" style="aspect-ratio: 77 / 58;"></picture></div></div></div><div class="b-gal-t bor-rad"></div></div></a></div></div></div></div>
+</div><style>
+    .b-gal-item img {
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s ease !important;
+        will-change: transform;
+    }
+    .b-gal-item:hover img {
+        transform: scale(1.05);
+        filter: brightness(1.05);
+    }
+    .b-gal-img-pos {
+        overflow: hidden;
+    }
+</style><div class="gal-app b-gal b b-s" id="wnd_PhotoGalleryBlock_188132519"><div class="b-gal-classic b-gal-grid grid-4 "><div class="b-gal-item original"><div class="b-gal-a bor-rad"><div class="b-gal-img-outer"><div class="b-gal-img bor-rad"><div class="b-gal-img-pos"><div class="b-gal-img-wrap"><picture class=""><img src="{{ 'assets/gg_handshake.webp'|theme }}" alt="" width="1880" height="1255" loading="eager" decoding="async" class="img bor-rad" style="aspect-ratio: 376 / 251;"></picture></div></div></div><div class="b-gal-t bor-rad"></div></div></div></div><div class="b-gal-item original"><div class="b-gal-a bor-rad"><div class="b-gal-img-outer"><div class="b-gal-img bor-rad"><div class="b-gal-img-pos"><div class="b-gal-img-wrap"><picture class="ldng"><img src="{{ 'assets/IMG_1492.webp'|theme }}" alt="" width="1232" height="928" loading="eager" decoding="async" class="img bor-rad" style="aspect-ratio: 77 / 58;"></picture></div></div></div><div class="b-gal-t bor-rad"></div></div></div></div><div class="b-gal-item original"><div class="b-gal-a bor-rad"><div class="b-gal-img-outer"><div class="b-gal-img bor-rad"><div class="b-gal-img-pos"><div class="b-gal-img-wrap"><picture class="ldng"><img src="{{ 'assets/IMG_1493.webp'|theme }}" alt="" width="1232" height="928" loading="eager" decoding="async" class="img bor-rad" style="aspect-ratio: 77 / 58;"></picture></div></div></div><div class="b-gal-t bor-rad"></div></div></div></div><div class="b-gal-item original"><div class="b-gal-a bor-rad"><div class="b-gal-img-outer"><div class="b-gal-img bor-rad"><div class="b-gal-img-pos"><div class="b-gal-img-wrap"><picture class="ldng"><img src="{{ 'assets/IMG_1494.webp'|theme }}" alt="" width="1232" height="928" loading="eager" decoding="async" class="img bor-rad" style="aspect-ratio: 77 / 58;"></picture></div></div></div><div class="b-gal-t bor-rad"></div></div></div></div></div></div></div>
 </div>
 			</div>
 		</div>
@@ -364,7 +340,7 @@ Szolgáltatásainkkal azért dolgozunk, hogy Önnek ne kelljen külön partnerek
 		<div class="s-o s-fs cf">
 			<div class="s-bg cf">
 				<div class="s-bg-l wnd-background-image  bgpos-center-center bgatt-scroll overlay-black-strong">
-                    <picture><img src="{{ 'assets/IMG_1491.jpeg'|theme }}" width="1880" height="1255" alt="Kapcsolat Háttér" loading="lazy"></picture>
+                    <picture><img src="{{ 'assets/IMG_1491.webp'|theme }}" width="1880" height="1255" alt="Kapcsolat Háttér" loading="eager" decoding="async"></picture>
 					
 				</div>
 			</div>
@@ -501,3 +477,10 @@ Szolgáltatásainkkal azért dolgozunk, hogy Önnek ne kelljen külön partnerek
     </a>
 </div>
 
+<!-- Side Navigation Dots -->
+<div class="side-nav">
+    <a href="#home" class="side-nav-dot active" title="Kezdőlap"></a>
+    <a href="#services" class="side-nav-dot" title="Szolgáltatások"></a>
+    <a href="#about" class="side-nav-dot" title="Rólunk"></a>
+    <a href="#contact" class="side-nav-dot" title="Kapcsolat"></a>
+</div>
