@@ -60,26 +60,20 @@
     max-width: 280px;
     max-height: 220px;
 
-    /* DARK SMOKE GLASS STYLE (Sync with Desktop) */
-    background: rgba(5, 5, 5, 0.50);
-    /* Lightened by 10% (from 0.60) */
-    /* Slightly more opaque smoke */
-    backdrop-filter: blur(1.15px);
-    /* +15% opalic blur */
-    -webkit-backdrop-filter: blur(1.15px);
-
-    border-radius: 6px;
-    padding: 3px 6px;
-    /* Compact padding */
-    border: 1px solid rgba(255, 255, 255, 0.05);
-
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    /* OPAL GLASS EFFECT (50% Translucent #FBF8F6) */
+    background: rgba(251, 248, 246, 0.5);
+    backdrop-filter: blur(12px) saturate(130%);
+    -webkit-backdrop-filter: blur(12px) saturate(130%);
+    border-radius: 8px;
+    padding: 6px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
     align-items: center;
     justify-content: center;
     overflow: hidden;
     text-decoration: none;
 
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* Desktop Specific Adjustments Removed (Hidden on Desktop) */

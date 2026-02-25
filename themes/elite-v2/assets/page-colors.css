@@ -4,7 +4,13 @@
 section.s-hn,
 .header-section {
     background-color: #FBF8F6 !important;
-    /* Unified Base Color */
+    /* Restored Base Color for visual balance */
+}
+
+/* Ensure ONLY the logo wrapper is forced transparent to see through to the header background */
+.custom-logo-wrapper,
+.custom-logo-link {
+    background-color: transparent !important;
 }
 
 /* 2. Zóna: Tartalom (Main Content) */

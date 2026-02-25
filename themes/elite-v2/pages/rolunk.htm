@@ -263,8 +263,8 @@ id = "rolunk"
         margin-bottom: 0;
     }
 
-    /* Lulu Slider Styles */
-    .lulu-slider-container {
+    /* Masni Slider Styles */
+    .masni-slider-container {
         width: 150px;
         height: 150px;
         border-radius: 50%;
@@ -274,7 +274,7 @@ id = "rolunk"
         border: 3px solid #c69c6d;
         box-shadow: 0 4px 15px rgba(198, 156, 109, 0.25);
     }
-    .lulu-slider-container img {
+    .masni-slider-container img {
         position: absolute;
         top: 0;
         left: 0;
@@ -284,13 +284,13 @@ id = "rolunk"
         opacity: 0;
         transition: opacity 1.2s ease-in-out;
     }
-    .lulu-slider-container img.active {
+    .masni-slider-container img.active {
         opacity: 1;
     }
-    .lulu-img-1 { object-position: center 20%; }
-    .lulu-img-2 { object-position: center center; }
-    .lulu-img-3 { object-position: center 30%; }
-    .lulu-img-4 { object-position: center center; }
+    .masni-img-1 { object-position: center 20%; }
+    .masni-img-2 { object-position: center center; }
+    .masni-img-3 { object-position: center 30%; }
+    .masni-img-4 { object-position: center center; }
 
     /* Mobile */
     @media (max-width: 850px) {
@@ -371,18 +371,18 @@ id = "rolunk"
                         </div>
                     </div>
 
-                    <!-- LULU kártya -->
+                    <!-- MASNI kártya -->
                     <div class="founder-card" style="margin-top: 30px;">
-                        <div class="lulu-slider-container" id="lulu-slider">
-                           <img src="{{ 'assets/lulu_4.webp'|theme }}" alt="Lulu" class="active lulu-img-1">
-                           <img src="{{ 'assets/lulu_2.webp'|theme }}" alt="Lulu" class="lulu-img-2">
-                           <img src="{{ 'assets/lulu_3.webp'|theme }}" alt="Lulu" class="lulu-img-3">
-                           <img src="{{ 'assets/lulu_5.webp'|theme }}" alt="Lulu" class="lulu-img-4">
+                        <div class="masni-slider-container" id="masni-slider">
+                           <img src="{{ 'assets/lulu_4.webp'|theme }}" alt="Masni" class="active masni-img-1">
+                           <img src="{{ 'assets/lulu_2.webp'|theme }}" alt="Masni" class="masni-img-2">
+                           <img src="{{ 'assets/lulu_3.webp'|theme }}" alt="Masni" class="masni-img-3">
+                           <img src="{{ 'assets/lulu_5.webp'|theme }}" alt="Masni" class="masni-img-4">
                         </div>
-                        <h3 class="founder-name">Lulu</h3>
+                        <h3 class="founder-name">Masni</h3>
                         <div class="founder-role">Pszichológiai Támasz</div>
                         <div class="founder-quote">
-                            „És ő pedig a csapat pszichológiai támasza és a csapat egyik legnagyobb erénye! Lulu mindig gondoskodik a jókedvről, és farokcsóválva segít átlendülni a legnehezebb munkanapokon is.”
+                            „És ő pedig a csapat pszichológiai támasza és a csapat egyik legnagyobb erénye! Masni mindig gondoskodik a jókedvről, és farokcsóválva segít átlendülni a legnehezebb munkanapokon is.”
                         </div>
                         <div class="founder-contact">
                             <span class="founder-phone">
@@ -419,7 +419,7 @@ id = "rolunk"
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const images = document.querySelectorAll('#lulu-slider img');
+    const images = document.querySelectorAll('#masni-slider img');
     let currentIndex = 0;
 
     if (images.length > 1) {

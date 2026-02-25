@@ -83,7 +83,7 @@
   <!-- Szöveg: ELIT -->
   <text x="250" y="225" class="text-elite">ELIT</text>
 
-  <!-- Szöveg: Ingatlan iroda (Külön írva, lejjebb tolva: 285 -> 290) -->
-  <text x="250" y="290" class="text-sub">Ingatlan iroda</text>
+  <!-- Szöveg: Ingatlaniroda (Egybe írva, lejjebb tolva: 285 -> 290) -->
+  <text x="250" y="290" class="text-sub">Ingatlaniroda</text>
 
 </svg>
