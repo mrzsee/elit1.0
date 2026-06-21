@@ -1,0 +1,348 @@
+title = "Referenciáink"
+url = "/referenciak"
+layout = "default"
+==
+<style>
+/* Card Hover Micro-animations */
+.ref-card {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ref-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212, 175, 55, 0.15);
+}
+.ref-card img {
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ref-card:hover img {
+    transform: scale(1.08);
+}
+/* Modal Zoom Animation */
+.modal-enter {
+    animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+</style>
+
+<section class="pt-24 pb-24 relative overflow-hidden" style="background: radial-gradient(ellipse at 50% 30%, #FDFBF7 0%, #F5EFEB 60%, #EAE1D9 100%);" x-data="refGallery()">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <!-- Header -->
+        <div class="text-center mb-16 reveal">
+            <p class="text-gold-700 text-sm font-bold uppercase tracking-[0.3em] mb-2">Elvégzett munkáink</p>
+            <h1 class="page-title-mobile font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-earth-900 mb-3">Referenciáink</h1>
+            <div class="gold-line w-32 mx-auto mb-4 bg-gold-400"></div>
+            <p class="text-earth-700/90 max-w-xl mx-auto text-sm sm:text-base leading-relaxed font-light">
+                Tekintse meg eddigi munkáinkat témák szerint – minden esemény egy-egy különleges történet.
+            </p>
+        </div>
+
+        <!-- 7 Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <template x-for="(cat, idx) in categories" :key="idx">
+                <div class="ref-card bg-white/70 backdrop-blur-md rounded-[1.8rem] border border-white/60 overflow-hidden flex flex-col justify-between cursor-pointer shadow-md"
+                     @click="openCategory(idx)">
+                    
+                    <!-- Cover image -->
+                    <div class="relative overflow-hidden aspect-[4/3] w-full bg-earth-100">
+                        <img :src="cat.cover" :alt="cat.title" class="w-full h-full object-cover">
+                        <!-- Soft warm overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-transparent opacity-90"></div>
+                        <!-- Badge showing photo count -->
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-gold-700 text-xs font-semibold px-3 py-1.5 rounded-full border border-gold-300/30 shadow-sm">
+                            <i class="far fa-images mr-1"></i> <span x-text="cat.images.length + ' db kép'"></span>
+                        </div>
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-display text-earth-900 text-lg font-semibold mb-2 group-hover:text-gold-700 transition-colors" x-text="cat.title"></h3>
+                            <p class="text-earth-500 text-xs tracking-wider uppercase" x-text="cat.subtitle"></p>
+                        </div>
+                        
+                        <!-- Mini Arrow -->
+                        <div class="flex items-center gap-2 text-gold-600 font-semibold text-xs mt-6 group">
+                            <span>Megtekintés</span>
+                            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                </div>
+            </template>
+        </div>
+
+        <!-- Lightbox Modal -->
+        <div class="fixed inset-0 z-50 overflow-hidden flex items-center justify-center p-4 sm:p-6 bg-earth-900/70 backdrop-blur-md"
+             x-show="isOpen"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0"
+             style="display: none;"
+             @keydown.escape.window="close()">
+            
+            <!-- Background click close -->
+            <div class="absolute inset-0" @click="close()"></div>
+
+            <!-- Modal Content Wrapper -->
+            <div class="relative w-full max-w-7xl bg-cream-50 border border-cream-300 rounded-[2.5rem] overflow-hidden flex flex-col max-h-[95vh] z-10 modal-enter shadow-2xl"
+                 @click.stop>
+                
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between px-8 py-5 border-b border-cream-200/60 bg-cream-100">
+                    <div>
+                        <h2 class="font-display text-xl sm:text-2xl font-bold text-earth-900" x-text="activeCategory ? activeCategory.title : ''"></h2>
+                        <p class="text-gold-600 text-xs uppercase tracking-wider mt-0.5" x-text="activeCategory ? activeCategory.subtitle : ''"></p>
+                    </div>
+                    <button class="w-10 h-10 rounded-full flex items-center justify-center bg-earth-100 hover:bg-earth-200 text-earth-800 transition-all border border-earth-200 hover:scale-105"
+                            @click="close()">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Main Viewport -->
+                <div class="relative flex-grow flex items-center justify-center p-4 sm:p-8 bg-cream-50/20 overflow-hidden min-h-[300px]">
+                    
+                    <!-- Prev Button -->
+                    <button class="absolute left-4 z-20 w-12 h-12 rounded-full flex items-center justify-center text-earth-800 bg-white/80 hover:bg-white border border-cream-300 shadow-md transition-all hover:scale-105"
+                            @click="prevPhoto()"
+                            x-show="activeCategory && activeCategory.images.length > 1">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+
+                    <!-- Large Image -->
+                    <div class="relative max-w-full h-[58vh] sm:h-[68vh] rounded-2xl shadow-2xl flex items-center justify-center overflow-hidden cursor-zoom-in bg-transparent"
+                         @click="isZoomed = true">
+                        <template x-if="activeCategory && activeCategory.images.length > 0">
+                            <img :src="activeCategory.images[activePhotoIndex]" 
+                                 :alt="activeCategory.title"
+                                 class="max-w-full max-h-[58vh] sm:max-h-[68vh] object-contain select-none animate-fade-in transition-all duration-300">
+                        </template>
+
+                        <!-- Zoom Indicator overlay -->
+                        <button class="absolute top-4 right-4 z-30 bg-earth-800/80 hover:bg-earth-850 text-white border border-earth-700/50 shadow-sm px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-colors pointer-events-auto hover:scale-105"
+                                @click.stop="isZoomed = true">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/>
+                            </svg>
+                            <span>Nagyítás</span>
+                        </button>
+                    </div>
+
+                    <!-- Next Button -->
+                    <button class="absolute right-4 z-20 w-12 h-12 rounded-full flex items-center justify-center text-earth-800 bg-white/80 hover:bg-white border border-cream-300 shadow-md transition-all hover:scale-105"
+                            @click="nextPhoto()"
+                            x-show="activeCategory && activeCategory.images.length > 1">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+
+                    <!-- Indicator -->
+                    <div class="absolute bottom-4 bg-earth-800 text-white border border-earth-700 shadow-sm px-4 py-1.5 rounded-full text-xs font-semibold">
+                        <span x-text="(activePhotoIndex + 1) + ' / ' + (activeCategory ? activeCategory.images.length : 0)"></span>
+                    </div>
+                </div>
+
+                <!-- Thumbnails Strip -->
+                <div class="p-6 bg-cream-100 border-t border-cream-200 overflow-x-auto whitespace-nowrap flex gap-4 justify-center"
+                     x-show="activeCategory && activeCategory.images.length > 1">
+                    <template x-for="(img, idx) in (activeCategory ? activeCategory.images : [])" :key="idx">
+                        <button class="relative w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 border-2 transition-all hover:opacity-100"
+                                :class="activePhotoIndex === idx ? 'border-gold-500 scale-105 opacity-100 shadow-gold-glow' : 'border-cream-300 opacity-60 hover:opacity-90'"
+                                @click="activePhotoIndex = idx">
+                            <img :src="img" class="w-full h-full object-cover">
+                        </button>
+                    </template>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Full-screen Glass Overlay for enlarged image -->
+        <div class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-2xl"
+             x-show="isZoomed"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 scale-95"
+             x-transition:enter-end="opacity-100 scale-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100 scale-100"
+             x-transition:leave-end="opacity-0 scale-95"
+             style="display: none;"
+             @click="isZoomed = false"
+             @keydown.escape.window="isZoomed = false">
+             
+             <!-- Close button on top right of full screen -->
+             <button class="absolute top-6 right-6 w-12 h-12 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 text-white transition-all border border-white/20 hover:scale-105"
+                     @click="isZoomed = false">
+                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                 </svg>
+             </button>
+             
+             <!-- Enlarged Image -->
+             <img :src="activeCategory && activeCategory.images.length > 0 ? activeCategory.images[activePhotoIndex] : ''"
+                  alt="Nagyított kép"
+                  class="max-w-[95vw] max-h-[92vh] object-contain rounded-2xl shadow-2xl border border-white/10 select-none cursor-zoom-out">
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center mt-24 reveal">
+            <p class="text-earth-700 text-sm mb-6 font-light">Szeretné Ön is a referenciáink között szerepelni?</p>
+            <a href="{{ 'kapcsolat'|page }}"
+               class="inline-block px-10 py-4 bg-moss-600 text-white font-bold uppercase tracking-[0.2em] rounded-full hover:bg-moss-700 transition-all hover:scale-105 shadow-nature">
+                Kérjen ajánlatot
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<script>
+function refGallery() {
+    return {
+        isOpen: false,
+        isZoomed: false,
+        activeCategoryIdx: null,
+        activeCategory: null,
+        activePhotoIndex: 0,
+        categories: [
+            {
+                title: "Állófogadás egy különleges alkalomra!",
+                subtitle: "Elegáns könyöklő asztalok és rendezvényhelyszín",
+                cover: "{{ 'assets/pictures/allofogadas1.jpg'|theme }}",
+                images: [
+                    "{{ 'assets/pictures/allofogadas1.jpg'|theme }}",
+                    "{{ 'assets/pictures/allofogadas2.jpg'|theme }}",
+                    "{{ 'assets/pictures/allofogadas3.jpg'|theme }}",
+                    "{{ 'assets/pictures/allofogadas4.jpg'|theme }}",
+                    "{{ 'assets/pictures/allofogadas5.jpg'|theme }}"
+                ]
+            },
+            {
+                title: "Ballagás",
+                subtitle: "Búcsú az iskolapadoktól és ünneplés",
+                cover: "{{ 'assets/pictures/bal1.jpeg'|theme }}",
+                images: [
+                    "{{ 'assets/pictures/bal1.jpeg'|theme }}",
+                    "{{ 'assets/pictures/bal2.jpeg'|theme }}",
+                    "{{ 'assets/pictures/bal3.jpeg'|theme }}",
+                    "{{ 'assets/pictures/bal4.jpeg'|theme }}",
+                    "{{ 'assets/pictures/bal5.jpeg'|theme }}",
+                    "{{ 'assets/pictures/bal6.jpeg'|theme }}"
+                ]
+            },
+            {
+                title: "Díjátadó utáni állófogadás",
+                subtitle: "Ünnepélyes gratuláció és koccintás",
+                cover: "{{ 'assets/pictures/dijat1.jpg'|theme }}",
+                images: [
+                    "{{ 'assets/pictures/dijat1.jpg'|theme }}",
+                    "{{ 'assets/pictures/dijat2.jpg'|theme }}",
+                    "{{ 'assets/pictures/dijat3.jpg'|theme }}",
+                    "{{ 'assets/pictures/dijat4.jpg'|theme }}",
+                    "{{ 'assets/pictures/dijat5.jpg'|theme }}",
+                    "{{ 'assets/pictures/dijat6.jpg'|theme }}"
+                ]
+            },
+            {
+                title: "Egy kisebb családi esemény",
+                subtitle: "Intim hangulatú ünneplések",
+                cover: "{{ 'assets/pictures/egykis1.jpg'|theme }}",
+                images: [
+                    "{{ 'assets/pictures/egykis1.jpg'|theme }}",
+                    "{{ 'assets/pictures/egykis2.jpg'|theme }}",
+                    "{{ 'assets/pictures/egykis3.jpg'|theme }}",
+                    "{{ 'assets/pictures/egykis4.jpg'|theme }}"
+                ]
+            },
+            {
+                title: "Épület átadás utáni állófogadás",
+                subtitle: "Hivatalos avatóünnepségek",
+                cover: "{{ 'assets/pictures/epül1.jpg'|theme }}",
+                images: [
+                    "{{ 'assets/pictures/epül1.jpg'|theme }}",
+                    "{{ 'assets/pictures/epül2.jpg'|theme }}",
+                    "{{ 'assets/pictures/epül3.jpg'|theme }}",
+                    "{{ 'assets/pictures/epül4.jpg'|theme }}",
+                    "{{ 'assets/pictures/epül5.jpg'|theme }}"
+                ]
+            },
+            {
+                title: "Kerti parti",
+                subtitle: "Kültéri összejövetelek stílusosan",
+                cover: "{{ 'assets/pictures/kertipart1.jpg'|theme }}",
+                images: [
+                    "{{ 'assets/pictures/kertipart1.jpg'|theme }}",
+                    "{{ 'assets/pictures/kertipart2.jpg'|theme }}",
+                    "{{ 'assets/pictures/kertipart3.jpg'|theme }}"
+                ]
+            },
+            {
+                title: "Szilveszter1",
+                subtitle: "Búcsúztassuk az óévet",
+                cover: "{{ 'assets/pictures/szilveszter_I1.jpg'|theme }}",
+                images: [
+                    "{{ 'assets/pictures/szilveszter_I1.jpg'|theme }}",
+                    "{{ 'assets/pictures/szilveszter_I2.jpg'|theme }}",
+                    "{{ 'assets/pictures/szilveszter_I3.jpg'|theme }}",
+                    "{{ 'assets/pictures/szilveszter_I4.jpg'|theme }}",
+                    "{{ 'assets/pictures/szilveszter_I5.jpg'|theme }}"
+                ]
+            },
+            {
+                title: "Szilveszter2",
+                subtitle: "Újévi mulatságok másodjára",
+                cover: "{{ 'assets/pictures/szilveszt_II1.jpg'|theme }}",
+                images: [
+                    "{{ 'assets/pictures/szilveszt_II1.jpg'|theme }}",
+                    "{{ 'assets/pictures/szilveszt_II2.jpg'|theme }}",
+                    "{{ 'assets/pictures/szilveszt_II3.jpg'|theme }}",
+                    "{{ 'assets/pictures/szilveszt_II4.jpg'|theme }}",
+                    "{{ 'assets/pictures/szilveszt_II5.jpg'|theme }}"
+                ]
+            }
+        ],
+        openCategory(idx) {
+            this.activeCategoryIdx = idx;
+            this.activeCategory = this.categories[idx];
+            this.activePhotoIndex = 0;
+            this.isZoomed = false;
+            this.isOpen = true;
+            document.body.style.overflow = 'hidden'; // Lock background scroll
+        },
+        close() {
+            this.isOpen = false;
+            this.isZoomed = false;
+            document.body.style.overflow = ''; // Restore scroll
+        },
+        prevPhoto() {
+            if (this.activeCategory) {
+                const len = this.activeCategory.images.length;
+                this.activePhotoIndex = (this.activePhotoIndex - 1 + len) % len;
+                this.isZoomed = false;
+            }
+        },
+        nextPhoto() {
+            if (this.activeCategory) {
+                const len = this.activeCategory.images.length;
+                this.activePhotoIndex = (this.activePhotoIndex + 1) % len;
+                this.isZoomed = false;
+            }
+        }
+    }
+}
+</script>
+

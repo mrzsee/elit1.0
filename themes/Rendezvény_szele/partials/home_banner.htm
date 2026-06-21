@@ -1,0 +1,235 @@
+description = "Home Page Video Banner"
+==
+<style>
+    /* Import Handwriting Font */
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+    /* Banner Container */
+
+    .banner-container {
+        position: relative;
+        width: 90%; /* Keskenyebb (10% margó oldalt) */
+        margin: 10px auto 0 auto; /* 10px felül, középen */
+        height: 560px; /* Megnövelve 40%-kal (400px -> 560px) */
+        min-height: 400px;
+        overflow: hidden;
+        overflow: hidden;
+        background-color: #000; /* Vagy természetes háttérszín */
+        border-radius: 20px; /* Lekerekítés */
+        box-shadow: 0 15px 35px rgba(46, 75, 38, 0.2); /* Természetes zöld árnyék */
+    }
+
+
+
+    /* Video Background */
+    .banner-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: 1;
+        background-color: #000;
+    }
+
+    /* Dark Overlay - REMOVED */
+    .banner-overlay {
+        display: none;
+    }
+
+
+    /* Content Overlay */
+    .banner-content {
+        position: relative;
+        z-index: 3;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+    }
+    
+    .banner-content h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        margin-bottom: 20px;
+    }
+    
+    .banner-logo {
+        position: absolute;
+        top: 10%; 
+        right: 15%; /* Beljebb hozva a fekete sávból */
+        left: auto; 
+        width: 140px; /* Kicsit kisebb */
+        height: 140px;
+
+
+        border-radius: 50%;
+        overflow: hidden;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.4s;
+    }
+    
+    .banner-logo:hover {
+        transform: scale(1.7);
+        border-color: #C5A065;
+        z-index: 20; /* Ensure it stays on top when zoomed */
+    }
+
+    
+    .banner-logo img {
+        width: 85%;
+        height: 85%;
+        object-fit: contain;
+        border-radius: 50%;
+    }
+
+    /* Bottom Text Container - Now Outside */
+    .banner-bottom-text {
+        position: relative;
+        margin: 10px auto 0 auto; /* Kívül, közel a kerethez */
+        width: 90%;
+        text-align: center;
+        z-index: 5;
+        padding: 10px 20px; 
+        
+        /* Sötét háttér, hogy olvasható legyen az arany szöveg */
+        background: linear-gradient(to right, #1a1a1a, #2E4B26, #1a1a1a);
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        border: 1px solid rgba(197, 160, 101, 0.3); /* Halvány arany keret */
+        
+        /* Háttér beúszása */
+        opacity: 0;
+        animation: containerFadeIn 1s ease-out forwards;
+    }
+
+    @keyframes containerFadeIn {
+        to { opacity: 1; }
+    }
+
+
+    .banner-bottom-text p {
+        font-family: 'Great Vibes', cursive; /* Kézírásos betűtípus */
+        font-size: 2.2rem; /* Kisebb méret, hogy kiférjen */
+        color: #F0C75E; /* Középtónusú arany */
+        text-shadow: 2px 2px 5px rgba(0,0,0,0.9);
+        margin: 0;
+        line-height: 1.2;
+        letter-spacing: 1px;
+        white-space: nowrap; /* Kényszerített egysoros megjelenés */
+        width: 100%;
+        overflow: hidden; /* Ha mégis túl hosszú lenne */
+        text-overflow: ellipsis;
+    }
+
+
+
+    /* Animation classes applied by JS */
+    .word-animate {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(40px);
+        animation: wordFadeUp 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+        margin-right: 0.25em;
+    }
+
+    @keyframes wordFadeUp {
+        0% { opacity: 0; transform: translateY(40px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+    /* SVG Függönyök Javítása */
+    /* SVG Függönyök Eltávolítva kérésre és a layout javítása érdekében */
+    
+    /* Oldalsó Képkeretek (Frame) */
+    .banner-frame {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+        object-fit: cover; /* Kitölti a rendelkezésre álló magasságot */
+    }
+    .banner-frame-left {
+        left: 0;
+        width: auto;
+        max-width: 30%; 
+        transform-origin: left center;
+        transform: scale(1.05); /* Kicsit nagyítva, hogy biztosan takarjon */
+    }
+    .banner-frame-right {
+        right: 0;
+        width: auto;
+        max-width: 30%;
+        transform-origin: right center;
+        transform: scale(1.05); /* "Bentebb viszi" a szélét, takarja a rést */
+    }
+</style>
+
+<div class="banner-container"> 
+    <!-- Video Background -->
+    <video class="banner-video" 
+           autoplay loop muted playsinline 
+           poster="{{ 'assets/pictures/banner.jpg'|theme }}"
+           preload="metadata">
+        <source src="{{ 'assets/pictures/banner.mp4'|theme }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <!-- Oldalsó Keret Képek -->
+    <img src="{{ 'assets/pictures/banner_frame_left.png'|theme }}" alt="Bal oldali keret" class="banner-frame banner-frame-left">
+    <img src="{{ 'assets/pictures/banner_frame_right.png'|theme }}" alt="Jobb oldali keret" class="banner-frame banner-frame-right">
+    
+    <!-- Script eltávolítva a JS hiba elkerülése érdekében -->
+
+    <!-- Logo on Banner (Links to Home with Theme) -->
+    <a href="?theme=Rendezvény_szele" class="banner-logo" title="Főoldal">
+        <img src="{{ 'assets/pictures/logo.png'|theme }}?v=1" alt="Logó">
+    </a>
+
+
+    <!-- Overlay (Light dark filter) -->
+    <div class="banner-overlay"></div>
+
+    <!-- Bottom Text MOVED OUTSIDE -->
+</div>
+
+<!-- Bottom Animated Text (Outside Container) -->
+<div class="banner-bottom-text">
+    <p id="floating-text">Varázsoljon felejthetetlen hangulatot eseményére profi kellékeinkkel.</p>
+</div>
+
+<script>
+    // Szavak animálása (egyszerű "szótag" hatás)
+    document.addEventListener("DOMContentLoaded", function() {
+        const textElement = document.getElementById('floating-text');
+        if (textElement) {
+            const text = textElement.innerText;
+            const words = text.split(' ');
+            textElement.innerHTML = '';
+            
+            words.forEach((word, index) => {
+                const span = document.createElement('span');
+                span.textContent = word;
+                span.className = 'word-animate';
+                // Késleltetés: minden szó 0.3 másodperccel később indul
+                span.style.animationDelay = `${index * 0.1}s`;
+                textElement.appendChild(span);
+                textElement.appendChild(document.createTextNode(' '));
+            });
+        }
+    });
+</script>
+

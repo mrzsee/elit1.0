@@ -1,0 +1,28 @@
+title = "Bérelhető Eszközök"
+url = "/eszkozok"
+layout = "default"
+==
+<section class="pt-32 pb-20 bg-cream-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+            <h1 class="page-title-mobile font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-earth-800 mb-6">Bérelhető Eszközeink</h1>
+            <div class="gold-line w-32 mx-auto"></div>
+        </div>
+
+        <!-- Árlista kép -->
+        <div class="max-w-2xl mx-auto bg-white rounded-[2rem] p-4 sm:p-6 shadow-nature-lg border border-cream-200 reveal-up">
+            <img src="{{ 'assets/pictures/arlista.png'|theme }}" alt="Eszközök Árlista" class="w-full h-auto rounded-xl shadow-md border border-cream-100">
+        </div>
+
+        <!-- Banner inside catalog -->
+        <div class="mt-20 relative rounded-3xl overflow-hidden h-64 flex items-center justify-center text-center reveal">
+            <img src="{{ 'assets/pictures/banner.jpg'|theme }}" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0 bg-earth-900/40"></div>
+            <div class="relative z-10 px-6">
+                <h3 class="font-display text-2xl sm:text-3xl text-white font-bold mb-4">Nem találja, amit keres?</h3>
+                <p class="text-white/80 mb-6 text-sm max-w-xl mx-auto">Folyamatosan bővülő készletünk van. Vegye fel velünk a kapcsolatot egyedi kéréseivel!</p>
+                <a href="{{ 'kapcsolat'|page }}" class="text-gold-400 font-bold uppercase tracking-[0.2em] text-xs hover:text-white transition-colors underline underline-offset-8">Lépjen kapcsolatba velünk</a>
+            </div>
+        </div>
+    </div>
+</section>

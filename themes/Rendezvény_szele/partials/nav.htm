@@ -1,0 +1,202 @@
+description = "Sticky Navigation"
+==
+<!-- Navigation -->
+<nav x-data="navScroll()" 
+     x-init="init()"
+     :class="scrolled ? 'translate-y-0' : 'translate-y-1'"
+     class="fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] px-4 sm:px-8 lg:px-12"
+     id="main-nav">
+    
+    <div class="max-w-7xl mx-auto flex justify-center">
+        <!-- Tighter constraints: h-[52px], px-4 sm:px-5, w-full but constrained inside max-w-7xl -->
+        <div class="relative w-full flex items-center justify-between h-[52px] px-3 sm:px-4 rounded-full transition-all duration-500 overflow-hidden group"
+             :class="lightTheme ? 'bg-white/85 shadow-nature-lg backdrop-blur-xl border border-white/40 border-b-moss-100/30' : 'bg-black/30 backdrop-blur-md border border-white/10 shadow-2xl'">
+            
+            <!-- Animated background glow for the nav island -->
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+
+            <!-- Logo -->
+            <a href="/" class="flex items-center gap-3 group/logo relative z-10" id="nav-logo">
+                <div class="relative">
+                    <div class="absolute -inset-2 bg-gold-400/20 rounded-full blur-md opacity-0 group-hover/logo:opacity-100 transition-opacity duration-500"></div>
+                    <div class="w-10 h-10 rounded-full overflow-hidden border-2 transition-all duration-500 group-hover/logo:scale-110 shadow-lg"
+                          :class="lightTheme ? 'border-moss-500' : 'border-white/80'">
+                        <img src="{{ 'assets/pictures/logo.png'|theme }}?v=1" 
+                             alt="Rendezvény Szele Logó" 
+                             class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="hidden sm:block">
+                    <span class="font-display text-lg font-bold tracking-tight transition-colors duration-300"
+                          :class="lightTheme ? 'text-earth-700' : 'text-white drop-shadow-md'">
+                        Rendezvény <span class="text-gold-400">Szele</span>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center gap-2 relative z-10" id="desktop-menu">
+                <template x-for="item in menuItems" :key="item.href">
+                    <a :href="item.href"
+                       class="relative px-5 py-2 text-xs font-bold tracking-widest uppercase transition-all duration-300 group/link"
+                       :class="lightTheme ? 'text-earth-600' : 'text-white/90'">
+                        <span class="relative z-10 group-hover/link:text-gold-500 transition-colors duration-300" x-text="item.label"></span>
+                        <!-- Custom animated underline -->
+                        <span class="absolute bottom-1 left-5 right-5 h-0.5 bg-gold-400 transform scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300 origin-center rounded-full"></span>
+                    </a>
+                </template>
+
+                <!-- Premium CTA -->
+                <a href="{{ 'kapcsolat'|page }}" 
+                   id="nav-cta-btn"
+                   class="ml-3 sm:ml-5 relative overflow-hidden px-5 py-2 text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em] rounded-full transition-all duration-500 group/btn"
+                   :class="lightTheme 
+                       ? 'bg-moss-600 text-white shadow-nature hover:shadow-moss-200/50' 
+                       : 'bg-gold-400 text-earth-900 shadow-gold-glow hover:shadow-gold-400/50'">
+                    <span class="relative z-10 flex items-center gap-2">
+                        <span>Ajánlatkérés</span>
+                        <svg class="w-3.5 h-3.5 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
+                    </span>
+                    <div class="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"></div>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button @click="mobileMenu = !mobileMenu" 
+                    class="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-2xl transition-all duration-300"
+                    :class="lightTheme ? 'bg-moss-50 text-earth-700' : 'bg-white/10 text-white'"
+                    id="mobile-menu-toggle">
+                <div class="w-5 h-4 flex flex-col justify-between">
+                    <span class="w-full h-0.5 rounded-full transition-all duration-300 origin-left"
+                          :class="[mobileMenu ? 'rotate-45 translate-x-px' : '', lightTheme ? 'bg-earth-700' : 'bg-white']"></span>
+                    <span class="w-3/4 h-0.5 rounded-full transition-all duration-300"
+                          :class="[mobileMenu ? 'opacity-0 translate-x-4' : 'opacity-100', lightTheme ? 'bg-earth-700' : 'bg-white']"></span>
+                    <span class="w-full h-0.5 rounded-full transition-all duration-300 origin-left"
+                          :class="[mobileMenu ? '-rotate-45 translate-x-px' : '', lightTheme ? 'bg-earth-700' : 'bg-white']"></span>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Panel -->
+    <div x-show="mobileMenu"
+         x-transition:enter="transition ease-out duration-500"
+         x-transition:enter-start="opacity-0 scale-95 -translate-y-10"
+         x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-300"
+         x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+         x-transition:leave-end="opacity-0 scale-95 -translate-y-10"
+         @click.outside="mobileMenu = false"
+         class="lg:hidden mt-4 bg-white/95 backdrop-blur-2xl border border-white/50 shadow-2xl rounded-3xl overflow-hidden p-6"
+         id="mobile-menu-panel">
+        
+        <div class="space-y-2">
+            <template x-for="item in menuItems" :key="item.href">
+                <a :href="item.href" 
+                   @click="mobileMenu = false"
+                   class="flex items-center justify-between px-6 py-4 text-earth-700 hover:bg-moss-50 hover:text-moss-600 rounded-2xl transition-all duration-300 group/mob">
+                    <span class="font-bold uppercase tracking-widest text-sm" x-text="item.label"></span>
+                    <svg class="w-5 h-5 opacity-0 -translate-x-4 group-hover/mob:opacity-100 group-hover/mob:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
+            </template>
+        </div>
+    </div>
+</nav>
+
+<!-- Left Slide Drawer Drag Trigger Overlay -->
+<div id="left-drawer-trigger" 
+     class="fixed left-0 top-0 bottom-0 w-20 z-40 bg-transparent flex items-center justify-start" 
+     style="touch-action: none;">
+     
+     <!-- The floating handle tab (elipszis üveg, diszkrét pulzálással) -->
+     <div id="left-drawer-tab" 
+          class="pulse-active w-3 h-16 bg-white/10 backdrop-blur-md border border-l-0 border-white/20 rounded-r-full flex items-center justify-center transition-all duration-500 cursor-pointer hover:bg-white/25 hover:w-4 active:scale-95"
+          style="touch-action: none;">
+          <!-- Diszkrét kis függőleges arany csík a közepén -->
+          <div class="w-0.5 h-6 bg-gold-400/60 rounded-full"></div>
+     </div>
+</div>
+
+<!-- Left Slide Drawer -->
+<div id="left-drawer" 
+     class="fixed inset-y-0 left-0 w-[280px] max-w-[85vw] h-full z-50 transform -translate-x-full transition-transform duration-300 ease-out border-r p-6 flex flex-col justify-between"
+     style="background: rgba(46, 75, 38, 0.45); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-right: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 10px 0 40px rgba(0,0,0,0.4);">
+     
+    <div>
+        <!-- Drawer Header with Logo and Close btn -->
+        <div class="flex items-center justify-between pb-6 border-b border-white/10 mb-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full overflow-hidden border border-white/50 shadow-md">
+                    <img src="{{ 'assets/pictures/logo.png'|theme }}?v=1" alt="Rendezvény Szele Logó" class="w-full h-full object-cover">
+                </div>
+                <span class="font-display font-bold text-white text-sm tracking-tight">Rendezvény <span class="text-gold-400">Szele</span></span>
+            </div>
+            <button id="close-drawer-btn" class="text-white/75 hover:text-white transition-colors" aria-label="Menü bezárása">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Drawer Menu Items -->
+        <div class="space-y-1">
+            <a href="{{ '/'|app }}" class="drawer-link flex items-center justify-between px-4 py-3.5 text-white/95 hover:bg-white/10 rounded-xl transition-all font-semibold uppercase tracking-wider text-xs">Főoldal</a>
+            <a href="{{ 'referenciak'|page }}" class="drawer-link flex items-center justify-between px-4 py-3.5 text-white/95 hover:bg-white/10 rounded-xl transition-all font-semibold uppercase tracking-wider text-xs">Referenciáink</a>
+            <a href="{{ 'szolgaltatasok'|page }}" class="drawer-link flex items-center justify-between px-4 py-3.5 text-white/95 hover:bg-white/10 rounded-xl transition-all font-semibold uppercase tracking-wider text-xs">Szolgáltatások</a>
+            <a href="{{ 'eszkozok'|page }}" class="drawer-link flex items-center justify-between px-4 py-3.5 text-white/95 hover:bg-white/10 rounded-xl transition-all font-semibold uppercase tracking-wider text-xs">Eszközeink</a>
+            <a href="{{ 'rolunk'|page }}" class="drawer-link flex items-center justify-between px-4 py-3.5 text-white/95 hover:bg-white/10 rounded-xl transition-all font-semibold uppercase tracking-wider text-xs">Rólunk</a>
+            <a href="{{ 'kapcsolat'|page }}" class="drawer-link flex items-center justify-between px-4 py-3.5 text-white/95 hover:bg-white/10 rounded-xl transition-all font-semibold uppercase tracking-wider text-xs">Kapcsolat</a>
+        </div>
+    </div>
+    
+    <!-- Drawer Footer -->
+    <div class="border-t border-white/10 pt-6">
+        <a href="{{ 'kapcsolat'|page }}" 
+           class="flex items-center justify-center gap-2 w-full py-3 bg-gold-400 hover:bg-gold-500 text-earth-900 font-bold uppercase tracking-wider text-[11px] rounded-xl transition-all shadow-gold-glow drawer-link">
+            <span>Ajánlatkérés</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+        </a>
+    </div>
+</div>
+
+<!-- Left Drawer Backdrop -->
+<div id="left-drawer-backdrop" 
+     class="fixed inset-0 bg-black/50 backdrop-blur-[2px] z-40 hidden opacity-0 transition-opacity duration-300"
+     style="pointer-events: none;"></div>
+
+<!-- Spacer for fixed nav (only when scrolled content starts) -->
+<div class="h-0" id="nav-spacer"></div>
+
+<script>
+function navScroll() {
+    return {
+        scrolled: false,
+        menuItems: [
+            { href: "{{ '/'|app }}", label: 'Főoldal' },
+            { href: "{{ 'referenciak'|page }}", label: 'Referenciáink' },
+            { href: "{{ 'szolgaltatasok'|page }}", label: 'Szolgáltatások' },
+            { href: "{{ 'eszkozok'|page }}", label: 'Eszközeink' },
+            { href: "{{ 'rolunk'|page }}", label: 'Rólunk' },
+            { href: "{{ 'kapcsolat'|page }}", label: 'Kapcsolat' },
+        ],
+        isHome: {{ (this.page.id == 'home') ? 'true' : 'false' }},
+        init() {
+            this.checkScroll();
+            window.addEventListener('scroll', () => this.checkScroll(), { passive: true });
+        },
+        checkScroll() {
+            this.scrolled = window.scrollY > 40;
+        },
+        // Helper to decide if we should use the "Light Theme" (Darker text, white background)
+        get lightTheme() {
+            return this.scrolled || !this.isHome;
+        }
+    }
+}
+</script>

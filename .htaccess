@@ -7,6 +7,12 @@
     RewriteEngine On
 
     ##
+    ## Detect HTTPS from Reverse Proxy / Cloudflare Tunnel
+    ##
+    RewriteCond %{HTTP:X-Forwarded-Proto} =https
+    RewriteRule .* - [E=HTTPS:on]
+
+    ##
     ## You may need to uncomment the following line for some hosting environments,
     ## if you have installed to a subdirectory, enter the name here also.
     ##

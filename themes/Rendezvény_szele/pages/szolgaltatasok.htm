@@ -1,0 +1,205 @@
+title = "Szolgáltatások"
+url = "/szolgaltatasok"
+layout = "default"
+==
+<!-- Lightbox stílusok -->
+<style>
+#lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,0.88);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    align-items: center;
+    justify-content: center;
+}
+#lightbox-overlay.open {
+    display: flex;
+    opacity: 0;
+}
+#lightbox-overlay.visible {
+    opacity: 1;
+}
+#lightbox-overlay img {
+    max-width: 92vw;
+    max-height: 88vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    transform: scale(0.92);
+    transition: transform 0.4s ease;
+}
+#lightbox-overlay.visible img {
+    transform: scale(1);
+}
+#lightbox-overlay { cursor: zoom-out; }
+.lightbox-trigger {
+    cursor: zoom-in;
+    position: relative;
+}
+.lightbox-trigger::after {
+    content: '🔍';
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    font-size: 1.1rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6));
+}
+.lightbox-trigger:hover::after { opacity: 1; }
+</style>
+
+<!-- Lightbox overlay -->
+<div id="lightbox-overlay" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Nagyított kép" style="cursor:zoom-out">
+</div>
+
+<section class="pt-32 pb-20 bg-cream-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+            <p class="text-moss-500 text-sm font-bold uppercase tracking-[0.3em] mb-4">Minden eseményhez</p>
+            <h1 class="page-title-mobile font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-earth-800 mb-6">Szolgáltatásaink</h1>
+            <div class="gold-line w-32 mx-auto"></div>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-10">
+            <!-- Szolgáltatás 1: Rendezvényszervezés — új generált kép -->
+            <div class="group bg-white rounded-3xl overflow-hidden shadow-nature hover:shadow-nature-lg transition-all duration-500 hover:-translate-y-3 reveal-up">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="{{ 'assets/pictures/szervezes.jpg'|theme }}" alt="Rendezvényszervezés" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-earth-900/60 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <span class="text-2xl">📋</span>
+                        <h3 class="font-display text-2xl font-bold mt-2">Szervezés</h3>
+                    </div>
+                </div>
+                <div class="service-card-body p-8">
+                    <p class="text-earth-500 leading-relaxed mb-6">
+                        Teljes körű lebonyolítás a tervezéstől a megvalósításig, létszámpontos sátor és eszköz rendelés. Segítünk a helyszín berendezkedésében a legpraktikusabb módon, és igény esetén van lehetőség a látványvilág megalkotásában.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-2 text-sm text-earth-600">
+                            <span class="text-gold-400">✦</span> Helyszíni felmérés
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-earth-600">
+                            <span class="text-gold-400">✦</span> Díjmentes árajánlat
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-earth-600">
+                            <span class="text-gold-400">✦</span> Egyedi kérések megvalósítása
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-earth-600">
+                            <span class="text-gold-400">✦</span> Bizonyos rendelési összeg felett ajándék
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-earth-600">
+                            <span class="text-gold-400">✦</span> Többnapos rendelés esetén nagyobb kedvezmény
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Szolgáltatás 2: Dekoráció — lightbox -->
+            <div class="group bg-white rounded-3xl overflow-hidden shadow-nature hover:shadow-nature-lg transition-all duration-500 hover:-translate-y-3 reveal-up stagger-1">
+                <div class="h-64 overflow-hidden relative lightbox-trigger" onclick="openLightbox(this)">
+                    <img src="{{ 'assets/pictures/kellekek.jpg'|theme }}" alt="Dekoráció" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-full="{{ 'assets/pictures/kellekek.jpg'|theme }}">
+                    <div class="absolute inset-0 bg-gradient-to-t from-earth-900/60 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <span class="text-2xl">🏮</span>
+                        <h3 class="font-display text-2xl font-bold mt-2">Díszítés</h3>
+                    </div>
+                </div>
+                <div class="service-card-body p-8">
+                    <p class="text-earth-500 leading-relaxed mb-6">
+                        Egyedi hangulat megteremtése fényfüzérekkel, lámpásokkal és stílusos kiegészítőkkel az Ön igényei szerint.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-2 text-sm text-earth-600">
+                            <span class="text-gold-400">✦</span> Hangulatvilágítás
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-earth-600">
+                            <span class="text-gold-400">✦</span> Asztali dekoráció
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-earth-600">
+                            <span class="text-gold-400">✦</span> Tematikus elemek
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Szolgáltatás 3: Szállítás — lightbox -->
+            <div class="group bg-white rounded-3xl overflow-hidden shadow-nature hover:shadow-nature-lg transition-all duration-500 hover:-translate-y-3 reveal-up stagger-2">
+                <div class="h-64 overflow-hidden relative lightbox-trigger" onclick="openLightbox(this)">
+                    <img src="{{ 'assets/pictures/ajanlatok.jpg'|theme }}" alt="Kiszállítás" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-full="{{ 'assets/pictures/ajanlatok.jpg'|theme }}">
+                    <div class="absolute inset-0 bg-gradient-to-t from-earth-900/60 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <span class="text-2xl">🚚</span>
+                        <h3 class="font-display text-2xl font-bold mt-2">Kiszállítás</h3>
+                    </div>
+                </div>
+                <div class="service-card-body p-8">
+                    <p class="text-earth-500 leading-relaxed mb-6">
+                        Saját gépparkkal biztosítjuk az eszközök pontos és biztonságos helyszínre szállítását, valamint az építést és bontást is.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-2 text-sm text-earth-600">
+                            <span class="text-gold-400">✦</span> Gyors kiszállítás
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-earth-600">
+                            <span class="text-gold-400">✦</span> Szakszerű felállítás
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-earth-600">
+                            <span class="text-gold-400">✦</span> Rugalmas időpontok
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+function openLightbox(trigger) {
+    const img = trigger.querySelector('img');
+    const src = img.getAttribute('data-full') || img.src;
+    const overlay = document.getElementById('lightbox-overlay');
+    const lbImg = document.getElementById('lightbox-img');
+    lbImg.src = src;
+    overlay.style.display = 'flex';
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            overlay.classList.add('open', 'visible');
+        });
+    });
+    document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+    const overlay = document.getElementById('lightbox-overlay');
+    overlay.classList.remove('visible');
+    setTimeout(() => {
+        overlay.classList.remove('open');
+        overlay.style.display = 'none';
+        document.getElementById('lightbox-img').src = '';
+        document.body.style.overflow = '';
+    }, 400);
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
+
+
+<!-- Call to Action -->
+<section class="py-24 bg-cream-100 text-center">
+    <div class="max-w-3xl mx-auto px-6">
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-earth-800 mb-8 reveal">Megvalósítjuk az elképzeléseit!</h2>
+        <a href="{{ 'kapcsolat'|page }}" 
+           class="inline-block px-10 py-4 bg-moss-600 text-white font-bold uppercase tracking-[0.2em] rounded-full hover:bg-moss-700 transition-all hover:scale-105 shadow-nature reveal-up">
+            Kérjen ingyenes konzultációt
+        </a>
+    </div>
+</section>

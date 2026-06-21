@@ -1,0 +1,166 @@
+description = "Default Layout – Rendezvény Szele"
+==
+<!DOCTYPE html>
+<html lang="hu" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rendezvény Szele – {{ this.page.title }}</title>
+    <meta name="description" content="{{ this.page.meta_description|default('Pavilon- és rendezvénysátrak, sörpad garnitúrák, bankett / könyöklős asztalok és stílusos terítők, huzatok bérlése Tápiószele és környékén. Tegye felejthetetlenné ünnepét!') }}">
+    <meta name="author" content="Rendezvény Szele – Fehér Szilárd E.V.">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Rendezvény Szele – {{ this.page.title }}">
+    <meta property="og:description" content="{{ this.page.meta_description|default('Pavilon- és rendezvénysátrak, sörpad garnitúrák, bankett / könyöklős asztalok és stílusos terítők, huzatok bérlése Tápiószele környékén.') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="hu_HU">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ 'assets/images/favicon.png'|theme }}">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        moss: {
+                            50:  '#f0f5ef',
+                            100: '#dce8da',
+                            200: '#b8d1b4',
+                            300: '#8fb68a',
+                            400: '#6a9b63',
+                            500: '#4A6741',
+                            600: '#3a5234',
+                            700: '#2E4B26',
+                            800: '#1e3119',
+                            900: '#0f190d',
+                        },
+                        earth: {
+                            50:  '#faf6f4',
+                            100: '#efebe9',
+                            200: '#d7ccc8',
+                            300: '#bcaaa4',
+                            400: '#8d6e63',
+                            500: '#5D4037',
+                            600: '#4e342e',
+                            700: '#3e2723',
+                            800: '#2c1a12',
+                            900: '#1a0f0a',
+                        },
+                        gold: {
+                            50:  '#fdf9ef',
+                            100: '#faf0d2',
+                            200: '#f3dfa0',
+                            300: '#e8ca6a',
+                            400: '#D4AF37',
+                            500: '#c49f2f',
+                            600: '#a48425',
+                            700: '#7d641c',
+                            800: '#574514',
+                            900: '#30260b',
+                        },
+                        cream: {
+                            50:  '#FDFCF7',
+                            100: '#FAF8EF',
+                            200: '#F5F3E6',
+                            300: '#EDE9D4',
+                        },
+                    },
+                    fontFamily: {
+                        display: ['"Playfair Display"', 'serif'],
+                        body:    ['"Montserrat"', 'sans-serif'],
+                        hand:    ['"Great Vibes"', 'cursive'],
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 0.8s ease-out forwards',
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'ken-burns': 'kenBurns 25s ease-in-out infinite alternate',
+                        'pulse-gentle': 'pulseGentle 3s ease-in-out infinite',
+                        'slide-in-right': 'slideInRight 0.4s ease-out forwards',
+                        'slide-out-right': 'slideOutRight 0.3s ease-in forwards',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        kenBurns: {
+                            '0%': { transform: 'scale(1)' },
+                            '100%': { transform: 'scale(1.12)' },
+                        },
+                        pulseGentle: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.6' },
+                        },
+                        slideInRight: {
+                            '0%': { transform: 'translateX(100%)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                        slideOutRight: {
+                            '0%': { transform: 'translateX(0)', opacity: '1' },
+                            '100%': { transform: 'translateX(100%)', opacity: '0' },
+                        },
+                    },
+                    boxShadow: {
+                        'nature': '0 10px 40px rgba(74, 103, 65, 0.12)',
+                        'nature-lg': '0 20px 60px rgba(74, 103, 65, 0.18)',
+                        'gold-glow': '0 4px 20px rgba(212, 175, 55, 0.25)',
+                    },
+                },
+            },
+        }
+    </script>
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Custom Styles (with cache busting) -->
+    <link href="{{ 'assets/css/app.css'|theme }}?v={{ 'now'|date('U') }}" rel="stylesheet">
+
+    {% styles %}
+</head>
+
+<body class="font-body text-earth-500 bg-cream-50 antialiased" x-data="{ mobileMenu: false }">
+
+    <!-- Navigation -->
+    {% partial 'nav' %}
+
+    <!-- Main Content -->
+    <main id="main-content">
+        {% page %}
+    </main>
+
+    <!-- Footer -->
+    {% partial 'footer' %}
+
+    <!-- WhatsApp Floating Button -->
+    {% partial 'whatsapp-btn' %}
+
+    <!-- Custom JS -->
+    <script src="{{ 'assets/js/app.js'|theme }}?v={{ 'now'|date('U') }}"></script>
+
+    {% framework extras %}
+    {% scripts %}
+
+    <!-- Cookie Consent Banner -->
+    {% partial 'cookie-consent' %}
+
+</body>
+</html>

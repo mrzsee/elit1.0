@@ -1,0 +1,325 @@
+description = "Cookie Consent Banner"
+==
+<!-- ============================================================
+     SÜTIK BELEEGYEZÉSI BANNER – RENDEZVÉNY SZELE
+     GDPR-kompatibilis: elfogadás / elutasítás lehetőséggel
+     ============================================================ -->
+
+<div id="cookie-banner"
+     class="cookie-banner-hidden"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Cookie beállítások">
+
+    <!-- Háttér overlay (kattintásra nem zárja be – GDPR!) -->
+    <div class="cookie-overlay"></div>
+
+    <!-- Sütis panel -->
+    <div class="cookie-panel" id="cookie-panel">
+
+        <!-- Fejléc -->
+        <div class="cookie-header">
+            <span class="cookie-icon">🍪</span>
+            <h2 class="cookie-title">Süti tájékoztató</h2>
+        </div>
+
+        <!-- Szöveg -->
+        <div class="cookie-body">
+            <p class="cookie-text">
+                Weboldalunk sütiket (cookie-kat) használ a jobb felhasználói élmény érdekében.
+                Az <strong>„Elfogadás"</strong> gombra kattintva hozzájárul az összes süti
+                használatához. Az <strong>„Elutasítás"</strong> gombra kattintva csak a
+                technikailag szükséges sütik kerülnek mentésre.
+            </p>
+            <p class="cookie-link-row">
+                <a href="/adatvedelmi-tajekoztato" class="cookie-link">Adatvédelmi tájékoztató</a>
+                <span class="cookie-link-sep">·</span>
+                <a href="/sutikezeles" class="cookie-link">Sütikezelési tájékoztató</a>
+            </p>
+        </div>
+
+        <!-- Gombok -->
+        <div class="cookie-actions">
+            <button id="cookie-reject"
+                    class="cookie-btn cookie-btn-reject"
+                    onclick="cookieChoice('rejected')">
+                Elutasítás
+            </button>
+            <button id="cookie-accept"
+                    class="cookie-btn cookie-btn-accept"
+                    onclick="cookieChoice('accepted')">
+                ✓ Elfogadás
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    /* ==============================
+       COOKIE BANNER STYLES
+       ============================== */
+
+    /* Alap: rejtett állapot */
+    .cookie-banner-hidden {
+        display: none !important;
+    }
+
+    /* Megjelenített állapot */
+    #cookie-banner.cookie-visible {
+        display: block !important;
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: flex !important;
+        align-items: flex-end;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    /* Háttér overlay */
+    .cookie-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+    }
+
+    /* Panel */
+    .cookie-panel {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 680px;
+        background: linear-gradient(145deg, #2a1f14 0%, #2E4B26 60%, #1e3119 100%);
+        border: 1px solid rgba(212, 175, 55, 0.35);
+        border-radius: 20px;
+        padding: 1.75rem 2rem 1.5rem;
+        box-shadow:
+            0 -4px 40px rgba(0, 0, 0, 0.5),
+            0 0 0 1px rgba(212, 175, 55, 0.1),
+            inset 0 1px 0 rgba(255,255,255,0.06);
+        animation: cookieSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        margin-bottom: 0.5rem;
+    }
+
+    @keyframes cookieSlideUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Fejléc */
+    .cookie-header {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-bottom: 0.85rem;
+    }
+
+    .cookie-icon {
+        font-size: 1.6rem;
+        line-height: 1;
+    }
+
+    .cookie-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #D4AF37;
+        margin: 0;
+        letter-spacing: 0.3px;
+    }
+
+    /* Szöveg */
+    .cookie-body {
+        margin-bottom: 1.25rem;
+    }
+
+    .cookie-text {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.88rem;
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.65;
+        margin: 0 0 0.6rem 0;
+    }
+
+    .cookie-text strong {
+        color: #e8ca6a;
+    }
+
+    .cookie-link-row {
+        font-size: 0.78rem;
+        color: rgba(255,255,255,0.45);
+        margin: 0;
+    }
+
+    .cookie-link {
+        color: rgba(212, 175, 55, 0.75);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        transition: color 0.2s;
+    }
+
+    .cookie-link:hover {
+        color: #D4AF37;
+    }
+
+    .cookie-link-sep {
+        margin: 0 0.4rem;
+    }
+
+    /* Gombok */
+    .cookie-actions {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+    }
+
+    .cookie-btn {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        padding: 0.6rem 1.6rem;
+        border-radius: 50px;
+        border: 2px solid transparent;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        white-space: nowrap;
+    }
+
+    /* Elutasítás gomb */
+    .cookie-btn-reject {
+        background: transparent;
+        border-color: rgba(255, 255, 255, 0.3);
+        color: rgba(255, 255, 255, 0.75);
+    }
+
+    .cookie-btn-reject:hover {
+        border-color: rgba(255, 255, 255, 0.6);
+        color: #fff;
+        background: rgba(255,255,255,0.06);
+    }
+
+    /* Elfogadás gomb */
+    .cookie-btn-accept {
+        background: linear-gradient(135deg, #D4AF37 0%, #a48425 100%);
+        border-color: #D4AF37;
+        color: #1a0f0a;
+    }
+
+    .cookie-btn-accept:hover {
+        background: linear-gradient(135deg, #e8ca6a 0%, #D4AF37 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+    }
+
+    /* Mobil */
+    @media (max-width: 640px) {
+        .cookie-panel {
+            padding: 1.25rem 1.25rem 1.1rem;
+            border-radius: 16px 16px 0 0;
+            margin-bottom: 0;
+            max-width: 100%;
+        }
+
+        #cookie-banner.cookie-visible {
+            align-items: flex-end;
+            padding: 0;
+        }
+
+        .cookie-actions {
+            flex-direction: column-reverse;
+            gap: 0.5rem;
+        }
+
+        .cookie-btn {
+            width: 100%;
+            text-align: center;
+            padding: 0.75rem 1rem;
+        }
+
+        .cookie-title {
+            font-size: 1.1rem;
+        }
+
+        .cookie-text {
+            font-size: 0.83rem;
+        }
+    }
+</style>
+
+<script>
+(function() {
+    var COOKIE_KEY = 'rendszele_cookie_consent';
+    var COOKIE_DAYS = 365;
+
+    // ---- Helper: süti olvasás / írás ----
+    function getCookie(name) {
+        var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        return match ? decodeURIComponent(match[2]) : null;
+    }
+
+    function setCookie(name, value, days) {
+        var expires = '';
+        if (days) {
+            var d = new Date();
+            d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+            expires = '; expires=' + d.toUTCString();
+        }
+        document.cookie = name + '=' + encodeURIComponent(value) + expires + '; path=/; SameSite=Lax';
+    }
+
+    // ---- Banner megjelenítése ----
+    function showBanner() {
+        var banner = document.getElementById('cookie-banner');
+        if (banner) {
+            banner.classList.remove('cookie-banner-hidden');
+            banner.classList.add('cookie-visible');
+        }
+    }
+
+    // ---- Banner elrejtése (animációval) ----
+    function hideBanner() {
+        var banner = document.getElementById('cookie-banner');
+        var panel  = document.getElementById('cookie-panel');
+        if (!banner || !panel) return;
+
+        panel.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        panel.style.opacity    = '0';
+        panel.style.transform  = 'translateY(20px)';
+
+        setTimeout(function() {
+            banner.classList.add('cookie-banner-hidden');
+            banner.classList.remove('cookie-visible');
+            panel.style.transition = '';
+            panel.style.opacity    = '';
+            panel.style.transform  = '';
+        }, 320);
+    }
+
+    // ---- Döntés kezelése ----
+    window.cookieChoice = function(choice) {
+        setCookie(COOKIE_KEY, choice, COOKIE_DAYS);
+
+        if (choice === 'accepted') {
+            // Ide lehet beilleszteni pl. Google Analytics inicializálást
+            // initGoogleAnalytics();
+        }
+
+        hideBanner();
+    };
+
+    // ---- Init: ha még nincs döntés, mutasd a bannert ----
+    document.addEventListener('DOMContentLoaded', function() {
+        var consent = getCookie(COOKIE_KEY);
+        if (!consent) {
+            // Kis késleltetéssel, hogy az oldal betöltődjön először
+            setTimeout(showBanner, 800);
+        }
+    });
+})();
+</script>

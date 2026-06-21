@@ -1,0 +1,452 @@
+/* ==========================================================================
+   RENDEZVÉNY SZELE – Custom Styles (Tailwind kiegészítő)
+   Amit Tailwind utility-k nem fednek le.
+   ========================================================================== */
+
+/* ==========================================
+   SMOOTH SCROLLBAR
+   ========================================== */
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #FAF8EF;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #4A6741, #2E4B26);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #2E4B26, #1e3119);
+}
+
+/* Firefox scrollbar */
+html {
+    scrollbar-color: #4A6741 #FAF8EF;
+    scrollbar-width: thin;
+}
+
+/* ==========================================
+   SELECTION
+   ========================================== */
+::selection {
+    background-color: rgba(74, 103, 65, 0.2);
+    color: #2E4B26;
+}
+
+/* ==========================================
+   SCROLL REVEAL ANIMATIONS
+   ========================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.9s cubic-bezier(0.165, 0.84, 0.44, 1);
+    will-change: transform, opacity;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    will-change: transform, opacity;
+}
+
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    will-change: transform, opacity;
+}
+
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    will-change: transform, opacity;
+}
+
+.reveal-scale.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Staggered Delays */
+.reveal-delay-100 {
+    transition-delay: 0.1s;
+}
+
+.reveal-delay-200 {
+    transition-delay: 0.2s;
+}
+
+.reveal-delay-300 {
+    transition-delay: 0.3s;
+}
+
+.reveal-delay-400 {
+    transition-delay: 0.4s;
+}
+
+.reveal-delay-500 {
+    transition-delay: 0.5s;
+}
+
+/* ==========================================
+   HERO VIDEO STYLES
+   ========================================== */
+.hero-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+#hero-background-video {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    min-width: 115% !important;
+    min-height: 115% !important;
+    width: auto !important;
+    height: auto !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: -1;
+}
+
+/* Gradiens overlay a videóra */
+.hero-overlay {
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.5) 0%,
+            rgba(0, 0, 0, 0.3) 40%,
+            rgba(0, 0, 0, 0.4) 70%,
+            rgba(46, 75, 38, 0.6) 100%);
+}
+
+/* ==========================================
+   GLASSMORPHISM CARDS
+   ========================================== */
+.glass {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.glass-dark {
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+/* ==========================================
+   DECORATIVE ELEMENTS
+   ========================================== */
+
+/* Gold separator line */
+.gold-line {
+    height: 2px;
+    background: linear-gradient(to right,
+            transparent 0%,
+            #D4AF37 20%,
+            #D4AF37 80%,
+            transparent 100%);
+}
+
+/* Leaf divider */
+.leaf-divider::before,
+.leaf-divider::after {
+    content: "";
+    display: inline-block;
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #D4AF37);
+    vertical-align: middle;
+    margin: 0 15px;
+}
+
+.leaf-divider::after {
+    background: linear-gradient(to left, transparent, #D4AF37);
+}
+
+/* ==========================================
+   COUNTER ANIMATION
+   ========================================== */
+.counter-value {
+    font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================
+   ACCORDION STYLES
+   ========================================== */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-content.open {
+    max-height: 500px;
+}
+
+/* ==========================================
+   GLOBAL OVERFLOW FIX
+   ========================================== */
+html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+/* ==========================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================== */
+
+/* Mobile: Disable video backgrounds */
+@media (max-width: 768px) {
+    .hero-video-container video {
+        display: block;
+    }
+
+    .hero-video-container {
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+/* -- Hero Logo Display defaults (Desktop >= 1024px) -- */
+/* Badge visibility handled by Tailwind: hidden lg:block */
+.hero-logo-mobile {
+    display: none !important;
+}
+
+
+@media (max-width: 1023px) {
+    /* Hide desktop top-right badge and show centered logo above title */
+    .hero-logo-badge {
+        display: none !important;
+    }
+    .hero-logo-mobile {
+        display: block !important;
+    }
+}
+
+/* ==========================================
+   MOBILE OPTIMIZATIONS (≤640px)
+   ========================================== */
+@media (max-width: 640px) {
+
+
+    /* -- Hero text wrapper: tighter padding -- */
+    .hero-text-glass {
+        padding: 0.5rem !important;
+        margin-left: 0.5rem !important;
+        margin-right: 0.5rem !important;
+    }
+
+    /* -- Hero CTA buttons: full width on mobile -- */
+    .hero-cta-btn {
+        width: 100% !important;
+        max-width: 280px !important;
+        justify-content: center !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+        font-size: 0.75rem !important;
+    }
+
+    /* -- Animated text banner: wrap and smaller font -- */
+    .banner-bottom-text p {
+        white-space: nowrap;
+        vertical-align: middle;
+        display: inline-block;
+        font-size: 1.3rem !important;
+        line-height: 1.4 !important;
+    }
+
+    /* -- Főoldal arany banner sáv: csillag ne csússzon le sorba -- */
+    .font-hand {
+        font-size: 0.9rem !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .banner-container {
+        width: 95% !important;
+        height: 350px !important;
+        min-height: 280px !important;
+    }
+
+    .banner-logo {
+        width: 90px !important;
+        height: 90px !important;
+        top: auto !important;
+        bottom: 12px !important;
+        right: 12px !important;
+        left: auto !important;
+    }
+
+    /* -- Floating badges: don't go outside container -- */
+    .floating-badge-mobile {
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        margin-top: 1rem !important;
+        max-width: 100% !important;
+    }
+
+    /* -- Reveal animations: reduce X translation to prevent overflow -- */
+    .reveal-left {
+        transform: translateX(-30px);
+    }
+    .reveal-right {
+        transform: translateX(30px);
+    }
+
+    /* -- Service cards: reduce inner padding -- */
+    .service-card-body {
+        padding: 1.25rem !important;
+    }
+
+    /* -- Contact form: reduce padding -- */
+    .contact-form-panel {
+        padding: 1.25rem !important;
+    }
+
+    /* -- Map section: shorter on mobile -- */
+    .map-section {
+        height: 250px !important;
+    }
+
+    /* -- Footer: reduce padding -- */
+    .footer-grid {
+        gap: 2rem !important;
+        padding-top: 2.5rem !important;
+        padding-bottom: 2.5rem !important;
+    }
+
+    /* -- Page header titles: scale down for mobile -- */
+    .page-title-mobile {
+        font-size: 2rem !important;
+    }
+
+    /* -- Lightbox img: never exceed viewport -- */
+    #lightbox-overlay img {
+        width: auto !important;
+        height: auto !important;
+        max-width: 95vw !important;
+        max-height: 85vh !important;
+    }
+
+    /* -- Video override: remove desktop translate offset on mobile -- */
+    #hero-background-video {
+        transform: translate(-50%, -50%) scale(1) !important;
+    }
+}
+
+/* ==========================================
+   TABLET OPTIMIZATIONS (641px–1023px)
+   ========================================== */
+@media (min-width: 641px) and (max-width: 1023px) {
+    .hero-logo-badge > div {
+        width: 192px !important;  /* 240px * 0.8 = 192px */
+        height: 192px !important;
+    }
+
+    .banner-container {
+        height: 450px !important;
+    }
+
+    .banner-logo {
+        width: 110px !important;
+        height: 110px !important;
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+    .reveal,
+    .reveal-left,
+    .reveal-right,
+    .reveal-scale {
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ==========================================
+   LEFT SLIDE DRAWER STYLES
+   ========================================== */
+#left-drawer {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 280px !important;
+    max-width: 85vw !important;
+    height: 100% !important;
+    z-index: 9999 !important; /* On top of nav */
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#left-drawer-backdrop {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 9998 !important; /* Just below drawer */
+    background: rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(2px) !important;
+    -webkit-backdrop-filter: blur(2px) !important;
+    transition: opacity 0.3s ease;
+}
+
+/* Diszkrét pulzáló animáció a lebegő fülnek */
+@keyframes glowPulse {
+    0%, 100% { 
+        opacity: 0.5; 
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+    50% { 
+        opacity: 1; 
+        box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4), 0 0 10px rgba(212, 175, 55, 0.2);
+        border-color: rgba(212, 175, 55, 0.5);
+    }
+}
+.pulse-active {
+    animation: glowPulse 2s ease-in-out infinite;
+}

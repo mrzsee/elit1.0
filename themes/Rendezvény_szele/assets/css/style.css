@@ -1,0 +1,212 @@
+/* ==========================================================================
+   NATURE THEME STYLES - "Rendezvény Szele"
+   Colors: Moss Green (#4A6741), Earth Brown (#5D4037), Natural Cream (#F9F8F0)
+   Fonts: Playfair Display (Headers), Montserrat (Body)
+   ========================================================================== */
+
+:root {
+    --primary-color: #4A6741;
+    /* Moss Green */
+    --primary-dark: #2E4B26;
+    /* Dark Forest Green */
+    --secondary-color: #5D4037;
+    /* Earth Brown */
+    --text-color: #3E3E3E;
+    /* Soft Charcoal */
+    --bg-light: #F9F8F0;
+    /* Natural Cream/Beige */
+    --bg-white: #FFFFFF;
+    --border-color: #E0E0D0;
+    --accent-color: #D4AF37;
+    /* Muted Gold */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-light);
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Playfair Display', serif;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+    font-weight: 700;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+/* ==========================================
+   ANIMATIONS & INTERACTIONS
+   ========================================== */
+
+/* Zoom effect for images container */
+.img-hover-zoom {
+    overflow: hidden;
+    border-radius: 8px;
+    display: block;
+}
+
+.img-hover-zoom img {
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.img-hover-zoom:hover img {
+    transform: scale(1.1);
+}
+
+/* Lift effect for cards/elements */
+.hover-lift {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-10px);
+    /* Kiemelkedés */
+    box-shadow: 0 15px 30px rgba(74, 103, 65, 0.25);
+    /* Zöldes árnyék */
+}
+
+/* ==========================================
+   LAYOUT COMPONENTS
+   ========================================== */
+
+.container {
+    max-width: 1200px;
+}
+
+/* Header removed/hidden generally, but keeping styles just in case */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Footer */
+footer {
+    background-color: var(--secondary-color);
+    color: #EFEBE9;
+    padding: 60px 0 30px;
+}
+
+footer h5 {
+    color: var(--accent-color);
+}
+
+/* ==========================================
+   BUTTONS & UI ELEMENTS
+   ========================================== */
+
+.btn {
+    border-radius: 50px;
+    /* More organic, rounded buttons for nature theme */
+    padding: 12px 35px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Primary Button (Green) */
+.btn-primary {
+    background-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    color: #FFFFFF;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(74, 103, 65, 0.3);
+}
+
+/* Outline Button (Brown) */
+.btn-outline-dark,
+.btn-outline-primary {
+    color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+    background: transparent;
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--secondary-color);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+}
+
+.btn-warning {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #FFF;
+}
+
+.btn-warning:hover {
+    background-color: #B2922B;
+    border-color: #B2922B;
+    color: #FFF;
+}
+
+/* Card Styling */
+.card-custom {
+    border: none;
+    border-radius: 12px;
+    background: #FFF;
+    overflow: hidden;
+}
+
+/* Images */
+img.rounded {
+    border-radius: 12px !important;
+}
+
+img.shadow-lg {
+    box-shadow: 0 20px 40px rgba(46, 75, 38, 0.15) !important;
+    /* Soft green shadow */
+}
+
+/* Icon colors */
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.text-warning {
+    color: var(--accent-color) !important;
+}
+
+.bg-light {
+    background-color: var(--bg-light) !important;
+}
+
+/* Intro Text Highlight */
+.intro-highlight {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 20px;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    color: var(--secondary-color);
+    font-size: 1.15rem;
+    background: rgba(74, 103, 65, 0.05);
+    /* Slight green tint background */
+    padding: 15px 20px;
+    border-radius: 0 10px 10px 0;
+}
