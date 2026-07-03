@@ -67,10 +67,11 @@ localeUrl[hu] = "/"
         <div class="w-[180px] h-[180px] sm:w-[240px] sm:h-[240px] rounded-full overflow-hidden border-2 border-white/30 shadow-2xl glass transition-transform duration-500 hover:scale-[1.3] hover:border-gold-400"
              onmouseenter="const v = this.querySelector('video'); if (v) { v.currentTime = 0; v.play(); }">
             <video src="{{ 'assets/pictures/logo.mp4'|theme }}" 
-                   class="w-full h-full object-cover" 
+                   class="w-full h-full object-cover pointer-events-none" 
                    autoplay 
                    muted 
-                   playsinline></video>
+                   playsinline
+                   oncontextmenu="return false;"></video>
         </div>
     </div>
 
@@ -82,10 +83,11 @@ localeUrl[hu] = "/"
             <div class="w-[144px] h-[144px] mx-auto rounded-full overflow-hidden border-2 border-white/30 shadow-2xl glass transition-transform duration-500 hover:scale-110 hover:border-gold-400"
                  onmouseenter="const v = this.querySelector('video'); if (v) { v.currentTime = 0; v.play(); }">
                 <video src="{{ 'assets/pictures/logo.mp4'|theme }}" 
-                       class="w-full h-full object-cover" 
+                       class="w-full h-full object-cover pointer-events-none" 
                        autoplay 
                        muted 
-                       playsinline></video>
+                       playsinline
+                       oncontextmenu="return false;"></video>
             </div>
         </div>
         
